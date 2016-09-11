@@ -24,6 +24,14 @@ app.controller("MainController", function($scope, ngDialog, shotFactory) {
         $scope.toggle = !$scope.toggle;
     };
 
+    //function Ref(event) {
+    //    ga('send', 'event', {
+    //        eventCategory: 'Inbound Link',
+    //        eventAction: 'click',
+    //        eventLabel: event.target.href
+    //    });
+    //};
+
     $scope.regsign = function($q){
         history.pushState({}, '', '/'+$q);
 

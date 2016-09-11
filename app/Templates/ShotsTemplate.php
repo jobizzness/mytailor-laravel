@@ -64,7 +64,7 @@ class ShotsTemplate extends AbstractTemplate   {
         {
             switch($cat){
                 case 'fm':
-                    SEOMeta::setTitle('Men | MyTailor African Fashion Designers');
+                    SEOMeta::setTitle('Women | MyTailor African Fashion Designers');
                     SEOMeta::setDescription('Women Prints · Check out latest trending African Dresses..');
                     OpenGraph::setDescription('Women Prints · Check out latest trending African Dresses...');
                     OpenGraph::setUrl('http://mytailorafrica.com/shots/?cat=ac');
@@ -73,7 +73,7 @@ class ShotsTemplate extends AbstractTemplate   {
 
                     break;
                 case 'ma':
-                    SEOMeta::setTitle('Women | MyTailor African Fashion Designers');
+                    SEOMeta::setTitle('Men | MyTailor African Fashion Designers');
                     SEOMeta::setDescription('Men · Blazers, Shirts, Latest African Fashion Prints...');
                     OpenGraph::setDescription('Men · Blazers, Shirts, Latest African Fashion Prints...');
                     OpenGraph::setUrl('http://mytailorafrica.com/shots/?cat=ac');

@@ -130,6 +130,7 @@ class DbShotsRepository implements ShotsRepositoryInterface{
     }
 
     /**
+     * Setiting fields for Posting a shot.
      * @param $file_name
      * @param $publishable_type
      * @param $publishable_id

@@ -26,7 +26,7 @@
                   </button>
 
                 {{-- Non-Login user Actions --}}
-                  @if( $user)
+                  @if( !$user)
 
                   <div style="margin-left: 80px;">
                     <ul class="mt-guest-calls__actions"> 
@@ -50,7 +50,7 @@
 
                 @else()
 
-                  {{-- @include('layouts.template.frontend.partials.users.header-actions') --}}
+                   @include('layouts.template.frontend.partials.users.header-actions') 
                 @endif
                 </div><!-- global header ends--> 
             </header>

@@ -1,8 +1,12 @@
-@extends('layouts.upload')
-
+@extends('layouts.template.admin.page-with-aside')
 @section('pagetitle', 'Upload new shots')
-
 @section('bg', 'grey60')
+
+    @section('page_styles')
+    <link href="{{ theme('vendor/jquery-file-upload/blueimp-gallery/blueimp-gallery.min.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{ theme('vendor/jquery-file-upload/css/jquery.fileupload.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{ theme('vendor/jquery-file-upload/css/jquery.fileupload-ui.css')}}" rel="stylesheet" type="text/css"/>
+    @endsection
 
 @section('main')
 
@@ -189,4 +193,25 @@
             </tr>
         {% } %}
 </script>			<!-- END PAGE BASE CONTENT -->
+@endsection
+@section('page_scripts')
+
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+                  <script src="{{ theme('vendor/jquery-file-upload/js/vendor/jquery.ui.widget.js')}}" type="text/javascript"></script>
+  <script src="{{ theme('vendor/jquery-file-upload/js/vendor/tmpl.min.js')}}" type="text/javascript"></script>
+  <script src="{{ theme('vendor/jquery-file-upload/js/vendor/load-image.min.js')}}" type="text/javascript"></script>
+  <script src="{{ theme('vendor/jquery-file-upload/js/vendor/canvas-to-blob.min.js')}}" type="text/javascript"></script>
+  <script src="{{ theme('vendor/jquery-file-upload/blueimp-gallery/jquery.blueimp-gallery.min.js')}}" type="text/javascript"></script>
+  <script src="{{ theme('vendor/jquery-file-upload/js/jquery.iframe-transport.js')}}" type="text/javascript"></script>
+  <script src="{{ theme('vendor/jquery-file-upload/js/jquery.fileupload.js')}}" type="text/javascript"></script>
+  <script src="{{ theme('vendor/jquery-file-upload/js/jquery.fileupload-process.js')}}" type="text/javascript"></script>
+  <script src="{{ theme('vendor/jquery-file-upload/js/jquery.fileupload-image.js')}}" type="text/javascript"></script>
+  <script src="{{ theme('vendor/jquery-file-upload/js/jquery.fileupload-audio.js')}}" type="text/javascript"></script>
+  <script src="{{ theme('vendor/jquery-file-upload/js/jquery.fileupload-video.js')}}" type="text/javascript"></script>
+  <script src="{{ theme('vendor/jquery-file-upload/js/jquery.fileupload-validate.js')}}" type="text/javascript"></script>
+  <script src="{{ theme('vendor/jquery-file-upload/js/jquery.fileupload-ui.js')}}" type="text/javascript"></script>
+
+  <!-- END PAGE LEVEL PLUGINS -->
+      <script src="{{ theme('js/modules/form-fileupload.js')}}" type="text/javascript"></script>
+
 @endsection

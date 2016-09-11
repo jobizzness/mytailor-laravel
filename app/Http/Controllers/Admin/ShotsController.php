@@ -9,6 +9,7 @@ use MyTailor\Shot;
 use MyTailor\Tag;
 use Illuminate\Http\Request;
 use MyTailor\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 use MyTailor\Modules\Shots\UploadServer;
 use Laracasts\Commander\CommandBus;
 

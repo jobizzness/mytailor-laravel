@@ -1952,6 +1952,17 @@ a[ng-click] {
   margin: 0;
   padding: 0 30px 0 30px; }
 
+.flex-center {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
 .pull-left {
   cursor: pointer;
   margin-right: 70px;

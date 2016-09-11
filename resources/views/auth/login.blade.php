@@ -1,12 +1,14 @@
 
 @extends('layouts.auth')
-
 @section('pagetitle', 'Login')
-
 @section('heading', 'Welcome, please login.')
 
-@section('content')
-
+@section('main')
+    <section class="make-flex flex-center">
+        <div class="logo-panel">
+            
+        </div>
+        <div class="mdl-card mdl-cell mdl-cell--4-col mdl-shadow--2dp" style="background: #636365;">
             <form method="post" class="login-form clearfix">
                 <div class="row">
                     <div class="mdl-cell mdl-cell--6-col">
@@ -39,6 +41,10 @@
                     </div>
                 </div>
             </form>
+        </div>
+    </section>
+
+
 
 
 @endsection

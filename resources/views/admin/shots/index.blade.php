@@ -1,7 +1,7 @@
 @extends('layouts.template.admin.page-with-aside')
 
 @section('pagetitle', 'Shots')
-@section('controller', 'shotsController')
+@section('controller', "ng-controller='shotsController'")
 
     @section('page_styles')
         <link rel="stylesheet" type="text/css" href="{{ theme('css/vendor/ng-img-crop/ng-img-crop.css')}}">
