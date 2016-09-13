@@ -2,7 +2,7 @@
 
 @section('pagetitle', 'Dashboard')
 
-@section('controller', 'DashboardController')
+@section('controller', 'ng-controller="DashboardController"')
 @section('bg', 'grey60')
 @section('sidebar_title', 'Analytics')
 @section('icon', 'mdi-chart-areaspline')
