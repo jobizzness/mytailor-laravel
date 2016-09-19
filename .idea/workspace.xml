@@ -5,23 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="657023bf-231f-4b50-a0d6-45ddd5d5ba3a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Modules/Shots/PostShotCommand.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Modules/Shots/Admin/PostShotCommand.php" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Modules/Shots/Admin/Events/ShotWasPosted.php" afterPath="$PROJECT_DIR$/app/Modules/Shots/Events/ShotWasPosted.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Modules/Shots/Admin/PostShotCommandHandler.php" afterPath="$PROJECT_DIR$/app/Modules/Shots/PostShotCommandHandler.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ShotsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ShotsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Repositories/DbShotsRepository.php" afterPath="$PROJECT_DIR$/app/Repositories/DbShotsRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Shot.php" afterPath="$PROJECT_DIR$/app/Shot.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/themes/default/assets/css/admin.css" afterPath="$PROJECT_DIR$/public/themes/default/assets/css/admin.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/themes/default/assets/css/admin.css.map" afterPath="$PROJECT_DIR$/public/themes/default/assets/css/admin.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/themes/default/assets/css/frontend.css" afterPath="$PROJECT_DIR$/public/themes/default/assets/css/frontend.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/themes/default/assets/css/frontend.css.map" afterPath="$PROJECT_DIR$/public/themes/default/assets/css/frontend.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/themes/default/assets/js/frontend.js" afterPath="$PROJECT_DIR$/public/themes/default/assets/js/frontend.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/themes/default/assets/js/frontend.js.map" afterPath="$PROJECT_DIR$/public/themes/default/assets/js/frontend.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/themes/default/assets/sass/layouts/_cards.scss" afterPath="$PROJECT_DIR$/public/themes/default/assets/sass/layouts/_cards.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/templates/shot.blade.php" afterPath="$PROJECT_DIR$/resources/views/templates/shot.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/templates/shots.blade.php" afterPath="$PROJECT_DIR$/resources/views/templates/shots.blade.php" />
     </list>
     <ignored path="mytailor.dev.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,38 +26,7 @@
     <favorites_list name="mytailor.dev" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="DbDesignersRepository.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Repositories/DbDesignersRepository.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="31" column="62" selection-start-line="31" selection-start-column="62" selection-end-line="31" selection-end-column="62" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Designer.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Designer.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7425743">
-              <caret line="25" column="57" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DesignersTemplate.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Templates/DesignersTemplate.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -124,7 +77,6 @@
         <option value="$PROJECT_DIR$/app/Repositories/ShotsRepositoryInterface.php" />
         <option value="$PROJECT_DIR$/public/themes/default/assets/js/services/frontend/shots.js" />
         <option value="$PROJECT_DIR$/public/themes/default/views/layouts/template/frontend/partials/header.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Frontend/ShotsController.php" />
         <option value="$PROJECT_DIR$/app/Templates/ShotsTemplate.php" />
         <option value="$PROJECT_DIR$/app/Templates/ExploreTemplate.php" />
         <option value="$PROJECT_DIR$/public/themes/default/assets/js/controllers/frontend/mainController.js" />
@@ -140,6 +92,7 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/ShotsController.php" />
         <option value="$PROJECT_DIR$/app/Shot.php" />
         <option value="$PROJECT_DIR$/app/Designer.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Frontend/ShotsController.php" />
       </list>
     </option>
   </component>
@@ -217,42 +170,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mytailor.dev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mytailor.dev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mytailor.dev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mytailor.dev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Repositories" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -346,10 +263,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20717423" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20717423" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329653" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -435,20 +352,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/PagesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Providers/MtServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35643566">
-          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.4752475">
@@ -641,14 +544,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Frontend/ShotsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7029703">
-          <caret line="78" column="8" selection-start-line="78" selection-start-column="8" selection-end-line="78" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Templates/ShotsTemplate.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7128713">
@@ -771,14 +666,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Shot.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20792079">
-          <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Repositories/DbShotsRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="3.2937293">
@@ -791,24 +678,58 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Templates/DesignersTemplate.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="-0.8910891">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Repositories/DbDesignersRepository.php">
+    <entry file="file://$PROJECT_DIR$/app/Shot.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="62" selection-start-line="31" selection-start-column="62" selection-end-line="31" selection-end-column="62" />
+          <caret line="170" column="42" selection-start-line="170" selection-start-column="42" selection-end-line="170" selection-end-column="42" />
+          <folding>
+            <element signature="e#28#67#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Brand.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47524753">
+          <caret line="16" column="83" selection-start-line="16" selection-start-column="83" selection-end-line="16" selection-end-column="83" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Designer.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7425743">
-          <caret line="25" column="57" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
+        <state vertical-scroll-proportion="0.56435645">
+          <caret line="19" column="41" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.5346535">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Frontend/ShotsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6732673">
+          <caret line="53" column="40" selection-start-line="53" selection-start-column="40" selection-end-line="53" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Repositories/DbDesignersRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35643566">
+          <caret line="24" column="7" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
           <folding />
         </state>
       </provider>
