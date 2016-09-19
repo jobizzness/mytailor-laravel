@@ -1,4 +1,4 @@
-<?php namespace MyTailor\Modules\Shots\Admin;
+<?php namespace MyTailor\Modules\Shots;
 
 
 use Laracasts\Commander\CommandHandler;
@@ -27,7 +27,7 @@ class PostShotCommandHandler implements CommandHandler {
      */
     public function handle($command){
 
-        $this->shots->post($command->file_name, $command->publishable_type, $command->publishable_id);
+        $this->shots->post($command->file_name, $command->publishable_type, $command->publishable_id, $command->published_by);
 
     }
 

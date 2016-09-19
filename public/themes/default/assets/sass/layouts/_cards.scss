@@ -4,6 +4,23 @@
     Cards
    ========================================================================== */
 
+@media (min-width: 768px){
+  .card:hover {
+      -webkit-transform: translateY(-1px);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 20px 0 rgba(168,182,191,0.6);
+
+    img{
+      opacity: .8;
+    }
+  }
+
+}
+
+.card, .card img{
+      -webkit-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+}
 
 .mt-card{
   background: #fff;

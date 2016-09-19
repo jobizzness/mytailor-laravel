@@ -131,17 +131,20 @@ class DbShotsRepository implements ShotsRepositoryInterface{
 
     /**
      * Setiting fields for Posting a shot.
+     *
      * @param $file_name
      * @param $publishable_type
      * @param $publishable_id
+     * @param $published_by
      * @return Shot
      */
-    public static function post($file_name, $publishable_type, $publishable_id)
+    public static function post($file_name, $publishable_type, $publishable_id, $published_by)
     {
         $shot = new Shot();
         $shot->file_name = $file_name;
-        $shot->publishable_id = $publishable_type;
+        $shot->publishable_type = $publishable_type;
         $shot->publishable_id = $publishable_id;
+        $shot->published_by = $published_by;
 
         Shot::saver($shot);
 

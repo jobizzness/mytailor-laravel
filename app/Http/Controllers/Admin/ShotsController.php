@@ -4,7 +4,7 @@ namespace MyTailor\Http\Controllers\Admin;
 
 
 use Illuminate\Support\Facades\Response;
-use MyTailor\Modules\Shots\Admin\PostShotCommand;
+use MyTailor\Modules\Shots\PostShotCommand;
 use MyTailor\Shot;
 use MyTailor\Tag;
 use Illuminate\Http\Request;
@@ -65,7 +65,11 @@ class ShotsController extends Controller    {
 
         $file_name = (new UploadServer)->get_name();
 
-        $command = new PostShotCommand($file_name, $published_by = Auth::user()->id);
+        $publishable_type = 'MyTailor\\Brand';
+        $publishable_id = 1;
+        $published_by = Auth::user()->id;
+
+        $command = new PostShotCommand($file_name, $publishable_type, $publishable_id, $published_by);
         $this->commandBus->execute($command);
 
 

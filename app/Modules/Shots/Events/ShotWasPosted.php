@@ -1,7 +1,7 @@
 <?php
 
 
-namespace MyTailor\Modules\Shots\Admin\Events;
+namespace MyTailor\Modules\Shots\Events;
 
 
 class ShotWasPosted

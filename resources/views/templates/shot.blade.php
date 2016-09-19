@@ -96,9 +96,9 @@
 
 	<section class="mdl-cell mdl-cell--12-col" style="display: flex;">
 
-			<div class="mdl-cell mdl-cell--12-col pad-1 mdl-grid">
+			<div class="mdl-cell mdl-cell--12-col pad-1 mdl-grid" ng-controller="shotsController">
 				@foreach($shot->related as $relate)
-	              <div class="mdl-cell mdl-cell--3-col mdl-shadow--2dp mdl-cell--4-col-phone" style="background:{{$relate->color}};">
+	              <div class="card mdl-cell mdl-cell--3-col mdl-shadow--2dp mdl-cell--4-col-phone" style="background:{{$relate->color}};">
 	                <div class="mt__media-card">
 	                  <a ng-click='open("{{$relate->file_name}}")'>
 	                    <img src="/uploads/{{$relate->file_name}}">

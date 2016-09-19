@@ -5,7 +5,7 @@ namespace MyTailor;
 use Illuminate\Database\Eloquent\Model;
 use AlgoliaSearch\Laravel\AlgoliaEloquentTrait;
 use Laracasts\Commander\Events\EventGenerator;
-use MyTailor\Modules\Shots\Admin\Events\ShotWasPosted;
+use MyTailor\Modules\Shots\Events\ShotWasPosted;
 
 class Shot extends Model {
 
@@ -25,6 +25,7 @@ class Shot extends Model {
         ];
 
     /**
+     * Store a shot and release events.
      * @param $shot
      */
     public static function saver($shot)
@@ -170,6 +171,10 @@ class Shot extends Model {
                     ->select(['id','profile_id']);
     }
 
+//    public function comments()
+//    {
+//        return $this->morphTo();
+//    }
     /**
      * Get the tags associated with the given Shot.
      *
