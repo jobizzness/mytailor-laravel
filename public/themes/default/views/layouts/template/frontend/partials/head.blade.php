@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="{{ theme('css/vendor/ng-dialog/ngDialog.min.css') }}">
     <!-- Instant search -->
     <link rel="stylesheet" type="text/css" href="{{ theme('vendor/instantsearch.js/dist/instantsearch.min.css') }}">
+    {{-- ScrollBar --}}
+    <link rel="stylesheet" href="{{ theme('css/vendor/jquery.mCustomScrollbar.min.css')}}">
     {{-- Additional page styles --}}
     @yield('page_styles')
     <script src="{{ theme('js/vendor.js') }}"></script>

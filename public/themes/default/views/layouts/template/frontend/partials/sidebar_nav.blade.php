@@ -1,4 +1,4 @@
-<div class="mt-layout-sidebar --scroll" ng-class="{'__visible': toggle}">
+<div class="mt-layout-sidebar" ng-class="{'__visible': toggle}">
               <header class="mt-layout-sidebar__users-info-wrapp" style="background:#FB4164;">
                   @if($user)
                       <div class="mt-sidebar-avatar">

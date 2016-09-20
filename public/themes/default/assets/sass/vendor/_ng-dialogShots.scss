@@ -54,12 +54,12 @@
   }
 }
 
-.mt-shots-overlay {
+.ngdialog{
   padding-bottom: 30px;
   padding-top: 30px;
 }
 
-.ngdialog.mt-shots-overlay.ngdialog-closing .ngdialog-content {
+.ngdialog.ngdialog-closing .ngdialog-content {
   -webkit-animation: ngdialog-flyout .5s;
   animation: ngdialog-flyout .5s;
 }
@@ -67,7 +67,7 @@
 .ngdialog-overlay{
       background: rgba(8, 8, 8, 0.94) !important;
 }
-.ngdialog.mt-shots-overlay .ngdialog-content {
+.ngdialog .ngdialog-content {
   -webkit-animation: ngdialog-flyin .5s;
   animation: ngdialog-flyin .5s;
   background: #D8D8D8;
@@ -81,10 +81,9 @@
   padding: 1em;
   position: relative;
   width: 975px;
-  min-height: 630px;
   width: 60%;
   min-width: 40em;
-  padding: 40px 95px;
+  padding: 1em 2em; 
   background: #eee;
   background-position: fixed;
   -webkit-box-sizing: border-box;
@@ -93,7 +92,12 @@
   -moz-border-radius: 6px;
 }
 
-.ngdialog.mt-shots-overlay .ngdialog-close {
+.ngdialog.mt-shots-overlay .ngdialog-content{
+  min-height: 630px;
+    padding: 40px 95px;
+}
+
+.ngdialog .ngdialog-close {
   border-radius: 5px;
   cursor: pointer;
   position: absolute;
@@ -101,7 +105,7 @@
   top: 0;
 }
 
-.ngdialog.mt-shots-overlay .ngdialog-close:before {
+.ngdialog .ngdialog-close:before {
   background: transparent;
   border-radius: 3px;
   color: #bbb;
@@ -117,24 +121,24 @@
   width: 30px;
 }
 
-.ngdialog.mt-shots-overlay .ngdialog-close:hover:before,
-.ngdialog.mt-shots-overlay .ngdialog-close:active:before {
+.ngdialog .ngdialog-close:hover:before,
+.ngdialog .ngdialog-close:active:before {
   color: #777;
 }
 
-.ngdialog.mt-shots-overlay .ngdialog-message {
+.ngdialog .ngdialog-message {
   margin-bottom: .5em;
 }
 
-.ngdialog.mt-shots-overlay .ngdialog-input {
+.ngdialog .ngdialog-input {
   margin-bottom: 1em;
 }
 
-.ngdialog.mt-shots-overlay .ngdialog-input textarea,
-.ngdialog.mt-shots-overlay .ngdialog-input input[type="text"],
-.ngdialog.mt-shots-overlay .ngdialog-input input[type="password"],
-.ngdialog.mt-shots-overlay .ngdialog-input input[type="email"],
-.ngdialog.mt-shots-overlay .ngdialog-input input[type="url"] {
+.ngdialog .ngdialog-input textarea,
+.ngdialog .ngdialog-input input[type="text"],
+.ngdialog .ngdialog-input input[type="password"],
+.ngdialog .ngdialog-input input[type="email"],
+.ngdialog .ngdialog-input input[type="url"] {
   background: #fff;
   border: 0;
   border-radius: 3px;
@@ -147,26 +151,26 @@
   width: 100%;
 }
 
-.ngdialog.mt-shots-overlay .ngdialog-input textarea:focus,
-.ngdialog.mt-shots-overlay .ngdialog-input input[type="text"]:focus,
-.ngdialog.mt-shots-overlay .ngdialog-input input[type="password"]:focus,
-.ngdialog.mt-shots-overlay .ngdialog-input input[type="email"]:focus,
-.ngdialog.mt-shots-overlay .ngdialog-input input[type="url"]:focus {
+.ngdialog .ngdialog-input textarea:focus,
+.ngdialog .ngdialog-input input[type="text"]:focus,
+.ngdialog .ngdialog-input input[type="password"]:focus,
+.ngdialog .ngdialog-input input[type="email"]:focus,
+.ngdialog .ngdialog-input input[type="url"]:focus {
   box-shadow: inset 0 0 0 2px #8dbdf1;
   outline: none;
 }
 
-.ngdialog.mt-shots-overlay .ngdialog-buttons {
+.ngdialog .ngdialog-buttons {
   *zoom: 1;
 }
 
-.ngdialog.mt-shots-overlay .ngdialog-buttons:after {
+.ngdialog .ngdialog-buttons:after {
   content: '';
   display: table;
   clear: both;
 }
 
-.ngdialog.mt-shots-overlay .ngdialog-button {
+.ngdialog .ngdialog-button {
   border: 0;
   border-radius: 3px;
   cursor: pointer;
@@ -180,25 +184,25 @@
   text-transform: uppercase;
 }
 
-.ngdialog.mt-shots-overlay .ngdialog-button:focus {
+.ngdialog .ngdialog-button:focus {
   -webkit-animation: ngdialog-pulse 1.1s infinite;
   animation: ngdialog-pulse 1.1s infinite;
   outline: none;
 }
 
 @media (max-width: 568px) {
-  .ngdialog.mt-shots-overlay .ngdialog-button:focus {
+  .ngdialog .ngdialog-button:focus {
     -webkit-animation: none;
     animation: none;
   }
 }
 
-.ngdialog.mt-shots-overlay .ngdialog-button.ngdialog-button-primary {
+.ngdialog .ngdialog-button.ngdialog-button-primary {
   background: #3288e6;
   color: #fff;
 }
 
-.ngdialog.mt-shots-overlay .ngdialog-button.ngdialog-button-secondary {
+.ngdialog .ngdialog-button.ngdialog-button-secondary {
   background: #e0e0e0;
   color: #777;
 }

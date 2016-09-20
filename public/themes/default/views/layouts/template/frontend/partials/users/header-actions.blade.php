@@ -1,6 +1,6 @@
  {{-- Notification area and avatar --}}
                 <div class="mt-top-menu" style="margin-left: 25px;">
-                  <ul>
+                  <ul class="user-actions">
                   <!-- Notification Icon and Dropdown -->
                     <li>
                       <a href="#" id="notifications">
@@ -10,52 +10,25 @@
                         <ul class="mdl-menu mt-drop__menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
                             for="notifications">
                           <li class="mt-dropmenu__header">NOTIFICATIONS</li>
-                          <li class="mt-dropmenu__items">
+                          <li class="mt-dropmenu__items" id="list">
                           {{-- Drop Items here --}}
-                              <ul class="demo-list-three mdl-list">
+                              <ul class="demo-list-three mdl-list" ng-scrollbars ng-scrollbars-config="config">
                                 <li class="mdl-list__item mdl-list__item--three-line">
-                                  <span class="mdl-list__item-primary-content">
-                                    <i class="material-icons mdl-list__item-avatar">person</i>
-                                    <span>Bryan Cranston</span>
-                                    <span class="mdl-list__item-text-body">
-                                      Bryan Cranston played the role of Walter in Breaking Bad. He is also known
-                                      for playing Hal in Malcom in the Middle.
-                                    </span>2
-                                  </span>
-                                  <span class="mdl-list__item-secondary-content">
-                                    <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
-                                  </span>
-                                </li>
-                                <li class="mdl-list__item mdl-list__item--three-line">
-                                  <span class="mdl-list__item-primary-content">
-                                    <i class="material-icons  mdl-list__item-avatar">person</i>
-                                    <span>Aaron Paul</span>
-                                    <span class="mdl-list__item-text-body">
-                                      Aaron Paul played the role of Jesse in Breaking Bad. He also featured in
-                                      the "Need For Speed" Movie.
-                                    </span>
-                                  </span>
-                                  <span class="mdl-list__item-secondary-content">
-                                    <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
-                                  </span>
-                                </li>
-                                <li class="mdl-list__item mdl-list__item--three-line">
-                                  <span class="mdl-list__item-primary-content">
-                                    <i class="material-icons  mdl-list__item-avatar">person</i>
-                                    <span>Bob Odenkirk</span>
-                                    <span class="mdl-list__item-text-body">
-                                      Bob Odinkrik played the role of Saul in Breaking Bad. Due to public fondness for the
-                                      character, Bob stars in his own show now, called "Better Call Saul".
-                                    </span>
-                                  </span>
-                                  <span class="mdl-list__item-secondary-content">
-                                    <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
-                                  </span>
+                                  <a href="#">
+                                      <span class="mdl-list__item-primary-content">
+                                          <img class="mdl-list__item-avatar" src="" />
+                                          <span>Bob Odenkirk</span>
+                                          <span class="mdl-list__item-text-body">
+                                           Liked your post : "African Print Office Wear".
+                                          </span>
+                                          <span>2 minutes ago</span>
+                                      </span>
+                                  </a>
                                 </li>
                               </ul>
                               {{-- Break the menu --}}
                           </li>
-                          <li class="mt-dropmenu__header">
+                          <li class="mt-dropmenu__footer">
                             <a href="#">View All</a>
                           </li>
                         </ul>

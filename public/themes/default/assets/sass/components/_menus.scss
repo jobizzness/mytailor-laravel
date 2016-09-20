@@ -31,17 +31,27 @@
     padding: 0;
 }
 
-.mt-dropmenu__header{
-        color: #767676;
+.mt-dropmenu__header, .mt-dropmenu__footer{
+    color: #767676;
     text-align: center;
     background: rgba(238, 238, 238, 0.44);
     padding: 1.2em 0;
     cursor: pointer;
-    opacity: 0;
+    opacity: 1;
+}
+
+.mt-dropmenu__footer{
+    background: map-get($ui-color, 'redish');
+    >a{
+        color: #fff;
+
+        &:hover{
+            color: #fff;
+        }
+    }
 }
 .mt-dropmenu__items{
     height: 250px;
     overflow-y: auto;
-    opacity: 0;
 
 }

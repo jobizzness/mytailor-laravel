@@ -25,19 +25,24 @@ elixir.config.publicPath = 'public/themes/default/assets';
         // This will mix vendor scripts
 		mix.scripts(
 			[
+				'../jquery/dist/jquery.min.js',
 			    '../angular/angular.min.js',
 			    '../angular-animate/angular-animate.min.js',
 			    '../angular-messages/angular-messages.min.js',
 			   	'../angular-sanitize/angular-sanitize.min.js',
 				'../mustache.js/mustache.min.js',
-			    '../jquery/dist/jquery.min.js',
 				'../masonry/dist/masonry.pkgd.min.js',
 			    '../Waves/dist/waves.min.js',
 				'../ng-dialog/js/ngDialog.min.js',
                 '../jquery-infinite-scroll/jquery.infinitescroll.js',
                 '../imagesloaded/imagesloaded.pkgd.min.js',
 				'../angular-ui-select/dist/select.min.js',
-				'../wow/dist/wow.min.js'
+				'../wow/dist/wow.min.js',
+				//	Custom Scrollbars
+				'../malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js',
+				'../jquery-mousewheel/jquery.mousewheel.min.js',
+				'../ng-scrollbars/dist/scrollbars.min.js'
+
 			   ], 	 'public/themes/default/assets/js/vendor.js');
 
 		// Frontend Scripts

@@ -9,26 +9,30 @@ use MyTailor\Modules\Users\Registration\Events\UserRegistered;
 class User extends Authenticatable
 {
     use EventGenerator;
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+
     protected $fillable = [
         'name', 'email', 'password',
     ];
 
     protected $dates = ['last_login_at'];
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
+
+    // hidden Attributes
     protected $hidden = [
         'password', 'remember_token',
     ];
 
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    |
+    */
 
+    /**
+     * Each user has one profile.
+     *
+     * @return mixed
+     */
     public function profile()
     {
         return $this->hasOne(Profile::class, 'id', 'profile_id')
@@ -36,7 +40,7 @@ class User extends Authenticatable
     }
 
     /**
-     * A shot is owned by a publisher.
+     * A shot may be published by a user.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -45,10 +49,22 @@ class User extends Authenticatable
         return $this->morphMany(Shot::class, 'publishable');
     }
 
+    /**
+     * A user may have many roles.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function roles()
     {
         return $this->belongsToMany(Role::class)->withTimestamps();
     }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Working with Roles
+    |--------------------------------------------------------------------------
+    |
+    */
 
     /**
      * does our user have role of $name or not
@@ -81,6 +97,20 @@ class User extends Authenticatable
         return $this->roles()->detach($role);
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    | CRUD Actions
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    /**
+     * registers the user and raise event.
+     *
+     * @param $userData
+     * @param $role
+     * @return User
+     */
     public static function register($userData, $role)
     {
         $profile = new Profile();

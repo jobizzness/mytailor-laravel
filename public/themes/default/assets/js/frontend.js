@@ -1,5 +1,5 @@
 // Here we declare our ng-app and modules we need
-var app = angular.module('app', ['ngAnimate', 'ngMessages', 'ngSanitize', 'ui.select', 'ngDialog']);
+var app = angular.module('app', ['ngAnimate', 'ngMessages', 'ngSanitize', 'ui.select', 'ngDialog', 'ngScrollbars']);
 
 var template_path = '/themes/default/views/segments/';
 
@@ -29,17 +29,19 @@ app.controller("MainController", function($scope, ngDialog, shotFactory) {
     $scope.searching = false;
     $scope.links = shotFactory.getParmalinks();
 
+    $scope.config = {
+        autoHideScrollbar: false,
+        theme: 'light',
+        advanced:{
+            updateOnContentResize: true
+        },
+        setHeight: 200,
+        scrollInertia: 0
+    };
+
     $scope.toggleSidebar = function () {
         $scope.toggle = !$scope.toggle;
     };
-
-    //function Ref(event) {
-    //    ga('send', 'event', {
-    //        eventCategory: 'Inbound Link',
-    //        eventAction: 'click',
-    //        eventLabel: event.target.href
-    //    });
-    //};
 
     $scope.regsign = function($q){
         history.pushState({}, '', '/'+$q);
@@ -53,7 +55,7 @@ app.controller("MainController", function($scope, ngDialog, shotFactory) {
                 history.back();
                 return true;
             }
-        }); //Dialog
+        }); //Dialogs
     };
 
 
@@ -62,12 +64,13 @@ app.controller("MainController", function($scope, ngDialog, shotFactory) {
         ngDialog.open({
             closeByNavigation: true,
             cache:false,
-            template: template_path + 'shot-upload.html', className: 'shot-upload' ,
+            template: template_path + 'shot-upload.html', className: 'mt-large-overlay' ,
             controller: 'shotsController'
         }); //Dialog
 }
 
-});
+
+}); //End
 
 app.controller("authController", ["$scope",
 

@@ -12,20 +12,38 @@ class Shot extends Model {
     use EventGenerator;
     use AlgoliaEloquentTrait;
 
+    /*
+    |--------------------------------------------------------------------------
+    | Actions
+    |--------------------------------------------------------------------------
+    |
+    */
+
     protected $fillable = ['title', 'category', 'featured', 'published', 'views', 'source_url', 'description',
-                            'published_by', 'published_at'
-    ];
+                            'published_by', 'published_at'];
+
 
     protected $dates = ['published_at'];
 
+
     protected $appends = array('alt');
 
+    //Confirm This
     public $algoliaSettings = [
                  'attributesForFaceting' => ["category", "tags"]
         ];
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | CRUD Actions
+    |--------------------------------------------------------------------------
+    |
+    */
+
     /**
      * Store a shot and release events.
+     *
      * @param $shot
      */
     public static function saver($shot)
@@ -34,16 +52,81 @@ class Shot extends Model {
         $shot->raise(new ShotWasPosted($shot));
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    | Local Scopes
+    |--------------------------------------------------------------------------
+    |
+    */
     /**
-     * Return null if published at is empty.
+     * if there is a where_clause we send it through.
      *
-     * @param $value
+     *
+     * @param $query
+     * @param $cat
+     * @return mixed
      */
-    public function setPublishedAtAttribute($value){
+    public function scopeCategory($query, $cat) {
+            if ($cat) {
 
-        $this->attributes['published_at'] = $value ?: null;
+                return $query->whereCategory($cat);
+
+            }
+            return $query;
     }
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    /**
+     * Get the Comments associated with the given Shot.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    public function comments()
+    {
+        return $this->morphTo();
+    }
+
+    /**
+     * Get the tags associated with the given Shot.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function tags() {
+
+        return $this->belongsToMany(Tag::class);
+     }
+
+    /**
+     * A shot is owned by a publisher.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function publishable() {
+
+        return $this->morphTo()
+            ->select(['id','profile_id']);
+    }
+
+
+    // I AM NOT SURE ABOUT THIS
+    public function scopeSearch($query, $search)
+    {
+        return $query->where('title', 'LIKE', "%$search%");
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    |  Accessors OR getters
+    |--------------------------------------------------------------------------
+    |
+    */
 
     /**
      * @param $value
@@ -73,33 +156,7 @@ class Shot extends Model {
         return $value;
     }
 
-    /**
-     * @param $value
-     * @return string
-     */
-    public function setCategoryAttribute($value)
-    {
 
-        switch ($value) {
-            case 'women':
-                $value = 'fm';
-                break;
-            case 'men':
-                $value = 'ma';
-                break;
-            case 'kids':
-                $value = 'ki';
-                break;
-            case'couples':
-                $value = 'cu';
-                break;
-
-            default:
-                $value = null;
-
-        }
-        $this->attributes['category'] =  $value;
-    }
     /**
      * @return mixed
      */
@@ -129,8 +186,8 @@ class Shot extends Model {
      */
     public  function getPublishedAttribute($value) {
 
-                return (boolean) $value;
-        }
+        return (boolean) $value;
+    }
 
     /**
      * Gets featured attribute to a boolean.
@@ -140,50 +197,8 @@ class Shot extends Model {
      */
     public  function getFeaturedAttribute($value) {
 
-                return (boolean) $value;
-        }
-
-    /**
-     * if there is a where_clause we send it through.
-     *
-     *
-     * @param $query
-     * @param $cat
-     * @return mixed
-     */
-    public function scopeCategory($query, $cat) {
-            if ($cat) {
-
-                return $query->whereCategory($cat);
-
-            }
-            return $query;
-        }
-
-    /**
-     * A shot is owned by a publisher.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function publishable() {
-
-        return $this->morphTo()
-                    ->select(['id','profile_id']);
+        return (boolean) $value;
     }
-
-//    public function comments()
-//    {
-//        return $this->morphTo();
-//    }
-    /**
-     * Get the tags associated with the given Shot.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function tags() {
-
-        return $this->belongsToMany(Tag::class);
-     }
 
     /**
      * Get a list of tag ids associated with the current shot.
@@ -195,6 +210,83 @@ class Shot extends Model {
         return $this->tags->lists('id');
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators OR setters
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    /**
+     * @param $value
+     * @return string
+     */
+    public function setCategoryAttribute($value)
+    {
+
+        switch ($value) {
+            case 'women':
+                $value = 'fm';
+                break;
+            case 'men':
+                $value = 'ma';
+                break;
+            case 'kids':
+                $value = 'ki';
+                break;
+            case'couples':
+                $value = 'cu';
+                break;
+
+            default:
+                $value = null;
+
+        }
+        $this->attributes['category'] =  $value;
+    }
+
+    /**
+     * Return null if published at is empty.
+     *
+     * @param $value
+     */
+    public function setPublishedAtAttribute($value){
+
+        $this->attributes['published_at'] = $value ?: null;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Algolia Configurations
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    /**
+     * Algolia Batch record.
+     *
+     * @return array
+     *
+     */
+    public function getAlgoliaRecord()
+    {
+
+        /**
+         * Load the tags relation so that it's available
+         *
+         */
+        $this->tags->lists('id', 'tag_name');
+        $this->name = pathinfo($this->file_name, PATHINFO_FILENAME);
+
+        return $this->toArray();
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Appends
+    |--------------------------------------------------------------------------
+    |
+    */
 
     private function displayAlt()
     {
@@ -207,30 +299,11 @@ class Shot extends Model {
         return $alt;
     }
 
-
     /**
-     * Send along tags array.
+     * Index only when enviroment is not Local.
      *
-     * @return array
-     *
+     * @return bool
      */
-    public function getAlgoliaRecord()
-    {
-        /**
-         * Load the categories relation so that it's available
-         *  in the laravel toArray method
-         */
-        $this->tags->lists('id', 'tag_name');
-        $this->name = pathinfo($this->file_name, PATHINFO_FILENAME);
-
-        return $this->toArray();
-    }
-
-    public function scopeSearch($query, $search)
-    {
-        return $query->where('title', 'LIKE', "%$search%");
-    }
-
     public function autoIndex()
     {
         if (\App::environment() === 'local') {
@@ -240,6 +313,11 @@ class Shot extends Model {
         return true;
     }
 
+    /**
+     * Delete only when environment is not local.
+     *
+     * @return bool
+     */
     public function autoDelete(){
             if (\App::environment() === 'local') {
             return false;

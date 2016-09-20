@@ -1981,7 +1981,7 @@ a[ng-click] {
   overflow: hidden;
   padding: 0 40px 0 40px; }
 
-.mt-top-menu > ul {
+.mt-top-menu > ul.user-actions {
   padding: 0;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1989,14 +1989,15 @@ a[ng-click] {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center; }
-  .mt-top-menu > ul > li {
+  .mt-top-menu > ul.user-actions > li {
     margin: 0 14px 0 10px; }
-    .mt-top-menu > ul > li:hover {
+    .mt-top-menu > ul.user-actions > li:hover {
       background-color: rgba(0, 0, 0, 0.17); }
-    .mt-top-menu > ul > li a {
-      transition: color linear 2ms; }
-      .mt-top-menu > ul > li a:hover {
-        color: #d3d1d1; }
+
+ul.user-actions > li > a {
+  transition: color linear 2ms; }
+  ul.user-actions > li > a:hover {
+    color: #d3d1d1; }
 
 .mt-top-avatar {
   max-width: 50px;
