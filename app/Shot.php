@@ -88,9 +88,10 @@ class Shot extends Model {
      *
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
+
     public function comments()
     {
-        return $this->morphTo();
+        return $this->morphMany(Comment::class, 'commentable');
     }
 
     /**

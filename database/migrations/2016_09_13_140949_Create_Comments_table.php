@@ -15,12 +15,12 @@ class CreateCommentsTable extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('body');
+            $table->text('body');
             $table->integer('commentable_id');
-            $table->integer('commentable_type');
+            $table->string('commentable_type');
             $table->integer('publishable_id');
-            $table->integer('commented_by');
-            $table->integer('publishable_type');
+            $table->integer('published_by');
+            $table->string('publishable_type');
             $table->timestamps();
         });
         //Comment ID

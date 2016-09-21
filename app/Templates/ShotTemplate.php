@@ -1,11 +1,13 @@
 <?php namespace MyTailor\Templates;
 
 use Illuminate\View\View;
+use Laracasts\Commander\CommandBus;
+use MyTailor\Modules\Shots\ViewShotCommand;
 use MyTailor\Repositories\ShotsRepositoryInterface;
 use SEOMeta;
 use OpenGraph;
 use Twitter;
-use MyTailor\Profile;
+
 class ShotTemplate extends AbstractTemplate{
 
     /**
@@ -16,15 +18,21 @@ class ShotTemplate extends AbstractTemplate{
      * @var ShotsRepositoryInterface
      */
     private $shots;
+    /**
+     * @var CommandBus
+     */
+    private $commandBus;
 
     /**
      * ShotTemplate constructor.
      * @param ShotsRepositoryInterface $shots
+     * @param CommandBus $commandBus
      */
-    public function __construct(ShotsRepositoryInterface $shots) {
+    public function __construct(ShotsRepositoryInterface $shots, CommandBus $commandBus) {
 
         $this->shots = $shots;
 
+        $this->commandBus = $commandBus;
     }
 
     /**
@@ -37,15 +45,14 @@ class ShotTemplate extends AbstractTemplate{
     public function prepare(View $view, array $parameters)
     {
         $id = array_key_exists ( 'id' , $parameters) ? $parameters['id'] : null;
-        $shot = $this->shots->findByName($id);
+
+        $command = new ViewShotCommand($id);
+        $shot = $this->commandBus->execute($command);
+
 
         if($shot) {
 
-            $this->getProfile($shot);
             $this->seoMake($shot);
-
-            $shot->related = $this->shots->related($shot);
-
             $view->with('shot', $shot);
 
         }
@@ -69,12 +76,4 @@ class ShotTemplate extends AbstractTemplate{
         //Carbon::parse($shot->updated_at)->subMinutes(2)->diffForHumans()
     }
 
-    /**
-     * @param $shot
-     */
-    protected function getProfile($shot)
-    {
-        $shot->publishable->profile = Profile::find([$shot->publishable->profile_id])->first();
-        $shot->date = $shot->created_at->diffForHumans();
-    }
 }

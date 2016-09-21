@@ -46,47 +46,115 @@
 
 		<!-- Comments -->
 		<div class="mt-shots-info-wrap mt-card-light">
-		<div class="mt-shot-info-head">
-			<div class="mt-shot-user-actions-wrap">
-				<ul class="mt-shot-user-actions">
-					<li class="each-action">
-						<a href="#" class="">
-							<i class="mdi mdi-heart-outline" style="font-size: 2em;color: #F23054;"></i>
-							<span>{{$shot->likes}}</span>
-						</a>
-					</li>
-					<li class="each-action">
-						<a>
-							<i class="mdi mdi-eye" style="font-size: 2em;"></i>
-							<span>{{$shot->views}}</span>
-						</a>
-					</li>
+			<div class="mt-shot-info-head">
+				<div class="mt-shot-user-actions-wrap">
+					<ul class="mt-shot-user-actions">
+						<li class="each-action">
+							<a href="#" class="">
+								<i class="mdi mdi-heart-outline" style="font-size: 2em;color: #F23054;"></i>
+								<span>{{$shot->likes}}</span>
+							</a>
+						</li>
+						<li class="each-action">
+							<a>
+								<i class="mdi mdi-eye" style="font-size: 2em;"></i>
+								<span>{{$shot->views}}</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="mt-shot-utility-icons">
+					<ul>
+						<li class="util-list-surcelink m-0">
+							<a class="btn mt-btn-circle m-0 waves-effect waves-button waves-float"  href="{{$shot->source_url}}" title="source URL">
+	                              <i class="mdi mdi-link-variant"></i>
+	                        </a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- All comments -->
+			<div class="mt-shot-comments-wrapper scroller hidden">
+
+				<div class="mt-shot-comment-cont"></div>
+
+			</div>
+
+			<!-- Comment Form -->
+			<div class="comment-form-wrapper">
+				<div class="input-comment">
+					<input class="form-control" name="body" type="text" placeholder="Write your comment here ...">
+				</div>
+			</div>
+
+			{{-- Coments --}}
+
+			<section>
+				<div>
+				<details>
+					<summary style="padding:1em;">3 comments</summary>
+					<ul class="comments-list">
+					  <li class="comment-list__item card">
+						  <span class="circle">
+							  <img src="http://bigbeehive.com/demo/orientplay-angular/img/user/vector4.png" alt="user"> 
+						  </span>
+						  <span class="title"> 
+							  <a href="#">Abbey Christensen</a> <time> 5:09 PM</time> 
+								<p>Can’t wait to see this movie.</p>
+						  </span>
+{{-- 						  <ul class="actions" href="#">
+								<li><a class="reply" href="#">Reply</a></li>
+						  </ul> --}}
+					  </li>
+					<li class="comment-list__item card">
+					  <span class="circle">
+						  <img src="http://bigbeehive.com/demo/orientplay-angular/img/user/vector2.png" alt="user"> 
+					  </span>
+					  <span class="title"> 
+						  <a href="#">Ali Connors</a> <time> 5:15 PM</time> 
+							<p>Mee too.</p>
+					  </span>
+					  <ul class="actions" href="#">
+							<li><a class="reply" href="#">Reply</a></li>
+					  </ul>
+				  	</li>	
+					<li class="comment-list__item card">
+					  <span class="circle">
+						  <img src="http://bigbeehive.com/demo/orientplay-angular/img/user/vector3.png" alt="user"> 
+					  </span>
+					  <span class="title"> 
+						  <a href="#">Peter Carlsson</a> <time> 5:30 PM</time> 
+							<p><a href="#">Abbey Christensen</a> I thought it was a good movie. The slow motion was a tad excessive at times, but overall it was good! I'm love it ;) </p>
+					  </span>
+					  <ul class="actions" href="#">
+							<li><a class="reply" href="#">Reply</a></li>
+					  </ul>
+					</li>	
+				  </ul> 
+				</details>
+
+				{{-- Last Comment --}}
+				<ul id="lastComment" class="comments-list">
+					<li class="comment-list__item card">
+					    <span class="circle">
+						  <img src="http://bigbeehive.com/demo/orientplay-angular/img/user/vector4.png" alt="user"> 
+					    </span>
+					  	<main>
+						  <span class="title"> 
+							  <a href="#">Sandra Adams </a> <time> 6:00 PM</time>
+							  	<ul class="list-inline actions" href="#">
+									<li><a class="edit" href="#" title="Edit comment">Edit</a></li>
+									<li class="roff"><a class="delete" href="#" title="Delete comment"></a></li>
+								</ul> 
+							  	<p><a href="#">Peter Carlsson</a> This is without doubt the greatest flim i’ve ever seen.</p>
+						  </span>
+						</main>
+				  	</li>
+
 				</ul>
+				
 			</div>
-			<div class="mt-shot-utility-icons">
-				<ul>
-					<li class="util-list-surcelink m-0">
-						<a class="btn mt-btn-circle m-0 waves-effect waves-button waves-float"  href="{{$shot->source_url}}" title="source URL">
-                              <i class="mdi mdi-link-variant"></i>
-                        </a>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<!-- All comments -->
-		<div class="mt-shot-comments-wrapper scroller hidden">
-
-			<div class="mt-shot-comment-cont"></div>
-
-		</div>
-
-		<!-- Comment Form -->
-		<div class="comment-form-wrapper">
-			<div class="input-comment">
-				<input class="form-control" type="text" placeholder="Write your comment here ...">
-			</div>
-		</div>
-
+			</section>
 		</div>
 	</section>
 

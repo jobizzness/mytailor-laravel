@@ -1,0 +1,12 @@
+
+ul.comments-list{
+	margin: 1em 0;
+}
+
+.comment-list__item{
+	display: -webkit-flex; /* Safari */
+    -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+    display: flex;   
+    flex-wrap: nowrap;
+	margin: 1em 0;
+}

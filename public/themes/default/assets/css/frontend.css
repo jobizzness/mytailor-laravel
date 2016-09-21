@@ -1604,6 +1604,22 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
   background-image: none;
   color: black; }
 
+/*Lists*/
+ul.comments-list {
+  margin: 1em 0; }
+
+.comment-list__item {
+  display: -webkit-flex;
+  /* Safari */
+  -webkit-flex-wrap: wrap;
+  /* Safari 6.1+ */
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin: 1em 0; }
+
 /*something about a user*/
 .mt-avatar-circle {
   line-height: 0;
