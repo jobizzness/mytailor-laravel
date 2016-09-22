@@ -22,14 +22,14 @@
             <section class="mt-shot-avatar-wrapper">
 	            <a href="#" class="mt-shot-avatar" title="Mytailor">
 	            	 <h2 class="mt-avatar-name">{{$shot->publishable->profile->username}}</h2>
-	                <img height="30" width="30" ng-src="/uploads/profiles/{{$shot->publishable->profile->avatar}}" alt="Braden Hamm">
+	                <img height="30" width="30" src="/uploads/profiles/{{$shot->publishable->profile->avatar}}" alt="{{$shot->publishable->profile->username}}">
 	            </a>
             </section>
         </header>
 
          <!-- The Figure -->
 		<figure class="mt-figure__card mdl-card shot-cover">
-			<img itemprop="image" itemscope itemtype="http://schema.org/primaryImageOfPage" ng-src="/uploads/{{$shot->file_name}}" alt="{{$shot->publishable->profile->username}}'s photo on myailorafrica.com">
+			<img itemprop="image" itemscope itemtype="http://schema.org/primaryImageOfPage" src="/uploads/{{$shot->file_name}}" alt="{{$shot->publishable->profile->username}}'s photo on myailorafrica.com">
 		</figure>
 
 		<!-- Notes -->
@@ -94,60 +94,42 @@
 				<details>
 					<summary style="padding:1em;">3 comments</summary>
 					<ul class="comments-list">
-					  <li class="comment-list__item card">
-						  <span class="circle">
-							  <img src="http://bigbeehive.com/demo/orientplay-angular/img/user/vector4.png" alt="user"> 
-						  </span>
-						  <span class="title"> 
-							  <a href="#">Abbey Christensen</a> <time> 5:09 PM</time> 
-								<p>Can’t wait to see this movie.</p>
-						  </span>
-{{-- 						  <ul class="actions" href="#">
-								<li><a class="reply" href="#">Reply</a></li>
-						  </ul> --}}
-					  </li>
-					<li class="comment-list__item card">
-					  <span class="circle">
-						  <img src="http://bigbeehive.com/demo/orientplay-angular/img/user/vector2.png" alt="user"> 
-					  </span>
-					  <span class="title"> 
-						  <a href="#">Ali Connors</a> <time> 5:15 PM</time> 
-							<p>Mee too.</p>
-					  </span>
-					  <ul class="actions" href="#">
-							<li><a class="reply" href="#">Reply</a></li>
-					  </ul>
-				  	</li>	
-					<li class="comment-list__item card">
-					  <span class="circle">
-						  <img src="http://bigbeehive.com/demo/orientplay-angular/img/user/vector3.png" alt="user"> 
-					  </span>
-					  <span class="title"> 
-						  <a href="#">Peter Carlsson</a> <time> 5:30 PM</time> 
-							<p><a href="#">Abbey Christensen</a> I thought it was a good movie. The slow motion was a tad excessive at times, but overall it was good! I'm love it ;) </p>
-					  </span>
-					  <ul class="actions" href="#">
-							<li><a class="reply" href="#">Reply</a></li>
-					  </ul>
-					</li>	
+						@foreach($shot->comments as $comment)
+						  <li class="comment-list__item card">
+							  <a href="#" class="mt-shot-avatar" title="Mytailor">
+								    <span class="comment-avatar">
+									  <img src="/uploads/profiles/{{$comment->publishable->profile->avatar}}" alt="{{$comment->publishable->profile->username}}"> 
+								    </span>
+							    </a>
+							  	<main>
+								  <span class="comment-list__title"> 
+									  <a href="#">{{$comment->publishable->profile->username}} </a> <span class="mdl-layout-spacer"></span>
+									  	<ul class="list-inline actions" href="#">
+											<li><a href="#"><i class="mdi mdi-dots-vertical"></i></a></li>
+										</ul>
+								  </span> 
+									  	<p class="comment__text"><a href="#" class="tagged__name">Peter Carlsson</a> {{$comment->body}} <time> 1 hr</time></p>
+								</main>
+					  	</li>	
+					  	@endforeach
 				  </ul> 
 				</details>
 
 				{{-- Last Comment --}}
 				<ul id="lastComment" class="comments-list">
 					<li class="comment-list__item card">
-					    <span class="circle">
+					    <span class="comment-avatar">
 						  <img src="http://bigbeehive.com/demo/orientplay-angular/img/user/vector4.png" alt="user"> 
 					    </span>
 					  	<main>
-						  <span class="title"> 
-							  <a href="#">Sandra Adams </a> <time> 6:00 PM</time>
+						  <span class="comment-list__title"> 
+							  <a href="#">Sandra Adams </a> <span class="mdl-layout-spacer"></span>
 							  	<ul class="list-inline actions" href="#">
-									<li><a class="edit" href="#" title="Edit comment">Edit</a></li>
-									<li class="roff"><a class="delete" href="#" title="Delete comment"></a></li>
-								</ul> 
-							  	<p><a href="#">Peter Carlsson</a> This is without doubt the greatest flim i’ve ever seen.</p>
-						  </span>
+									<li><a href="#"><i class="mdi mdi-dots-vertical"></i></a></li>
+								</ul>
+						  </span> 
+							  	<p class="comment__text"> 
+								I pray your initiative can help find a cure for Mucolipidosis & other diseases. <a href="#" class="tagged__name">Biness Creation</a><time> 6 sec</time></p>
 						</main>
 				  	</li>
 

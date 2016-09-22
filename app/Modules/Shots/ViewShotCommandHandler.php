@@ -31,9 +31,11 @@ class ViewShotCommandHandler implements CommandHandler
         if($shot) {
 
             $shot->comments();
-            $this->getProfile($shot);
+            $this->getPublishableProfile($shot);
+            $this->getCommentPublishableProfile($shot);
 
             $shot->related = $this->shots->related($shot);
+            $shot->date = $shot->created_at->diffForHumans();
 
             return $shot;
 
@@ -46,10 +48,18 @@ class ViewShotCommandHandler implements CommandHandler
      * Revisit this method
      * @param $shot
      */
-    protected function getProfile($shot)
+    protected function getPublishableProfile($shot)
     {
         $shot->publishable->profile = Profile::find([$shot->publishable->profile_id])->first();
-        $shot->date = $shot->created_at->diffForHumans();
+
+    }
+
+    private function getCommentPublishableProfile($shot)
+    {
+        foreach($shot->comments as $comment) {
+            
+            $comment->publishable->Profile = Profile::find([$comment->publishable->profile_id])->first();
+        }
     }
 
 }
