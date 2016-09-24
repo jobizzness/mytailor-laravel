@@ -44,7 +44,7 @@
 			</div>
 		</div>
 
-		<!-- Comments -->
+		<!--  -->
 		<div class="mt-shots-info-wrap mt-card-light">
 			<div class="mt-shot-info-head">
 				<div class="mt-shot-user-actions-wrap">
@@ -73,17 +73,13 @@
 					</ul>
 				</div>
 			</div>
-			<!-- All comments -->
-			<div class="mt-shot-comments-wrapper scroller hidden">
-
-				<div class="mt-shot-comment-cont"></div>
-
-			</div>
 
 			<!-- Comment Form -->
 			<div class="comment-form-wrapper">
 				<div class="input-comment">
-					<input class="form-control" name="body" type="text" placeholder="Write your comment here ...">
+					<form name="comment" ng-controller="CommentController" class="comment-form" ui-keypress="{13:'myFunc($event)'}" autocomplete="off">
+						<input class="form-control" name="body" type="text" placeholder="Write your comment here ...">
+					</form>
 				</div>
 			</div>
 
@@ -92,8 +88,9 @@
 			<section>
 				<div>
 				<details>
-					<summary style="padding:1em;">3 comments</summary>
-					<ul class="comments-list">
+					<summary style="padding:1em;">{{$shot->comments->total}} comments</summary>
+					<ul class="comments-list" ng-scrollbars ng-scrollbars-config="config">
+
 						@foreach($shot->comments as $comment)
 						  <li class="comment-list__item card">
 							  <a href="#" class="mt-shot-avatar" title="Mytailor">
@@ -103,38 +100,44 @@
 							    </a>
 							  	<main>
 								  <span class="comment-list__title"> 
-									  <a href="#">{{$comment->publishable->profile->username}} </a> <span class="mdl-layout-spacer"></span>
-									  	<ul class="list-inline actions" href="#">
-											<li><a href="#"><i class="mdi mdi-dots-vertical"></i></a></li>
-										</ul>
+									  	<a href="#">{{$comment->publishable->profile->username}} </a> <span class="mdl-layout-spacer"></span>
+									  	{{-- <ul class="list-inline actions" href="#">
+											<li><a href="#"><i class="mdi mdi-pencil"></i></a></li>
+										</ul> --}}
 								  </span> 
-									  	<p class="comment__text"><a href="#" class="tagged__name">Peter Carlsson</a> {{$comment->body}} <time> 1 hr</time></p>
+									  	<p class="comment__text">{{$comment->body}} <time> 1 hr</time></p>
 								</main>
 					  	</li>	
 					  	@endforeach
+
 				  </ul> 
 				</details>
 
 				{{-- Last Comment --}}
 				<ul id="lastComment" class="comments-list">
-					<li class="comment-list__item card">
-					    <span class="comment-avatar">
-						  <img src="http://bigbeehive.com/demo/orientplay-angular/img/user/vector4.png" alt="user"> 
-					    </span>
-					  	<main>
-						  <span class="comment-list__title"> 
-							  <a href="#">Sandra Adams </a> <span class="mdl-layout-spacer"></span>
-							  	<ul class="list-inline actions" href="#">
-									<li><a href="#"><i class="mdi mdi-dots-vertical"></i></a></li>
-								</ul>
-						  </span> 
-							  	<p class="comment__text"> 
-								I pray your initiative can help find a cure for Mucolipidosis & other diseases. <a href="#" class="tagged__name">Biness Creation</a><time> 6 sec</time></p>
-						</main>
-				  	</li>
+				<?php
+					$comment = $shot->comments->last();
 
+				?>
+
+					<li class="comment-list__item card">
+						  	<a href="#" class="mt-shot-avatar" title="Mytailor">
+							    <span class="comment-avatar">
+								  <img src="/uploads/profiles/{{$comment->publishable->profile->avatar}}" alt="{{$comment->publishable->profile->username}}"> 
+							    </span>
+						    </a>
+						  	<main>
+							  	<span class="comment-list__title"> 
+								  	<a href="#">{{$comment->publishable->profile->username}} </a> <span class="mdl-layout-spacer">	
+								</span>
+								  	{{-- <ul class="list-inline actions" href="#">
+										<li><a href="#"><i class="mdi mdi-pencil"></i></a></li>
+									</ul> --}}
+							  	</span> 
+								  	<p class="comment__text"><a href="#" class="tagged__name">Peter Carlsson</a> {{$comment->body}} <time> 1 hr</time></p>
+							</main>
+				  	</li>	
 				</ul>
-				
 			</div>
 			</section>
 		</div>

@@ -40,6 +40,10 @@ figure.shot-cover{
     height: auto;
 }
 
+.shot-cover.--feed{
+      padding: 1em 8em;
+}
+
 .light-shadow {
     background: #fff;
     box-shadow: 0px 0px 0px 1px rgba(140, 140, 140, 0.15);
@@ -304,4 +308,14 @@ figure.shot-cover{
   right:10px;
   color: #4d4d4d;
   font-size: 1.2em;
+}
+
+.poster-card{
+        min-height: 150px;
+    display: flex;
+    padding: 0 2em;
+    justify-content: center;
+    background: #fff;
+    margin-bottom: 1em;
+    align-items: center;
 }

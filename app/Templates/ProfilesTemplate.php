@@ -5,6 +5,8 @@ namespace MyTailor\Templates;
 
 use Illuminate\View\View;
 use Carbon\Carbon;
+use MyTailor\Profile;
+use MyTailor\Shot;
 use SEOMeta;
 use OpenGraph;
 use Twitter;
@@ -24,13 +26,22 @@ class ProfilesTemplate extends AbstractTemplate{
     {
         $this->seoMake();
 
-//        $shots = $this->shots
+       $shot = Shot::find(94);
+        $shot->comments();
+        $shot->publishable->profile = Profile::find([$shot->publishable->profile_id])->first();
+
+        foreach($shot->comments as $comment) {
+
+            $comment->publishable->Profile = Profile::find([$comment->publishable->profile_id])->first();
+        }
+
+
 //            ->where("featured",'=',1)
 //            ->orderByRaw("RAND()")
 //            ->limit(20)
 //            ->get();
 //
-//        $view->with('shots', $shots);
+       $view->with('shot', $shot);
     }
 
     protected function seoMake()

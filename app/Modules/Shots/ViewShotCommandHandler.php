@@ -36,6 +36,7 @@ class ViewShotCommandHandler implements CommandHandler
 
             $shot->related = $this->shots->related($shot);
             $shot->date = $shot->created_at->diffForHumans();
+            $shot->comments->total = count($shot->comments);
 
             return $shot;
 
@@ -45,7 +46,8 @@ class ViewShotCommandHandler implements CommandHandler
     }
 
     /**
-     * Revisit this method
+     * Gets the profile associated with a shot.
+     *
      * @param $shot
      */
     protected function getPublishableProfile($shot)
@@ -54,12 +56,18 @@ class ViewShotCommandHandler implements CommandHandler
 
     }
 
+    /**
+     * Gets the profile associated with a comment.
+     *
+     * @param $shot
+     */
     private function getCommentPublishableProfile($shot)
     {
         foreach($shot->comments as $comment) {
-            
+
             $comment->publishable->Profile = Profile::find([$comment->publishable->profile_id])->first();
         }
+
     }
 
 }

@@ -1,19 +1,12 @@
             <header class="mt-layout-header mt-header--fixed" itemscope itemtype='https://schema.org/WPHeader'>
-                <div class="mt-global-header">
-                  <div class="pull-left">
-                    <a ng-click="toggleSidebar()" class="sideTrigger">
-                      <span class="mt-menu-icon">
-                        <img src="{{ theme('images/icons/menu.svg')}}"  style="width: 25px; height: 30px;">
-                      </span>
-                      <span class="mt-menu-text">Menu</span>
-                    </a>
-                  </div>
-                  <div class="mt-header-spacer"></div>
+                <div class="mt-global-header flex-center">
+                  <div ng-click="toggleSidebar()" class="mdl-layout__drawer-button pull-left"><i class="mdi mdi-menu"></i></div>
+
                   {{-- Logo --}}
-                <div>
+                    <div>
                       <h1>
                         <a href="http://www.mytailorafrica.com/"><span class="mt-logo__icon">MyTailorAfrica</span></a></h1>
-                  </div>
+                    </div>
 
                   {{-- Search bar starts here --}}
                     <div class="mt-search-wrapper expandable--search hide-on-phone">
@@ -28,7 +21,7 @@
                 {{-- Non-Login user Actions --}}
                   @if( !$user)
 
-                  <div style="margin-left: 80px;">
+                  <div class="mt-top-menu" style="margin-left: 80px;">
                     <ul class="mt-guest-calls__actions"> 
                         <li>
                             <a ng-click="regsign('login')"><!-- Accent-colored flat button -->
