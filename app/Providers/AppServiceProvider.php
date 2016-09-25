@@ -18,11 +18,11 @@ class AppServiceProvider extends ServiceProvider
         /*
          * Services we need for admin
          */
-//        $this->app['view']->composer([
-//            'layouts.template.admin.default',
-//            'layouts.template.admin.page-with-aside']
-//                    ,Composers\AddAdminUser::class);
-//        $this->app['view']->composer('layouts.upload', Composers\AddAdminUser::class);
+        $this->app['view']->composer([
+            'layouts.template.admin.default',
+            'layouts.template.admin.page-with-aside']
+                    ,Composers\AddAdminUser::class);
+        $this->app['view']->composer('layouts.upload', Composers\AddAdminUser::class);
 
         /*
          * Services we need for FrontEnd

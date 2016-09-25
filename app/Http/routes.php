@@ -40,23 +40,25 @@ Route::get('/login/{provider?}',[
 |--------------------------------------------------------------------------
 |
 */
-Route::resource('admin/pages', 'Admin\PagesController');
-Route::resource('admin/users', 'Admin\UsersController');
-Route::resource('admin/shots', 'Admin\ShotsController');
-Route::resource('admin/tags', 'Admin\TagsController');
-
-// Dashboard page
-Route::get('admin', [
-		'as' => 'admin.dashboard',
-		'uses' => 'Admin\DashboardController@index'
-	]);
-
 
 //Form to upload shots
 Route::get('admin/shots/upload', [
 		'as' => 'shots.upload',
 		'uses' => 'Admin\ShotsController@create'
 ]);
+
+// Dashboard page
+Route::get('admin', [
+		'as' => 'admin.dashboard',
+		'uses' => 'Admin\DashboardController@index'
+]);
+
+Route::resource('admin/pages', 'Admin\PagesController');
+Route::resource('admin/users', 'Admin\UsersController');
+Route::resource('admin/shots', 'Admin\ShotsController');
+Route::resource('admin/tags', 'Admin\TagsController');
+
+
 
 /*
 |--------------------------------------------------------------------------
