@@ -1,3 +1,5 @@
+@section('bg', 'grey60')
+
 @include('layouts.template.frontend.partials.secondary_header')
 <header class="mt-sub-header mdl-layout__header-row">
 

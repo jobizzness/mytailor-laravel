@@ -1,4 +1,4 @@
-
+@section('bg', 'dark')
 @section('page_styles')
 
   <!-- RS5.0 Main Stylesheet -->

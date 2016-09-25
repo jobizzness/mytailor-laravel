@@ -2497,9 +2497,6 @@ figure.shot-cover {
   display: block;
   height: auto; }
 
-.shot-cover.--feed {
-  padding: 1em 8em; }
-
 .light-shadow {
   background: #fff;
   box-shadow: 0px 0px 0px 1px rgba(140, 140, 140, 0.15); }

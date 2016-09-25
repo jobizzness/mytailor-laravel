@@ -5,21 +5,39 @@ namespace MyTailor;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Hash;
 use Laracasts\Commander\Events\EventGenerator;
+use Laracasts\Presenter\PresentableTrait;
 use MyTailor\Modules\Users\Registration\Events\UserRegistered;
 class User extends Authenticatable
 {
-    use EventGenerator;
+    use EventGenerator, PresentableTrait;
 
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    /**
+     * Attributes that can be massed assigned.
+     *
+     * @var array
+     */
+    protected $fillable = ['name', 'email', 'password'];
 
+    /**
+     * Dates attributes
+     *
+     * @var array
+     */
     protected $dates = ['last_login_at'];
 
-    // hidden Attributes
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    /**
+     * Attributes that are hidden from the model.
+     *
+     * @var array
+     */
+    protected $hidden = ['password', 'remember_token'];
+
+    /**
+     * Path to Users Presenter Class.
+     *
+     * @var string
+     */
+    protected $presenter = 'MyTailor\Presenters\Users\UsersPresenter';
 
     /*
     |--------------------------------------------------------------------------
@@ -36,7 +54,7 @@ class User extends Authenticatable
     public function profile()
     {
         return $this->hasOne(Profile::class, 'id', 'profile_id')
-                    ->select(['id','username','avatar']); //Profile is your profile model
+                    ->select(['id','username','avatar']);
     }
 
     /**

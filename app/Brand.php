@@ -3,9 +3,20 @@
 namespace MyTailor;
 
 use Illuminate\Database\Eloquent\Model;
+use Laracasts\Presenter\PresentableTrait;
 
 class Brand extends Model
 {
+    
+    use PresentableTrait;
+
+    /**
+     * Path to Users Presenter Class.
+     *
+     * @var string
+     */
+    protected $presenter = 'MyTailor\Presenters\Brands\BrandsPresenter';
+
     /**
      * A shot is owned by a publisher.
      *

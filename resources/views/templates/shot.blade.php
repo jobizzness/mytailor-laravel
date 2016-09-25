@@ -21,7 +21,7 @@
 			</section>
             <section class="mt-shot-avatar-wrapper">
 	            <a href="#" class="mt-shot-avatar" title="Mytailor">
-	            	 <h2 class="mt-avatar-name">{{$shot->publishable->profile->username}}</h2>
+	            	 <h2 class="mt-avatar-name">{{$shot->publishable->present()->displayName()}}</h2>
 	                <img height="30" width="30" src="/uploads/profiles/{{$shot->publishable->profile->avatar}}" alt="{{$shot->publishable->profile->username}}">
 	            </a>
             </section>
@@ -77,7 +77,7 @@
 			<!-- Comment Form -->
 			<div class="comment-form-wrapper">
 				<div class="input-comment">
-					<form name="comment" ng-controller="CommentController" class="comment-form" ui-keypress="{13:'myFunc($event)'}" autocomplete="off">
+					<form name="comment" ng-controller="commentsController" class="comment-form" ui-keypress="{13:'like(id)'}" autocomplete="off">
 						<input class="form-control" name="body" type="text" placeholder="Write your comment here ...">
 					</form>
 				</div>
@@ -115,12 +115,11 @@
 
 				{{-- Last Comment --}}
 				<ul id="lastComment" class="comments-list">
-				<?php
-					$comment = $shot->comments->last();
 
-				?>
+					<?php $comment = $shot->comments->last() ?: null ?>
 
-					<li class="comment-list__item card">
+					@if($comment)
+						<li class="comment-list__item card">
 						  	<a href="#" class="mt-shot-avatar" title="Mytailor">
 							    <span class="comment-avatar">
 								  <img src="/uploads/profiles/{{$comment->publishable->profile->avatar}}" alt="{{$comment->publishable->profile->username}}"> 
@@ -136,7 +135,11 @@
 							  	</span> 
 								  	<p class="comment__text"><a href="#" class="tagged__name">Peter Carlsson</a> {{$comment->body}} <time> 1 hr</time></p>
 							</main>
-				  	</li>	
+					  	</li>
+
+				  	@endif	
+
+
 				</ul>
 			</div>
 			</section>

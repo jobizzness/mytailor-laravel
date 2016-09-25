@@ -1,5 +1,6 @@
 <?php
 namespace MyTailor\Presenters;
+
 use Laracasts\Presenter\Presenter;
 
 class PagesPresenter extends Presenter {

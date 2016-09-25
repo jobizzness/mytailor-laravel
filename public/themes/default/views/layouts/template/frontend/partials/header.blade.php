@@ -19,32 +19,11 @@
                   </button>
 
                 {{-- Non-Login user Actions --}}
-                  @if( !$user)
+                  @if( $user)
 
-                  <div class="mt-top-menu" style="margin-left: 80px;">
-                    <ul class="mt-guest-calls__actions"> 
-                        <li>
-                            <a ng-click="regsign('login')"><!-- Accent-colored flat button -->
-                            <button class="mdl-button mdl-js-button mdl-button--accent">
-                              LOGIN
-                            </button>
-                            </a>
-                        </li>
-                        <li>
-                            <a ng-click="regsign('register')">
-                              <!-- Accent-colored raised button with ripple -->
-                              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-                                SIGNUP
-                              </button>
-                            </a>
-                        </li>
-                    </ul>
-                  </div>
+                    @include('layouts.template.frontend.partials.users.header-actions') 
 
-                @else()
-
-                   @include('layouts.template.frontend.partials.users.header-actions') 
-                @endif
+                  @endif
                 </div><!-- global header ends--> 
             </header>
             {{-- CSRF Token --}}
