@@ -9,8 +9,7 @@ use MyTailor\Modules\Shots\Events\ShotWasPosted;
 
 class Shot extends Model {
 
-    use EventGenerator;
-    use AlgoliaEloquentTrait;
+    use EventGenerator, AlgoliaEloquentTrait;
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +41,7 @@ class Shot extends Model {
     */
 
     /**
-     * Store a shot and release events.
+     * Store a shot and raise a new event.
      *
      * @param $shot
      */
@@ -50,6 +49,9 @@ class Shot extends Model {
     {
         $shot->save();
         $shot->raise(new ShotWasPosted($shot));
+
+        return $shot;
+
     }
 
     /*

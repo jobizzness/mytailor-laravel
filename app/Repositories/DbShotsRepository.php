@@ -146,7 +146,7 @@ class DbShotsRepository implements ShotsRepositoryInterface{
         $shot->publishable_id = $publishable_id;
         $shot->published_by = $published_by;
 
-        Shot::saver($shot);
+        return Shot::saver($shot);
 
     }
 

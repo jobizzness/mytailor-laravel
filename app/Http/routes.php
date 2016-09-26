@@ -2,8 +2,8 @@
 
 
 
-//Event::listen('MyTailor.Modules.Users.Registration.Events.UserRegistered', function($event){
-//	dd('send an email');
+//Event::listen('MyTailor.Modules.Shots.Events.ShotWasPosted', function($event){
+//	dd($event);
 //});
 
 /*

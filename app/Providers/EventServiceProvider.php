@@ -30,4 +30,13 @@ class EventServiceProvider extends ServiceProvider
 
         //
     }
+
+    /**
+     * Register MyTailor Event Listeners
+     */
+    public function register()
+    {
+
+        $this->app['events']->listen('MyTailor.Modules.Shots.Events.ShotWasPosted', 'MyTailor\Listeners\Shots\GenerateShotColors');
+    }
 }

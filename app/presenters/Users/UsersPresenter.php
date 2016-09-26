@@ -9,4 +9,9 @@ class UsersPresenter extends Presenter
     {
         return $this->first_name .' '. $this->last_name;
     }
+
+    public function last_seen()
+    {
+       return $this->updated_at->diffForHumans();
+    }
 }

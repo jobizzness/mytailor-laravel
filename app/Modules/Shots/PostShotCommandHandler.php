@@ -3,10 +3,11 @@
 
 use Laracasts\Commander\CommandHandler;
 use MyTailor\Repositories\ShotsRepositoryInterface;
-
+use Laracasts\Commander\Events\DispatchableTrait;
 
 class PostShotCommandHandler implements CommandHandler {
 
+    use DispatchableTrait;
     /**
      * @var ShotsRepositoryInterface
      */
@@ -14,6 +15,7 @@ class PostShotCommandHandler implements CommandHandler {
 
     /**
      * PostShotCommandHandler constructor.
+     *
      * @param ShotsRepositoryInterface $shots
      */
     public function __construct(ShotsRepositoryInterface $shots)
@@ -22,12 +24,15 @@ class PostShotCommandHandler implements CommandHandler {
         $this->shots = $shots;
     }
     /**
+     * Post a shot and release events
      * @param $command
      * @return mixed
      */
     public function handle($command){
 
-        $this->shots->post($command->file_name, $command->publishable_type, $command->publishable_id, $command->published_by);
+        $shot = $this->shots->post($command->file_name, $command->publishable_type, $command->publishable_id, $command->published_by);
+
+        $this->dispatchEventsFor($shot);
 
     }
 

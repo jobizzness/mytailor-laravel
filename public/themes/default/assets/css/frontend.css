@@ -2924,10 +2924,14 @@ ul.icons li {
 
 figure.shot-cover {
   text-align: center;
-  padding: 2em;
+  padding: 0;
   background: #fff;
   display: block;
   height: auto; }
+
+figure.shot-cover.--profile__feed {
+  max-width: 600px;
+  max-height: 500px; }
 
 .light-shadow {
   background: #fff;

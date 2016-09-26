@@ -18,12 +18,6 @@ class User extends Authenticatable
      */
     protected $fillable = ['name', 'email', 'password'];
 
-    /**
-     * Dates attributes
-     *
-     * @var array
-     */
-    protected $dates = ['last_login_at'];
 
     /**
      * Attributes that are hidden from the model.
@@ -114,6 +108,15 @@ class User extends Authenticatable
     public function revokeRole($role){
         return $this->roles()->detach($role);
     }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Appends
+    |--------------------------------------------------------------------------
+    |
+    */
+
+
 
     /*
     |--------------------------------------------------------------------------
