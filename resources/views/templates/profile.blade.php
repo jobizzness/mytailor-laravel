@@ -58,7 +58,9 @@
   </section>
 
   <section class="mdl-grid profile--wrapper">
-    <div class="mdl-cell mdl-cell--3-col mdl-shadow--2dp"></div>
+    <div class="mdl-cell mdl-cell--3-col mdl-shadow--2dp">
+      @include('layouts.template.frontend.partials.users.left__aside')
+    </div>
     <div class="mdl-cell mdl-cell--6-col">
       @include('layouts.template.frontend.partials.users.profile-feed')
     </div>
