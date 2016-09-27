@@ -2724,6 +2724,11 @@ figure.shot-cover.--profile__feed {
   -ms-flex-align: center;
   align-items: center; }
 
+.card--full {
+  width: 100%;
+  padding: 0 2em;
+  background: #fff; }
+
 /*Animate*/
 .__visible {
   -webkit-transform: translateX(0);
