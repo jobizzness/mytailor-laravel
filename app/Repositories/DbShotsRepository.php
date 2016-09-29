@@ -24,7 +24,6 @@ class DbShotsRepository implements ShotsRepositoryInterface{
 
         $this->shots = $shots;
 
-
         $this->request = $request;
     }
 
@@ -34,13 +33,15 @@ class DbShotsRepository implements ShotsRepositoryInterface{
      * @return mixed
      */
     public function latest($cat) {
-        return $shots = $this->shots
+         return $this->shots
+            ->with('publishable')
             ->category($cat)
             ->orderBy('updated_at', 'desc')
             ->orderBy('views', 'desc')
             ->orderBy('id', 'desc')
             ->where('published', '=', 1)
             ->paginate(8);
+
 
     }
 
@@ -53,8 +54,8 @@ class DbShotsRepository implements ShotsRepositoryInterface{
      * @return mixed
      */
     public function trending($cat){
-        return $shots = $this->shots
-
+        return $this->shots
+            ->with('publishable', 'publishable.profile')
             ->select(\DB::raw( '((views - 1) / (TIMESTAMPDIFF(HOUR, updated_at, NOW()) + 2)^1.5) as Popularity, shots.*'))
             ->category($cat)
             ->orderBy('Popularity', 'desc')
@@ -69,7 +70,8 @@ class DbShotsRepository implements ShotsRepositoryInterface{
      * @return mixed
      */
     public function featured($cat){
-        return $shots = $this->shots
+        return $this->shots
+            ->with('publishable')
             ->category($cat)
             ->orderBy('views', 'desc')
             ->orderBy('updated_at', 'desc')

@@ -192,17 +192,32 @@ figure.shot-cover.--profile__feed{
   margin-top: 1em;
 }
 .grid-item {
-    width: 25%;
+    width: 24.5%;
     display: inline-block;
     float: left;
-    padding: 0.125rem;
+    margin: 0 3px 1em 3px;
     overflow: hidden;
+    cursor: pointer;
 
     figure{
         overflow: hidden;
         position: relative;
     }
 }
+
+.mt-shot{
+  background-color: #fff;
+    transition-duration: .2s;
+    transition-timing-function: cubic-bezier(0.37, 0.15, 0.32, 0.94);
+    transition-property: -webkit-transform;
+    transition-property: opacity, background-color;
+
+  &:hover{
+    background-color: #f7f7f7;
+  }
+
+}
+
 
 .ais-hits--item>.grid-item{
   width: 25%;
@@ -232,44 +247,44 @@ figure.shot-cover.--profile__feed{
   }
 }
 
-.dimOverlay {
-    background-color: #000;
-    background-color: rgba(0, 0, 0, 0.15);
-    background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.3)));
-    background: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.3));
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.3));
-    bottom: 0;
-    height: 100px;
-    left: 0;
-    position: absolute;
-    right: 0;
-    opacity: 0;
-    filter: alpha(opacity=0);
-    -webkit-transition: all, 0.3s, ease-in-out;
-    transition: all, 0.3s, ease-in-out;
+// .dimOverlay {
+//     background-color: #000;
+//     background-color: rgba(0, 0, 0, 0.15);
+//     background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.3)));
+//     background: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.3));
+//     background: linear-gradient(transparent, rgba(0, 0, 0, 0.3));
+//     bottom: 0;
+//     height: 100px;
+//     left: 0;
+//     position: absolute;
+//     right: 0;
+//     opacity: 0;
+//     filter: alpha(opacity=0);
+//     -webkit-transition: all, 0.3s, ease-in-out;
+//     transition: all, 0.3s, ease-in-out;
 
-}
-  .grid-item figcaption {
-    display: -webkit-box;
-    display: flex;
-    filter: alpha(opacity=100);
-    position: absolute;
-    top: 0;
-    height: 100%;
-    left: 0;
-    padding: 20px;
-    width: 100%;
-    opacity: 0;
-    filter: alpha(opacity=0);
-    vertical-align: middle;
-    line-height: 25;
-    text-align: center;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.5);
-}
+// }
+//   .grid-item figcaption {
+//     display: -webkit-box;
+//     display: flex;
+//     filter: alpha(opacity=100);
+//     position: absolute;
+//     top: 0;
+//     height: 100%;
+//     left: 0;
+//     padding: 20px;
+//     width: 100%;
+//     opacity: 0;
+//     filter: alpha(opacity=0);
+//     vertical-align: middle;
+//     line-height: 25;
+//     text-align: center;
+//     -webkit-box-align: center;
+//     align-items: center;
+//     -webkit-box-pack: center;
+//     justify-content: center;
+//     background-color: rgba(0, 0, 0, 0.5);
+// }
 
 .mt-grid___link:hover .dimOverlay, .mt-grid___link:hover figcaption:hover {
     opacity: 1;

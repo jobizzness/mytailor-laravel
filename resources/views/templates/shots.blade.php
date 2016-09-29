@@ -34,20 +34,40 @@
 
 <section class="mt-grid clearfix grid" id="grid" ng-controller="shotsController" ng-init="init()">
 
+
   @forelse($shots as $shot)
 
-    <div class="grid-item" itemprop="mainEntity" itemscope itemtype="http://schema.org/imageObject">
-      <figure>
-            <a href="" class="mt-grid___link" ng-click='open("{{$shot['file_name']}}")'>
+    <div class="grid-item mdl-shadow--2dp mt-shot" itemprop="mainEntity" itemscope itemtype="http://schema.org/imageObject">
+
+        <!-- The header -->
+          <header class="mt-shot-header clearfix">
+            <section class="mt-shot-avatar-wrapper">
+              <a href="#" class="mt-shot-avatar" title="Mytailor">
+                 <h2 class="mt-avatar-name">{{$shot->publishable->present()->displayName()}}</h2>
+                  <img height="30" width="30" src="/uploads/profiles/{{$shot->publishable->profile->avatar}}" alt="">
+              </a>
+            </section>
+          </header>
+          <figure>
+            <a href="" class="mt-grid___link" ng-click='open("{{$shot->file_name}}")'>
                 <div class="mt-image-holder" itemscope itemtype="http://schema.org/thumbnail">
-                    <img itemprop="image" src="/uploads/{{$shot['file_name']}}" alt="{{$shot['alt']}}">
+                    <img itemprop="image" src="/uploads/{{$shot->file_name}}" alt="{{$shot->alt}}">
                 </div>
-                <div class="dimOverlay"></div>
-                <figcaption>
-                    <span><img src="{{theme('images/icons/search67.svg')}}"></span>
-                </figcaption>
             </a>
-      </figure>
+          </figure>
+          <div class="mdl-card__actions mdl-card--border" style="position: relative;">
+              <button class="mdl-button mdl-js-button mdl-js-ripple-effect icon-round" style="float: none;">
+                  <i class="mdi mdi-heart-outline icon-center" style="font-size: 1.2em;color: #F23054;"></i>
+                  <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
+              </button>
+              <span class="designer_card__views">
+                  <i class="mdi mdi-eye"></i>
+                  <span style="font-size: 12px;">{{$shot->views}} views</span>
+              </span>
+              <button id="card-right-button" class="mdl-button mdl-js-button mdl-button--icon">
+                <i class="icon-center mdi mdi-dots-vertical"></i>
+             </button>
+          </div>
     </div>
     
     @empty

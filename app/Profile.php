@@ -35,6 +35,5 @@ class Profile extends Model
     {
        return !$value? 'avatar.png' : $value;
 
-
     }
 }

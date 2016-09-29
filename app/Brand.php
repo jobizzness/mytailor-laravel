@@ -24,8 +24,8 @@ class Brand extends Model
      */
     public function profile()
     {
-        return $this->hasOne(Profile::class, 'id')
-            ->select(['id', 'username', 'avatar']); //Profile is your profile model
+        return $this->hasOne(Profile::class, 'id', 'profile_id')
+            ->select(['id','username','avatar']);
     }
 
     /**

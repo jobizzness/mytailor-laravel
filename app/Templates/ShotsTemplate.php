@@ -56,6 +56,7 @@ class ShotsTemplate extends AbstractTemplate   {
 
         }
 
+
         $view->with('shots', $shots)->with('cat', $cat);
     }
 
