@@ -10,7 +10,7 @@
 
 	<section class="mdl-cell mdl-cell--12-col mdl-shadow--2dp mt-shot-wrapper" itemprop="mainEntity">
 
-	<!-- The header -->
+		<!-- The header -->
 		<header class="mt-shot-header clearfix">
 			<section class="mt-shot-actions">
 				<div class="mt-shot-actions-back-btn">

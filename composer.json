@@ -18,7 +18,8 @@
         "guzzlehttp/guzzle": "^6.2",
         "laracasts/commander": "^1.4",
         "algolia/algoliasearch-laravel": "^1.2",
-        "laracasts/flash": "^2.0"
+        "laracasts/flash": "^2.0",
+        "pusher/pusher-php-server": "^2.6"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

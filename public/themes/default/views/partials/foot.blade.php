@@ -11,7 +11,7 @@
           <script src="{{ theme('js/controllers/shotsController.js') }}"></script>
 
         <!-- Services -->
-        <script src="{{ theme('js/services/shots.js') }}"></script>
+        <script src="{{ theme('shot.js) }}"></script>
         <script src="{{ theme('js/script.js') }}"></script>
 
 </body>

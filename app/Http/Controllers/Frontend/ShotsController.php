@@ -4,6 +4,7 @@ namespace MyTailor\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use MyTailor\Http\Controllers\Controller;
+use MyTailor\Repositories\ShotsRepositoryInterface;
 use MyTailor\Shot;
 use MyTailor\Profile;
 use MyTailor\Http\Requests;
@@ -22,11 +23,34 @@ class ShotsController extends Controller
     /**
      * shotsController constructor.
      *
-     * @param Shot $shot
+     * @param ShotsRepositoryInterface $shot
      */
-    public function __construct(Shot $shot){
+    public function __construct(ShotsRepositoryInterface $shots){
 
-        $this->shot = $shot;
+        $this->shots = $shots;
+    }
+
+    public function index($sort, Request $request)
+    {
+        //$sort = array_key_exists ( 'sort' , $parameters) ? $parameters['sort'] : 'trending';
+
+        $cat = $request->get('cat') ?: null;
+
+
+            switch($sort){
+
+                case 'featured':
+                    $shots = $this->shots->featured($cat);
+                    break;
+                case 'latest':
+                    $shots = $this->shots->latest($cat);
+                    break;
+                Default:
+                    $shots = $this->shots->trending($cat);
+
+        }
+
+        return $shots;
     }
 
     /**
@@ -67,7 +91,7 @@ class ShotsController extends Controller
      */
     public function viewed($id)
     {
-        $shot = $this->shot->where(\DB::raw(
+        $shot = $this->shots->where(\DB::raw(
             "left(file_name, length(file_name) - LOCATE('.', Reverse(file_name)))"),
             '=',
             $id)->first();

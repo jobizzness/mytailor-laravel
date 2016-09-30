@@ -43,21 +43,21 @@ class ShotsTemplate extends AbstractTemplate   {
         $this->seoMake($cat);
 
 
-            switch($sort){
+//            switch($sort){
+//
+//                case 'featured':
+//                    $shots = $this->shots->featured($cat);
+//                    break;
+//                case 'latest':
+//                    $shots = $this->shots->latest($cat);
+//                    break;
+//                Default:
+//                    $shots = $this->shots->trending($cat);
+//
+//        }
 
-                case 'featured':
-                    $shots = $this->shots->featured($cat);
-                    break;
-                case 'latest':
-                    $shots = $this->shots->latest($cat);
-                    break;
-                Default:
-                    $shots = $this->shots->trending($cat);
 
-        }
-
-
-        $view->with('shots', $shots)->with('cat', $cat);
+        //$view->with('shots', $shots)->with('cat', $cat);
     }
 
     protected function seoMake($cat)

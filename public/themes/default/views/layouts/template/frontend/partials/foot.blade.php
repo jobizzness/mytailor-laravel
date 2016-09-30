@@ -26,6 +26,13 @@
         <script src="{{ theme('vendor/material-design-lite/material.min.js') }}"></script>
         {{-- Algolia --}}
         <script src="{{ theme('vendor/instantsearch.js/dist/instantsearch.min.js') }}"></script>
+
+        <!-- pusher-js -->
+        <script src="//js.pusher.com/3.0/pusher.min.js"></script>
+
+        <!-- pusher-angular -->
+        <script src="//cdn.jsdelivr.net/angular.pusher/latest/pusher-angular.min.js"></script>
+
         {{-- Site Styles --}}
         <script src="{{ theme('js/frontend.js') }}"></script>
         <script src="{{ theme('js/mysearch.js') }}"></script>

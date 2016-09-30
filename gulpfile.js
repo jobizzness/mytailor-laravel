@@ -53,7 +53,8 @@ elixir.config.publicPath = 'public/themes/default/assets';
 					'../../../public/themes/default/assets/js/controllers/frontend/shotsController.js',
 					'../../../public/themes/default/assets/js/controllers/frontend/ovalController.js',
 					'../../../public/themes/default/assets/js/controllers/frontend/designersController.js',
-					'../../../public/themes/default/assets/js/services/frontend/shots.js'
+					'../../../public/themes/default/assets/js/services/frontend/shot.js',
+                    '../../../public/themes/default/assets/js/services/frontend/shots.js'
 				],		'public/themes/default/assets/js/frontend.js');
 
 		// Backend Scripts
@@ -64,7 +65,7 @@ elixir.config.publicPath = 'public/themes/default/assets';
 					'../../../public/themes/default/assets/js/controllers/backend/shotsController.js',
 					'../../../public/themes/default/assets/js/controllers/backend/pagesController.js',
 					'../../../public/themes/default/assets/js/controllers/backend/dashboardController.js',
-					'../../../public/themes/default/assets/js/services/backend/shots.js',
+					'../../../public/themes/default/assets/js/services/backend/shot.js',
 					'../../../public/themes/default/assets/js/services/backend/pages.js',
 					'../../../public/themes/default/assets/js/services/backend/analytics.js'
 				],		'public/themes/default/assets/js/backend.js');

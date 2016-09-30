@@ -89,6 +89,10 @@ Route::group(['prefix' => 'api'], function () {
 	/**
 	 * Frontend Api Routes
 	 */
+	Route::get('/shots/{sort}', [
+			'as' => 'shots.sort',
+			'uses' => 'Frontend\ShotsController@index'
+	]);
 	Route::get('/shot/{id}',  [
 					'as' => 'shot',
 					'uses' => 'Frontend\ShotsController@show']

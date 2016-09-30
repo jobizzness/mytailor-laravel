@@ -1,18 +1,18 @@
 	'use strict';
 
-	app.controller("shotsController", ["$scope", "ngDialog","$window",
+	app.controller("shotsController", ["$scope", "ngDialog","$window","shotsFactory",
 
-		function($scope, ngDialog, $window) {
+		function($scope, ngDialog, $window, shotsFactory) {
+
+            $scope.getShots = function(){
+
+            };
+
 
 			$scope.open = function ($name) {
 
 				$name = $name.replace(/\.[^/.]+$/, "");
 
-				if ($window.innerWidth < 768) {
-
-					$window.location.href = '/shot/'+ $name;
-					return;
-				};
 
 				var dialogScope = $scope.$new();
 				dialogScope.name = $name;
@@ -33,5 +33,9 @@
     			});
 
 			};
+
+            (function(){
+              $scope.shots = $scope.getShots();
+            });
 
 		}]);

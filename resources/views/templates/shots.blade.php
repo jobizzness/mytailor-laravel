@@ -35,9 +35,9 @@
 <section class="mt-grid clearfix grid" id="grid" ng-controller="shotsController" ng-init="init()">
 
 
-  @forelse($shots as $shot)
+  {{-- @forelse($shots as $shot)
 
-    <div class="grid-item mdl-shadow--2dp mt-shot" itemprop="mainEntity" itemscope itemtype="http://schema.org/imageObject">
+    <div class="grid-item mdl-shadow--2dp mt-shot" itemprop="mainEntity" itemscope itemtype="http://schema.org/imageObject" ng-repeat="shot in shots">
 
         <!-- The header -->
           <header class="mt-shot-header clearfix">
@@ -83,7 +83,7 @@
 
 
 {!! $shots->appends(['cat'=>$cat])->render() !!}
-
+ --}}
 </section>
 
 {{-- Post Shot Button --}}
