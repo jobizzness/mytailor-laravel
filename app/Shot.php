@@ -279,6 +279,7 @@ class Shot extends Model {
          *
          */
         $this->tags->lists('id', 'tag_name');
+        $this->publishable()->profile();
         $this->name = pathinfo($this->file_name, PATHINFO_FILENAME);
 
         return $this->toArray();

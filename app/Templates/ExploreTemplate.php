@@ -12,7 +12,7 @@ class ExploreTemplate extends AbstractTemplate
 {
 
 
-    protected $view = 'shots';
+    protected $view = 'explore';
     /**
      * @var
      */
@@ -42,15 +42,17 @@ class ExploreTemplate extends AbstractTemplate
 
         $slug = $parameters['slug'];
         $slug = str_replace('-', ' ', $slug);
-
-        //Category from the request
-        $cat = $this->request->get('cat') ? $this->request->get('cat') : null;
-
-        // Seo maker
         $this->seoMake($slug);
+
+        $cat = $this->request->get('cat') ? $this->request->get('cat') : null;
         $cat = $this->getCat($cat);
 
         $shots = $this->shots->explore($slug, $cat);
+
+        $shots->transform(function ($shot, $key) {
+            return (object) $shot;
+        });
+
 
         $view->with('shots', $shots)->with('cat', $cat);
     }

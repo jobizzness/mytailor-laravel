@@ -2217,9 +2217,6 @@ a[ng-click] {
     display: none; }
   .mt-page-wrapper {
     top: 0 !important; }
-  .grid-item {
-    width: 50% !important;
-    padding: 0 !important; }
   button#top-menu-right {
     display: none !important; }
   .mdl-navigation.mt-nav-has-border {
@@ -3040,7 +3037,7 @@ figure.shot-cover.--profile__feed {
   margin-top: 1em; }
 
 .grid-item {
-  width: 24.5%;
+  width: calc(25% - 6px);
   display: inline-block;
   float: left;
   margin: 0 3px 1em 3px;
@@ -3067,16 +3064,16 @@ figure.shot-cover.--profile__feed {
 
 @media screen and (max-width: 1000px) {
   .grid-item {
-    width: 33.1%; } }
+    width: calc(33.3333333333% - 6px); } }
 
 @media screen and (max-width: 768px) {
   .grid-item {
-    width: 50%; } }
+    width: calc(50% - 6px); } }
 
 @media screen and (max-width: 490px) {
   .grid-item {
-    padding: 1em;
-    width: 100%;
+    width: calc(100% - 25px);
+    margin: 16px;
     max-height: 425px; } }
 
 .mt-grid___link:hover .dimOverlay, .mt-grid___link:hover figcaption:hover {
