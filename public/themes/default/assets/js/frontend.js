@@ -113,14 +113,22 @@ app.controller("authController", ["$scope",
              *
              * @param $sort
              */
-            $scope.getShots = function($sort, $params){
+            $scope.getShots = function($repo,$sort, $params){
 
-                shotsFactory.index($sort, $params).then(function(response){
+                shotsFactory.index($repo, $sort, $params).then(function(response){
 
                     var items = response.data.data;
-                    for (var i = 0; i < items.length; i++) {
-                        $scope.shots.push(items[i]);
-                    }
+
+                    //Bug FIXME::
+
+                    angular.forEach(items, function(value, key) {
+                        $scope.shots.push(value);
+                    });
+
+                    //for (var i = 0; i < items.length; i++) {
+                    //    console.log(items[i]);
+                    //    $scope.shots.push(items[i]);
+                    //}
 
 
                     $scope.after = response.data['next_page_url'];
@@ -131,13 +139,13 @@ app.controller("authController", ["$scope",
             /**
              * Loads more shots from server
              */
-            $scope.updateShots = function(){
+            $scope.updateShots = function($repo){
                 if ($scope.busy) return;
                 if(!$page) return;
 
                 $scope.busy = true;
 
-                $scope.getShots($sort, {cat: $cat, page:$page});
+                $scope.getShots($repo, $sort, {cat: $cat, page:$page});
                 $scope.busy = false;
 
             };
@@ -149,7 +157,6 @@ app.controller("authController", ["$scope",
              */
 			$scope.open = function ($name) {
 
-                console.log($name);
 				$name = $name.replace(/\.[^/.]+$/, "");
 
 
@@ -330,9 +337,13 @@ app.factory('shotsFactory', ['$http', function($http){
         this.after = '';
 
 
-     this.index = function($sort, params){
-     	return $http.get('/api/shots/'+$sort, {params:params});
+     this.index = function($resource,$sort, params){
+     	return $http.get('/api/'+$resource+'/'+$sort, {params:params});
      };
+
+    //this.explore = function($slug, params){
+    //    return $http.get('/api/explore/'+$slug, {params:params});
+    //};
 
     //this.updateShots = function() {
     //    if (this.busy) return;

@@ -44,17 +44,7 @@ class ExploreTemplate extends AbstractTemplate
         $slug = str_replace('-', ' ', $slug);
         $this->seoMake($slug);
 
-        $cat = $this->request->get('cat') ? $this->request->get('cat') : null;
-        $cat = $this->getCat($cat);
 
-        $shots = $this->shots->explore($slug, $cat);
-
-        $shots->transform(function ($shot, $key) {
-            return (object) $shot;
-        });
-
-
-        $view->with('shots', $shots)->with('cat', $cat);
     }
 
     protected function seoMake($slug)
@@ -76,25 +66,5 @@ class ExploreTemplate extends AbstractTemplate
         Twitter::setSite('@MyTailor_Africa');
     }
 
-    private function getCat($cat)
-    {
-        switch($cat){
 
-            case 'ma':
-                return 'men';
-
-            case 'fm':
-                return 'women';
-
-            case 'cu':
-                return 'couples';
-
-            case 'ki':
-                return 'kids';
-
-            Default:
-                return null;
-
-        }
-    }
 }

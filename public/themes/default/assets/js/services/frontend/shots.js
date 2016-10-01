@@ -5,9 +5,13 @@ app.factory('shotsFactory', ['$http', function($http){
         this.after = '';
 
 
-     this.index = function($sort, params){
-     	return $http.get('/api/shots/'+$sort, {params:params});
+     this.index = function($resource,$sort, params){
+     	return $http.get('/api/'+$resource+'/'+$sort, {params:params});
      };
+
+    //this.explore = function($slug, params){
+    //    return $http.get('/api/explore/'+$slug, {params:params});
+    //};
 
     //this.updateShots = function() {
     //    if (this.busy) return;

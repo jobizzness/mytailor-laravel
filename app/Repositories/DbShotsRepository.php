@@ -141,10 +141,22 @@ class DbShotsRepository implements ShotsRepositoryInterface{
     public function explore($slug, $cat)
     {
         $cat ? $facets = ['filters' => "category:$cat"] : $facets = null;
-
         $shots = Shot::search($slug, $facets);
+        $shots =  $this->paginate($shots['hits'], 8);
 
-        return $this->paginate($shots['hits'], 8);
+
+        $shots->transform(function ($shot, $key) {
+            return (object) $shot;
+        });
+
+
+        $shots->map(function ($shot) {
+                $shot->publishable['profile'] = $shot->profile;
+                unset($shot->profile);
+            return $shot;
+        });
+
+        return $shots;
 
 
     }

@@ -1,4 +1,4 @@
-    <ul class="mt-secondary__navigation">
+    <ul class="mt-secondary__navigation" ng-cloak>
         <li class="mt-menu__item drop" ng-repeat="link in links">
           <a href="#">@{{link.name}} <i class="mdi mdi-chevron-down"></i></a>
             <div class="mt-drop-items">

@@ -201,8 +201,9 @@ figure.shot-cover.--profile__feed{
     cursor: pointer;
 
     figure{
-        overflow: hidden;
-        position: relative;
+      overflow: hidden;
+      position: relative;
+      min-height: 300px;
     }
 }
 

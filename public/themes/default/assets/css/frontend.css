@@ -3048,7 +3048,8 @@ figure.shot-cover.--profile__feed {
   cursor: pointer; }
   .grid-item figure {
     overflow: hidden;
-    position: relative; }
+    position: relative;
+    min-height: 300px; }
 
 .mt-shot {
   background-color: #fff;

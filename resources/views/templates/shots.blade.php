@@ -32,7 +32,7 @@
 
 </header>
 
-<section class="mt-grid clearfix grid" id="grid" infinite-scroll="updateShots()" infinite-scroll-disabled='busy' infinite-scroll-distance="4">
+<section class="mt-grid clearfix grid" id="grid" infinite-scroll="updateShots('shots')" infinite-scroll-disabled='busy' infinite-scroll-distance="4" ng-cloak>
 
 <div angular-grid="shots">
 {{--   @forelse($shots as $shot) --}}
