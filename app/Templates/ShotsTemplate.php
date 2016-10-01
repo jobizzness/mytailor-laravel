@@ -37,27 +37,11 @@ class ShotsTemplate extends AbstractTemplate   {
     public function prepare(View $view, array $parameters)
     {
 
-        $sort = array_key_exists ( 'sort' , $parameters) ? $parameters['sort'] : 'trending';
         $cat = $this->request->get('cat') ? $this->request->get('cat') : null;
 
         $this->seoMake($cat);
 
 
-//            switch($sort){
-//
-//                case 'featured':
-//                    $shots = $this->shots->featured($cat);
-//                    break;
-//                case 'latest':
-//                    $shots = $this->shots->latest($cat);
-//                    break;
-//                Default:
-//                    $shots = $this->shots->trending($cat);
-//
-//        }
-
-
-        //$view->with('shots', $shots)->with('cat', $cat);
     }
 
     protected function seoMake($cat)

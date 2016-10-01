@@ -38,5 +38,6 @@ class EventServiceProvider extends ServiceProvider
     {
 
         $this->app['events']->listen('MyTailor.Modules.Shots.Events.ShotWasPosted', 'MyTailor\Listeners\Shots\GenerateShotColors');
+        $this->app['events']->listen('MyTailor.Modules.Shots.Events.ShotWasViewed', 'MyTailor\Listeners\Shots\IncrementDomViews');
     }
 }

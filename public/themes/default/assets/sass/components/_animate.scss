@@ -160,9 +160,11 @@ a#buzzle:hover .hvr-buzz-out{
 }
 
 .mt-load-more-wrapper{
-      position: absolute;
-    top: -26px;
-    width: 100%;
+    position: relative;
+    bottom: 0;
+    margin-left: -1em;
+    margin-bottom: -1em;
+    width: 105%;
 }
 .mt-load-bar {
   position: relative;

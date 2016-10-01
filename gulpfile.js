@@ -31,17 +31,21 @@ elixir.config.publicPath = 'public/themes/default/assets';
 			    '../angular-messages/angular-messages.min.js',
 			   	'../angular-sanitize/angular-sanitize.min.js',
 				'../mustache.js/mustache.min.js',
-				'../masonry/dist/masonry.pkgd.min.js',
 			    '../Waves/dist/waves.min.js',
 				'../ng-dialog/js/ngDialog.min.js',
                 '../jquery-infinite-scroll/jquery.infinitescroll.js',
-                '../imagesloaded/imagesloaded.pkgd.min.js',
 				'../angular-ui-select/dist/select.min.js',
 				'../wow/dist/wow.min.js',
 				//	Custom Scrollbars
 				'../malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js',
 				'../jquery-mousewheel/jquery.mousewheel.min.js',
-				'../ng-scrollbars/dist/scrollbars.min.js'
+					//Pusher
+				'../pusher-js-3.2.1/dist/web/pusher.min.js',
+					'../pusher-angular-0.1.9/lib/pusher-angular.min.js',
+				'../ng-scrollbars/dist/scrollbars.min.js',
+				'../infinite-scroll/ng-infinite-scroll.min.js',
+					'../angulargrid/angulargrid.min.js'
+
 
 			   ], 	 'public/themes/default/assets/js/vendor.js');
 

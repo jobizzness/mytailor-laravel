@@ -34,7 +34,7 @@
 
           search.on('render', function(){
 
-              $('.grid>.ais-hits').masonry();
+              //$('.grid>.ais-hits').masonry();
             });
 
 

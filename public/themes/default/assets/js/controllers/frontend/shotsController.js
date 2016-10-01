@@ -1,16 +1,67 @@
 	'use strict';
 
-	app.controller("shotsController", ["$scope", "ngDialog","$window","shotsFactory",
+	app.controller("shotsController", ["$scope", "ngDialog","$window",
+                    "shotsFactory", "$timeout", '$pusher', "$filter",
 
-		function($scope, ngDialog, $window, shotsFactory) {
+		function($scope, ngDialog, $window, shotsFactory, $timeout, $pusher, $filter) {
 
-            $scope.getShots = function(){
+            var client = new Pusher('67b6f9a2b88b9350c8fa');
+            var pusher = $pusher(client);
+
+            $scope.shots = [];
+            $scope.busy = false;
+            $scope.after = '/?page=1';
+
+            var pathArray = window.location.pathname.split( '/' );
+
+            var $sort = pathArray[2],
+                $cat = getParameterByName('cat') || null,
+                $page = getParameterByName('page', $scope.after);
+
+            pusher.subscribe('shotsChannel');
+
+            /**
+             * gets shots from storage.
+             *
+             * @param $sort
+             */
+            $scope.getShots = function($sort, $params){
+
+                shotsFactory.index($sort, $params).then(function(response){
+
+                    var items = response.data.data;
+                    for (var i = 0; i < items.length; i++) {
+                        $scope.shots.push(items[i]);
+                    }
+
+
+                    $scope.after = response.data['next_page_url'];
+                    $page = getParameterByName('page', $scope.after);
+                });
+            };
+
+            /**
+             * Loads more shots from server
+             */
+            $scope.updateShots = function(){
+                if ($scope.busy) return;
+                if(!$page) return;
+
+                $scope.busy = true;
+
+                $scope.getShots($sort, {cat: $cat, page:$page});
+                $scope.busy = false;
 
             };
 
-
+            /**
+             * Open Shot Overlay
+             *
+             * @param $name
+             */
 			$scope.open = function ($name) {
 
+                console.log($name);
 				$name = $name.replace(/\.[^/.]+$/, "");
 
 
@@ -34,8 +85,48 @@
 
 			};
 
-            (function(){
-              $scope.shots = $scope.getShots();
-            });
+            //Move To Custom Helpers
+            function getParameterByName(name, url) {
+                if (!url) url = window.location.href;
+                name = name.replace(/[\[\]]/g, "\\$&");
+                var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                    results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, " "));
+            }
+
+
+            /**
+             * Icrement Views when a shot is viewed
+             */
+            pusher.bind('shotWasViewed',
+                function(data) {
+
+                    var $shot = $filter('findByName')($scope.shots, data.name);
+                    $shot.views++;
+
+                }
+            );
+
+
+
 
 		}]);
+
+    /**
+     * Move this to a Custom Filters Refactor id possible
+     */
+    app.filter('findByName', function() {
+
+        return function(input, name) {
+            var i=0, len=input.length;
+            for (; i<len; i++) {
+                    var shot = input[i].file_name.replace(/\.[^/.]+$/, "");
+                if (shot == name) {
+                    return input[i];
+                }
+            }
+            return null;
+        }
+    });

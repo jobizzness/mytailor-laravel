@@ -15,41 +15,42 @@ Mytailor.me
             $banner = $('.hero-viewport');
 
         $(function() {
-               //========== Infinite Scroll & Masonry ==========
-                $('#grid').infinitescroll({
-                  navSelector     : ".pagination",
-                  nextSelector    : ".pagination li.active + li a",
-                  itemSelector    : ".grid-item",
-                  debug           : false,
-                  dataType        : 'html',
-                  pixelsFromNavToBottom: 800,
-                  loading: {
-                        speed: 'fast',
-                        finished: function() {
-                            console.log('Finished');
-                      }
-                    }
-              }, function(newElements, data, url){
-                            var $newElems = $( newElements ),
-                            $target = $(".grid");
-                            $newElems.hide();
+        //        //========== Infinite Scroll & Masonry ==========
+        //         $('#grid').infinitescroll({
+        //           navSelector     : ".pagination",
+        //           nextSelector    : ".pagination li.active + li a",
+        //           itemSelector    : ".grid-item",
+        //           debug           : false,
+        //           dataType        : 'html',
+        //           pixelsFromNavToBottom: 800,
+        //           loading: {
+        //                 speed: 'fast',
+        //                 finished: function() {
+        //                     console.log('Finished');
+        //               }
+        //             }
+        //       }, function(newElements, data, url){
+        //                     var $newElems = $( newElements ),
+        //                     $target = $(".grid");
+        //                     $newElems.hide();
 
-                  $('.grid').imagesLoaded(function(){
+        //           $('.grid').imagesLoaded(function(){
 
-                               angular.element($target).injector().invoke(function($compile){
-                                var $scope = angular.element($target).scope();
-                                    $compile($newElems)($scope);
-                                    $scope.$apply();
+        //                        angular.element($target).injector().invoke(function($compile){
+        //                         var $scope = angular.element($target).scope();
+        //                             $compile($newElems)($scope);
+        //                             $scope.$apply();
 
-                               });
-                        $newElems.show();
-                        $('.grid').masonry( 'appended', $newElems, 'reloadItems');
+        //                        });
+        //                 $newElems.show();
+
+        //                 $('.grid').masonry( 'appended', $newElems, 'reloadItems');
 
      
-                    });
+        //             });
                   
 
-              });
+              //});
 
                 //========== Search icon on small devices ==========
                       $('.mt-toggle-search').click(function() {
@@ -150,12 +151,18 @@ Mytailor.me
                     //wow
                     new WOW().init();
 
-                  $('#grid').masonry({
-                  // options
-                    columnWidth: '.grid-item',
-                    itemSelector: '.grid-item'
+                    var $target = $("#grid");
 
-                    });
+                //   $target.imagesLoaded(function(){
+                //       $target.masonry({// options
+                //             columnWidth: '.grid-item',
+                //             itemSelector: '.grid-item'});
+
+                // var $scope = angular.element($target).scope();
+                //     $scope.busy = false;
+                //     $scope.$apply();
+
+            //});
 
             //RevSlider
           var tpj=jQuery;         

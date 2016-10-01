@@ -34,7 +34,7 @@ class DbShotsRepository implements ShotsRepositoryInterface{
      */
     public function latest($cat) {
          return $this->shots
-            ->with('publishable')
+            ->with('publishable', 'publishable.profile')
             ->category($cat)
             ->orderBy('updated_at', 'desc')
             ->orderBy('views', 'desc')
@@ -71,7 +71,7 @@ class DbShotsRepository implements ShotsRepositoryInterface{
      */
     public function featured($cat){
         return $this->shots
-            ->with('publishable')
+            ->with('publishable', 'publishable.profile')
             ->category($cat)
             ->orderBy('views', 'desc')
             ->orderBy('updated_at', 'desc')
@@ -110,6 +110,24 @@ class DbShotsRepository implements ShotsRepositoryInterface{
             ->orderBy('updated_at', 'desc')
             ->whereNotIn('id', [$shot->id])
             ->paginate(8);
+    }
+
+    /**
+     * Increments Views of a shot.
+     *
+     * @param $id
+     */
+    public function incrementViews($id)
+    {
+        $shot = Shot::where(\DB::raw(
+            "left(file_name, length(file_name) - LOCATE('.', Reverse(file_name)))"),
+            '=',
+            $id)->first();
+
+        $shot->views++;
+        $shot->timestamps = false;
+        $shot->save();
+        $shot->timestamps = true;
     }
 
     /**

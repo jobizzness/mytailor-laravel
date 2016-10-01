@@ -51,5 +51,11 @@ return [
         'client_id' => env('PINTEREST_CLIENT_ID'),
         'client_secret' => env('PIINTEREST_CLIENT_SECRET'),
         'redirect' => 'http://dev.mytailor.me/login/pinterest'
+    ],
+
+    'pusher' => [
+        'app_id' => env('PUSHER_APP_ID'),
+        'key' => env('PUSHER_APP_KEY'),
+        'secret' => env('PUSHER_APP_SECRET')
     ]
 ];

@@ -5,6 +5,7 @@ namespace MyTailor\Modules\Shots;
 
 
 use Laracasts\Commander\CommandHandler;
+use MyTailor\Modules\Shots\Events\ShotWasViewed;
 use MyTailor\Repositories\DbShotsRepository;
 use MyTailor\Profile;
 
@@ -37,6 +38,8 @@ class ViewShotCommandHandler implements CommandHandler
             $shot->related = $this->shots->related($shot);
             $shot->date = $shot->created_at->diffForHumans();
             $shot->comments->total = count($shot->comments);
+
+            $shot->raise(new ShotWasViewed($shot));
 
             return $shot;
 

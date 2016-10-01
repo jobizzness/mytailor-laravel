@@ -2,6 +2,7 @@
 
 use Illuminate\View\View;
 use Laracasts\Commander\CommandBus;
+use Laracasts\Commander\Events\DispatchableTrait;
 use MyTailor\Modules\Shots\ViewShotCommand;
 use MyTailor\Repositories\ShotsRepositoryInterface;
 use SEOMeta;
@@ -10,6 +11,7 @@ use Twitter;
 
 class ShotTemplate extends AbstractTemplate{
 
+    use DispatchableTrait;
     /**
      * @var string
      */
@@ -50,15 +52,21 @@ class ShotTemplate extends AbstractTemplate{
         $shot = $this->commandBus->execute($command);
 
 
+
         if($shot) {
 
+            $this->dispatchEventsFor($shot);
             $this->seoMake($shot);
             $view->with('shot', $shot);
 
         }
+
         return response()->view('errors.frontend.shot404', [], 404);
     }
 
+    /**
+     * @param $shot
+     */
     private function seoMake($shot)
     {
         SEOMeta::setTitle('MyTailor | ' . substr($shot->title, 0, 30));

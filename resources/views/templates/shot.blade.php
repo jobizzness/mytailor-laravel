@@ -77,7 +77,7 @@
 			<!-- Comment Form -->
 			<div class="comment-form-wrapper">
 				<div class="input-comment">
-					<form name="comment" ng-controller="commentsController" class="comment-form" ui-keypress="{13:'like(id)'}" autocomplete="off">
+					<form name="comment" class="comment-form" ui-keypress="{13:'like(id)'}" autocomplete="off">
 						<input class="form-control" name="body" type="text" placeholder="Write your comment here ...">
 					</form>
 				</div>
@@ -152,7 +152,7 @@
 
 	<section class="mdl-cell mdl-cell--12-col" style="display: flex;">
 
-			<div class="mdl-cell mdl-cell--12-col pad-1 mdl-grid" ng-controller="shotsController">
+			<div class="mdl-cell mdl-cell--12-col pad-1 mdl-grid">
 				@foreach($shot->related as $relate)
 	              <div class="card mdl-cell mdl-cell--3-col mdl-shadow--2dp mdl-cell--4-col-phone" style="background:{{$relate->color}};">
 	                <div class="mt__media-card">

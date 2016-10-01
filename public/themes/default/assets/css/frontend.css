@@ -2080,9 +2080,11 @@ a#buzzle:hover .hvr-buzz-out {
   animation-iteration-count: 1; }
 
 .mt-load-more-wrapper {
-  position: absolute;
-  top: -26px;
-  width: 100%; }
+  position: relative;
+  bottom: 0;
+  margin-left: -1em;
+  margin-bottom: -1em;
+  width: 105%; }
 
 .mt-load-bar {
   position: relative;
@@ -3034,7 +3036,8 @@ figure.shot-cover.--profile__feed {
 
 /*Mansonry grid*/
 .grid {
-  margin-top: 1em; }
+  position: relative;
+  padding: 1em; }
 
 .grid-item {
   width: calc(25% - 6px);
@@ -3072,9 +3075,7 @@ figure.shot-cover.--profile__feed {
 
 @media screen and (max-width: 490px) {
   .grid-item {
-    width: calc(100% - 25px);
-    margin: 16px;
-    max-height: 425px; } }
+    width: calc(100% - 25px); } }
 
 .mt-grid___link:hover .dimOverlay, .mt-grid___link:hover figcaption:hover {
   opacity: 1;
@@ -3245,9 +3246,11 @@ a#buzzle:hover .hvr-buzz-out {
   animation-iteration-count: 1; }
 
 .mt-load-more-wrapper {
-  position: absolute;
-  top: -26px;
-  width: 100%; }
+  position: relative;
+  bottom: 0;
+  margin-left: -1em;
+  margin-bottom: -1em;
+  width: 105%; }
 
 .mt-load-bar {
   position: relative;

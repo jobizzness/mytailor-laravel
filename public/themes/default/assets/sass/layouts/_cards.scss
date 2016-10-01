@@ -189,7 +189,8 @@ figure.shot-cover.--profile__feed{
 /*Mansonry grid*/
 
 .grid{
-  margin-top: 1em;
+  position: relative;
+  padding: 1em;
 }
 .grid-item {
     width: calc(25% - 6px);
@@ -242,8 +243,6 @@ figure.shot-cover.--profile__feed{
 @media screen and (max-width: 490px){
   .grid-item {
     width: calc(100% - 25px);
-    margin: 16px;
-    max-height: 425px;
   }
 }
 

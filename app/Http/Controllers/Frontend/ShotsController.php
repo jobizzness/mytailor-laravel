@@ -3,7 +3,10 @@
 namespace MyTailor\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
+use Laracasts\Commander\CommandBus;
+use Laracasts\Commander\Events\DispatchableTrait;
 use MyTailor\Http\Controllers\Controller;
+use MyTailor\Modules\Shots\ViewShotCommand;
 use MyTailor\Repositories\ShotsRepositoryInterface;
 use MyTailor\Shot;
 use MyTailor\Profile;
@@ -15,27 +18,35 @@ use Twitter;
 
 class ShotsController extends Controller
 {
+    use DispatchableTrait;
+
     /**
-     * @var Shot
+     * @var CommandBus
      */
-    private $shot;
+    private $commandBus;
 
     /**
      * shotsController constructor.
      *
-     * @param ShotsRepositoryInterface $shot
+     * @param ShotsRepositoryInterface $shots
+     * @param CommandBus $commandBus
+     * @internal param ShotsRepositoryInterface $shot
      */
-    public function __construct(ShotsRepositoryInterface $shots){
+    public function __construct(ShotsRepositoryInterface $shots, CommandBus $commandBus){
 
         $this->shots = $shots;
+        $this->commandBus = $commandBus;
     }
 
+    /**
+     * @param $sort
+     * @param Request $request
+     * @return mixed
+     */
     public function index($sort, Request $request)
     {
-        //$sort = array_key_exists ( 'sort' , $parameters) ? $parameters['sort'] : 'trending';
 
         $cat = $request->get('cat') ?: null;
-
 
             switch($sort){
 
@@ -63,23 +74,23 @@ class ShotsController extends Controller
     public function show($id, Request $request )
     {
 
-       $shot = Shot::with('publishable', 'tags')->where(
+        $command = new ViewShotCommand($id);
+        $shot = $this->commandBus->execute($command);
 
-                           \DB::raw("left(file_name, length(file_name) - LOCATE('.', Reverse(file_name)))"
-                                   ), '=', $id)
-                                   ->first();
+
+
         if($shot) {
 
-            $shot->publishable->profile = Profile::find([$shot->publishable->profile_id])->first();
-            $shot->date = $shot->created_at->diffForHumans();
+            $this->dispatchEventsFor($shot);
 
             if ($request->ajax() || $request->wantsJson()) {
 
                 return $shot->toArray();
             }
 
+
         }
-        return response()->view('errors.frontend.shot404', [], 404);
+
 
     }
 
@@ -91,15 +102,8 @@ class ShotsController extends Controller
      */
     public function viewed($id)
     {
-        $shot = $this->shots->where(\DB::raw(
-            "left(file_name, length(file_name) - LOCATE('.', Reverse(file_name)))"),
-            '=',
-            $id)->first();
+        $this->shots->incrementViews($id);
 
-        $shot->views++;
-        $shot->timestamps = false;
-        $shot->save();
-        $shot->timestamps = true;
         
     }
 

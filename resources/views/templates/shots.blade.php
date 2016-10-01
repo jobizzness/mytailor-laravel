@@ -32,10 +32,10 @@
 
 </header>
 
-<section class="mt-grid clearfix grid" id="grid" ng-controller="shotsController" ng-init="init()">
+<section class="mt-grid clearfix grid" id="grid" infinite-scroll="updateShots()" infinite-scroll-disabled='busy' infinite-scroll-distance="4">
 
-
-  {{-- @forelse($shots as $shot)
+<div angular-grid="shots">
+{{--   @forelse($shots as $shot) --}}
 
     <div class="grid-item mdl-shadow--2dp mt-shot" itemprop="mainEntity" itemscope itemtype="http://schema.org/imageObject" ng-repeat="shot in shots">
 
@@ -43,15 +43,15 @@
           <header class="mt-shot-header clearfix">
             <section class="mt-shot-avatar-wrapper">
               <a href="#" class="mt-shot-avatar" title="Mytailor">
-                 <h2 class="mt-avatar-name">{{$shot->publishable->present()->displayName()}}</h2>
-                  <img height="30" width="30" src="/uploads/profiles/{{$shot->publishable->profile->avatar}}" alt="">
+                 <h2 class="mt-avatar-name">@{{shot.publishable.profile.username}}</h2>
+                  <img height="30" width="30" ng-src="/uploads/profiles/@{{shot.publishable.profile.avatar}}" alt="">
               </a>
             </section>
           </header>
           <figure>
-            <a href="" class="mt-grid___link" ng-click='open("{{$shot->file_name}}")'>
+            <a href="" class="mt-grid___link" ng-click="open(shot.file_name)">
                 <div class="mt-image-holder" itemscope itemtype="http://schema.org/thumbnail">
-                    <img itemprop="image" src="/uploads/{{$shot->file_name}}" alt="{{$shot->alt}}">
+                    <img itemprop="image" ng-src="/uploads/@{{shot.file_name}}" alt="@{{shot.alt}}">
                 </div>
             </a>
           </figure>
@@ -66,7 +66,7 @@
               </button>
               <span class="designer_card__views">
                   <i class="mdi mdi-eye"></i>
-                  <span style="font-size: 12px;">{{$shot->views}} views</span>
+                  <span style="font-size: 12px;">@{{shot.views}} views</span>
               </span>
               <button id="card-right-button" class="mdl-button mdl-js-button mdl-button--icon">
                 <i class="icon-center mdi mdi-dots-vertical"></i>
@@ -74,7 +74,16 @@
           </div>
     </div>
     
-    @empty
+  </div>
+
+    <section class="mt-load-more-wrapper" ng-show='busy'>
+          <div class="mt-load-bar">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+    </section>
+{{--     @empty
 
     <div class="mt-noresult"><h4>ohh no ! sorry we didnt find anything.</h4></div>
 
@@ -82,9 +91,10 @@
   @endforelse
 
 
-{!! $shots->appends(['cat'=>$cat])->render() !!}
- --}}
+{!! $shots->appends(['cat'=>$cat])->render() !!} --}}
+
 </section>
+
 
 {{-- Post Shot Button --}}
 @if($user)
