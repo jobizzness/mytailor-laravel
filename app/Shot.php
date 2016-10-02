@@ -118,12 +118,18 @@ class Shot extends Model {
     }
 
 
+
+
+    public function images()
+    {
+        return $this->hasOne(Image::class);
+    }
+
     // I AM NOT SURE ABOUT THIS
     public function scopeSearch($query, $search)
     {
         return $query->where('title', 'LIKE', "%$search%");
     }
-
     /*
     |--------------------------------------------------------------------------
     |  Accessors OR getters

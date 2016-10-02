@@ -160,7 +160,8 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         Laracasts\Commander\CommanderServiceProvider::class,
         AlgoliaSearch\Laravel\AlgoliaServiceProvider::class,
-        Spatie\LaravelAnalytics\LaravelAnalyticsServiceProvider::class
+        Spatie\LaravelAnalytics\LaravelAnalyticsServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class
 
 
     ],
@@ -214,8 +215,10 @@ return [
         'Twitter'   => Artesaos\SEOTools\Facades\TwitterCard::class,
         // or
         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
+        //OtherStuff
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-        'Analytics' => Spatie\LaravelAnalytics\LaravelAnalyticsFacade::class
+        'Analytics' => Spatie\LaravelAnalytics\LaravelAnalyticsFacade::class,
+        'Image' => Intervention\Image\Facades\Image::class
 
     ],
 

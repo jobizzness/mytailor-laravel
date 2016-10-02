@@ -4,13 +4,15 @@ namespace MyTailor\Http\Controllers\Admin;
 
 
 use Illuminate\Support\Facades\Response;
+use MyTailor\Image;
+use MyTailor\Modules\Core\Images\ImageServer;
 use MyTailor\Modules\Shots\PostShotCommand;
 use MyTailor\Shot;
 use MyTailor\Tag;
 use Illuminate\Http\Request;
 use MyTailor\Http\Requests;
 use Illuminate\Support\Facades\Auth;
-use MyTailor\Modules\Shots\UploadServer;
+
 use Laracasts\Commander\CommandBus;
 
 class ShotsController extends Controller    {
@@ -61,17 +63,28 @@ class ShotsController extends Controller    {
 
     /**
      * save a new shot
+     * @param Request $request
+     * @param ImageServer $imageServer
+     * @internal param UploadServer $uploadServer
      */
-    public function store() {
+    public function store(Request $request, ImageServer $imageServer) {
 
-        $file_name = (new UploadServer)->get_name();
+        $file = $request->file('files')[0];
 
-        $publishable_type = 'MyTailor\\Brand';
-        $publishable_id = 1;
-        $published_by = Auth::user()->id;
+        $image = $imageServer->makeVersions($file)->store($file);
 
-        $command = new PostShotCommand($file_name, $publishable_type, $publishable_id, $published_by);
-        $this->commandBus->execute($command);
+        //get the size and width of the original
+        //Create 3 directories from $name
+        //Move images to their right directories
+
+
+//        //$file_name = (new UploadServer)->get_name();
+//        $publishable_type = 'MyTailor\\Brand';
+//        $publishable_id = 1;
+//        $published_by = Auth::user()->id;
+//
+//        $command = new PostShotCommand($file_name, $publishable_type, $publishable_id, $published_by);
+//        $this->commandBus->execute($command);
 
 
     }
@@ -123,6 +136,7 @@ class ShotsController extends Controller    {
     }
 
     /**
+     * @param $id
      * @return string
      */
     public function destroy($id){

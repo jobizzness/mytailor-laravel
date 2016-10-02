@@ -1,0 +1,33 @@
+<?php
+
+
+return [
+    "images" => [
+
+
+        "paths" => [
+            "input" => 'app/assets/images',
+            "outputs" => 'app/storage/cache/images'
+        ],
+
+        "sizes" => [
+
+            "small"=> [
+                "width" => 136,
+                "height" => 136
+            ],
+
+            "phone"=> [
+                "width" => 236,
+            ],
+
+            "medium"=> [
+                "width" => 474,
+            ],
+
+            "large"=> [
+                "width" => 603,
+            ]
+        ]
+    ]
+];
