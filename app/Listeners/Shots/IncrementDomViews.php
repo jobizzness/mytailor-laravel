@@ -10,9 +10,13 @@ class IncrementDomViews extends EventListener
     public function whenShotWasViewed(ShotWasViewed $event)
     {
 
-       $pusher = \App::make('Pusher');
-            $pusher->set_logger( new LaravelLoggerProxy() );
-        $pusher->trigger('shotsChannel', 'shotWasViewed', ['name' => $event->shot->file_name]);
+        $pusher = \App::make('Pusher');
+        $pusher->set_logger( new LaravelLoggerProxy() );
+
+        $name = pathinfo($event->shot->file_name, PATHINFO_FILENAME);
+        $data = ['name'=>$name];
+
+        $pusher->trigger(['shotsChannel'], 'shotWasViewed', $data);
 
     }
 }
