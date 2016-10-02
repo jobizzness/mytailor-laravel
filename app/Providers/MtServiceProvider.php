@@ -17,5 +17,6 @@ class MtServiceProvider extends ServiceProvider
 
             return new \Pusher($keys['key'], $keys['secret'], $keys['app_id']);
         });
+
     }
 }
