@@ -1,6 +1,6 @@
 // Here we declare our ng-app and modules we need
 var app = angular.module('app', ['ngAnimate', 'ngMessages', 'ngSanitize', 'ui.select',
-        'ngDialog', 'ngScrollbars', 'infinite-scroll', 'angularGrid', 'pusher-angular'])
+        'ngDialog', 'infinite-scroll', 'angularGrid', 'pusher-angular'])
     .value('THROTTLE_MILLISECONDS', 5000);
 
 
@@ -25,7 +25,7 @@ app.config(function (ngDialogProvider) {
  * Sidebar toggle
  *
  */
-app.controller("MainController", function($scope, ngDialog, shotFactory) {
+app.controller("MainController", ["$scope", "ngDialog", "shotFactory", function($scope, ngDialog, shotFactory) {
 
     //$location.search({ref: ''});
 
@@ -75,7 +75,7 @@ app.controller("MainController", function($scope, ngDialog, shotFactory) {
 }
 
 
-}); //End
+}]); //End
 
 app.controller("authController", ["$scope",
 
@@ -90,8 +90,7 @@ app.controller("authController", ["$scope",
 
 	app.controller("shotsController", ["$scope", "ngDialog","$window",
                     "shotsFactory", "$timeout", '$pusher', "$filter",
-
-		function($scope, ngDialog, $window, shotsFactory, $timeout, $pusher, $filter) {
+        function($scope, ngDialog, $window, shotsFactory, $timeout, $pusher, $filter) {
 
             var client = new Pusher('67b6f9a2b88b9350c8fa');
             var pusher = $pusher(client);
@@ -260,7 +259,6 @@ app.controller("authController", ["$scope",
 'use strict';
 
 	app.controller("designersController", ["$scope","shotFactory",
-
 		function($scope, shotFactory) {
 
 //this should be moved

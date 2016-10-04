@@ -7,7 +7,6 @@
           urlSync: true
         }
 
-
         search = instantsearch(options);
 
           search.addWidget(

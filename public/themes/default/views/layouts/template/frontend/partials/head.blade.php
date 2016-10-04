@@ -13,17 +13,15 @@
     <link rel="shortcut icon" href="{{ theme('images/favicon.png')}}">
     <!-- Material Design style -->
     <link rel="stylesheet" href="{{ theme('vendor/material-design-lite/material.min.css')}}">
-    <link rel="stylesheet" href="{{ theme('css/frontend.css')}}">
-    <link rel="stylesheet" href="{{ theme('css/animate.css')}}">
-    <!-- Ng-Dialog -->
-    <link rel="stylesheet" href="{{ theme('css/vendor/ng-dialog/ngDialog.min.css') }}">
-    <!-- Instant search -->
-    <link rel="stylesheet" type="text/css" href="{{ theme('vendor/instantsearch.js/dist/instantsearch.min.css') }}">
+    <link rel="stylesheet" href="{{ elixir('css/frontend.css', 'themes/default/assets/build') }}">
+    
     {{-- ScrollBar --}}
     {{-- <link rel="stylesheet" href="{{ theme('css/vendor/jquery.mCustomScrollbar.min.css')}}"> --}}
     {{-- Additional page styles --}}
     @yield('page_styles')
-    
+    <style type="text/css">
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {display: none !important;}
+    </style>
 </head>
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="mt-layout @yield('bg')" ng-controller="MainController">

@@ -13,8 +13,9 @@
  *
  *
  */
-@import 'https://fonts.googleapis.com/css?family=Bree+Serif|Josefin+Sans';
-
+// @import 'https://fonts.googleapis.com/css?family=Bree+Serif|Josefin+Sans';
+// /*Fonts*/
+@import "typo/materialdesignicons";
 
 /*Normalize*/
 @import "vendor/normalize";
@@ -24,8 +25,6 @@
 @import "vendor/waves.sass";
 /* Ng-Dialog*/
 @import "vendor/ng-dialogShots";
-/*Fonts*/
-@import "../fonts/MaterialDesign-Font/css/materialdesignicons.min.css";
 /*colors*/
 @import "components/colors";
 /*banners*/

@@ -11,7 +11,7 @@
  * Sidebar toggle
  *
  */
-app.controller("MainController", function($scope, ngDialog, shotFactory) {
+app.controller("MainController", ["$scope", "ngDialog", "shotFactory", function($scope, ngDialog, shotFactory) {
 
     //$location.search({ref: ''});
 
@@ -61,7 +61,7 @@ app.controller("MainController", function($scope, ngDialog, shotFactory) {
 }
 
 
-}); //End
+}]); //End
 
 app.controller("authController", ["$scope",
 

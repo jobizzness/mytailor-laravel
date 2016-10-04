@@ -2,8 +2,7 @@
 
 	app.controller("shotsController", ["$scope", "ngDialog","$window",
                     "shotsFactory", "$timeout", '$pusher', "$filter",
-
-		function($scope, ngDialog, $window, shotsFactory, $timeout, $pusher, $filter) {
+        function($scope, ngDialog, $window, shotsFactory, $timeout, $pusher, $filter) {
 
             var client = new Pusher('67b6f9a2b88b9350c8fa');
             var pusher = $pusher(client);

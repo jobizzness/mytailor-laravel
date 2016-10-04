@@ -1,7 +1,6 @@
 'use strict';
 
 	app.controller("designersController", ["$scope","shotFactory",
-
 		function($scope, shotFactory) {
 
 //this should be moved

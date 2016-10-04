@@ -22,7 +22,7 @@
 	   <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="search-menu-right" id="category"></ul>
 
 </section>
-	<div class="mdl-grid">
+{{-- 	<div class="mdl-grid">
 
 	    <div class="mdl-cell mdl-cell--12-col mt-grid grid" id="hits-container">
 	    	<script type="text/html" id="hit-template">
@@ -40,14 +40,14 @@
 			</script>
 		    
 	    </div>
-	</div>
+	</div> --}}
 </section>
 
 
 
-<script type="text/html" id="no-results-template">
+{{-- <script type="text/html" id="no-results-template">
   <div id="no-results-message">
     <p>We didn't find any results for the search <em>"@{{query}}"</em>.</p>
     <a href="." class="clear-all">Clear search</a>
   </div>
-</script>
+</script> --}}
