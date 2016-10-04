@@ -14,6 +14,7 @@
             instantsearch.widgets.searchBox({
               container: '#search-box',
               placeholder: 'search for items like men, women, shirts, shoes and more ...',
+              autofocus:false
 
             })
           ); 
@@ -32,10 +33,10 @@
             })
           );
 
-          search.on('render', function(){
+          // search.on('render', function(){
 
-              //$('.grid>.ais-hits').masonry();
-            });
+          //     //$('.grid>.ais-hits').masonry();
+          //   });
 
 
                                // angular.element($target).injector().invoke(function($compile){
@@ -79,4 +80,4 @@
         function getTemplate(templateName) {
           return document.getElementById(templateName + '-template').innerHTML;
         }
-          search.start();
+        search.start();

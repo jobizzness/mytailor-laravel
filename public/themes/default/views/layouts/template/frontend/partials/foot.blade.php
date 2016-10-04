@@ -14,16 +14,16 @@
     
     </div> <!-- Page wrapper ends -->
     </div>
-
+        <script async src="{{ theme('js/vendor.js') }}"></script>
         {{-- Material --}}
-        <script src="{{ theme('vendor/material-design-lite/material.min.js') }}"></script>
+        <script async src="{{ theme('vendor/material-design-lite/material.min.js') }}"></script>
         {{-- Algolia --}}
-        <script src="{{ theme('vendor/instantsearch.js/dist/instantsearch.min.js') }}"></script>
+{{--         <script async src="{{ theme('vendor/instantsearch.js/dist/instantsearch.min.js') }}"></script> --}}
 
         {{-- Site Styles --}}
-        <script src="{{ theme('js/frontend.js') }}"></script>
-        <script src="{{ theme('js/mysearch.js') }}"></script>
         <script src="{{ theme('js/frontendScript.js') }}"></script>
+        <script src="{{ theme('js/frontend.js') }}"></script>
+{{--         <script async src="{{ theme('js/mysearch.js') }}"></script> --}}
 
         @yield('page_scripts')
         <script>

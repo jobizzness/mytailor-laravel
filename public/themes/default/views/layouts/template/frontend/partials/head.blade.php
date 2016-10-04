@@ -20,10 +20,10 @@
     <!-- Instant search -->
     <link rel="stylesheet" type="text/css" href="{{ theme('vendor/instantsearch.js/dist/instantsearch.min.css') }}">
     {{-- ScrollBar --}}
-    <link rel="stylesheet" href="{{ theme('css/vendor/jquery.mCustomScrollbar.min.css')}}">
+    {{-- <link rel="stylesheet" href="{{ theme('css/vendor/jquery.mCustomScrollbar.min.css')}}"> --}}
     {{-- Additional page styles --}}
     @yield('page_styles')
-    <script src="{{ theme('js/vendor.js') }}"></script>
+    
 </head>
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="mt-layout @yield('bg')" ng-controller="MainController">

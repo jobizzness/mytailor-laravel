@@ -32,12 +32,12 @@
 
 </header>
 
-<section class="mt-grid clearfix grid" id="grid" infinite-scroll="updateShots('explore')" infinite-scroll-disabled='busy' infinite-scroll-distance="4">
+<section class="mt-grid clearfix grid" id="grid" infinite-scroll="updateShots('explore')" infinite-scroll-disabled='busy' infinite-scroll-distance="3">
 
 <div angular-grid="shots" ng-cloak>
 {{--   @forelse($shots as $shot) --}}
 
-    <div class="grid-item mdl-shadow--2dp mt-shot" itemprop="mainEntity" itemscope itemtype="http://schema.org/imageObject" ng-repeat="shot in shots" ng-cloak>
+    <div class="grid-item mdl-shadow--2dp mt-shot" itemprop="mainEntity" itemscope itemtype="http://schema.org/imageObject" ng-repeat="shot in shots | limitTo:per_page" ng-cloak>
 
         <!-- The header -->
           <header class="mt-shot-header clearfix">

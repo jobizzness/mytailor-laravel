@@ -1,7 +1,7 @@
 // Here we declare our ng-app and modules we need
 var app = angular.module('app', ['ngAnimate', 'ngMessages', 'ngSanitize', 'ui.select',
         'ngDialog', 'ngScrollbars', 'infinite-scroll', 'angularGrid', 'pusher-angular'])
-    .value('THROTTLE_MILLISECONDS', 2550);
+    .value('THROTTLE_MILLISECONDS', 5000);
 
 
 
@@ -99,6 +99,7 @@ app.controller("authController", ["$scope",
             $scope.shots = [];
             $scope.busy = false;
             $scope.after = '/?page=1';
+            $scope.per_page = 0;
 
             var pathArray = window.location.pathname.split( '/' );
 
@@ -119,7 +120,7 @@ app.controller("authController", ["$scope",
 
                     var items = response.data.data;
 
-                    //Bug FIXME::
+                    $scope.per_page = $scope.per_page +response.data.per_page;
 
                     angular.forEach(items, function(value, key) {
                         $scope.shots.push(value);

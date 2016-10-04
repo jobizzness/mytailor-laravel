@@ -1,7 +1,7 @@
 // Here we declare our ng-app and modules we need
 var app = angular.module('app', ['ngAnimate', 'ngMessages', 'ngSanitize', 'ui.select',
         'ngDialog', 'ngScrollbars', 'infinite-scroll', 'angularGrid', 'pusher-angular'])
-    .value('THROTTLE_MILLISECONDS', 2550);
+    .value('THROTTLE_MILLISECONDS', 5000);
 
 
 

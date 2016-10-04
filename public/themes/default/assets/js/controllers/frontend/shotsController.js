@@ -11,6 +11,7 @@
             $scope.shots = [];
             $scope.busy = false;
             $scope.after = '/?page=1';
+            $scope.per_page = 0;
 
             var pathArray = window.location.pathname.split( '/' );
 
@@ -31,7 +32,7 @@
 
                     var items = response.data.data;
 
-                    //Bug FIXME::
+                    $scope.per_page = $scope.per_page +response.data.per_page;
 
                     angular.forEach(items, function(value, key) {
                         $scope.shots.push(value);

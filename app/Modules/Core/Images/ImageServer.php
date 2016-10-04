@@ -44,12 +44,10 @@ class ImageServer {
             }
 
 
-
+            Image::make($this->path)->resize($width, $height)
+                ->save($this->baseDir. '/'.$version.$this->path);
 
         }
-
-        dd($file);
-
 
         return $this;
     }
