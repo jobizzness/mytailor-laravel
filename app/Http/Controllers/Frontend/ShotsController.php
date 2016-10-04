@@ -36,6 +36,7 @@ class ShotsController extends Controller
 
         $this->shots = $shots;
         $this->commandBus = $commandBus;
+
     }
 
     /**
