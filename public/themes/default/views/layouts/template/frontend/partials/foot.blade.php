@@ -20,7 +20,7 @@
         <script src="{{ theme('vendor/material-design-lite/material.min.js') }}"></script>
 
         {{-- Site Styles --}}
-        <script src="{{ theme('js/frontendScript.js') }}"></script>
+        <script src="{{ theme('js/frontendScript.min.js') }}"></script>
         <script src="{{ theme('js/frontend.js') }}"></script>
 
         @yield('page_scripts')
