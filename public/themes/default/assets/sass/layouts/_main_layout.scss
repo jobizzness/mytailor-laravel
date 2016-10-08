@@ -42,32 +42,6 @@
    Header layout Styles: 
    ========================================================================== */
 
-.mt-layout-header{
-  @extend .make-flex !optional;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  box-sizing: border-box;
-  -webkit-flex-shrink: 0;
-      -ms-flex-negative: 0;
-          flex-shrink: 0;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  border: none;
-  min-height: 45px;
-  max-height: 45px;
-  z-index: 3;
-  background-color: map-get($ui-color, darkbrown);
-  color: rgb(255,255,255);
-      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.49), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-    padding: .3em 1em;
-}
-
-.mt-header-spacer{
-      width: calc(100% - 1040px);
-}
 .mt-layout-header>* {
     -webkit-flex-shrink: 0;
     -ms-flex-negative: 0;
@@ -81,36 +55,14 @@
     flex-grow: 1;
 }
 
-
-
-.mt-header--fixed{
-    top: 0;
-    position: fixed;
-
+.mt-glow-soft {
+    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 0px 2px 2px rgba(0, 0, 0, 0.098), 0px 0px 5px 1px rgba(0, 0, 0, 0.084);
 }
 
+
 .mt-global-header{
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -webkit-flex-wrap: nowrap;
-    -ms-flex-wrap: nowrap;
-    flex-wrap: nowrap;
-    -webkit-flex-shrink: 0;
-    -ms-flex-negative: 0;
-    flex-shrink: 0;
-    box-sizing: border-box;
-    -webkit-align-self: stretch;
-    -ms-flex-item-align: stretch;
-    align-self: stretch;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
-    margin: 0;
-    height: 38px;
+    min-height: 48px;
+    max-height: 48px;
 }
 
 .flex-center{
@@ -120,8 +72,18 @@
 }
 .pull-left{
     margin: 0;
+    height: 45px;
 
 }
+
+.mdl-layout__header{
+  min-height: 45px;
+}
+
+.mdl-layout__header.is-compact {
+    max-height: 45px;
+}
+
 .pull-left>a{
       padding: 1em 0.5em 1em 0;
 }
@@ -130,8 +92,6 @@
     justify-content: center;
     background: #Fff;
     height: 64px;
-   -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
     overflow: hidden;
     padding: 0 40px 0 40px;
 }

@@ -1,18 +1,9 @@
 var elixir = require('laravel-elixir');
- 	htmlmin = require('gulp-htmlmin'),
- 	gulp = require('gulp'),
+var htmlmin = require('gulp-htmlmin');
+var gulp = require('gulp');
 
 
-		/*
-		 |--------------------------------------------------------------------------
-		 | Elixir Asset Management
-		 |--------------------------------------------------------------------------
-		 |
-		 | Elixir provides a clean, fluent API for defining some basic Gulp tasks
-		 | for your Laravel application. By default, we are compiling the Sass
-		 | file for our application, as well as publishing vendor resources.
-		 |
-		 */
+
 			gulp.task('compress', function() {
 				var opts = {
 					collapseWhitespace:    true,
@@ -26,13 +17,6 @@ var elixir = require('laravel-elixir');
 						.pipe(gulp.dest('./storage/framework/views/'));
 			});
 
-			//var ngmin = require('gulp-ngmin');
-            //
-			//gulp.task('jsmin', function () {
-			//	return gulp.src('./public/theme/default/assets/js/frontend.js')
-			//		.pipe(ngmin({dynamic: true}))
-			//		.pipe(gulp.dest('./public/theme/default/assets/js'));
-			//});
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -82,30 +66,30 @@ elixir.config.publicPath = 'public/themes/default/assets';
         //
 			//   ], 	 'public/themes/default/assets/js/vendor.js');
 
-		// Frontend Scripts
-		//mix.scripts(
-		//		[
-		//			'../../../public/themes/default/assets/js/controllers/frontend/app.js',
-		//			'../../../public/themes/default/assets/js/controllers/frontend/mainController.js',
-		//			'../../../public/themes/default/assets/js/controllers/frontend/shotsController.js',
-		//			'../../../public/themes/default/assets/js/controllers/frontend/ovalController.js',
-		//			'../../../public/themes/default/assets/js/controllers/frontend/designersController.js',
-		//			'../../../public/themes/default/assets/js/services/frontend/shot.js',
-         //           '../../../public/themes/default/assets/js/services/frontend/shots.js'
-		//		],		'public/themes/default/assets/js/frontend.js');
-        //
-		//// Backend Scripts
-		//mix.scripts(
-		//		[
-		//			'../../../public/themes/default/assets/js/controllers/backend/app.js',
-		//			'../../../public/themes/default/assets/js/controllers/backend/mainController.js',
-		//			'../../../public/themes/default/assets/js/controllers/backend/shotsController.js',
-		//			'../../../public/themes/default/assets/js/controllers/backend/pagesController.js',
-		//			'../../../public/themes/default/assets/js/controllers/backend/dashboardController.js',
-		//			'../../../public/themes/default/assets/js/services/backend/shot.js',
-		//			'../../../public/themes/default/assets/js/services/backend/pages.js',
-		//			'../../../public/themes/default/assets/js/services/backend/analytics.js'
-		//		],		'public/themes/default/assets/js/backend.js');
+		 //Frontend Scripts
+		mix.scripts(
+				[
+					'../../../public/themes/default/assets/js/controllers/frontend/app.js',
+					'../../../public/themes/default/assets/js/controllers/frontend/mainController.js',
+					'../../../public/themes/default/assets/js/controllers/frontend/shotsController.js',
+					'../../../public/themes/default/assets/js/controllers/frontend/ovalController.js',
+					'../../../public/themes/default/assets/js/controllers/frontend/designersController.js',
+					'../../../public/themes/default/assets/js/services/frontend/shot.js',
+                    '../../../public/themes/default/assets/js/services/frontend/shots.js'
+				],		'public/themes/default/assets/js/frontend.js');
+
+		// Backend Scripts
+		mix.scripts(
+				[
+					'../../../public/themes/default/assets/js/controllers/backend/app.js',
+					'../../../public/themes/default/assets/js/controllers/backend/mainController.js',
+					'../../../public/themes/default/assets/js/controllers/backend/shotsController.js',
+					'../../../public/themes/default/assets/js/controllers/backend/pagesController.js',
+					'../../../public/themes/default/assets/js/controllers/backend/dashboardController.js',
+					'../../../public/themes/default/assets/js/services/backend/shot.js',
+					'../../../public/themes/default/assets/js/services/backend/pages.js',
+					'../../../public/themes/default/assets/js/services/backend/analytics.js'
+				],		'public/themes/default/assets/js/backend.js');
 
 	});
 /*

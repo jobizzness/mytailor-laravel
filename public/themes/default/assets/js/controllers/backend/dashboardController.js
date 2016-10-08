@@ -9,7 +9,7 @@
 			// $scope.users_count = $scope.users.new_users.itemsPerPage;
 
 			/**
-			 * shows data about a single shot.
+			 * shows data about a single shot.s
 			 *
 			 * @param id
 			 *
