@@ -104,10 +104,11 @@
     -ms-flex-align: center;
     -ms-grid-row-align: center;
     -webkit-align-items: center;
+    z-index: 0;
     -ms-flex-align: center;
     align-items: center;
-    width: 100%;
     position: absolute;
+    left: 0;
 
     li.mt-menu__item>a{
         display: block;

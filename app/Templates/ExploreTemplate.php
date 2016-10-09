@@ -40,9 +40,7 @@ class ExploreTemplate extends AbstractTemplate
     public function prepare(View $view, array $parameters)
     {
 
-        $slug = $parameters['slug'];
-        $slug = str_replace('-', ' ', $slug);
-        $this->seoMake($slug);
+        $this->seoMake('Explore');
 
 
     }

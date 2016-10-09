@@ -48,6 +48,10 @@
     flex-shrink: 0;
 }
 
+.just-main{
+    min-height: 48px;
+    max-height: 48px;
+}
 .mdl-layout-spacer {
 -webkit-box-flex: 1;
     -webkit-flex-grow: 1;
@@ -94,6 +98,7 @@
     height: 64px;
     overflow: hidden;
     padding: 0 40px 0 40px;
+    position: relative;
 }
 
 .mt-top-menu>ul.user-actions{
@@ -385,13 +390,13 @@ a.mt-sidebar-link{
   }
 
   .mt-obfuscator{
+    z-index: 3;
     background-color: transparent;
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
-    z-index: 80;
     visibility: hidden;
     -webkit-transition-property: background-color;
     transition-property: background-color;

@@ -8,7 +8,6 @@
                 @yield('main')
             </main>
         </div>
-        @include('layouts.template.frontend.partials.search')
         @include('partials.flashing')
     </div>
 @include('layouts.template.frontend.partials.foot')
