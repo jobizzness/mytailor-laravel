@@ -137,10 +137,12 @@ button.icon-round{
 button.top-menu-right{
     position: absolute;
     right: 6px;
-    top: 14px;
+    top: 5px;
     font-size: 21px;
     color: #797979;
+    z-index: 7;
 }
+
 .mdl-checkbox__ripple-container {
     position: absolute;
     z-index: 2;

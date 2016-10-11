@@ -40,7 +40,7 @@ class ShotsTemplate extends AbstractTemplate   {
         $cat = $this->request->get('cat') ? $this->request->get('cat') : null;
 
         $this->seoMake($cat);
-
+        $view->with('res', 'shots');
 
     }
 
@@ -91,7 +91,7 @@ class ShotsTemplate extends AbstractTemplate   {
                     Twitter::setTitle('Accessories | MyTailor African Fashion Designers');
                     break;
                 Default:
-                    SEOMeta::setTitle('MyTailorAfrica | Fashion Designers Inspiration');
+                    SEOMeta::setTitle('MyTailor | African Fashion Designers Inspiration');
                     SEOMeta::setDescription('See what\'s trending in African Fashion. From cultural, modern to classic office wears.');
                     OpenGraph::setDescription('See what\'s trending in African Fashion. From cultural, modern to classic office wears.');
                     OpenGraph::setUrl('http://mytailorafrica.com/shots');

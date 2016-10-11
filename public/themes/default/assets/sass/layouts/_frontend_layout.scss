@@ -91,6 +91,7 @@
 *********************************************************************************************/
 
 .mt-secondary__navigation{
+    width: 100%;
     margin: 0;
     padding: 0;
     height: 64px;
@@ -104,7 +105,6 @@
     -ms-flex-align: center;
     -ms-grid-row-align: center;
     -webkit-align-items: center;
-    z-index: 0;
     -ms-flex-align: center;
     align-items: center;
     position: absolute;
@@ -123,25 +123,30 @@
         }
 
         li.mt-menu__item.drop:hover div.mt-drop-items{
-            display: block;
+                opacity: 1;
+                transform: translate(0px, 65px);
         }
 
 }
 
     div.mt-drop-items{
-        display: none;
-        width: 100%;
-        position: absolute;
-        border-top: 1px solid #eee;
-        top: 64px;
-        background: #fff;
-
-        z-index: 1;
+    position: absolute;
+    width: 100%;
+    background: #fff;
+    min-height: 64px;
+    z-index: -1;
+    top: 0;
+    opacity: 0;
+    left: 0;
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition-duration: .3s;
+    transition-timing-function: cubic-bezier(0.37, 0.15, 0.32, 0.94);
+    transition-property: transform;
 
         >ul{
             margin: 0;
             padding: 0 11px 15px;
-            border-bottom: 1px solid rgba(76,87,102,0.1);
 
             li{
                 display: inline-block;
@@ -164,97 +169,10 @@
         }
     }
 
-/*********************************************************************************************
 
-      Home Sections
-
-*********************************************************************************************/
-.mt-content-section-wrapper{
-    padding: 0 8em 0 10em;
+.mdl-layout__header-row .mdl-navigation{
+    z-index: 99;
 }
-.fixed-image--home:before {
-    padding-top: 66.71975%;
-    height: 348px;
-    overflow: hidden;
-}
-.fixed-image:before {
-    content: '';
-    display: block;
-}
-
-.fixed-image {
-    background-size: contain;
-    height: 100%;
-}
-
-.mt-wrap-ptb{
-    padding: 5em 0;
-
-}
-
-.mt-info-box{
-    width: 75%;
-}
-
-.mt-call-text{
-        padding: 2em 0 0;
-    font-size: 1.2rem;
-    font-weight: 600;
-
-    a{
-        color: #F23054;
-        margin: 0;
-
-    }
-}
-
-
-/*********************************************************************************************
-
-     last Section
-
-*********************************************************************************************/
-.mt-large-info-box{
-    padding: 3em 0;
-    text-align: center;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-/*********************************************************************************************
-
-     Page Footer
-
-*********************************************************************************************/
-
-.footerContainerWrapper{
-    padding: 4em 0px 1em 0;
-    text-align: center;
-    clear: both;
-    width:100%;
-    position: relative;
-
-}                                       
-
-ul.icons {
-    padding: 2em;
-    margin: 0 0 2em 0;
-}
-
-ul.icons li{
-    display: inline-block;
-    padding: 0 1.25em 0 0;
-    margin: 0;
-          a{    font-size: 200%;
-
-    }
-}
-
-.copyright li{
-    text-align: center;
-
-}
-
 
 /*********************************************************************************************
 

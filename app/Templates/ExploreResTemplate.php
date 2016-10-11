@@ -8,11 +8,11 @@ use SEOMeta;
 use OpenGraph;
 use Twitter;
 
-class ExploreTemplate extends AbstractTemplate
+class ExploreResTemplate extends AbstractTemplate
 {
 
 
-    protected $view = 'explore';
+    protected $view = 'shots';
     /**
      * @var
      */
@@ -42,6 +42,7 @@ class ExploreTemplate extends AbstractTemplate
 
         $this->seoMake('Explore');
 
+        $view->with('res', 'explore');
 
     }
 

@@ -51,6 +51,7 @@
 .just-main{
     min-height: 48px;
     max-height: 48px;
+    overflow: hidden !important;
 }
 .mdl-layout-spacer {
 -webkit-box-flex: 1;
@@ -96,9 +97,9 @@
     justify-content: center;
     background: #Fff;
     height: 64px;
-    overflow: hidden;
+    overflow: visible;
+    overflow-y: hidden;
     padding: 0 40px 0 40px;
-    position: relative;
 }
 
 .mt-top-menu>ul.user-actions{
@@ -122,6 +123,15 @@ ul.user-actions>li>a{
     overflow: hidden;
     width: 33px;
     height: 33px;
+}
+
+header.mdl-layout__header--waterfall:not(.is-compact){
+
+    overflow: visible;
+}
+
+header.mdl-layout__header--waterfall.is-compact ul.mt-secondary__navigation{
+    display: none !important;
 }
  /* ==========================================================================
   SideBar layout Styles: 

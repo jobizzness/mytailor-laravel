@@ -20,9 +20,7 @@
     </div>
 
     <!-- Secondary Navigation -->
-    <div class="mt-sub-header mdl-layout__header-row mt-glow-soft">
-
+    <div class="mt-sub-header mdl-layout__header-row">
        @yield('sub_header')
-
     </div>
 </header>

@@ -2,14 +2,13 @@
 @section('bg', 'grey60')
 
 @section('sub_header')
-     <div class="mdl-layout-spacer"></div>
-
+    <div class="mdl-layout-spacer"></div>
     <nav class="mdl-navigation mt-nav-has-border" role="navigataion" itemscope itemtype="https://schema.org/SiteNavigationElement">
-      <a class="mdl-navigation__link {{ (Request::is('shots/latest') ? '__active' : '') }} mdl-js-button mdl-js-ripple-effect" href="{{URL::to('shots/latest')}} ripple-red">Latest</a>
+      <a class="mdl-navigation__link {{ (Request::is('shots/latest') ? '__active' : '') }} mdl-js-button mdl-js-ripple-effect" href="{{URL::to('shots/latest')}}">Latest</a>
 
-      <a class="mdl-navigation__link {{ (Request::is('shots') || Request::is('shots/trending') || Request::is('/')? '__active' : '') }} mdl-js-button mdl-js-ripple-effect ripple-red" href="{{URL::to('shots/trending')}}">Trending</a>
+      <a class="mdl-navigation__link {{ (Request::is('shots') || Request::is('shots/trending') || Request::is('/')? '__active' : '') }} mdl-js-button mdl-js-ripple-effect" href="{{URL::to('shots/trending')}}">Trending</a>
 
-      <a class="mdl-navigation__link {{ (Request::is('shots/featured') ? '__active' : '') }} mdl-js-button mdl-js-ripple-effect ripple-red" href="{{URL::to('shots/featured')}}">Featured</a>
+      <a class="mdl-navigation__link {{ (Request::is('shots/featured') ? '__active' : '') }} mdl-js-button mdl-js-ripple-effect" href="{{URL::to('shots/featured')}}">Featured</a>
     </nav>
 
     <div class="mdl-layout-spacer"></div>
@@ -19,7 +18,7 @@
             <i class="icon-center mdi mdi-dots-vertical"></i>
     </button>
 
-    <!-- Menu Right -->
+        <!-- Menu Right -->
    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="top-menu-right" itemscope="itemscope" itemtype="http://www.schema.org/SiteNavigationElement">
       <li class="mdl-menu__item"><a href="?cat=ma" class="mt-menu__link">Men</a></li>
       <li class="mdl-menu__item"><a href="?cat=fm" class="mt-menu__link">Women</a></li>
@@ -33,9 +32,7 @@
 @endsection
 
 
-
-
-<section class="mt-grid clearfix grid" id="grid" infinite-scroll="updateShots('shots')" infinite-scroll-disabled='busy' infinite-scroll-distance="5" ng-cloak infinite-scroll-container='".mdl-layout__content"'>
+<section class="mt-grid clearfix grid" id="grid" infinite-scroll="updateShots('{{$res}}')" infinite-scroll-disabled='busy' infinite-scroll-distance="5" ng-cloak infinite-scroll-container='".mdl-layout__content"' ng-cloak>
 
 <div angular-grid="shots">
     <!-- Shot Template -->
@@ -53,7 +50,7 @@
           <figure>
             <a href="" class="mt-grid___link" ng-click="open(shot.file_name)">
                 <div class="mt-image-holder" itemscope itemtype="http://schema.org/thumbnail">
-                    <img itemprop="image" ng-src="/uploads/@{{shot.file_name}}" alt="@{{shot.alt}}">
+                    <img itemprop="image" ng-src="http://mytailorafrica.com/uploads/@{{shot.file_name}}" alt="@{{shot.alt}}">
                 </div>
             </a>
           </figure>
@@ -78,6 +75,7 @@
     
   </div>
 
+    {{-- Loader --}}
     <section class="mt-load-more-wrapper" ng-show='busy'>
           <div class="mt-load-bar">
             <div class="bar"></div>
@@ -87,13 +85,3 @@
     </section>
 
 </section>
-
-
-{{-- Post Shot Button --}}
-{{-- @if($user)
-
-  <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-button--floating-action" ng-click="showShotPoster()">
-    <i class="mdi mdi-camera"></i>
-  </button>
-
-@endif --}}

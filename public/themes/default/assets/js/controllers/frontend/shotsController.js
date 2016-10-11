@@ -14,7 +14,7 @@
 
             var pathArray = window.location.pathname.split( '/' );
 
-            var $sort = pathArray[2],
+            var $slug = pathArray[2],
                 $cat = getParameterByName('cat') || null,
                 $page = getParameterByName('page', $scope.after);
 
@@ -25,9 +25,9 @@
              *
              * @param $sort
              */
-            $scope.getShots = function($repo,$sort, $params){
+            $scope.getShots = function($repo, $slug, $params){
 
-                shotsFactory.index($repo, $sort, $params).then(function(response){
+                shotsFactory.index($repo, $slug, $params).then(function(response){
 
                     var items = response.data.data;
 
@@ -48,6 +48,7 @@
                 });
             };
 
+
             /**
              * Loads more shots from server
              */
@@ -56,8 +57,7 @@
                 if(!$page) return;
 
                 $scope.busy = true;
-
-                $scope.getShots($repo, $sort, {cat: $cat, page:$page});
+                $scope.getShots($repo, $slug, {cat: $cat, page:$page});
                 $scope.busy = false;
 
             };
