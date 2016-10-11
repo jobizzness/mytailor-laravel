@@ -42,15 +42,15 @@
           <header class="mt-shot-header clearfix">
             <section class="mt-shot-avatar-wrapper">
               <a href="#" class="mt-shot-avatar" title="Mytailor">
-                 <h2 class="mt-avatar-name">@{{shot.publishable.profile.username}}</h2>
-                  <img height="30" width="30" ng-src="/uploads/profiles/@{{shot.publishable.profile.avatar}}" alt="">
+                 <h2 class="mt-avatar-name">@{{shot.owner.username}}</h2>
+                  <img height="30" width="30" ng-src="/uploads/profiles/@{{shot.owner.avatar.avatar_small}}" alt="">
               </a>
             </section>
           </header>
           <figure>
-            <a href="" class="mt-grid___link" ng-click="open(shot.file_name)">
+            <a href="" class="mt-grid___link" ng-click="open(shot.name)">
                 <div class="mt-image-holder" itemscope itemtype="http://schema.org/thumbnail">
-                    <img itemprop="image" ng-src="http://mytailorafrica.com/uploads/@{{shot.file_name}}" alt="@{{shot.alt}}">
+                    <img itemprop="image" ng-src="http://mytailorafrica.com/uploads/@{{shot.name}}" alt="@{{shot.alt}}">
                 </div>
             </a>
           </figure>

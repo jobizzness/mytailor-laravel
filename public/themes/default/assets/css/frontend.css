@@ -5583,7 +5583,6 @@ button.icon-round {
 button.top-menu-right {
   position: absolute;
   right: 6px;
-  top: 5px;
   font-size: 21px;
   color: #797979;
   z-index: 7; }
@@ -7114,12 +7113,12 @@ a.mt-sidebar-link {
   margin: 0 auto; }
 
 .mt-top-menu {
-  margin-left: 25px;
+  padding: 5px 5px;
+  padding-right: 35px;
   position: absolute;
   top: 0;
   height: 45px;
-  right: 0;
-  padding: 5px 5px; }
+  right: 0; }
 
 /*Call to action section*/
 .mt-layout_calls-wrapper {

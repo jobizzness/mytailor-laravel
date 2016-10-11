@@ -6,7 +6,7 @@ app.factory('shotsFactory', ['$http', function($http){
 
 
      this.index = function($resource,$sort, params){
-     	return $http.get('/api/'+$resource+'/'+$sort, {params:params});
+     	return $http.get('/api/v1/'+$resource+'/'+$sort, {params:params});
      };
 
     //this.explore = function($slug, params){

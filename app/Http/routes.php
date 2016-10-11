@@ -85,7 +85,7 @@ Route::group(['prefix' => 'admin/api'], function () {
 |--------------------------------------------------------------------------
 |
 */
-Route::group(['prefix' => 'api'], function () {
+Route::group(['prefix' => 'api/v1'], function () {
 	/**
 	 * Frontend Api Routes
 	 */

@@ -76,6 +76,7 @@ class DbShotsRepository implements ShotsRepositoryInterface{
             ->orderBy('views', 'desc')
             ->orderBy('updated_at', 'desc')
             ->where('published', '=', 1)
+            ->where('featured', '=', 1)
             ->paginate(8);
     }
 
@@ -115,15 +116,10 @@ class DbShotsRepository implements ShotsRepositoryInterface{
     /**
      * Increments Views of a shot.
      *
-     * @param $id
+     * @param $shot
      */
-    public function incrementViews($id)
+    public function incrementViews($shot)
     {
-        $shot = Shot::where(\DB::raw(
-            "left(file_name, length(file_name) - LOCATE('.', Reverse(file_name)))"),
-            '=',
-            $id)->first();
-
         $shot->views++;
         $shot->timestamps = false;
         $shot->save();

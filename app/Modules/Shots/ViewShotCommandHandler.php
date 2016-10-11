@@ -36,7 +36,6 @@ class ViewShotCommandHandler implements CommandHandler
             $this->getCommentPublishableProfile($shot);
 
             $shot->related = $this->shots->related($shot);
-            $shot->date = $shot->created_at->diffForHumans();
             $shot->comments->total = count($shot->comments);
 
             $shot->raise(new ShotWasViewed($shot));

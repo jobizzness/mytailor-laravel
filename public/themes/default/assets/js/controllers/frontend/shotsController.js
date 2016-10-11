@@ -2,7 +2,8 @@
 
 	app.controller("shotsController", ["$scope", "ngDialog","$window",
                     "shotsFactory", "$timeout", '$pusher', "$filter",
-        function($scope, ngDialog, $window, shotsFactory, $timeout, $pusher, $filter) {
+                    "$log",
+        function($scope, ngDialog, $window, shotsFactory, $timeout, $pusher, $filter, $log) {
 
             var client = new Pusher('67b6f9a2b88b9350c8fa');
             var pusher = $pusher(client);
@@ -29,7 +30,7 @@
 
                 shotsFactory.index($repo, $slug, $params).then(function(response){
 
-                    var items = response.data.data;
+                    var items = response.data.response.shots.data;
 
                     $scope.per_page = $scope.per_page +response.data.per_page;
 
@@ -37,13 +38,7 @@
                         $scope.shots.push(value);
                     });
 
-                    //for (var i = 0; i < items.length; i++) {
-                    //    console.log(items[i]);
-                    //    $scope.shots.push(items[i]);
-                    //}
-
-
-                    $scope.after = response.data['next_page_url'];
+                    $scope.after = response.data.response.shots['nextPage'];
                     $page = getParameterByName('page', $scope.after);
                 });
             };
@@ -109,10 +104,11 @@
              */
             pusher.bind('shotWasViewed',
                 function(data) {
-
+                    $log.info('a shot was just viewed');
                     var $shot = $filter('findByName')($scope.shots, data.name);
-                    $shot.views++;
-
+                    if($shot){
+                        $shot.views++; 
+                    }
                 }
             );
 

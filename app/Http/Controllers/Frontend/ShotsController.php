@@ -3,20 +3,15 @@
 namespace MyTailor\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use Laracasts\Commander\CommandBus;
 use Laracasts\Commander\Events\DispatchableTrait;
-use MyTailor\Http\Controllers\Controller;
 use MyTailor\Modules\Shots\ViewShotCommand;
 use MyTailor\Repositories\ShotsRepositoryInterface;
-use MyTailor\Shot;
-use MyTailor\Profile;
 use MyTailor\Http\Requests;
-use Carbon\Carbon;
-use SEOMeta;
-use OpenGraph;
-use Twitter;
+use MyTailor\Transformers\ShotTransformer;
 
-class ShotsController extends Controller
+class ShotsController extends ApiController
 {
     use DispatchableTrait;
 
@@ -24,19 +19,24 @@ class ShotsController extends Controller
      * @var CommandBus
      */
     private $commandBus;
+    /**
+     * @var ShotTransformer
+     */
+    private $Transformer;
 
     /**
      * shotsController constructor.
      *
      * @param ShotsRepositoryInterface $shots
      * @param CommandBus $commandBus
-     * @internal param ShotsRepositoryInterface $shot
+     * @param ShotTransformer $Transformer
      */
-    public function __construct(ShotsRepositoryInterface $shots, CommandBus $commandBus){
+    public function __construct(ShotsRepositoryInterface $shots, CommandBus $commandBus, ShotTransformer $Transformer)
+    {
 
         $this->shots = $shots;
         $this->commandBus = $commandBus;
-
+        $this->Transformer = $Transformer;
     }
 
     /**
@@ -47,51 +47,65 @@ class ShotsController extends Controller
     public function index($sort, Request $request)
     {
 
-        $cat = $request->get('cat') ?: null;
+        $shots = $this->getShots($sort, $request);
 
-            switch($sort){
+        if(! $shots) {
 
-                case 'featured':
-                    $shots = $this->shots->featured($cat);
-                    break;
-                case 'latest':
-                    $shots = $this->shots->latest($cat);
-                    break;
-                Default:
-                    $shots = $this->shots->trending($cat);
+            return Response::json([
+                'error' => [
+                    'message' => 'No results Found'
+                ]
+            ], 404);
 
         }
 
-        return $shots;
+        return Response::json([
+
+            'response' => [
+
+                 'shots' => [
+                    'data' => $this->Transformer->transformCollection($shots),
+                    'nextPage' => $shots->nextPageUrl()
+                    ]
+            ]
+
+        ], 200);
+
+
+
     }
 
     /**
      * Gets info about a shot and response in Json
      *
      * @param $id
-     * @param Request $request
      * @return mixed
      */
-    public function show($id, Request $request )
+    public function show($id)
     {
 
         $command = new ViewShotCommand($id);
         $shot = $this->commandBus->execute($command);
 
+        if(! $shot) {
 
-
-        if($shot) {
-
-            $this->dispatchEventsFor($shot);
-
-            if ($request->ajax() || $request->wantsJson()) {
-
-                return $shot->toArray();
-            }
-
+            return Response::json([
+                'error' => [
+                    'message' => 'Shot was not found'
+                ]
+            ], 404);
 
         }
 
+        $this->dispatchEventsFor($shot);
+
+        return Response::json([
+
+           'response' => [
+                    'data' => $this->Transformer->transform($shot)
+           ]
+
+        ], 200);
 
     }
 
@@ -103,9 +117,32 @@ class ShotsController extends Controller
      */
     public function viewed($id)
     {
-        $this->shots->incrementViews($id);
+        $shot = $this->shots->findByName($id);
+        $this->shots->incrementViews($shot);
 
-        
+    }
+
+    /**
+     * @param $sort
+     * @param Request $request
+     * @return mixed
+     */
+    protected function getShots($sort, Request $request)
+    {
+        $cat = $request->get('cat') ?: null;
+
+        switch ($sort) {
+            case 'featured':
+                $shots = $this->shots->featured($cat);
+                break;
+            case 'latest':
+                $shots = $this->shots->latest($cat);
+                break;
+            Default:
+                $shots = $this->shots->trending($cat);
+                return $shots;
+        }
+        return $shots;
     }
 
 }
