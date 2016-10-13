@@ -4,11 +4,11 @@
 @section('sub_header')
     <div class="mdl-layout-spacer"></div>
     <nav class="mdl-navigation mt-nav-has-border" role="navigataion" itemscope itemtype="https://schema.org/SiteNavigationElement">
-      <a class="mdl-navigation__link {{ (Request::is('shots/latest') ? '__active' : '') }} mdl-js-button mdl-js-ripple-effect" href="{{URL::to('shots/latest')}}">Latest</a>
+      <a class="mdl-navigation__link mdl-js-button mdl-js-ripple-effect {{setActive('shots/latest')}}" href="{{URL::to('shots/latest')}}">Latest</a>
 
-      <a class="mdl-navigation__link {{ (Request::is('shots') || Request::is('shots/trending') || Request::is('/')? '__active' : '') }} mdl-js-button mdl-js-ripple-effect" href="{{URL::to('shots/trending')}}">Trending</a>
+      <a class="mdl-navigation__link mdl-js-button mdl-js-ripple-effect {{setActive('shots/trending')}}" href="{{URL::to('shots/trending')}}">Trending</a>
 
-      <a class="mdl-navigation__link {{ (Request::is('shots/featured') ? '__active' : '') }} mdl-js-button mdl-js-ripple-effect" href="{{URL::to('shots/featured')}}">Featured</a>
+      <a class="mdl-navigation__link mdl-js-button mdl-js-ripple-effect {{setActive('shots/featured')}}" href="{{URL::to('shots/featured')}}">Featured</a>
     </nav>
 
     <div class="mdl-layout-spacer"></div>
@@ -50,7 +50,7 @@
           <figure>
             <a href="" class="mt-grid___link" ng-click="open(shot.name)">
                 <div class="mt-image-holder" itemscope itemtype="http://schema.org/thumbnail">
-                    <img itemprop="image" ng-src="http://mytailorafrica.com/uploads/@{{shot.name}}" alt="@{{shot.alt}}">
+                    <img itemprop="image" ng-src="/uploads/@{{shot.name}}" alt="@{{shot.alt}}">
                 </div>
             </a>
           </figure>

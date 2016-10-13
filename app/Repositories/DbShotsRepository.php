@@ -1,6 +1,4 @@
-<?php
-
-namespace MyTailor\Repositories;
+<?php namespace MyTailor\Repositories;
 
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -9,7 +7,12 @@ use MyTailor\Shot;
 
 class DbShotsRepository implements ShotsRepositoryInterface{
 
+
+    /**
+     * @var Shots
+     */
     protected $shots;
+
     /**
      * @var Request
      */
@@ -47,7 +50,6 @@ class DbShotsRepository implements ShotsRepositoryInterface{
 
     /**
      * Shots users view the most/trending.
-     *
      * Reddit's Algorithm
      *
      * @param $cat
@@ -94,6 +96,7 @@ class DbShotsRepository implements ShotsRepositoryInterface{
             ), '=', $name)
             ->first();
     }
+
 
     /**
      * Get Related shots and order by popularity.
@@ -143,12 +146,12 @@ class DbShotsRepository implements ShotsRepositoryInterface{
 
         $shots->transform(function ($shot, $key) {
             return (object) $shot;
-        });
 
+        })->map(function ($shot) {
 
-        $shots->map(function ($shot) {
-                $shot->publishable['profile'] = $shot->profile;
-                unset($shot->profile);
+                $shot->publishable = (object) $shot->publishable;
+                $shot->publishable->profile = (object) $shot->profile;
+
             return $shot;
         });
 
@@ -158,7 +161,7 @@ class DbShotsRepository implements ShotsRepositoryInterface{
     }
 
     /**
-     * Setiting fields for Posting a shot.
+     * Set fields for Posting a shot.
      *
      * @param $file_name
      * @param $publishable_type
@@ -175,9 +178,15 @@ class DbShotsRepository implements ShotsRepositoryInterface{
         $shot->published_by = $published_by;
 
         return Shot::saver($shot);
-
     }
 
+    /**
+     * Paginate
+     *
+     * @param $array
+     * @param $perPage
+     * @return LengthAwarePaginator
+     */
     private function paginate($array, $perPage)
     {
         $page = Input::get('page', 1);

@@ -249,35 +249,35 @@ app.controller("authController", ["$scope",
     });
 	'use strict';
 
-	app.controller("ovalController", ["$scope","shotFactory", "$timeout",
+	app.controller("ovalController", ["$scope","shotsFactory", "$timeout",
 
-		function($scope, shotFactory, $timeout) {
+		function($scope, shotsFactory, $timeout) {
 			
-			 		 shotFactory.show($scope.name).then(function(response){
-			 				$scope.shot = response.data;
-			 		});
+		 		 shotsFactory.show($scope.name).then(function(response){
+		 				$scope.shot = response.data.response.data;
+		 		});
 
-			 		$timeout(function(){
-			 		 	shotFactory.viewed($scope.name);
-			 		 }, 1500);
+		 		$timeout(function(){
+		 		 	shotsFactory.viewed($scope.name);
+		 		 }, 1500);
 		}
 
 			]);
 
-		app.controller("shotController", ["$scope","shotFactory", "$timeout","$window",
+		// app.controller("shotController", ["$scope","shotsFactory", "$timeout","$window",
 
-		function($scope, shotFactory, $timeout, $window) {
+		// function($scope, shotsFactory, $timeout, $window) {
 
-					var $name = $window.location.href;
+		// 			var $name = $window.location.href;
 
-					$name = $name.substring($name.lastIndexOf('/')+1);
+		// 			$name = $name.substring($name.lastIndexOf('/')+1);
 
-			 		$timeout(function(){
-			 		 	shotFactory.viewed($name);
-			 		 }, 1500);
-		}
+		// 	 		$timeout(function(){
+		// 	 		 	shotsFactory.viewed($name);
+		// 	 		 }, 1500);
+		// }
 
-			]);
+		// 	]);
 'use strict';
 
 	app.controller("designersController", ["$scope","shotFactory",
@@ -294,14 +294,6 @@ app.controller("authController", ["$scope",
 		]);
 	app.factory('shotFactory', ['$http', function($http){
 
-			// will return object of a single shot
-			this.show = function (name) {
-			  	return $http.get("/api/shot/" + name);
-			};
-
-			this.viewed = function(name){
-				return $http.post("/api/shot/viewed/" + name);
-			};
 
 			this.getParmalinks = function(){
 				var data = [
@@ -340,13 +332,6 @@ app.controller("authController", ["$scope",
 				return data;
 			}
 
-			// this.update = function(id, shot){
-			// 	return $http.put('/admin/shots/' + id, shot);
-			// };
-
-			// this.destroy = function(name){
-			// 	return $http.delete('/admin/shots/' + name);
-			// };
 
 			return this;
 	}]);
@@ -362,28 +347,20 @@ app.factory('shotsFactory', ['$http', function($http){
      	return $http.get('/api/v1/'+$resource+'/'+$sort, {params:params});
      };
 
+        // will return object of a single shot
+    this.show = function (name) {
+        return $http.get("/api/v1/shot/" + name);
+    };
+
+    this.viewed = function(name){
+        return $http.post("/api/v1/shot/viewed/" + name);
+    };
+
     //this.explore = function($slug, params){
     //    return $http.get('/api/explore/'+$slug, {params:params});
     //};
 
-    //this.updateShots = function() {
-    //    if (this.busy) return;
-    //    this.busy = true;
-    //
-    //    var url = "https://api.reddit.com/hot?after=" + this.after ;
-    //    $http.get(url).success(function(data) {
-    //        var items = data.data.children;
-    //        for (var i = 0; i < items.length; i++) {
-    //            this.items.push(items[i].data);
-    //        }
-    //        this.after = "t3_" + this.items[this.items.length - 1].id;
-    //        this.busy = false;
-    //    }.bind(this));
-    //};
 
-    // this.destroy = function(name){
-    // 	return $http.delete('/admin/shots/' + name);
-    // };
 
     return this;
 }]);

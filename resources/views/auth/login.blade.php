@@ -10,14 +10,14 @@
         </div>
         <div class="mdl-card mdl-cell mdl-cell--4-col mdl-shadow--2dp" style="background: #636365;">
             <form method="post" class="login-form clearfix">
-                <div class="row">
-                    <div class="mdl-cell mdl-cell--6-col">
+                <div class="mdl-grid p1-Container">
+                    <div class="mdl-cell mdl-cell--12-col">
                         <input type="text" placeholder="Login" class="mt-forms login-username" id="login-username" name="email"> </div>
-                    <div class="mdl-cell mdl-cell--6-col">
+                    <div class="mdl-cell mdl-cell--12-col">
                         <input type="password" placeholder="Password" class="mt-forms login-password" id="login-password" name="password"> </div>
                         <input type="hidden" class="hidden" name="_token" value="{{ csrf_token() }}">
                 </div>
-                <div class="row">
+                <div class="">
                     <div class="mdl-cell mdl-cell--4-col">
                         <div class="rem-password">
                             <p>Remember Me

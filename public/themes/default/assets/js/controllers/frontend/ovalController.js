@@ -1,31 +1,31 @@
 	'use strict';
 
-	app.controller("ovalController", ["$scope","shotFactory", "$timeout",
+	app.controller("ovalController", ["$scope","shotsFactory", "$timeout",
 
-		function($scope, shotFactory, $timeout) {
+		function($scope, shotsFactory, $timeout) {
 			
-			 		 shotFactory.show($scope.name).then(function(response){
-			 				$scope.shot = response.data;
-			 		});
+		 		 shotsFactory.show($scope.name).then(function(response){
+		 				$scope.shot = response.data.response.data;
+		 		});
 
-			 		$timeout(function(){
-			 		 	shotFactory.viewed($scope.name);
-			 		 }, 1500);
+		 		$timeout(function(){
+		 		 	shotsFactory.viewed($scope.name);
+		 		 }, 1500);
 		}
 
 			]);
 
-		app.controller("shotController", ["$scope","shotFactory", "$timeout","$window",
+		// app.controller("shotController", ["$scope","shotsFactory", "$timeout","$window",
 
-		function($scope, shotFactory, $timeout, $window) {
+		// function($scope, shotsFactory, $timeout, $window) {
 
-					var $name = $window.location.href;
+		// 			var $name = $window.location.href;
 
-					$name = $name.substring($name.lastIndexOf('/')+1);
+		// 			$name = $name.substring($name.lastIndexOf('/')+1);
 
-			 		$timeout(function(){
-			 		 	shotFactory.viewed($name);
-			 		 }, 1500);
-		}
+		// 	 		$timeout(function(){
+		// 	 		 	shotsFactory.viewed($name);
+		// 	 		 }, 1500);
+		// }
 
-			]);
+		// 	]);

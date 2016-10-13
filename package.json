@@ -3,6 +3,7 @@
   "devDependencies": {
     "grunt-bower-concat": "^1.0.0",
     "gulp": "^3.9.1",
+    "laravel-elixir-browsersync-official": "^1.0.0",
     "load-grunt-tasks": "^3.5.0"
   },
   "dependencies": {

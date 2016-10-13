@@ -8,7 +8,7 @@ use SEOMeta;
 use OpenGraph;
 use Twitter;
 
-class ExploreResTemplate extends AbstractTemplate
+class ShotsExploreTemplate extends AbstractTemplate
 {
 
 

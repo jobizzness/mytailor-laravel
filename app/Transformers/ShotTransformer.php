@@ -16,7 +16,7 @@ class ShotTransformer extends Transformer
             "featured" => $shot->featured,
             "views" => $shot->views,
             "source" => $shot->source_url,
-            "created_at" => $shot->created_at->diffForHumans(),
+            "created_at" => $shot->created_at,
             "category" => $shot->category,
 
             "owner" => [
@@ -50,16 +50,4 @@ class ShotTransformer extends Transformer
 
     }
 
-    /**
-     *
-     * @param $shots
-     */
-    public function TransformCollection($shots)
-    {
-        return $shots->transform(function($shot){
-
-           return $this->transform($shot);
-
-        });
-    }
 }

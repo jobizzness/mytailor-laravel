@@ -30,10 +30,9 @@ class ShotTemplate extends AbstractTemplate{
      * @param ShotsRepositoryInterface $shots
      * @param CommandBus $commandBus
      */
-    public function __construct(ShotsRepositoryInterface $shots, CommandBus $commandBus) {
-
+    public function __construct(ShotsRepositoryInterface $shots, CommandBus $commandBus)
+    {
         $this->shots = $shots;
-
         $this->commandBus = $commandBus;
     }
 
@@ -47,18 +46,13 @@ class ShotTemplate extends AbstractTemplate{
     public function prepare(View $view, array $parameters)
     {
         $id = array_key_exists ( 'id' , $parameters) ? $parameters['id'] : null;
-
         $command = new ViewShotCommand($id);
         $shot = $this->commandBus->execute($command);
 
-
-
         if($shot) {
-
             $this->dispatchEventsFor($shot);
             $this->seoMake($shot);
             $view->with('shot', $shot);
-
         }
 
         return response()->view('errors.frontend.shot404', [], 404);

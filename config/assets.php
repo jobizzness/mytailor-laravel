@@ -10,7 +10,7 @@ return [
             "outputs" => 'app/storage/cache/images'
         ],
 
-        "sizes" => [
+        "versions" => [
 
             "small"=> [
                 "width" => 136,

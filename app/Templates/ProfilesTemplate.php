@@ -4,7 +4,6 @@
 namespace MyTailor\Templates;
 
 use Illuminate\View\View;
-use Carbon\Carbon;
 use MyTailor\Profile;
 use MyTailor\Shot;
 use SEOMeta;
@@ -17,10 +16,7 @@ class ProfilesTemplate extends AbstractTemplate{
      */
     protected $view = 'profile';
 
-    public function __construct() {
 
-
-    }
 
     public function prepare(View $view, array $parameters)
     {

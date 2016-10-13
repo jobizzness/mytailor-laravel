@@ -4,38 +4,43 @@
 namespace MyTailor\Modules\Core\Images;
 
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Illuminate\Contracts\Filesystem\Filesystem;
 
 class ImageServer {
 
-    protected $baseDir = '/public/uploads/shots';
-
+    protected $baseDir = 'uploads\shots';
     protected $Directory;
-    protected $path;
+    protected $name;
     protected $width;
     protected $height;
+    /**
+     * @var
+     */
+    private $filesystem;
 
-    public function store()
+    /**
+     * ImageServer constructor.
+     * @param Filesystem $filesystem
+     */
+    public function __construct(Filesystem $filesystem)
     {
 
 
         //Filesystem store these files
-
-        return $this;
+        $this->filesystem = $filesystem;
     }
 
     public function makeVersions(UploadedFile $file, $allSizes=true, $versions=[])
     {
         $this->PrepareImage($file->getClientOriginalName());
 
-        if($allSizes){
+            $versions = Config::get('assets.images.versions');
 
-            $versions = Config::get('assets.images.sizes');
 
-        }
-
-        foreach($versions as $version){
+        foreach($versions as $name => $version){
 
             $width = $version['width'];
 
@@ -43,14 +48,29 @@ class ImageServer {
                 $height = $version['height'];
             }
 
+            $path = $this->baseDir. '\\'.$name.$this->Directory.'\\';
 
-            Image::make($this->path)->resize($width, $height)
-                ->save($this->baseDir. '/'.$version.$this->path);
+            $this->filesystem->makeDirectory($path);
 
+            $image = Image::make($file->getRealPath())->resize($width, $height);
+            $this->filesystem->put($path.$this->name.'.'.$file->getClientOriginalExtension(), $image);
         }
 
-        return $this;
     }
+
+
+
+    /**
+     * Generates a unique directory for the image.
+     *
+     * @param $clientName
+     */
+    protected function PrepareImage($clientName)
+    {
+        $this->name = 'mt_' . md5($clientName . time());
+        $this->Directory = $this->generateDirectory($this->name);
+    }
+
     /**
      * Generates a unique Directory 05/c4/d3
      *
@@ -65,16 +85,10 @@ class ImageServer {
             array_push($directories, $d); $c=2;
         };
 
-        $Directory = '/'.$directories[0].'/'.$directories[1].'/'.$directories[2];
+        $Directory = '\\'.$directories[0].'\\'.$directories[1].'\\'.$directories[2];
 
         return $Directory;
 
-    }
-
-    protected function PrepareImage($clientName)
-    {
-        $name = 'mt_' . md5($clientName . time());
-        $this->Directory = $this->generateDirectory($name);
     }
 
 }

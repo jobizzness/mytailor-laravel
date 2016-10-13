@@ -92,6 +92,12 @@ elixir.config.publicPath = 'public/themes/default/assets';
 				],		'public/themes/default/assets/js/backend.js');
 
 	});
+
+	elixir(function(mix) {
+	  mix.browserSync({
+	  	proxy: 'mytailor.dev'
+	  });
+	});
 /*
  |--------------------------------------------------------------------------
  | Versioning & Caching

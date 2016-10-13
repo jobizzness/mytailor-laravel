@@ -50,28 +50,19 @@ class ShotsController extends ApiController
         $shots = $this->getShots($sort, $request);
 
         if(! $shots) {
-
-            return Response::json([
-                'error' => [
-                    'message' => 'No results Found'
-                ]
-            ], 404);
-
+            //we have no shots sorry.
+            return $this->NotFound('No results Found');
         }
 
-        return Response::json([
-
+        //means we have shots so lets send them through.
+        return $this->respond([
             'response' => [
-
                  'shots' => [
                     'data' => $this->Transformer->transformCollection($shots),
                     'nextPage' => $shots->nextPageUrl()
                     ]
             ]
-
-        ], 200);
-
-
+        ]);
 
     }
 
@@ -87,26 +78,16 @@ class ShotsController extends ApiController
         $command = new ViewShotCommand($id);
         $shot = $this->commandBus->execute($command);
 
-        if(! $shot) {
+        if( $shot) {
+            $this->dispatchEventsFor($shot);
 
-            return Response::json([
-                'error' => [
-                    'message' => 'Shot was not found'
-                ]
-            ], 404);
-
-        }
-
-        $this->dispatchEventsFor($shot);
-
-        return Response::json([
-
-           'response' => [
+            return $this->respond([
+                'response' => [
                     'data' => $this->Transformer->transform($shot)
-           ]
-
-        ], 200);
-
+                ]
+            ]);
+        }
+        return $this->NotFound('Shot was not Found');
     }
 
     /**

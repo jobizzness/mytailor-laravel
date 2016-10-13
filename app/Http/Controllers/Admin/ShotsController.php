@@ -71,7 +71,7 @@ class ShotsController extends Controller    {
 
         $file = $request->file('files')[0];
 
-        $image = $imageServer->makeVersions($file)->store($file);
+        $image = $imageServer->makeVersions($file);
 
         //get the size and width of the original
         //Create 3 directories from $name

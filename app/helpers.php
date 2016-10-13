@@ -8,3 +8,12 @@ if (! function_exists('theme'))	{
 		return url($config['folder'].'/'.$config['active'].'/assets/'.$path);
 	}
 }
+
+
+if (! function_exists('setActive'))	{
+	
+	function setActive($path, $active = '__active') {
+		
+		return Request::is($path) ? $active : '';
+	}
+}
