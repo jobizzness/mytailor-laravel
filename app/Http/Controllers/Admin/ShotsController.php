@@ -90,36 +90,36 @@ class ShotsController extends Controller    {
         return true;
     }
 
-    public function clean(ImageServerProd $imageServer)
-    {
-        $shots = Shot::where('image_id', '=', null)->get();
-
-        foreach($shots as $shot)
-        {
-            $name = pathinfo($shot->file_name, PATHINFO_FILENAME);
-
-            $i = $imageServer->make($name);
-
-
-            $image = new Image();
-            $image->small = $i->small();
-            $image->original = $i->original();
-            $image->phone = $i->phone();
-            $image->medium = $i->medium();
-            $image->large = $i->large();
-            $image->save();
-
-            $shot->file_name = $i->getName();
-            $shot->image_id = $image->id;
-            $shot->save();
-
-
-
-
-
-
-        }
-    }
+//    public function clean(ImageServerProd $imageServer)
+//    {
+//        $shots = Shot::where('image_id', '=', null)->get();
+//
+//        foreach($shots as $shot)
+//        {
+//            $name = pathinfo($shot->file_name, PATHINFO_FILENAME);
+//
+//            $i = $imageServer->make($name);
+//
+//
+//            $image = new Image();
+//            $image->small = $i->small();
+//            $image->original = $i->original();
+//            $image->phone = $i->phone();
+//            $image->medium = $i->medium();
+//            $image->large = $i->large();
+//            $image->save();
+//
+//            $shot->file_name = $i->getName();
+//            $shot->image_id = $image->id;
+//            $shot->save();
+//
+//
+//
+//
+//
+//
+//        }
+//    }
 
     /**
      * @param $id

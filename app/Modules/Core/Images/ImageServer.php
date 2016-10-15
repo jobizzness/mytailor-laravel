@@ -87,15 +87,8 @@ class ImageServer {
             $height = $this->getHeight($version);
 
             $version = Image::make($file)
-                ->encode('jpg', 75);
-
-            if(!$name == 'large'){
-                $version->fit($width, $height);
-            } else {
-                $version->resize($width, $height);
-            }
-
-            $version->stream();
+                ->encode('jpg', 75)
+                ->fit($width, $height)->stream();
 
             $path = $this->baseDir. '/'.$name.$this->Directory.'/';
             $this->store($version->__toString(), $path);
