@@ -31,12 +31,12 @@ class ShotTransformer extends Transformer
                 ]
 
             ],
-            "tags" => [
-                   "uri" => "/",
-                   "data" => [
-                       $shot->tags
-                   ],
-            ],
+//            "tags" => [
+//                   "uri" => "/",
+//                   "data" => [
+//                       $shot->tags
+//                   ],
+//            ],
 
             "comments" => [
                     "uri" => "/",

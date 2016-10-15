@@ -9,7 +9,7 @@ use MyTailor\Repositories\DbShotsRepository;
 use MyTailor\Http\Controllers\Controller;
 use MyTailor\Transformers\ShotTransformer;
 
-class ExploreController extends Controller
+class ExploreController extends ApiController
 {
 
     /**

@@ -290,8 +290,7 @@ class Shot extends Model {
          *
          */
         $this->tags->lists('id', 'tag_name');
-        $this->with('publishable');
-        $this->profile = \MyTailor\Profile::find($this->publishable->profile_id);
+        $this->with('publishable', 'image', 'comments.');
         $this->name = pathinfo($this->file_name, PATHINFO_FILENAME);
 
         return $this->toArray();

@@ -15,7 +15,7 @@
 
             var pathArray = window.location.pathname.split( '/' );
 
-            var $slug = pathArray[2],
+            var $slug = pathArray[2] ? pathArray[2] : 'trending',
                 $cat = getParameterByName('cat') || null,
                 $page = getParameterByName('page', $scope.after);
 

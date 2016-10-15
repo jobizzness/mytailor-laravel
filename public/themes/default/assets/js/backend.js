@@ -2,12 +2,12 @@
 var app = angular.module('app', ['ngAnimate', 'ngMessages', 'ngSanitize', 'ui.select', 
 								'ngDialog', 'gridshore.c3js.chart']);
 
+
 var template_path = '/themes/default/views/segments/';
 
 app.config(function (ngDialogProvider) {
     ngDialogProvider.setForceHtmlReload(true);
 });
-
 /*
  * @author Jobizzness@gmail.com
  * Application scripts

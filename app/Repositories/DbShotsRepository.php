@@ -38,7 +38,7 @@ class DbShotsRepository implements ShotsRepositoryInterface{
      */
     public function latest($cat) {
          return $this->shots
-            ->with('image','publishable', 'publishable.profile')
+            ->with('image','comments', 'publishable.profile')
             ->category($cat)
             ->orderBy('updated_at', 'desc')
             ->orderBy('views', 'desc')
@@ -58,7 +58,7 @@ class DbShotsRepository implements ShotsRepositoryInterface{
      */
     public function trending($cat){
         return $this->shots
-            ->with('image','publishable', 'publishable.profile')
+            ->with('image','comments', 'publishable.profile')
             ->select(\DB::raw( '((views - 1) / (TIMESTAMPDIFF(HOUR, updated_at, NOW()) + 2)^1.5) as Popularity, shots.*'))
             ->category($cat)
             ->orderBy('Popularity', 'desc')
@@ -74,7 +74,7 @@ class DbShotsRepository implements ShotsRepositoryInterface{
      */
     public function featured($cat){
         return $this->shots
-            ->with('image','publishable', 'publishable.profile')
+            ->with('image','comments', 'publishable.profile')
             ->category($cat)
             ->orderBy('views', 'desc')
             ->orderBy('updated_at', 'desc')
@@ -142,15 +142,19 @@ class DbShotsRepository implements ShotsRepositoryInterface{
     {
         $cat ? $facets = ['filters' => "category:$cat"] : $facets = null;
         $shots = Shot::search($slug, $facets);
+
+
         $shots =  $this->paginate($shots['hits'], 8);
 
         $shots->transform(function ($shot, $key) {
             return (object) $shot;
 
-        })->map(function ($shot) {
+        })
+            ->map(function ($shot) {
 
                 $shot->publishable = (object) $shot->publishable;
-                $shot->publishable->profile = (object) $shot->profile;
+                $shot->publishable->profile = (object) $shot->publishable->profile;
+                $shot->image = (object) $shot->image;
 
             return $shot;
         });
