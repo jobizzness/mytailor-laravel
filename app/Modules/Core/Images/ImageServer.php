@@ -4,18 +4,42 @@
 namespace MyTailor\Modules\Core\Images;
 
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Illuminate\Contracts\Filesystem\Filesystem;
 
 class ImageServer {
 
-    protected $baseDir = 'uploads\shots';
+    /**
+     * @var string
+     */
+    protected $baseDir = 'uploads/shots';
+
+    /**
+     * @var string
+     */
+    protected $cloudURL= 'https://s3.amazonaws.com/mytailor-v1/';
+
+    /**
+     * @var
+     */
+    protected $versions;
+
+    /**
+     * @var array
+     */
+    protected $magicMethods = ['original', 'large', 'medium', 'phone', 'small'];
+
+    /**
+     * @var
+     */
     protected $Directory;
+
+    /**
+     * @var
+     */
     protected $name;
-    protected $width;
-    protected $height;
+
     /**
      * @var
      */
@@ -23,72 +47,168 @@ class ImageServer {
 
     /**
      * ImageServer constructor.
+     *
      * @param Filesystem $filesystem
      */
     public function __construct(Filesystem $filesystem)
     {
 
-
-        //Filesystem store these files
         $this->filesystem = $filesystem;
     }
 
-    public function makeVersions(UploadedFile $file, $allSizes=true, $versions=[])
+    /**
+     * Upload the image and create its versions.
+     * @param UploadedFile $file
+     * @return $this
+     */
+    public function upload(UploadedFile $file)
     {
-        $this->PrepareImage($file->getClientOriginalName());
+        $fileName = $file->getClientOriginalName();
 
-            $versions = Config::get('assets.images.versions');
+        $this->generateName($fileName)
+             ->generateDirectory()
+             ->makeVersions($file->getRealPath());
 
+        return $this;
+    }
+
+    /**
+     * Please Refactor Me.........
+     * @param $file
+     * @return $this
+     */
+    public function makeVersions($file)
+    {
+        $versions = Config::get('assets.images.versions');
 
         foreach($versions as $name => $version){
 
-            $width = $version['width'];
+            $width = $this->getWidth($version);
+            $height = $this->getHeight($version);
 
-            if(array_key_exists('height', $version)){
-                $height = $version['height'];
+            $version = Image::make($file)
+                ->encode('jpg', 75);
+
+            if(!$name == 'large'){
+                $version->fit($width, $height);
+            } else {
+                $version->resize($width, $height);
             }
 
-            $path = $this->baseDir. '\\'.$name.$this->Directory.'\\';
+            $version->stream();
 
-            $this->filesystem->makeDirectory($path);
-
-            $image = Image::make($file->getRealPath())->resize($width, $height);
-            $this->filesystem->put($path.$this->name.'.'.$file->getClientOriginalExtension(), $image);
+            $path = $this->baseDir. '/'.$name.$this->Directory.'/';
+            $this->store($version->__toString(), $path);
         }
 
+        $this->storeOriginal($file);
+
+        return $this;
     }
 
 
-
     /**
-     * Generates a unique directory for the image.
-     *
-     * @param $clientName
+     * @return mixed
      */
-    protected function PrepareImage($clientName)
+    public function getName()
     {
-        $this->name = 'mt_' . md5($clientName . time());
-        $this->Directory = $this->generateDirectory($this->name);
+        return $this->name;
     }
 
     /**
      * Generates a unique Directory 05/c4/d3
      *
-     * @param $name
      * @return string
      */
-    public function generateDirectory($name){
+    protected function generateDirectory(){
 
         $directories = []; $c=0; $n=3;
         for($i=0; $i<3; $i++){
-            $n = $n+$c; $d = substr($name, $n, 2);
+            $n = $n+$c; $d = substr($this->name, $n, 2);
             array_push($directories, $d); $c=2;
         };
 
-        $Directory = '\\'.$directories[0].'\\'.$directories[1].'\\'.$directories[2];
+        $this->Directory = '/'.$directories[0].'/'.$directories[1].'/'.$directories[2];
 
-        return $Directory;
+        return $this;
 
+    }
+
+    /**
+     * Generates a unique name for the image.
+     *
+     * @param $clientName
+     * @return string
+     */
+    protected function generateName($clientName)
+    {
+        $this->name = 'mt_' . md5($clientName . time());
+
+        return $this;
+    }
+
+    /**
+     * @param $image
+     * @param $path
+     */
+    private function store($image, $path)
+    {
+        $this->filesystem->put($path.$this->name.'.jpg', $image, 'public');
+    }
+
+    /**
+     * Generates methods based on the method call.
+     * @param $name
+     * @param $params
+     * @return string
+     */
+
+    public function __call($name, $params)
+    {
+        if(in_array($name, $this->magicMethods)){
+            return $this->imageUrl($name);
+        }
+    }
+
+
+    /**
+     * Return the URL of an image on the cloud.
+     *
+     * @param $version
+     * @return string
+     */
+    protected function imageUrl($version)
+    {
+        return $this->cloudURL. $this->baseDir. '/'. $version . $this->Directory.'/'. $this->name . '.jpg';
+    }
+
+    /**
+     * @param $file
+     */
+    protected function storeOriginal($file)
+    {
+        $original = Image::make($file)
+            ->encode('jpg', 75)
+            ->stream();
+        $path = $this->baseDir . '/' . 'original' . $this->Directory . '/';
+        $this->store($original->__toString(), $path);
+    }
+
+    private function getWidth($version)
+    {
+        return $version['width'];
+    }
+
+    /**
+     * @param $version
+     * @return null
+     */
+    private function getHeight($version)
+    {
+            if(array_key_exists('height', $version)){
+               return $version['height'];
+            }
+        return null;
     }
 
 }

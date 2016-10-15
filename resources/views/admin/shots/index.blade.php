@@ -45,9 +45,9 @@
                       <div class="shot-item mdl-cell mdl-cell--4-col">
                          <a ng-click="show({{$shot->id}})">
                           <figure class="">
-                             <img src="../uploads/{{$shot->file_name}}">
+                             <img src="{{$shot->image->medium}}">
                           </figure>
-                         </a>
+                         </a>ss
                       </div>
                   @endforeach
 

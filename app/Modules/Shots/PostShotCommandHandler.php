@@ -28,9 +28,10 @@ class PostShotCommandHandler implements CommandHandler {
      * @param $command
      * @return mixed
      */
-    public function handle($command){
+    public function handle($command)
+    {
 
-        $shot = $this->shots->post($command->file_name, $command->publishable_type, $command->publishable_id, $command->published_by);
+        $shot = $this->shots->post($command->publishable_type, $command->publishable_id, $command->published_by, $command->image);
 
         $this->dispatchEventsFor($shot);
 

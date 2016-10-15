@@ -45,13 +45,18 @@ class ShotsController extends Controller    {
 
         $query = $request->get('q');
         $shots = $query ? Shot::search($query)->paginate(15)
-                : $this->shots
+                : $this->shots->with('image')
+                        ->where('image_id', '!=', 0)
                         ->orderBy('shots.created_at', 'desc')->paginate(15);
 
         //also send along tags
         $tags = Tag::lists('id', 'tag_name');
+
         return view('admin.shots.index', compact('shots', 'tags'));
-}
+
+
+    }
+
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -66,27 +71,54 @@ class ShotsController extends Controller    {
      * @param Request $request
      * @param ImageServer $imageServer
      * @internal param UploadServer $uploadServer
+     * @return bool
      */
     public function store(Request $request, ImageServer $imageServer) {
 
         $file = $request->file('files')[0];
 
-        $image = $imageServer->makeVersions($file);
+        $image = $imageServer->upload($file);
 
-        //get the size and width of the original
-        //Create 3 directories from $name
-        //Move images to their right directories
-
-
-//        //$file_name = (new UploadServer)->get_name();
-//        $publishable_type = 'MyTailor\\Brand';
-//        $publishable_id = 1;
-//        $published_by = Auth::user()->id;
-//
-//        $command = new PostShotCommand($file_name, $publishable_type, $publishable_id, $published_by);
-//        $this->commandBus->execute($command);
+        $publishable_type = 'MyTailor\\Brand';
+        $publishable_id = 1;
+        $published_by = Auth::user()->id;
 
 
+        $command = new PostShotCommand($publishable_type, $publishable_id, $published_by, $image);
+        $this->commandBus->execute($command);
+
+        return true;
+    }
+
+    public function clean(ImageServerProd $imageServer)
+    {
+        $shots = Shot::where('image_id', '=', null)->get();
+
+        foreach($shots as $shot)
+        {
+            $name = pathinfo($shot->file_name, PATHINFO_FILENAME);
+
+            $i = $imageServer->make($name);
+
+
+            $image = new Image();
+            $image->small = $i->small();
+            $image->original = $i->original();
+            $image->phone = $i->phone();
+            $image->medium = $i->medium();
+            $image->large = $i->large();
+            $image->save();
+
+            $shot->file_name = $i->getName();
+            $shot->image_id = $image->id;
+            $shot->save();
+
+
+
+
+
+
+        }
     }
 
     /**

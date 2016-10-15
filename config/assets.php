@@ -22,7 +22,7 @@ return [
             ],
 
             "medium"=> [
-                "width" => 474,
+                "width" => 318,
             ],
 
             "large"=> [

@@ -50,7 +50,7 @@
           <figure>
             <a href="" class="mt-grid___link" ng-click="open(shot.name)">
                 <div class="mt-image-holder" itemscope itemtype="http://schema.org/thumbnail">
-                    <img itemprop="image" ng-src="/uploads/@{{shot.name}}" alt="@{{shot.alt}}">
+                    <img itemprop="image" ng-src="@{{shot.image.medium}}" alt="@{{shot.alt}}">
                 </div>
             </a>
           </figure>

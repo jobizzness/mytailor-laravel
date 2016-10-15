@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="3b142b64-0aa4-401b-8443-d4b61a8d1e93" name="mytailor" url="http://mytailorafrica.com">
+        <fileTransfer host="mytailorafrica.com" port="22" privateKey="D:\mytjobizz.ppk" rootFolder="/var/www/mytailor.me/subdomains/dev.mytailor.me" accessType="SFTP" username="jobizzness" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

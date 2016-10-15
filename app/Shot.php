@@ -44,6 +44,7 @@ class Shot extends Model {
      * Store a shot and raise a new event.
      *
      * @param $shot
+     * @return
      */
     public static function saver($shot)
     {
@@ -118,11 +119,14 @@ class Shot extends Model {
     }
 
 
-
-
-    public function images()
+    /**
+     * A shot must have an image.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function image()
     {
-        return $this->hasOne(Image::class);
+        return $this->hasOne(Image::class,'id', 'image_id');
     }
 
     // I AM NOT SURE ABOUT THIS
@@ -130,6 +134,7 @@ class Shot extends Model {
     {
         return $query->where('title', 'LIKE', "%$search%");
     }
+
     /*
     |--------------------------------------------------------------------------
     |  Accessors OR getters

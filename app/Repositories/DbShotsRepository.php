@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Input;
+use MyTailor\Image;
 use MyTailor\Shot;
 
 class DbShotsRepository implements ShotsRepositoryInterface{
@@ -37,7 +38,7 @@ class DbShotsRepository implements ShotsRepositoryInterface{
      */
     public function latest($cat) {
          return $this->shots
-            ->with('publishable', 'publishable.profile')
+            ->with('image','publishable', 'publishable.profile')
             ->category($cat)
             ->orderBy('updated_at', 'desc')
             ->orderBy('views', 'desc')
@@ -57,7 +58,7 @@ class DbShotsRepository implements ShotsRepositoryInterface{
      */
     public function trending($cat){
         return $this->shots
-            ->with('publishable', 'publishable.profile')
+            ->with('image','publishable', 'publishable.profile')
             ->select(\DB::raw( '((views - 1) / (TIMESTAMPDIFF(HOUR, updated_at, NOW()) + 2)^1.5) as Popularity, shots.*'))
             ->category($cat)
             ->orderBy('Popularity', 'desc')
@@ -73,7 +74,7 @@ class DbShotsRepository implements ShotsRepositoryInterface{
      */
     public function featured($cat){
         return $this->shots
-            ->with('publishable', 'publishable.profile')
+            ->with('image','publishable', 'publishable.profile')
             ->category($cat)
             ->orderBy('views', 'desc')
             ->orderBy('updated_at', 'desc')
@@ -90,7 +91,7 @@ class DbShotsRepository implements ShotsRepositoryInterface{
      */
     public function findByName($name)
     {
-       return Shot::with('publishable', 'tags')->where(
+       return Shot::with('image','publishable', 'tags')->where(
 
             \DB::raw("left(file_name, length(file_name) - LOCATE('.', Reverse(file_name)))"
             ), '=', $name)
@@ -143,7 +144,6 @@ class DbShotsRepository implements ShotsRepositoryInterface{
         $shots = Shot::search($slug, $facets);
         $shots =  $this->paginate($shots['hits'], 8);
 
-
         $shots->transform(function ($shot, $key) {
             return (object) $shot;
 
@@ -163,25 +163,34 @@ class DbShotsRepository implements ShotsRepositoryInterface{
     /**
      * Set fields for Posting a shot.
      *
-     * @param $file_name
      * @param $publishable_type
      * @param $publishable_id
      * @param $published_by
+     * @param $UploadedImage
      * @return Shot
      */
-    public static function post($file_name, $publishable_type, $publishable_id, $published_by)
+    public static function post($publishable_type, $publishable_id, $published_by, $UploadedImage)
     {
+        $image = new Image();
+        $image->small = $UploadedImage->small();
+        $image->original = $UploadedImage->original();
+        $image->phone = $UploadedImage->phone();
+        $image->medium = $UploadedImage->medium();
+        $image->large = $UploadedImage->large();
+        $image->save();
+
         $shot = new Shot();
-        $shot->file_name = $file_name;
+        $shot->file_name = $UploadedImage->getName();
         $shot->publishable_type = $publishable_type;
         $shot->publishable_id = $publishable_id;
         $shot->published_by = $published_by;
+        $shot->image_id = $image->id;
 
         return Shot::saver($shot);
     }
 
     /**
-     * Paginate
+     * Custom Paginator
      *
      * @param $array
      * @param $perPage

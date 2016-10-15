@@ -45,6 +45,14 @@ class ShotTransformer extends Transformer
                     ],
             ],
 
+            "image" => [
+                "original" => $shot->image->original,
+                "small" => $shot->image->small,
+                "medium" => $shot->image->medium,
+                "large" => $shot->image->large,
+                "small" => $shot->image->small
+            ]
+
         ];
 
 
