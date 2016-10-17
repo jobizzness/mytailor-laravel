@@ -4,44 +4,70 @@
 @section('heading', 'Welcome, please login.')
 
 @section('main')
-    <section class="make-flex flex-center">
-        <div class="logo-panel">
-            
-        </div>
-        <div class="mdl-card mdl-cell mdl-cell--4-col mdl-shadow--2dp" style="background: #636365;">
-            <form method="post" class="login-form clearfix">
-                <div class="mdl-grid p1-Container">
-                    <div class="mdl-cell mdl-cell--12-col">
-                        <input type="text" placeholder="Login" class="mt-forms login-username" id="login-username" name="email"> </div>
-                    <div class="mdl-cell mdl-cell--12-col">
-                        <input type="password" placeholder="Password" class="mt-forms login-password" id="login-password" name="password"> </div>
+    <style type="text/css">
+
+        .flex-center{
+            display: flex;
+            justify-content: center;
+            height: 100%;
+            align-items: center;
+        }
+
+        .mdl-textfield__input{
+            padding: 1em 0;
+            font-size: small;
+        }
+
+        .mdl-textfield__input:focus{
+            background-color: inherit;
+        }
+        .btn-lg{
+            min-width: 100%;
+            height: 50px;
+            margin-bottom: 20px;
+        }
+                /* Change the white to any color ;) */
+        input:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0px 1000px #eee inset;
+        }
+
+
+    .mdl-textfield__label:after {
+        background-color: rgb(255, 64, 129);
+    }
+
+    .mdl-textfield--floating-label.is-focused .mdl-textfield__label, .mdl-textfield--floating-label.is-dirty .mdl-textfield__label, .mdl-textfield--floating-label.has-placeholder .mdl-textfield__label{
+        color: rgb(255, 64, 129);
+    }
+
+    </style>
+    
+    <section class="flex flex-center">
+    <div class="mdl-card mdl-shadow--6dp" 
+            style="display: inline-block;width: 370px; padding: 32px 48px 0px 48px;background: #EEE;">
+
+        <div class="mdl-card__supporting-text">
+            <form method="post">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" name="email" type="text" id="username" />
+                    <label class="mdl-textfield__label" for="username">Username</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" name="password" type="password" id="userpass" />
+                    <label class="mdl-textfield__label" for="userpass">Password</label>
+                </div>
+                <div class="mdl-card__actions">
+                    <center>
+                        <!-- Accent-colored raised button with ripple -->
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent btn-lg">
+                          Login
+                        </button>
                         <input type="hidden" class="hidden" name="_token" value="{{ csrf_token() }}">
-                </div>
-                <div class="">
-                    <div class="mdl-cell mdl-cell--4-col">
-                        <div class="rem-password">
-                            <p>Remember Me
-                                <div class="checker"><span class=""><input type="checkbox" class="rem-checkbox"></span></div>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="mdl-cell mdl-cell--8-col text-right">
-
-                        <div class="forgot-password">
-                            <a href="javascript:;">Forgot Password?</a>
-                        </div>
-                        <button class="btn mt-ms-button redish" type="submit">LogIn</button>
-
-                        @if($errors->any())
-                        <div class="login-error">
-                            <span class="danger-text">Opps ! We found weird stuff but try again</span>
-                        </div>                            
-                        @endif
-
-                    </div>
-                </div>
+                    </center>
+            </div>
             </form>
         </div>
+    </div>
     </section>
 
 

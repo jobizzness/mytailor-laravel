@@ -7,21 +7,13 @@
     <link rel="shortcut icon" href="{{ theme('images/favicon.png')}}">
     <!-- Material Design style -->
     <link rel="stylesheet" href="{{ theme('vendor/material-design-lite/material.min.css')}}">
-    <!-- Site style -->
-    <link rel="stylesheet" href="{{ theme('css/admin.css')}}">
     <!-- vendor styles -->
-    <link rel="stylesheet" href="{{ theme('css/animate.css')}}">
+    {{-- <link rel="stylesheet" href="{{ theme('css/animate.css')}}"> --}}
     </head>
     <body>
-        <div class="mt-layout grey60">
-            <div class="mt-page-wrapper">
-                <div class="mt-layout-content">
-                    @yield('main')
-                </div>
-            </div>
+        <div class="mdl-layout__container">
+            @yield('main')
         </div>
     </body>
-
-
-
+    <script src="{{ theme('vendor/material-design-lite/material.min.js')}}"></script>
 </html>
