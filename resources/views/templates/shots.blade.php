@@ -40,7 +40,9 @@
 
         <!-- The header -->
           <header class="mt-shot-header clearfix">
-            <section class="mt-shot-avatar-wrapper">
+            <section>
+              <span class="time">@{{shot.time}}</span>
+              <span class="mdl-layout-spacer"></span>
               <a href="#" class="mt-shot-avatar" title="Mytailor">
                  <h2 class="mt-avatar-name">@{{shot.owner.username}}</h2>
                   <img height="30" width="30" ng-src="/uploads/profiles/@{{shot.owner.avatar.avatar_small}}" alt="">

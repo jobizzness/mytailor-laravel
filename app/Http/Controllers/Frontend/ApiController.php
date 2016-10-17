@@ -12,6 +12,12 @@ class ApiController extends Controller
     protected $statusCode = 200;
 
 
+    public function __construct()
+    {
+        $this->middleware('cors');
+
+        Parent::construct();
+    }
     /**
      * @param string $message
      * @return mixed

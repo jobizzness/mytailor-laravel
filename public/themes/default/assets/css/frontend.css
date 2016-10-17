@@ -5228,12 +5228,15 @@ a.waves-effect .waves-ripple {
 .mt-shot-header {
   width: 100%;
   padding: 0.4em 0em;
-  border-bottom: 1px solid #eee;
-  background-color: transparent; }
-
-.mt-shot-avatar-wrapper {
-  display: inline-block;
-  float: right; }
+  border-bottom: 1px solid #eee; }
+  .mt-shot-header > section {
+    display: -ms-flexbox;
+    display: flex; }
+    .mt-shot-header > section .time {
+      font-size: 82%;
+      color: #262626;
+      margin-left: 1em;
+      margin-top: 1em; }
 
 .mt-shot-avatar {
   display: -ms-inline-flexbox;

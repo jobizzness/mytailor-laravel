@@ -4,10 +4,12 @@
 
 	<!-- The header -->
 		<header class="mt-shot-header clearfix">
-            <section class="mt-shot-avatar-wrapper">
+            <section>
+              <span class="time">{{shot.published_at}}</span>
+              <span class="mdl-layout-spacer"></span>
               <a href="#" class="mt-shot-avatar" title="Mytailor">
-                <h2 class="mt-avatar-name" ng-bind="shot.owner.username"></h2>
-                <img height="30" width="30" ng-src="/uploads/profiles/{{shot.owner.avatar.avatar_small}}" alt="Braden Hamm">
+                 <h2 class="mt-avatar-name">{{shot.owner.username}}</h2>
+                  <img height="30" width="30" ng-src="/uploads/profiles/{{shot.owner.avatar.avatar_small}}" alt="">
               </a>
             </section>
          </header>
@@ -21,7 +23,6 @@
 		<div class="shot-info" style="padding: 1em 3em;min-height: 20px;background: #F8F8F8;">
 			<div class="shot-title" style="padding: 1em 0;">
 				<a href="#" ng-bind="shot.title"></a>
-				<p class="shot-date">@{{shot.date}}</p>
 			</div>
 			<div class="shot-description">
 				<p ng-bind="shot.description">

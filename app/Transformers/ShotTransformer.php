@@ -1,6 +1,8 @@
 <?php namespace MyTailor\Transformers;
 
 
+use Carbon\Carbon;
+
 class ShotTransformer extends Transformer
 {
 
@@ -16,7 +18,7 @@ class ShotTransformer extends Transformer
             "featured" => $shot->featured,
             "views" => $shot->views,
             "source" => $shot->source_url,
-            "created_at" => $shot->created_at,
+            "time" => $this->prettyDate($shot->published_at),
             "category" => $shot->category,
 
             "owner" => [
@@ -56,6 +58,17 @@ class ShotTransformer extends Transformer
         ];
 
 
+    }
+
+    public function prettyDate($value)
+    {
+        $diffForHumans = Carbon::createFromFormat('Y-m-d H:i:s', $value)->diffForHumans();
+
+        $data = explode(" ", $diffForHumans);
+        $number = $data[0];
+        $denominator = substr($data[1], 0, 1);
+
+        return $number . $denominator;
     }
 
 }

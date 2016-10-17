@@ -5,12 +5,19 @@ namespace MyTailor;
 use Illuminate\Database\Eloquent\Model;
 use AlgoliaSearch\Laravel\AlgoliaEloquentTrait;
 use Laracasts\Commander\Events\EventGenerator;
+use Laracasts\Presenter\PresentableTrait;
 use MyTailor\Modules\Shots\Events\ShotWasPosted;
 
 class Shot extends Model {
 
-    use EventGenerator, AlgoliaEloquentTrait;
+    use EventGenerator, AlgoliaEloquentTrait, PresentableTrait;
 
+    /**
+     * Path to Shots Presenter Class.
+     *
+     * @var string
+     */
+    protected $presenter = 'MyTailor\Presenters\Shots\ShotsPresenter';
     /*
     |--------------------------------------------------------------------------
     | Actions
