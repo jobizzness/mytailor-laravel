@@ -88,10 +88,10 @@
 			<section>
 				<div>
 				<details>
-					<summary style="padding:1em;">{{$shot->comments->total}} comments</summary>
+					<summary style="padding:1em;">{{$shot->comments->count()}} comments</summary>
 					<ul class="comments-list" ng-scrollbars ng-scrollbars-config="config">
 
-						@foreach($shot->comments as $comment)
+						@forelse($shot->comments as $comment)
 						  <li class="comment-list__item card">
 							  <a href="#" class="mt-shot-avatar" title="Mytailor">
 								    <span class="comment-avatar">
@@ -107,8 +107,9 @@
 								  </span> 
 									  	<p class="comment__text">{{$comment->body}} <time> 1 hr</time></p>
 								</main>
-					  	</li>	
-					  	@endforeach
+					  	</li>
+					  		@empty
+					  	@endforelse
 
 				  </ul> 
 				</details>

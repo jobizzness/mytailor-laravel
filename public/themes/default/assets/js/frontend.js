@@ -60,16 +60,6 @@ app.controller("MainController", ["$scope", "ngDialog", "shotFactory", function(
     $scope.searching = false;
     $scope.links = shotFactory.getParmalinks();
 
-    $scope.config = {
-        autoHideScrollbar: false,
-        theme: 'light',
-        advanced:{
-            updateOnContentResize: true
-        },
-        setHeight: 200,
-        scrollInertia: 0
-    };
-
     $scope.toggleSidebar = function () {
         $scope.toggle = !$scope.toggle;
     };

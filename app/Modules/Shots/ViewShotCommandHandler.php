@@ -27,10 +27,9 @@ class ViewShotCommandHandler implements CommandHandler
     {
         $shot = $this->shots->findByName($command->name);
 
-        if($shot) {
-            $shot->with('comments', 'publishable.profile');
-            $shot->raise(new ShotWasViewed($shot));
 
+        if($shot) {
+            $shot->raise(new ShotWasViewed($shot));
           return $shot;
 
         }

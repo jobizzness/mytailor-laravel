@@ -2504,6 +2504,9 @@ figure.shot-cover.--profile__feed {
   .grid-item {
     width: calc(100% - 25px); } }
 
+.mt-shot-header {
+  background-color: #fff; }
+
 .mt-grid___link:hover .dimOverlay, .mt-grid___link:hover figcaption:hover {
   opacity: 1;
   filter: alpha(opacity=100); }

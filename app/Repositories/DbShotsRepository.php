@@ -91,10 +91,8 @@ class DbShotsRepository implements ShotsRepositoryInterface{
      */
     public function findByName($name)
     {
-       return Shot::with('image','publishable', 'tags')->where(
-
-            \DB::raw("left(file_name, length(file_name) - LOCATE('.', Reverse(file_name)))"
-            ), '=', $name)
+       return Shot::with('image','publishable.profile', 'comments')->where('file_name',
+           '=', $name)
             ->first();
     }
 
