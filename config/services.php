@@ -38,20 +38,20 @@ return [
     'facebook' => [
         'client_id'     => env('FACEBOOK_CLIENT_ID'),
         'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
-        'redirect'      => 'http://dev.mytailor.me/login/facebook'
+        'redirect'      => 'http://jobizzness.com/login/facebook'
     ],
 
-    'twitter' => [
-        'client_id' => env('TWITTER_CLIENT_ID'),
-        'client_secret' => env('TWITTER_CLIENT_SECRET'),
-        'redirect' => 'http://dev.mytailor.me/login/twitter',
-    ],
-
-    'pinterest' => [
-        'client_id' => env('PINTEREST_CLIENT_ID'),
-        'client_secret' => env('PIINTEREST_CLIENT_SECRET'),
-        'redirect' => 'http://dev.mytailor.me/login/pinterest'
-    ],
+//    'twitter' => [
+//        'client_id' => env('TWITTER_CLIENT_ID'),
+//        'client_secret' => env('TWITTER_CLIENT_SECRET'),
+//        'redirect' => 'http://dev.mytailor.me/login/twitter',
+//    ],
+//
+//    'pinterest' => [
+//        'client_id' => env('PINTEREST_CLIENT_ID'),
+//        'client_secret' => env('PIINTEREST_CLIENT_SECRET'),
+//        'redirect' => 'http://dev.mytailor.me/login/pinterest'
+//    ],
 
     'pusher' => [
         'app_id' => env('PUSHER_APP_ID'),
