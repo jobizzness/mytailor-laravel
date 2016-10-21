@@ -34,7 +34,7 @@ class Shot extends Model {
 
     protected $appends = array('alt');
 
-    //Confirm This
+
     public $algoliaSettings = [
                  'attributesForFaceting' => ["category", "tags"]
         ];
@@ -289,19 +289,19 @@ class Shot extends Model {
      * @return array
      *
      */
-    public function getAlgoliaRecord()
-    {
-
-        /**
-         * Load the tags relation so that it's available
-         *
-         */
-        $this->tags->lists('id', 'tag_name');
-        $this->with('publishable', 'image', 'comments.');
-        $this->name = pathinfo($this->file_name, PATHINFO_FILENAME);
-
-        return $this->toArray();
-    }
+//    public function getAlgoliaRecord()
+//    {
+//
+//        /**
+//         * Load the tags relation so that it's available
+//         *
+//         */
+//        $this->tags->lists('id', 'tag_name');
+//        $this->with('publishable', 'image', 'comments.');
+//        $this->name = pathinfo($this->file_name, PATHINFO_FILENAME);
+//
+//        return $this->toArray();
+//    }
 
     /*
     |--------------------------------------------------------------------------
@@ -328,11 +328,11 @@ class Shot extends Model {
      */
     public function autoIndex()
     {
-        if (\App::environment() === 'local') {
-            return false;
-        }
+//        if (\App::environment() === 'local') {
+//            return false;
+//        }
 
-        return true;
+        return false;
     }
 
     /**

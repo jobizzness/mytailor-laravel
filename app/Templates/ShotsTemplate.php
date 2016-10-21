@@ -49,54 +49,54 @@ class ShotsTemplate extends AbstractTemplate   {
         {
             switch($cat){
                 case 'fm':
-                    SEOMeta::setTitle('Women | MyTailor African Fashion Designers');
-                    SEOMeta::setDescription('Women Prints · Check out latest trending African Dresses..');
-                    OpenGraph::setDescription('Women Prints · Check out latest trending African Dresses...');
+                    SEOMeta::setTitle('Women | African Fashion Styles for women');
+                    SEOMeta::setDescription('African Fashion Dresses ladies, Ankara styles, Nigerian, Ghanaian styles. Choose the best fit for yourself, Dresses, Blazers, Pants, Skirts, Swim Suits ........');
+                    OpenGraph::setDescription('African Fashion Dresses ladies, Ankara styles, Nigerian, Ghanaian styles. Choose the best fit for yourself, Dresses, Blazers, Pants, Skirts, Swim Suits ........');
                     OpenGraph::setUrl('http://mytailorafrica.com/shots/?cat=ac');
-                    OpenGraph::setTitle('Men | MyTailor African Fashion Designers');
-                    Twitter::setTitle('Men | MyTailor African Fashion Designers');
+                    OpenGraph::setTitle('Women | African Fashion Styles for women');
+                    Twitter::setTitle('Women | African Fashion Styles for women');
 
                     break;
                 case 'ma':
-                    SEOMeta::setTitle('Men | MyTailor African Fashion Designers');
-                    SEOMeta::setDescription('Men · Blazers, Shirts, Latest African Fashion Prints...');
-                    OpenGraph::setDescription('Men · Blazers, Shirts, Latest African Fashion Prints...');
+                    SEOMeta::setTitle('Men | African Fashion Styles for men');
+                    SEOMeta::setDescription('African Fashion men, men\'s wear Ankara styles, Nigerian, Ghanaian styles. Blazers, Shirts, Outfits, bazin, homme, prints, and more.');
+                    OpenGraph::setDescription('African Fashion men, men\'s wear Ankara styles, Nigerian, Ghanaian styles. Blazers, Shirts, Outfits, bazin, homme, prints, and more.');
                     OpenGraph::setUrl('http://mytailorafrica.com/shots/?cat=ac');
-                    OpenGraph::setTitle('Women | MyTailor African Fashion Designers');
-                    Twitter::setTitle('Women | MyTailor African Fashion Designers');
+                    OpenGraph::setTitle('Men | African Fashion Styles for men');
+                    Twitter::setTitle('Men | African Fashion Styles for men');
 
                     break;
                 case 'cu':
-                    SEOMeta::setTitle('Couples | MyTailor African Fashion Designers');
-                    SEOMeta::setDescription('Couples · Lastest African Prints for couples..');
-                    OpenGraph::setDescription('Couples · Lastest African Prints for couples..');
+                    SEOMeta::setTitle('Couples | African Fashion Styles for couples');
+                    SEOMeta::setDescription('Latest couple wears on MyTailor Africa, Nigerian, Ghanaian styles. Blazers, Shirts, Outfits, bazin, homme, prints for weddings, occasions and more.');
+                    OpenGraph::setDescription('Latest couple wears on MyTailor Africa, Nigerian, Ghanaian styles. Blazers, Shirts, Outfits, bazin, homme, prints for weddings, occasions and more.');
                     OpenGraph::setUrl('http://mytailorafrica.com/shots/?cat=ac');
-                    OpenGraph::setTitle('Couples | MyTailor African Fashion Designers');
-                    Twitter::setTitle('Couples | MyTailor African Fashion Designers');
+                    OpenGraph::setTitle('Couples | African Fashion Styles for couples');
+                    Twitter::setTitle('Couples | African Fashion Styles for couples');
                     break;
                 case 'ki':
-                    SEOMeta::setTitle('Kids | MyTailor African Fashion Designers');
-                    SEOMeta::setDescription('Kids · girls, boys, Latest African Fashion Prints...');
-                    OpenGraph::setDescription('Kids · girls, boys, Latest African Fashion Prints...');
+                    SEOMeta::setTitle('Kids | African Fashion Styles for kids');
+                    SEOMeta::setDescription('Kids · girls, boys, Latest African Fashion Prints for kids. Kids ankara at MyTailor Africa. your kids will love these dresses.');
+                    OpenGraph::setDescription('Kids · girls, boys, Latest African Fashion Prints for kids. Kids ankara at MyTailor Africa. your kids will love these dresses.');
                     OpenGraph::setUrl('http://mytailorafrica.com/shots/?cat=ac');
-                    OpenGraph::setTitle('Kids | MyTailor African Fashion Designers');
+                    OpenGraph::setTitle('Kids | African Fashion Styles');
                     Twitter::setTitle('Kids | MyTailor African Fashion Designers');
                     break;
                 case 'ac':
-                    SEOMeta::setTitle('Accessories | MyTailor African Fashion Designers');
-                    SEOMeta::setDescription('Accessories · shoes, bangles, jewelry African Fashion Prints...');
-                    OpenGraph::setDescription('');
+                    SEOMeta::setTitle('Accessories | African Fashion Styles');
+                    SEOMeta::setDescription('Accessories · shoes, bangles, jewelry African Fashion Prints accessories. Find something that matches with your style.');
+                    OpenGraph::setDescription('Accessories · shoes, bangles, jewelry African Fashion Prints accessories. Find something that matches with your style.');
                     OpenGraph::setUrl('http://mytailor.me/shots/?cat=ac');
-                    OpenGraph::setTitle('Accessories | MyTailor African Fashion Designers');
-                    Twitter::setTitle('Accessories | MyTailor African Fashion Designers');
+                    OpenGraph::setTitle('Accessories | African Fashion Styles');
+                    Twitter::setTitle('Accessories | African Fashion Styles');
                     break;
                 Default:
-                    SEOMeta::setTitle('MyTailor | African Fashion Designers Inspiration');
-                    SEOMeta::setDescription('See what\'s trending in African Fashion. From cultural, modern to classic office wears.');
-                    OpenGraph::setDescription('See what\'s trending in African Fashion. From cultural, modern to classic office wears.');
-                    OpenGraph::setUrl('http://mytailorafrica.com/shots');
-                    OpenGraph::setTitle('Shots');
-                    Twitter::setTitle('Shots');
+                    SEOMeta::setTitle('MyTailor | Latest African fashion styles');
+                    SEOMeta::setDescription('Looking for what to wear ?  Get inspired by top African fashion designers and their amazing styles. comment, like and get engaged.');
+                    OpenGraph::setDescription('Looking for what to wear ?  Get inspired by top African fashion designers and their amazing styles. comment, like and get engaged.');
+                    OpenGraph::setUrl('https://mytailorafrica.com/shots');
+                    OpenGraph::setTitle('MyTailor | Latest African fashion styles');
+                    Twitter::setTitle('MyTailor | Latest African fashion styles');
             }
         }
 

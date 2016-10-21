@@ -50,12 +50,12 @@ class ShotsExploreTemplate extends AbstractTemplate
     {
         {
 
-                SEOMeta::setTitle(ucwords($slug). ' | MyTailor Africa');
+                SEOMeta::setTitle(ucwords($slug));
                 SEOMeta::setDescription('Find Amazing '. ucwords($slug) .' on MyTailorAfrica. From cultural, modern to classic office wears Ankara Weedings and more.');
                 OpenGraph::setDescription('Find Amazing '. ucwords($slug) .' on MyTailorAfrica. From cultural, modern to classic office wears Ankara Weedings and more.');
                 OpenGraph::setUrl('http://mytailorafrica.com/explore/' . $slug);
                 OpenGraph::setTitle(ucwords($slug). ' | MyTailor Africa');
-                Twitter::setTitle(ucwords($slug). ' | MyTailor Africa');
+                Twitter::setTitle(ucwords($slug));
         }
 
 
