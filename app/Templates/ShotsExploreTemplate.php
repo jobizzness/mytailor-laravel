@@ -40,7 +40,9 @@ class ShotsExploreTemplate extends AbstractTemplate
     public function prepare(View $view, array $parameters)
     {
 
-        $this->seoMake('Explore');
+
+        $slug = str_replace('-', ' ', $parameters['slug']);
+        $this->seoMake('Latest '.$slug.' on MyTailor Africa');
 
         $view->with('res', 'explore');
 

@@ -802,7 +802,8 @@ button.icon-round {
   background-color: rgba(158, 158, 158, 0.2); }
 
 .mt-nav-has-border, .mt-nav-has-border > .mdl-navigation__link {
-  position: relative; }
+  position: relative;
+  text-align: center; }
 
 .mt-nav-has-border > .mdl-navigation__link:after {
   content: "";

@@ -1,0 +1,33 @@
+@media screen and (max-width: 1024px) {
+	.mdl-layout__header {
+	    display: block !important;
+	}
+
+	.mt-secondary__navigation, .mt-top-menu, .logo-wrap{
+		display: none !important;
+	}
+
+	.mdl-layout__header .mdl-layout__drawer-button{
+		margin: 0 !important;
+	}
+}
+
+
+@media screen and (max-width: 425px) {
+	.mt-nav-has-border{
+		padding: 0 !important;
+		width: 100%;
+	}
+
+	.mt-sub-header{
+		padding: 0 !important;
+	}
+
+	.mt-nav-has-border > .mdl-navigation__link{
+		width: 33.3333%;
+	}
+
+	button.top-menu-right{
+		top:5px;
+	}
+}
