@@ -137,9 +137,9 @@ class Shot extends Model {
     }
 
     // I AM NOT SURE ABOUT THIS
-    public function scopeSearch($query, $search)
+    public function scopeExplore($query, $search)
     {
-        return $query->where('title', 'LIKE', "%$search%");
+        return $query->where('tags.tag_name', 'LIKE', "%$search%");
     }
 
     /*
@@ -289,19 +289,20 @@ class Shot extends Model {
      * @return array
      *
      */
-//    public function getAlgoliaRecord()
-//    {
-//
-//        /**
-//         * Load the tags relation so that it's available
-//         *
-//         */
-//        $this->tags->lists('id', 'tag_name');
-//        $this->with('publishable', 'image', 'comments.');
-//        $this->name = pathinfo($this->file_name, PATHINFO_FILENAME);
-//
-//        return $this->toArray();
-//    }
+    public function getAlgoliaRecord()
+    {
+
+        /**
+         * Load the tags relation so that it's available
+         *
+         */
+        $this->tags->lists('id', 'tag_name');
+        $this->image();
+        $this->publishable()->profile();
+        $this->comments();
+
+        return $this;
+    }
 
     /*
     |--------------------------------------------------------------------------
@@ -328,11 +329,11 @@ class Shot extends Model {
      */
     public function autoIndex()
     {
-//        if (\App::environment() === 'local') {
-//            return false;
-//        }
+        if (\App::environment() === 'local') {
+            return false;
+        }
 
-        return false;
+        return true;
     }
 
     /**

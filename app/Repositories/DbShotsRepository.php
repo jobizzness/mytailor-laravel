@@ -138,27 +138,21 @@ class DbShotsRepository implements ShotsRepositoryInterface{
      */
     public function explore($slug, $cat)
     {
-        $cat ? $facets = ['filters' => "category:$cat"] : $facets = null;
-        $shots = Shot::search($slug, $facets);
 
+        $searchValues = preg_split('/\s+/', $slug);
 
-        $shots =  $this->paginate($shots['hits'], 8);
+        unset($searchValues[0]);
+        unset($searchValues[1]);
 
-        $shots->transform(function ($shot, $key) {
-            return (object) $shot;
+        return Shot::whereHas('tags', function($query) use ($searchValues){
 
-        })
-            ->map(function ($shot) {
+            foreach ($searchValues as $value) {
+                $query->orWhere('tags.tag_name', 'LIKE', "%$value%");
+            }
 
-                $shot->publishable = (object) $shot->publishable;
-                $shot->publishable->profile = (object) $shot->publishable->profile;
-                $shot->image = (object) $shot->image;
-
-            return $shot;
-        });
-
-        return $shots;
-
+        })  ->with('image','comments', 'publishable.profile')
+            ->category($cat)
+            ->paginate(8);
 
     }
 
