@@ -373,7 +373,7 @@ app.controller("authController", ["$scope",
 						{link: '/explore/african-prints-pants', text: 'Pants'}, {link: '/explore/african-fashion-bikini', text: 'Bikini'},
 						{link: '/explore/african-prints-swimwear', text: 'Swimwear'}, {link: '/explore/african-fashion-tops', text: 'Tops'},
 						{link: '/explore/african-prints-skirts', text: 'Skirts'}, {link: '/explore/african-fashion-hijab', text: 'Hijab'},
-						{link: '/explore/african-fashion-men', text: 'For Men'}, {link: '/explore/african-fashion-summer-wears', text: 'summer'},
+						{link: '/explore/african-fashion-mens', text: 'For Men'}, {link: '/explore/african-fashion-summer-wears', text: 'summer'},
 						{link: '/explore/african-prints-shorts', text: 'Shorts'}, {link: '/explore/african-fashion-couples', text: 'Couples'}
 					]},
 
@@ -391,7 +391,7 @@ app.controller("authController", ["$scope",
 						{link: '/explore/african-prints-necklace', text: 'Necklaces'}, {link: '/explore/african-prints-headwrap', text: 'Head wrap'}
 					]},
 
-					{name:'Occassional', dropElements: [
+					{name:'Occasional', dropElements: [
 
 						{link: '/explore/african-prints-wedding', text: 'Wedding'}, {link: '/explore/african-prints-work-wears', text: 'work'},
 						{link: '/explore/african-prints-party-wear', text: 'Party'}, {link: '/explore/african-prints-special', text: 'special'}

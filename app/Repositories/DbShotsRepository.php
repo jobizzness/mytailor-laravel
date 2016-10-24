@@ -1,5 +1,6 @@
 <?php namespace MyTailor\Repositories;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Input;
@@ -182,6 +183,7 @@ class DbShotsRepository implements ShotsRepositoryInterface{
         $shot->publishable_type = $publishable_type;
         $shot->publishable_id = $publishable_id;
         $shot->published_by = $published_by;
+        $shot->published_at = Carbon::now();
         $shot->image_id = $image->id;
 
         return Shot::saver($shot);

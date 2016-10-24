@@ -14,8 +14,11 @@ class CreateCollectionsTable extends Migration
     {
         Schema::create('collections', function (Blueprint $table) {
             $table->increments('id');
-            //collection is created by somebody
-            //collection has a slug
+            $table->integer('publishable_id');
+            $table->integer('published_by');
+            $table->string('publishable_type');
+            $table->varchar('slug');
+            $table->string('description');
             //a description
             // many many shots
             // owned by a resource

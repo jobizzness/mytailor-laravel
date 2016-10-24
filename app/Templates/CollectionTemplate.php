@@ -33,7 +33,6 @@ class CollectionTemplate extends AbstractTemplate
     public function __construct(ShotsRepositoryInterface $shots, Request $request)
     {
 
-        $this->collections = $collections;
         $this->request = $request;
     }
 
@@ -44,29 +43,29 @@ class CollectionTemplate extends AbstractTemplate
 
         $this->seoMake();
 
-        $view->with('res', 'explore');
+        $view->with('res', 'shots');
 
     }
 
-    protected function seoMake($slug)
+    protected function seoMake()
     {
-        $slugURL = ucfirst(str_replace('-', ' ', $slug));
+
 
 
         {
 
-            SEOMeta::setTitle('Latest '.$slugURL.'on MyTailor Africa');
-            SEOMeta::setDescription('Find Latest '. $slugURL .' on MyTailor Africa. From cultural, modern to classic office wears Ankara Weedings and more.');
-            OpenGraph::setDescription('Find Latest '. $slugURL .' on MyTailor Africa. From cultural, modern to classic office wears Ankara Weedings and more.');
-            OpenGraph::setUrl('http://mytailorafrica.com/explore/' . $slugURL);
-            OpenGraph::setTitle($slug);
-            Twitter::setTitle($slug);
+            SEOMeta::setTitle('Hottest African Fashion Outfits & Attires');
+            SEOMeta::setDescription('find the hottest African outfits south-africa traditional wears, dashiki shirts & more on MytailorAfrica— Discover more.');
+            OpenGraph::setDescription('find the hottest African outfits south-africa traditional wears, dashiki shirts & more on MytailorAfrica— Discover more.');
+            OpenGraph::setUrl('https://www.mytailorafrica.com/collections/hottest-african-fashion-styles-dresses');
+            OpenGraph::setTitle('Hottest African Fashion Outfits & Attires');
+            Twitter::setTitle('Hottest African Fashion Outfits & Attires');
         }
 
 
-        SEOMeta::setCanonical('http://mytailorafrica.com/explore/' . $slug);
+        SEOMeta::setCanonical('https://mytailorafrica.com/collections/hottest-african-fashion-styles-dresses');
         OpenGraph::addProperty('type', 'business.clothing');
-        Twitter::setTitle(ucwords($slug));
+        Twitter::setTitle('Hottest African Fashion Outfits & Attires');
         Twitter::setSite('@MyTailor_Africa');
     }
 
