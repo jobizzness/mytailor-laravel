@@ -8,7 +8,7 @@ use SEOMeta;
 use OpenGraph;
 use Twitter;
 
-class ShotsExploreTemplate extends AbstractTemplate
+class CollectionTemplate extends AbstractTemplate
 {
 
 
@@ -33,7 +33,7 @@ class ShotsExploreTemplate extends AbstractTemplate
     public function __construct(ShotsRepositoryInterface $shots, Request $request)
     {
 
-        $this->shots = $shots;
+        $this->collections = $collections;
         $this->request = $request;
     }
 
@@ -41,8 +41,8 @@ class ShotsExploreTemplate extends AbstractTemplate
     {
 
 
-        $slug = $parameters['slug'];
-        $this->seoMake($slug);
+
+        $this->seoMake();
 
         $view->with('res', 'explore');
 
@@ -50,17 +50,17 @@ class ShotsExploreTemplate extends AbstractTemplate
 
     protected function seoMake($slug)
     {
-        $slugURL = str_replace('-', ' ', $slug);
+        $slugURL = ucfirst(str_replace('-', ' ', $slug));
 
 
         {
 
-                SEOMeta::setTitle('Latest '.$slugURL.' on MyTailor Africa');
-                SEOMeta::setDescription('Find Latest '. $slugURL .' on MyTailor Africa. From cultural, modern to classic office wears Ankara Weddings and more.');
-                OpenGraph::setDescription('Find Latest '. $slugURL .' on MyTailor Africa. From cultural, modern to classic office wears Ankara Weddings and more.');
-                OpenGraph::setUrl('http://mytailorafrica.com/explore/' . $slugURL);
-                OpenGraph::setTitle($slug);
-                Twitter::setTitle($slug);
+            SEOMeta::setTitle('Latest '.$slugURL.'on MyTailor Africa');
+            SEOMeta::setDescription('Find Latest '. $slugURL .' on MyTailor Africa. From cultural, modern to classic office wears Ankara Weedings and more.');
+            OpenGraph::setDescription('Find Latest '. $slugURL .' on MyTailor Africa. From cultural, modern to classic office wears Ankara Weedings and more.');
+            OpenGraph::setUrl('http://mytailorafrica.com/explore/' . $slugURL);
+            OpenGraph::setTitle($slug);
+            Twitter::setTitle($slug);
         }
 
 

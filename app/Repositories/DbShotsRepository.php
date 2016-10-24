@@ -76,8 +76,8 @@ class DbShotsRepository implements ShotsRepositoryInterface{
         return $this->shots
             ->with('image','comments', 'publishable.profile')
             ->category($cat)
-            ->orderBy('views', 'desc')
-            ->orderBy('updated_at', 'desc')
+            ->select(\DB::raw( '((views - 1) / (TIMESTAMPDIFF(HOUR, updated_at, NOW()) + 2)^1.5) as Popularity, shots.*'))
+            ->orderBy('Popularity', 'desc')
             ->where('published', '=', 1)
             ->where('featured', '=', 1)
             ->paginate(8);
@@ -151,7 +151,9 @@ class DbShotsRepository implements ShotsRepositoryInterface{
             }
 
         })  ->with('image','comments', 'publishable.profile')
+            ->select(\DB::raw( '((views - 1) / (TIMESTAMPDIFF(HOUR, updated_at, NOW()) + 2)^1.5) as Popularity, shots.*'))
             ->category($cat)
+            ->orderBy('Popularity', 'desc')
             ->paginate(8);
 
     }
