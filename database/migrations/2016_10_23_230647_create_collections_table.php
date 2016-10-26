@@ -17,14 +17,10 @@ class CreateCollectionsTable extends Migration
             $table->integer('publishable_id');
             $table->integer('published_by');
             $table->string('publishable_type');
-            $table->varchar('slug');
-            $table->string('description');
-            //a description
-            // many many shots
-            // owned by a resource
-            // views
-            // likes
-            //
+            $table->string('slug');
+            $table->text('description');
+            $table->integer('views');
+            $table->integer('likes');
             $table->timestamps();
         });
     }

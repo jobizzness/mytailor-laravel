@@ -12,7 +12,7 @@ class CollectionTemplate extends AbstractTemplate
 {
 
 
-    protected $view = 'shots';
+    protected $view = 'collection';
     /**
      * @var
      */
