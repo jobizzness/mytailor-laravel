@@ -97,6 +97,10 @@ Route::group(['prefix' => 'api/v1'], function () {
 			'as' => 'shots.sort',
 			'uses' => 'Frontend\ShotsController@index'
 	]);
+	Route::get('/collections/{slug}', [
+			'as' => 'shots.sort',
+			'uses' => 'Frontend\CollectionsController@show'
+	]);
 	Route::get('/shot/{id}',  [
 					'as' => 'shot',
 					'uses' => 'Frontend\ShotsController@show']
@@ -108,3 +112,7 @@ Route::group(['prefix' => 'api/v1'], function () {
 	);
 
 });
+
+Route::get('/collection',[
+		'as' => 'collection',
+         'uses' =>'Frontend\ShotsController@shots']);

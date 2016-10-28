@@ -2,8 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use MyTailor\Shot;
-use MyTailor\Repositories\ShotsRepositoryInterface;
 use SEOMeta;
 use OpenGraph;
 use Twitter;
@@ -11,10 +9,6 @@ class ShotsTemplate extends AbstractTemplate   {
 
 
     protected $view = 'shots';
-    /**
-     * @var
-     */
-    private $shots;
 
     /**
      * HTTP request for retrieving user input
@@ -25,12 +19,10 @@ class ShotsTemplate extends AbstractTemplate   {
 
     /**
      * HomeTemplate constructor.
-     * @param ShotsRepositoryInterface|Shot $shots
      * @param Request $request
      */
-    public function __construct(ShotsRepositoryInterface $shots, Request $request) {
+    public function __construct(Request $request) {
 
-        $this->shots = $shots;
         $this->request = $request;
     }
 
@@ -39,71 +31,158 @@ class ShotsTemplate extends AbstractTemplate   {
 
         $cat = $this->request->get('cat') ? $this->request->get('cat') : null;
 
-        $this->seoMake($cat);
+        $path = $this->request->fullUrl();
+
+        $this->seoMake($cat, $path);
         $view->with('res', 'shots');
 
     }
 
-    protected function seoMake($cat)
+    protected function seoMake($cat, $path)
     {
-        {
+
+            // African dresses - Dashiki shirts, Anakara, modern dresses for women
             switch($cat){
                 case 'fm':
-                    SEOMeta::setTitle('Women | African Fashion Styles for women');
-                    SEOMeta::setDescription('African Fashion Dresses ladies, Ankara styles, Nigerian, Ghanaian styles. Choose the best fit for yourself, Dresses, Blazers, Pants, Skirts, Swim Suits ........');
-                    OpenGraph::setDescription('African Fashion Dresses ladies, Ankara styles, Nigerian, Ghanaian styles. Choose the best fit for yourself, Dresses, Blazers, Pants, Skirts, Swim Suits ........');
-                    OpenGraph::setUrl('http://mytailorafrica.com/shots/?cat=ac');
-                    OpenGraph::setTitle('Women | African Fashion Styles for women');
-                    Twitter::setTitle('Women | African Fashion Styles for women');
+
+                    //Meta for google
+                    SEOMeta::setTitle('Women - Dashiki, Anakara, kitenge styles')
+                        ->setDescription('African Fashion Dresses ladies, Ankara styles, Nigerian, Ghanaian styles. Choose your best fit on MytailorAfrica— Discover more')
+                        ->setCanonical('https://mytailorafrica.com/categories/women');
+
+                    //OpenGraph for facebook
+                    OpenGraph::setDescription('African Fashion Dresses ladies, Ankara styles, Nigerian, Ghanaian styles. Choose your best fit on MytailorAfrica— Discover more')
+                        ->setType('article')
+                        ->setTitle('Women - Dashiki, Anakara, kitenge styles')
+                        ->addImage('https://s-media-cache-ak0.pinimg.com/200x150/b3/62/bd/b362bd94480261dbc6ee6be9a80ebac2.jpg')
+                        ->setUrl('https://mytailorafrica.com/categories/women');
+
+                    //Meta tags for twitter
+                    Twitter::addValue('card', 'summary')
+                        ->setType('article')
+                        ->addImage('https://s-media-cache-ak0.pinimg.com/200x150/b3/62/bd/b362bd94480261dbc6ee6be9a80ebac2.jpg')
+                        ->setTitle('Women - Dashiki, Anakara, kitenge styles')
+                        ->setDescription('African Fashion Dresses ladies, Ankara styles, Nigerian, Ghanaian styles. Choose your best fit on MytailorAfrica— Discover more')
+                        ->setUrl('https://mytailorafrica.com/categories/women');
 
                     break;
                 case 'ma':
-                    SEOMeta::setTitle('Men | African Fashion Styles for men');
-                    SEOMeta::setDescription('African Fashion men, men\'s wear Ankara styles, Nigerian, Ghanaian styles. Blazers, Shirts, Outfits, bazin, homme, prints, and more.');
-                    OpenGraph::setDescription('African Fashion men, men\'s wear Ankara styles, Nigerian, Ghanaian styles. Blazers, Shirts, Outfits, bazin, homme, prints, and more.');
-                    OpenGraph::setUrl('http://mytailorafrica.com/shots/?cat=ac');
-                    OpenGraph::setTitle('Men | African Fashion Styles for men');
-                    Twitter::setTitle('Men | African Fashion Styles for men');
+
+                    //Meta for google
+                    SEOMeta::setTitle('Men - Dashiki, Anakara, kitenge styles')
+                        ->setDescription('African clothing for men, Ankara styles, Nigerian, Ghanaian styles. Blazers, Shirts, Kente on MytailorAfrica— Discover more. ')
+                        ->setCanonical('https://mytailorafrica.com/categories/men');
+
+                    //OpenGraph for facebook
+                    OpenGraph::setDescription('African clothing for men, Ankara styles, Nigerian, Ghanaian styles. Blazers, Shirts, Kente on MytailorAfrica— Discover more. ')
+                        ->setType('article')
+                        ->setTitle('Men - Dashiki, Anakara, kitenge styles')
+                        ->addImage('https://s-media-cache-ak0.pinimg.com/200x150/b3/62/bd/b362bd94480261dbc6ee6be9a80ebac2.jpg')
+                        ->setUrl('https://mytailorafrica.com/categories/men');
+
+                    //Meta tags for twitter
+                    Twitter::addValue('card', 'summary')
+                        ->setType('article')
+                        ->addImage('https://s-media-cache-ak0.pinimg.com/200x150/b3/62/bd/b362bd94480261dbc6ee6be9a80ebac2.jpg')
+                        ->setTitle('Men - Dashiki, Anakara, kitenge styles')
+                        ->setDescription('African clothing for men, Ankara styles, Nigerian, Ghanaian styles. Blazers, Shirts, Kente on MytailorAfrica— Discover more. ')
+                        ->setUrl('https://mytailorafrica.com/categories/men');
+
 
                     break;
                 case 'cu':
-                    SEOMeta::setTitle('Couples | African Fashion Styles for couples');
-                    SEOMeta::setDescription('Latest couple wears on MyTailor Africa, Nigerian, Ghanaian styles. Blazers, Shirts, Outfits, bazin, homme, prints for weddings, occasions and more.');
-                    OpenGraph::setDescription('Latest couple wears on MyTailor Africa, Nigerian, Ghanaian styles. Blazers, Shirts, Outfits, bazin, homme, prints for weddings, occasions and more.');
-                    OpenGraph::setUrl('http://mytailorafrica.com/shots/?cat=ac');
-                    OpenGraph::setTitle('Couples | African Fashion Styles for couples');
-                    Twitter::setTitle('Couples | African Fashion Styles for couples');
+
+                    //Meta for google
+                    SEOMeta::setTitle('Couples - Dashiki, Anakara, kitenge styles')
+                        ->setDescription('African clothing for couples, wedding dresses south african styles. prom dresses on MytailorAfrica— Discover more. ')
+                        ->setCanonical('https://mytailorafrica.com/categories/couples');
+
+                    //OpenGraph for facebook
+                    OpenGraph::setDescription('African clothing for couples, wedding dresses south african styles. prom dresses on MytailorAfrica— Discover more. ')
+                        ->setType('article')
+                        ->setTitle('Couples - Dashiki, Anakara, kitenge styles')
+                        ->addImage('https://s-media-cache-ak0.pinimg.com/200x150/b3/62/bd/b362bd94480261dbc6ee6be9a80ebac2.jpg')
+                        ->setUrl('https://mytailorafrica.com/categories/couples');
+
+                    //Meta tags for twitter
+                    Twitter::addValue('card', 'summary')
+                        ->setType('article')
+                        ->addImage('https://s-media-cache-ak0.pinimg.com/200x150/b3/62/bd/b362bd94480261dbc6ee6be9a80ebac2.jpg')
+                        ->setTitle('Couples - Dashiki, Anakara, kitenge styles')
+                        ->setDescription('African clothing for couples, wedding dresses south african styles. prom dresses on MytailorAfrica— Discover more. ')
+                        ->setUrl('https://mytailorafrica.com/categories/couples');
+
                     break;
                 case 'ki':
-                    SEOMeta::setTitle('Kids | African Fashion Styles for kids');
-                    SEOMeta::setDescription('Kids · girls, boys, Latest African Fashion Prints for kids. Kids ankara at MyTailor Africa. your kids will love these dresses.');
-                    OpenGraph::setDescription('Kids · girls, boys, Latest African Fashion Prints for kids. Kids ankara at MyTailor Africa. your kids will love these dresses.');
-                    OpenGraph::setUrl('http://mytailorafrica.com/shots/?cat=ac');
-                    OpenGraph::setTitle('Kids | African Fashion Styles');
-                    Twitter::setTitle('Kids | MyTailor African Fashion Designers');
+
+                    //Meta for google
+                    SEOMeta::setTitle('Kids - Dashiki, Anakara, kitenge styles')
+                        ->setDescription('African clothing for couples, wedding dresses south african styles. prom dresses on MytailorAfrica— Discover more. ')
+                        ->setCanonical('https://mytailorafrica.com/categories/kids');
+
+                    //OpenGraph for facebook
+                    OpenGraph::setDescription('African clothing for couples, wedding dresses south african styles. prom dresses on MytailorAfrica— Discover more. ')
+                        ->setType('article')
+                        ->setTitle('Kids - Dashiki, Anakara, kitenge styles')
+                        ->addImage('https://s-media-cache-ak0.pinimg.com/200x150/b3/62/bd/b362bd94480261dbc6ee6be9a80ebac2.jpg')
+                        ->setUrl('https://mytailorafrica.com/categories/kids');
+
+                    //Meta tags for twitter
+                    Twitter::addValue('card', 'summary')
+                        ->setType('article')
+                        ->addImage('https://s-media-cache-ak0.pinimg.com/200x150/b3/62/bd/b362bd94480261dbc6ee6be9a80ebac2.jpg')
+                        ->setTitle('Kids - Dashiki, Anakara, kitenge styles')
+                        ->setDescription('African clothing for couples, wedding dresses south african styles. prom dresses on MytailorAfrica— Discover more. ')
+                        ->setUrl('https://mytailorafrica.com/categories/kids');
+
                     break;
                 case 'ac':
-                    SEOMeta::setTitle('Accessories | African Fashion Styles');
-                    SEOMeta::setDescription('Accessories · shoes, bangles, jewelry African Fashion Prints accessories. Find something that matches with your style.');
-                    OpenGraph::setDescription('Accessories · shoes, bangles, jewelry African Fashion Prints accessories. Find something that matches with your style.');
-                    OpenGraph::setUrl('http://mytailor.me/shots/?cat=ac');
-                    OpenGraph::setTitle('Accessories | African Fashion Styles');
-                    Twitter::setTitle('Accessories | African Fashion Styles');
+
+                    //Meta for google
+                    SEOMeta::setTitle('Accessories - Shoes, bangles, jewelry')
+                        ->setDescription('Shoes, bangles, jewelry African Fashion Prints accessories on MytailorAfrica— Discover more. ')
+                        ->setCanonical('https://mytailorafrica.com/categories/accessories');
+
+                    //OpenGraph for facebook
+                    OpenGraph::setDescription('Shoes, bangles, jewelry African Fashion Prints accessories on MytailorAfrica— Discover more. ')
+                        ->setType('article')
+                        ->setTitle('Accessories - Shoes, bangles, jewelry')
+                        ->addImage('https://s-media-cache-ak0.pinimg.com/200x150/b3/62/bd/b362bd94480261dbc6ee6be9a80ebac2.jpg')
+                        ->setUrl('https://mytailorafrica.com/categories/accessories');
+
+                    //Meta tags for twitter
+                    Twitter::addValue('card', 'summary')
+                        ->setType('article')
+                        ->addImage('https://s-media-cache-ak0.pinimg.com/200x150/b3/62/bd/b362bd94480261dbc6ee6be9a80ebac2.jpg')
+                        ->setTitle('Accessories - Shoes, bangles, jewelry')
+                        ->setDescription('Shoes, bangles, jewelry African Fashion Prints accessories on MytailorAfrica— Discover more. ')
+                        ->setUrl('https://mytailorafrica.com/categories/accessories');
+
                     break;
                 Default:
-                    SEOMeta::setTitle('MyTailor | Latest African fashion styles');
-                    SEOMeta::setDescription('Looking for what to wear ?  Get inspired by top African fashion designers and their amazing styles. comment, like and get engaged.');
-                    OpenGraph::setDescription('Looking for what to wear ?  Get inspired by top African fashion designers and their amazing styles. comment, like and get engaged.');
-                    OpenGraph::setUrl('https://mytailorafrica.com/shots');
-                    OpenGraph::setTitle('MyTailor | Latest African fashion styles');
-                    Twitter::setTitle('MyTailor | Latest African fashion styles');
-            }
+
+                    //Meta for google
+                    SEOMeta::setTitle('Trendy latest African Fashion Prints on MyTailorAfrica')
+                        ->setDescription('Get inspired by top African fashion designers and their amazing styles. comment, like and get engaged.')
+                        ->setCanonical($path);
+
+                    //OpenGraph for facebook
+                    OpenGraph::setDescription('Get inspired by top African fashion designers and their amazing styles. comment, like and get engaged.')
+                        ->setType('article')
+                        ->setTitle('Trendy latest African Fashion Prints on MyTailorAfrica')
+                        ->addImage('https://s-media-cache-ak0.pinimg.com/200x150/b3/62/bd/b362bd94480261dbc6ee6be9a80ebac2.jpg')
+                        ->setUrl($path);
+
+                    //Meta tags for twitter
+                    Twitter::addValue('card', 'summary')
+                        ->setType('article')
+                        ->addImage('https://s-media-cache-ak0.pinimg.com/200x150/b3/62/bd/b362bd94480261dbc6ee6be9a80ebac2.jpg')
+                        ->setTitle('Trendy latest African Fashion Prints on MyTailorAfrica')
+                        ->setDescription('Get inspired by top African fashion designers and their amazing styles. comment, like and get engaged.')
+                        ->setUrl($path);
+
         }
 
-
-        SEOMeta::setCanonical('https://www.mytailorafrica.com/shots');
-        OpenGraph::addProperty('type', 'business.clothing');
-        Twitter::setTitle('Shots');
         Twitter::setSite('@MyTailor_Africa');
     }
 }

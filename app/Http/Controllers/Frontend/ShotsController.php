@@ -3,7 +3,6 @@
 namespace MyTailor\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Response;
 use Laracasts\Commander\CommandBus;
 use Laracasts\Commander\Events\DispatchableTrait;
 use MyTailor\Modules\Shots\ViewShotCommand;
@@ -44,6 +43,7 @@ class ShotsController extends ApiController
      * @param Request $request
      * @return mixed
      */
+
     public function index($sort, Request $request)
     {
 

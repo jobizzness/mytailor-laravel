@@ -10,6 +10,7 @@ class MtServiceProvider extends ServiceProvider
         $this->app->bind('MyTailor\Repositories\UsersRepositoryInterface', 'MyTailor\Repositories\DbUsersRepository');
         $this->app->bind('MyTailor\Repositories\DesignersRepositoryInterface', 'MyTailor\Repositories\DbDesignersRepository');
         $this->app->bind('MyTailor\Repositories\AnalyticsRepositoryInterface', 'MyTailor\Repositories\GaAnalyticsRepository');
+        $this->app->bind('MyTailor\Repositories\CollectionRepositoryInterface', 'MyTailor\Repositories\DBCollectionRepository');
 
         // Pusher From The IOC
         $this->app->bind('Pusher', function($app){

@@ -27,8 +27,7 @@ class CollectionShot extends Migration
      */
     public function down()
     {
-        Schema::drop('collection_shot', function(Blueprint $table){
-
+        Schema::table('collection_shot', function (Blueprint $table) {
             $table->drop();
         });
     }

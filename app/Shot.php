@@ -8,6 +8,7 @@ use Laracasts\Commander\Events\EventGenerator;
 use Laracasts\Presenter\PresentableTrait;
 use MyTailor\Modules\Shots\Events\ShotWasPosted;
 
+
 class Shot extends Model {
 
     use EventGenerator, AlgoliaEloquentTrait, PresentableTrait;
@@ -18,6 +19,7 @@ class Shot extends Model {
      * @var string
      */
     protected $presenter = 'MyTailor\Presenters\Shots\ShotsPresenter';
+
     /*
     |--------------------------------------------------------------------------
     | Actions
@@ -123,6 +125,17 @@ class Shot extends Model {
 
         return $this->morphTo()
             ->select(['id','profile_id']);
+    }
+
+    /**
+     * A shot is may belong to many collection.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function collection(){
+
+        return $this->belongsToMany(Collection::class);
+
     }
 
 

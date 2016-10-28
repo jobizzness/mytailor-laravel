@@ -17,10 +17,11 @@ class CreateCollectionsTable extends Migration
             $table->integer('publishable_id');
             $table->integer('published_by');
             $table->string('publishable_type');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->text('description');
             $table->integer('views');
             $table->integer('likes');
+            $table->time('published_at');
             $table->timestamps();
         });
     }
@@ -32,6 +33,8 @@ class CreateCollectionsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('collections');
+        Schema::table('collections', function (Blueprint $table) {
+            $table->drop();
+        });
     }
 }

@@ -2559,6 +2559,13 @@ figure.shot-cover.--profile__feed {
   padding: 0 2em;
   background: #fff; }
 
+.padding-top {
+  padding: 10px 0 0 16px; }
+
+.card-media {
+  height: 300px;
+  overflow: hidden; }
+
 /*Animate*/
 .__visible {
   transform: translateX(0); }
