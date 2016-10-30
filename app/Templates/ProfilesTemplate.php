@@ -26,10 +26,10 @@ class ProfilesTemplate extends AbstractTemplate{
         $shot->comments();
         $shot->publishable->profile = Profile::find([$shot->publishable->profile_id])->first();
 
-        foreach($shot->comments as $comment) {
-
-            $comment->publishable->Profile = Profile::find([$comment->publishable->profile_id])->first();
-        }
+//        foreach($shot->comments as $comment) {
+//
+//            $comment->publishable->Profile = Profile::find([$comment->publishable->profile_id])->first();
+//        }
 
 
 //            ->where("featured",'=',1)

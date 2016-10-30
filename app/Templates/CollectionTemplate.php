@@ -1,6 +1,7 @@
 <?php namespace MyTailor\Templates;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use MyTailor\Collection;
 use SEOMeta;
@@ -35,8 +36,15 @@ class CollectionTemplate extends AbstractTemplate
         $slug = $parameters['slug'];
         $keyword = str_replace('-', ' ', $slug);
         $collection = Collection::whereSlug($keyword)->first();
-        $this->seoMake($collection);
-        $view->with('resource', 'collections')->with('collection', $collection);
+
+        if($collection) {
+
+            $this->seoMake($collection);
+            $view->with('collection', $collection)->with('resource', 'collections');
+        }
+
+        return response()->view('errors.frontend.shot404', [], 404);
+
     }
 
     /**
@@ -49,15 +57,18 @@ class CollectionTemplate extends AbstractTemplate
         $url = 'https://mytailorafrica.com/collections/'.$collection->slug;
 
         //Basic Meta Tags
-        SEOMeta::setTitle($title);
-        SEOMeta::setDescription($description);
-        SEOMeta::setCanonical($url);
+        SEOMeta::setTitle($title)
+            ->setDescription($description)
+            ->setCanonical($url)
+            ->addMeta('product:published_time', '81/82/8', 'property')
+            ->addMeta('product:section', 'wateca', 'property');
+            //->addKeyword($shot->tags->lists('tag_name'));
 
         //OpenGraph for facebook
         OpenGraph::setTitle($title)
             ->setDescription($description)
             ->setType('article')
-            //->addImage('https://s-media-cache-ak0.pinimg.com/200x150/b3/62/bd/b362bd94480261dbc6ee6be9a80ebac2.jpg')
+            ->addImage('')
             ->setArticle([
                 'published_time' => 'datetime',
                 'section' => 'category',
@@ -67,7 +78,7 @@ class CollectionTemplate extends AbstractTemplate
         //Meta tags for twitter
         Twitter::addValue('card', 'summary_large_image')
             ->setType('article')
-            //->addImage('https://s-media-cache-ak0.pinimg.com/200x150/b3/62/bd/b362bd94480261dbc6ee6be9a80ebac2.jpg')
+            ->addImage('')
             ->setTitle($title)
             ->setDescription($description)
             ->setUrl($url)

@@ -44,7 +44,7 @@ class ShotsExploreTemplate extends AbstractTemplate
         $slug = $parameters['slug'];
         $this->seoMake($slug);
 
-        $view->with('res', 'explore');
+        $view->with('resource', 'explore');
 
     }
 

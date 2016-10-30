@@ -3,15 +3,15 @@
 @section('header_type', 'just-main')
 
 
-	<section class="pad-1">
-		<div class="mdl-grid mdl-cell mdl-cell--12-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
+{{-- 	<section class="pad-1">
+		<div class="mdl-grid mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
             <div class="mdl-card__media mdl-cell mdl-cell--12-col-tablet card-media">
-                <img class="article-image" src="https://s3.amazonaws.com/mytailor-v1/uploads/shots/original/19/9e/af/mt_199eaf249cdebc53551620cc2236d285.jpg" border="0" alt="">
+                <img class="article-image" src="https://s3.amazonaws.com/mytailor-v1/uploads/images/covers/collections/{{str_replace(' ', '-', $collection->slug).'/'.str_replace(' ', '-', $collection->slug)}}.png" border="0" alt="">
             </div>
             <div class="mdl-cell mdl-cell--8-col">
                 <h2 class="mdl-card__title-text padding-top">{{ucfirst($collection->slug)}}</h2>
                 <div class="mdl-card__supporting-text padding-top">
-                    <span>Posted 2 days ago</span>
+                    <span>Posted {{$collection->published_at->diffForHumans()}}</span>
 				  <div class="mdl-card__menu">
 				    <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
 				      <i class="mdi mdi-share-variant"></i>
@@ -19,12 +19,12 @@
 				  </div>
                 </div>
                 <div class="mdl-card__supporting-text no-left-padding">
-                    <p style="padding-bottom: 16px;">Excepteur reprehenderit sint exercitation ipsum consequat qui sit id velit elit. Velit anim eiusmod labore sit amet. Voluptate voluptate irure occaecat deserunt incididunt esse in. Qui ullamco consectetur aute fugiat officia ullamco proident Lorem ad irure. Sint eu ut consectetur ut esse veniam laboris adipisicing aliquip minim anim labore commodo.</p>
+                    <p style="padding-bottom: 16px;">{{$collection->description}}</p>
                     <span>Category: <a href="#">Latest</a></span>
                 </div>
             </div>
         </div>
-	</section>
+	</section> --}}
 
 
 <section class="mt-grid clearfix grid" id="grid" infinite-scroll="updateShots('{{$resource}}')" infinite-scroll-disabled='busy' infinite-scroll-distance="5" ng-cloak infinite-scroll-container='".mdl-layout__content"' ng-cloak>

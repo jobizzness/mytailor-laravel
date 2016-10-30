@@ -1,5 +1,4 @@
-<?php
-namespace MyTailor\Templates;
+<?php namespace MyTailor\Templates;
 
 use Illuminate\View\View;
 abstract class AbstractTemplate {
@@ -12,7 +11,8 @@ abstract class AbstractTemplate {
      * Returns the view here
      * @return mixed
      */
-    public function getView() {
+    public function getView()
+    {
         return $this->view;
     }
 }

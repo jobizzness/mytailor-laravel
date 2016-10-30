@@ -63,19 +63,38 @@ class ShotTemplate extends AbstractTemplate{
      */
     private function seoMake($shot)
     {
-        SEOMeta::setTitle('MyTailor | ' . substr($shot->title, 0, 30));
-        SEOMeta::setDescription(substr($shot->description, 0, 60));
-        SEOMeta::addMeta('product:published_time', $shot->date, 'property');
-        SEOMeta::addMeta('product:section', $shot->category, 'property');
-        SEOMeta::addKeyword($shot->tags->lists('tag_name'));
+        $title = ucfirst($shot->title);
+        $description = strtok($shot->description, ".").'.';
+        $url = 'https://mytailorafrica.com/shot/'.$shot->file_name;
 
-        OpenGraph::setDescription($shot->description);
-        OpenGraph::setTitle($shot->title);
-        OpenGraph::setUrl('http://mytailor.me/shot/' . pathinfo($shot->file_name, PATHINFO_FILENAME));
-        OpenGraph::addProperty('type', 'product.item');
-        //OpenGraph::addProperty('locale', 'pt-br');
-        //OpenGraph::addProperty('locale:alternate', ['pt-pt', 'en-us']);
-        //Carbon::parse($shot->updated_at)->subMinutes(2)->diffForHumans()
+        //Basic Meta Tags
+        SEOMeta::setTitle($title)
+            ->setDescription($description)
+            ->setCanonical($url)
+            ->addMeta('product:published_time', $shot->date, 'property')
+            ->addMeta('product:section', $shot->category, 'property')
+            ->addKeyword($shot->tags->lists('tag_name'));
+
+        //OpenGraph for facebook
+        OpenGraph::setTitle($title)
+            ->setDescription($description)
+            ->setType('article')
+            ->addImage('https://s-media-cache-ak0.pinimg.com/200x150/b3/62/bd/b362bd94480261dbc6ee6be9a80ebac2.jpg')
+            ->setArticle([
+                'published_time' => 'datetime',
+                'section' => 'category',
+                'tag' => 'string / array'
+            ])->setUrl($url);
+
+        //Meta tags for twitter
+        Twitter::addValue('card', 'summary')
+            ->setType('article')
+            ->addImage('https://s-media-cache-ak0.pinimg.com/200x150/b3/62/bd/b362bd94480261dbc6ee6be9a80ebac2.jpg')
+            ->setTitle($title)
+            ->setDescription($description)
+            ->setUrl($url)
+            ->setSite('@MyTailor_Africa');
+
     }
 
 }

@@ -1,4 +1,5 @@
 @section('bg', 'grey60')
+@section('header_type', 'just-main')
 
 <section class="mt-layout__90">
 
@@ -13,19 +14,12 @@
              <img height="130" width="130" src="/uploads/profiles/11698517_10205466839968531_5750592294516276713_n.jpg" alt="Braden Hamm">
           </a>
           <div class="mt-profile__info">
-                <a href="" class="profile__title">
-                  <span>Jobizzness Watumad</span>
-                </a>
-                 <span class="location__text"><i class="mdi mdi-map-marker"></i>Sarasota, FL</span>
-
-                 <ul class="mt-list-followers">
+                <a href="" class="profile__title"><span>Jobizzness Watumad</span></a>
+                <span class="location__text"><i class="mdi mdi-map-marker"></i>Sarasota, FL</span>
+                <ul class="mt-list-followers">
                    <li class="with--border"><a href="#">90k Following</a></li>
                    <li><a href="#">100k Followers</a></li>
-                 </ul>
-
-
-{{--                 <span class="profile-tag_name">@biness</span> --}}
-
+                </ul>
           </div>
       </div>
       <div class="mt-profile--actions">
@@ -48,13 +42,8 @@
               </a>
             </li>
           </ul>
-
-      <div class="mt-profile-action_items --right">
-        
+          <div class="mt-profile-action_items --right"></div>
       </div>
-
-      </div>
-
   </section>
 
   <section class="mdl-grid profile--wrapper">

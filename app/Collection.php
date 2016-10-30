@@ -4,6 +4,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Collection extends Model
 {
+
+    protected $dates = ['published_at'];
+
     public function shots(){
 
         return $this->belongsToMany(Shot::class);

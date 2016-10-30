@@ -32,7 +32,7 @@
 @endsection
 
 
-<section class="mt-grid clearfix grid" id="grid" infinite-scroll="updateShots('{{$res}}')" infinite-scroll-disabled='busy' infinite-scroll-distance="5" ng-cloak infinite-scroll-container='".mdl-layout__content"' ng-cloak>
+<section class="mt-grid clearfix grid" id="grid" infinite-scroll="updateShots('{{$resource}}')" infinite-scroll-disabled='busy' infinite-scroll-distance="5" ng-cloak infinite-scroll-container='".mdl-layout__content"' ng-cloak>
 
 <div angular-grid="shots">
     <!-- Shot Template -->

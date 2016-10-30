@@ -20,6 +20,7 @@ class ShotTransformer extends Transformer
             "source" => $shot->source_url,
             "time" => $this->prettyDate($shot->published_at),
             "category" => $shot->category,
+            "alt" => str_replace(' ', '-', $shot->alt),
 
             "owner" => [
 

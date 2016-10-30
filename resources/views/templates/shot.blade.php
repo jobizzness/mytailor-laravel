@@ -2,6 +2,7 @@
 {{--Main Layout for home xiew--}}
 @extends('layouts.template.frontend.default')
 @section('bg', 'grey60')
+@section('header_type', 'just-main')
 
 {{--Content Area for our view--}}
 
@@ -10,33 +11,27 @@
 
 	<section class="mdl-cell mdl-cell--12-col mdl-shadow--2dp mt-shot-wrapper" itemprop="mainEntity">
 
-		<!-- The header -->
+        <!-- The header -->
 		<header class="mt-shot-header clearfix">
-			<section class="mt-shot-actions">
-				<div class="mt-shot-actions-back-btn">
-					<a href="/shots" title="Shots">
-						<i class="mt-back-btn"></i>
-					</a>
-				</div>
-			</section>
-            <section class="mt-shot-avatar-wrapper">
-	            <a href="#" class="mt-shot-avatar" title="Mytailor">
-	            	 <h2 class="mt-avatar-name">{{$shot->publishable->present()->displayName()}}</h2>
-	                <img height="30" width="30" src="/uploads/profiles/{{$shot->publishable->profile->avatar}}" alt="{{$shot->publishable->profile->username}}">
-	            </a>
+            <section>
+              <span class="time">6h</span>
+              <span class="mdl-layout-spacer"></span>
+              <a href="#" class="mt-shot-avatar" title="Mytailor">
+                 <h2 class="mt-avatar-name">{{$shot->publishable->present()->displayName()}}</h2>
+                  <img height="30" width="30" ng-src="/uploads/profiles/{{$shot->publishable->profile->avatar}}" alt="">
+              </a>
             </section>
-        </header>
+         </header>
 
          <!-- The Figure -->
 		<figure class="mt-figure__card mdl-card shot-cover">
-			<img itemprop="image" itemscope itemtype="http://schema.org/primaryImageOfPage" src="/uploads/{{$shot->file_name}}" alt="{{$shot->publishable->profile->username}}'s photo on myailorafrica.com">
+			<img itemprop="image" itemscope itemtype="http://schema.org/primaryImageOfPage" src="{{$shot->image->original}}" alt="{{str_replace(' ', '-', $shot->alt)}}">
 		</figure>
 
 		<!-- Notes -->
 		<div class="shot-info">
 			<div class="shot-title" style="padding: 1em 0;">
 				<a href="#">{{$shot->title}}</a>
-				<p class="shot-date">{{'@'.$shot->date}}</p>
 			</div>
 
 			<div class="shot-description">
@@ -147,7 +142,7 @@
 		</div>
 	</section>
 
-		<div class="mt-heading-light-bold">
+{{-- 		<div class="mt-heading-light-bold">
 			<h1>Related Shots</h1>
 		</div>
 
@@ -182,7 +177,7 @@
 	             @endforeach
 	          </div>
 
-	</section>
+	</section> --}}
 
 </div>
 @endsection

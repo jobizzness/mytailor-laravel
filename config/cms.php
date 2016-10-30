@@ -21,6 +21,7 @@ return [
 		'saves' => MyTailor\Templates\SavesTemplate::class,
 		'contact' => MyTailor\Templates\ContactTemplate::class,
 		'shotsExplore' => MyTailor\Templates\ShotsExploreTemplate::class,
-		'collection' => MyTailor\Templates\CollectionTemplate::class
+		'collection' => MyTailor\Templates\CollectionTemplate::class,
+		'category' => MyTailor\Templates\CategoryTemplate::class
 	]
 ];
