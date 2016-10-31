@@ -2471,7 +2471,8 @@ figure.shot-cover.--profile__feed {
   float: left;
   margin: 0 3px 1em 3px;
   overflow: hidden;
-  cursor: pointer; }
+  cursor: pointer;
+  border-radius: 4px; }
   .grid-item figure {
     overflow: hidden;
     position: relative;
@@ -2482,7 +2483,8 @@ figure.shot-cover.--profile__feed {
   transition-duration: .2s;
   transition-timing-function: cubic-bezier(0.37, 0.15, 0.32, 0.94);
   transition-property: -webkit-transform;
-  transition-property: opacity, background-color; }
+  transition-property: opacity, background-color;
+  border: 2px; }
   .mt-shot:hover {
     background-color: #f7f7f7; }
 
@@ -2563,7 +2565,7 @@ figure.shot-cover.--profile__feed {
   padding: 10px 0 0 16px; }
 
 .card-media {
-  height: 300px;
+  max-height: 300px;
   overflow: hidden; }
 
 /*Animate*/

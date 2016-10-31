@@ -208,7 +208,8 @@ figure.shot-cover.--profile__feed{
     margin: 0 3px 1em 3px;
     overflow: hidden;
     cursor: pointer;
-
+    border-radius: 4px;
+    
     figure{
       overflow: hidden;
       position: relative;
@@ -218,10 +219,11 @@ figure.shot-cover.--profile__feed{
 
 .mt-shot{
   background-color: #fff;
-    transition-duration: .2s;
-    transition-timing-function: cubic-bezier(0.37, 0.15, 0.32, 0.94);
-    transition-property: -webkit-transform;
-    transition-property: opacity, background-color;
+  transition-duration: .2s;
+  transition-timing-function: cubic-bezier(0.37, 0.15, 0.32, 0.94);
+  transition-property: -webkit-transform;
+  transition-property: opacity, background-color;
+  border: 2px;
 
   &:hover{
     background-color: #f7f7f7;
@@ -321,6 +323,6 @@ figure.shot-cover.--profile__feed{
 }
 
 .card-media{
-  height: 300px;
+  max-height: 300px;
   overflow: hidden;
 }

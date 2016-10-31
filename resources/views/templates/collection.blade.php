@@ -2,8 +2,7 @@
 @section('bg', 'grey60')
 @section('header_type', 'just-main')
 
-
-{{-- 	<section class="pad-1">
+	<section class="pad-1">
 		<div class="mdl-grid mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
             <div class="mdl-card__media mdl-cell mdl-cell--12-col-tablet card-media">
                 <img class="article-image" src="https://s3.amazonaws.com/mytailor-v1/uploads/images/covers/collections/{{str_replace(' ', '-', $collection->slug).'/'.str_replace(' ', '-', $collection->slug)}}.png" border="0" alt="">
@@ -20,11 +19,11 @@
                 </div>
                 <div class="mdl-card__supporting-text no-left-padding">
                     <p style="padding-bottom: 16px;">{{$collection->description}}</p>
-                    <span>Category: <a href="#">Latest</a></span>
+                    <span>Category: <a href="#">Women, Dresses, Latest</a></span>
                 </div>
             </div>
         </div>
-	</section> --}}
+	</section>
 
 
 <section class="mt-grid clearfix grid" id="grid" infinite-scroll="updateShots('{{$resource}}')" infinite-scroll-disabled='busy' infinite-scroll-distance="5" ng-cloak infinite-scroll-container='".mdl-layout__content"' ng-cloak>
