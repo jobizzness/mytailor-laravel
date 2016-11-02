@@ -246,8 +246,10 @@ app.controller("authController", ["$scope",
              */
 			$scope.open = function ($name) {
 
-				$name = $name.replace(/\.[^/.]+$/, "");
-
+                if(window.innerWidth < 430){
+                    window.location = '/shot/'+$name;
+                    return;
+                }
 
 				var dialogScope = $scope.$new();
 				dialogScope.name = $name;
@@ -286,17 +288,15 @@ app.controller("authController", ["$scope",
              */
             pusher.bind('shotWasViewed',
                 function(data) {
-                    $log.info('a shot was just viewed');
+                    
                     var $shot = $filter('findByName')($scope.shots, data.name);
                     if($shot){
+                        $log.info('a shot was just viewed');
                         $shot.views++; 
                     }
                 }
             );
-
-
-
-
+            
 		}]);
 
     /**
@@ -307,8 +307,8 @@ app.controller("authController", ["$scope",
         return function(input, name) {
             var i=0, len=input.length;
             for (; i<len; i++) {
-                    var shot = input[i].file_name.replace(/\.[^/.]+$/, "");
-                if (shot == name) {
+                    var itemName = input[i].name;
+                if (itemName == name) {
                     return input[i];
                 }
             }
@@ -332,20 +332,20 @@ app.controller("authController", ["$scope",
 
 			]);
 
-		// app.controller("shotController", ["$scope","shotsFactory", "$timeout","$window",
+		app.controller("shotController", ["$scope","shotsFactory", "$timeout","$window",
 
-		// function($scope, shotsFactory, $timeout, $window) {
+		function($scope, shotsFactory, $timeout, $window) {
 
-		// 			var $name = $window.location.href;
+					var $name = $window.location.href;
 
-		// 			$name = $name.substring($name.lastIndexOf('/')+1);
+					$name = $name.substring($name.lastIndexOf('/')+1);
 
-		// 	 		$timeout(function(){
-		// 	 		 	shotsFactory.viewed($name);
-		// 	 		 }, 1500);
-		// }
+			 		$timeout(function(){
+			 		 	shotsFactory.viewed($name);
+			 		 }, 1500);
+		}
 
-		// 	]);
+			]);
 'use strict';
 
 	app.controller("designersController", ["$scope","shotFactory",

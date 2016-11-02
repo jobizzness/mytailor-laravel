@@ -22,22 +22,8 @@ class ProfilesTemplate extends AbstractTemplate{
     {
         $this->seoMake();
 
-       $shot = Shot::find(94);
-        $shot->comments();
-        $shot->publishable->profile = Profile::find([$shot->publishable->profile_id])->first();
 
-//        foreach($shot->comments as $comment) {
-//
-//            $comment->publishable->Profile = Profile::find([$comment->publishable->profile_id])->first();
-//        }
-
-
-//            ->where("featured",'=',1)
-//            ->orderByRaw("RAND()")
-//            ->limit(20)
-//            ->get();
-//
-       $view->with('shot', $shot);
+       $view->with('resource', 'shots');
     }
 
     protected function seoMake()

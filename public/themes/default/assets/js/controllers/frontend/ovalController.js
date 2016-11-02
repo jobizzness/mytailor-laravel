@@ -15,17 +15,17 @@
 
 			]);
 
-		// app.controller("shotController", ["$scope","shotsFactory", "$timeout","$window",
+		app.controller("shotController", ["$scope","shotsFactory", "$timeout","$window",
 
-		// function($scope, shotsFactory, $timeout, $window) {
+		function($scope, shotsFactory, $timeout, $window) {
 
-		// 			var $name = $window.location.href;
+					var $name = $window.location.href;
 
-		// 			$name = $name.substring($name.lastIndexOf('/')+1);
+					$name = $name.substring($name.lastIndexOf('/')+1);
 
-		// 	 		$timeout(function(){
-		// 	 		 	shotsFactory.viewed($name);
-		// 	 		 }, 1500);
-		// }
+			 		$timeout(function(){
+			 		 	shotsFactory.viewed($name);
+			 		 }, 1500);
+		}
 
-		// 	]);
+			]);

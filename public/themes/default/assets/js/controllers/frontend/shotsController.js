@@ -64,8 +64,10 @@
              */
 			$scope.open = function ($name) {
 
-				$name = $name.replace(/\.[^/.]+$/, "");
-
+                if(window.innerWidth < 430){
+                    window.location = '/shot/'+$name;
+                    return;
+                }
 
 				var dialogScope = $scope.$new();
 				dialogScope.name = $name;
@@ -104,17 +106,15 @@
              */
             pusher.bind('shotWasViewed',
                 function(data) {
-                    $log.info('a shot was just viewed');
+                    
                     var $shot = $filter('findByName')($scope.shots, data.name);
                     if($shot){
+                        $log.info('a shot was just viewed');
                         $shot.views++; 
                     }
                 }
             );
-
-
-
-
+            
 		}]);
 
     /**
@@ -125,8 +125,8 @@
         return function(input, name) {
             var i=0, len=input.length;
             for (; i<len; i++) {
-                    var shot = input[i].file_name.replace(/\.[^/.]+$/, "");
-                if (shot == name) {
+                    var itemName = input[i].name;
+                if (itemName == name) {
                     return input[i];
                 }
             }
