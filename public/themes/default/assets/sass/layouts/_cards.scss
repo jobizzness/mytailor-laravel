@@ -129,7 +129,6 @@ figure.shot-cover.--profile__feed{
     border-top-right-radius: 3px;
     border-top-left-radius: 3px;
     background: #F4F4F4;
-    margin: 0 5px 5px 0;
 
     .shot-img_view {
           position: relative;
@@ -199,13 +198,9 @@ figure.shot-cover.--profile__feed{
 
 .grid{
   position: relative;
-  padding: 1em;
+  padding: 6px;
 }
 .grid-item {
-    width: calc(25% - 6px);
-    display: inline-block;
-    float: left;
-    margin: 0 3px 1em 3px;
     overflow: hidden;
     cursor: pointer;
     border-radius: 4px;
@@ -223,7 +218,7 @@ figure.shot-cover.--profile__feed{
   transition-timing-function: cubic-bezier(0.37, 0.15, 0.32, 0.94);
   transition-property: -webkit-transform;
   transition-property: opacity, background-color;
-  border: 2px;
+  border-radius: 4px;
 
   &:hover{
     background-color: #f7f7f7;

@@ -28,8 +28,8 @@
 			<img itemprop="image" itemscope itemtype="http://schema.org/primaryImageOfPage" src="{{$shot->image->original}}" alt="{{str_replace(' ', '-', $shot->alt)}}">
 		</figure>
 
-		<!-- Notes -->
-		<div class="shot-info">
+ 		<!-- Notes -->
+{{-- 		<div class="shot-info">
 			<div class="shot-title" style="padding: 1em 0;">
 				<a href="#">{{$shot->title}}</a>
 			</div>
@@ -37,46 +37,38 @@
 			<div class="shot-description">
 				<p>{{$shot->description}}</p>
 			</div>
-		</div>
+		</div> --}}
+
+		<!-- Well lets see -->
+		<div class="mdl-card__actions mdl-card--border" style="position: relative;">
+              <button class="mdl-button mdl-js-button mdl-js-ripple-effect icon-round" style="float: none;" data-upgraded=",MaterialButton,MaterialRipple">
+                  <i class="mdi mdi-heart-outline icon-center" style="font-size: 1.2em;color: #F23054;"></i>
+                  <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
+              <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+              <button class="mdl-button mdl-js-button mdl-js-ripple-effect icon-round" style="float: none;" data-upgraded=",MaterialButton,MaterialRipple">
+                  <i class="mdi mdi-comment icon-center" style="font-size: 1.2em;"></i>
+                  <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
+              <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+              <span class="designer_card__views">
+                  <i class="mdi mdi-eye"></i>
+                  <span style="font-size: 12px;" class="ng-binding">347 views</span>
+              </span>
+              <button id="card-right-button" class="mdl-button mdl-js-button mdl-button--icon" data-upgraded=",MaterialButton">
+                <i class="icon-center mdi mdi-dots-vertical"></i>
+             </button>
+          </div>
 
 		<!--  -->
 		<div class="mt-shots-info-wrap mt-card-light">
-			<div class="mt-shot-info-head">
-				<div class="mt-shot-user-actions-wrap">
-					<ul class="mt-shot-user-actions">
-						<li class="each-action">
-							<a href="#" class="">
-								<i class="mdi mdi-heart-outline" style="font-size: 2em;color: #F23054;"></i>
-								<span>{{$shot->likes}}</span>
-							</a>
-						</li>
-						<li class="each-action">
-							<a>
-								<i class="mdi mdi-eye" style="font-size: 2em;"></i>
-								<span>{{$shot->views}}</span>
-							</a>
-						</li>
-					</ul>
-				</div>
-				<div class="mt-shot-utility-icons">
-					<ul>
-						<li class="util-list-surcelink m-0">
-							<a class="btn mt-btn-circle m-0 waves-effect waves-button waves-float"  href="{{$shot->source_url}}" title="source URL">
-	                              <i class="mdi mdi-link-variant"></i>
-	                        </a>
-						</li>
-					</ul>
-				</div>
-			</div>
 
 			<!-- Comment Form -->
-			<div class="comment-form-wrapper">
+{{-- 			<div class="comment-form-wrapper">
 				<div class="input-comment">
 					<form name="comment" class="comment-form" ui-keypress="{13:'like(id)'}" autocomplete="off">
 						<input class="form-control" name="body" type="text" placeholder="Write your comment here ...">
 					</form>
 				</div>
-			</div>
+			</div> --}}
 
 			{{-- Coments --}}
 

@@ -237,6 +237,12 @@ app.controller("authController", ["$scope",
                 $scope.getShots($repo, $slug, {cat: $cat, page:$page});
                 $scope.busy = false;
 
+                ga('send', {
+                  hitType: 'event',
+                  eventCategory: 'PaginatedContent',
+                  eventAction: 'scroll',
+                  eventLabel: 'Load More'
+                });
             };
 
             /**

@@ -183,7 +183,6 @@
     padding: 1em 3em;
     min-height: 20px;
     background: #F8F8F8;
-    border-bottom: 1px solid #d8d8d8;
 }
 
 .mt-shots-info-wrap {
@@ -191,6 +190,7 @@
     padding: 0 45px;
     background: #fff;
     padding-bottom: 40px;
+    background: rgba(238, 238, 238, 0.35);
 }
 
 .mt-shot-info-head {
@@ -218,6 +218,7 @@
     width: 60%;
     min-width: 40em;
     margin: 4em auto;
+    background-color: #fff;
 }
 
 .mt-shot-actions {
