@@ -180,23 +180,23 @@
 
 *********************************************************************************************/
 .shot-info{
-    padding: 1em 3em;
+    padding: 3em 3em;
     min-height: 20px;
-    background: #F8F8F8;
+    background: #fff;
 }
 
 .mt-shots-info-wrap {
     margin-top: 1px;
     padding: 0 45px;
-    background: #fff;
+    background: inherit;
     padding-bottom: 40px;
-    background: rgba(238, 238, 238, 0.35);
 }
 
 .mt-shot-info-head {
     border-bottom: 1px solid #eee;
     padding: 1em 0;
 }
+
 
 .comment-form-wrapper {
     margin: 15px 0;

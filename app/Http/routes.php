@@ -91,6 +91,10 @@ Route::group(['prefix' => 'api/v1'], function () {
 	 */
 	Route::get('/explore/{slug}', [
 			'as' => 'shots.sort',
+			'uses' => 'Frontend\ExploreController@show'
+	]);
+	Route::get('/explore/', [
+			'as' => 'shots.sort',
 			'uses' => 'Frontend\ExploreController@index'
 	]);
 	Route::get('/shots/{sort}', [

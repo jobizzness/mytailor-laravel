@@ -216,9 +216,43 @@ figure.shot-cover.--profile__feed{
   background-color: #fff;
   transition-duration: .2s;
   transition-timing-function: cubic-bezier(0.37, 0.15, 0.32, 0.94);
-  transition-property: -webkit-transform;
+transition-property: -webkit-transform;
   transition-property: opacity, background-color;
   border-radius: 4px;
+
+  .mt-image-holder{
+    min-height: 250px;
+  }
+
+  .shot-description{
+    padding: 10px 1em;
+
+  }
+  .mdl-card__actions{
+
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    padding: 10px;
+    color:rgba(0,0,0,0.54);
+
+
+    >button.mdl-button{
+      color: inherit;
+      margin: 0 5px;
+
+      i{
+        font-size: 20px;
+      }
+    }
+
+  }
 
   &:hover{
     background-color: #f7f7f7;
@@ -230,6 +264,7 @@ figure.shot-cover.--profile__feed{
 .ais-hits--item>.grid-item{
   width: 25%;
 }
+
 .grid-item figcaption {
     -webkit-transition: all 700ms ease;
     transition: all 700ms ease;
@@ -288,13 +323,6 @@ figure.shot-cover.--profile__feed{
     font-size: 20px;
     position: relative;
     top: 2px;
-}
-
-#card-right-button{
-  position: absolute;
-  right:10px;
-  color: #4d4d4d;
-  font-size: 1.2em;
 }
 
 .poster-card{

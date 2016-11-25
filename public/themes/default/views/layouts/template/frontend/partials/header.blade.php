@@ -3,7 +3,7 @@
     <div class="mt-global-header mdl-layout__header-row flex-center dark">
       <div ng-click="toggleSidebar()" class="mdl-layout__drawer-button pull-left"><i class="mdi mdi-menu"></i></div>
       <!-- Logo -->
-        <div class="logo-wrap"><h1><a href="http://www.mytailorafrica.com/"><span class="mt-logo__icon">MyTailorAfrica</span></a></h1></div>
+        <div class="logo-wrap"><h1><a href="http://www.afrodapp.com/"><span class="mt-logo__icon">Afrodapp</span></a></h1></div>
         <!-- Search bar starts here -->
         <div class="mt-search-wrapper expandable--search hide-on-phone">
             <span class="icon-search"><i class="mdi mdi-magnify" style="font-size: 22px;"></i></span>

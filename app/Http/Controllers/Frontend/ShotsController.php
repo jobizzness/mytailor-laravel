@@ -110,6 +110,7 @@ class ShotsController extends ApiController
      */
     protected function getShots($sort, Request $request)
     {
+
         $cat = $request->get('cat') ?: null;
 
         switch ($sort) {

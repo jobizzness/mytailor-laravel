@@ -48,6 +48,8 @@
 
     <link rel="stylesheet" href="{{theme('vendor/material-design-lite/material.min.css')}}">
 
+    {{-- Roboto Font here --}}
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
     <!-- Main application style  -->
 

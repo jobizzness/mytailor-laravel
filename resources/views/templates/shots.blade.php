@@ -43,12 +43,13 @@
             <section>
               <span class="time">@{{shot.time}}</span>
               <span class="mdl-layout-spacer"></span>
-              <a href="#" class="mt-shot-avatar" title="Mytailor">
+              <a href="#" class="mt-shot-avatar" title="@{{shot.owner.username}}">
                  <h2 class="mt-avatar-name">@{{shot.owner.username}}</h2>
                   <img height="30" width="30" ng-src="/uploads/profiles/@{{shot.owner.avatar.avatar_small}}" alt="">
               </a>
             </section>
           </header>
+          {{-- Figure --}}
           <figure>
             <a href="" class="mt-grid___link" ng-click="open(shot.name)">
                 <div class="mt-image-holder" itemscope itemtype="http://schema.org/thumbnail">
@@ -56,19 +57,23 @@
                 </div>
             </a>
           </figure>
-          <div class="mdl-card__actions mdl-card--border" style="position: relative;">
-              <button class="mdl-button mdl-js-button mdl-js-ripple-effect icon-round" style="float: none;">
-                  <i class="mdi mdi-heart-outline icon-center" style="font-size: 1.2em;color: #F23054;"></i>
+
+          <div class="mdl-card__actions">
+              <button class="mdl-button mdl-js-button mdl-js-ripple-effect icon-round">
+                  <i class="mdi mdi-heart icon-center"></i>
                   <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
               </button>
-              <button class="mdl-button mdl-js-button mdl-js-ripple-effect icon-round" style="float: none;">
-                  <i class="mdi mdi-comment icon-center" style="font-size: 1.2em;"></i>
+              <span style="font-size: 13px;margin: 0;">33</span>
+              <button class="mdl-button mdl-js-button mdl-js-ripple-effect icon-round">
+                  <i class="mdi mdi-comment icon-center"></i>
                   <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
               </button>
-              <span class="designer_card__views">
-                  <i class="mdi mdi-eye"></i>
-                  <span style="font-size: 12px;">@{{shot.views}} views</span>
-              </span>
+              <span style="font-size: 13px;margin: 0;">7</span>
+              <button class="mdl-button mdl-js-button mdl-js-ripple-effect icon-round">
+                  <i class="mdi mdi-eye icon-center"></i>
+              </button>
+              <span style="font-size: 13px;margin: 0;">@{{shot.views}}</span>
+              <span class="mdl-layout-spacer"></span>
               <button id="card-right-button" class="mdl-button mdl-js-button mdl-button--icon">
                 <i class="icon-center mdi mdi-dots-vertical"></i>
              </button>

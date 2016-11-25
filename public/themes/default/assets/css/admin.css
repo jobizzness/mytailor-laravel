@@ -24,7 +24,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block; }
 
 html, body {
-  font-family: "Helvetica","Arial",sans-serif;
+  font-family: 'Helvetica', sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px; }
@@ -1184,6 +1184,22 @@ p.attract-me {
 
 .location__text {
   color: rgba(255, 255, 255, 0.65); }
+
+.shot-description__text {
+  padding: 10px 1em 0;
+  line-height: 15px;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.68); }
+
+.mt-avatar-name {
+  color: #000;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: .04em;
+  margin-right: 1em;
+  float: left;
+  text-transform: capitalize;
+  display: inline-block; }
 
 /*Forms*/
 .mt-forms {
@@ -2480,6 +2496,24 @@ figure.shot-cover.--profile__feed {
   transition-property: -webkit-transform;
   transition-property: opacity, background-color;
   border-radius: 4px; }
+  .mt-shot .mt-image-holder {
+    min-height: 250px; }
+  .mt-shot .shot-description {
+    padding: 10px 1em; }
+  .mt-shot .mdl-card__actions {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    padding: 10px;
+    color: rgba(0, 0, 0, 0.54); }
+    .mt-shot .mdl-card__actions > button.mdl-button {
+      color: inherit;
+      margin: 0 5px; }
+      .mt-shot .mdl-card__actions > button.mdl-button i {
+        font-size: 20px; }
   .mt-shot:hover {
     background-color: #f7f7f7; }
 
@@ -2532,12 +2566,6 @@ figure.shot-cover.--profile__feed {
   font-size: 20px;
   position: relative;
   top: 2px; }
-
-#card-right-button {
-  position: absolute;
-  right: 10px;
-  color: #4d4d4d;
-  font-size: 1.2em; }
 
 .poster-card {
   min-height: 150px;

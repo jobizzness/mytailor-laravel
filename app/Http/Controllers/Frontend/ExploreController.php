@@ -46,7 +46,7 @@ class ExploreController extends ApiController
      * @param $slug
      * @return mixed
      */
-    public function index($slug)
+    public function show($slug)
     {
         $slug = str_replace('-', ' ', $slug);
         $cat = $this->request->get('cat') ?: null;
@@ -70,6 +70,12 @@ class ExploreController extends ApiController
         ]);
 
     }
+
+    public function index()
+    {
+        $shots = $this->shots->trendingShotIn($tag);
+    }
+
 
     private function append($cat)
     {

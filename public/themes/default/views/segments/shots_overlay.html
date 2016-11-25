@@ -1,13 +1,13 @@
 <div class="overlay-wrapper">
 
-	<section class="mdl-cell mdl-cell--12-col light-shadow">
+	<section class="mdl-cell mdl-cell--12-col light-shadow mt-shot">
 
 	<!-- The header -->
 		<header class="mt-shot-header clearfix">
             <section>
               <span class="time">{{shot.published_at}}</span>
               <span class="mdl-layout-spacer"></span>
-              <a href="#" class="mt-shot-avatar" title="Mytailor">
+              <a href="#" class="mt-shot-avatar" title="{{shot.owner.username}}">
                  <h2 class="mt-avatar-name">{{shot.owner.username}}</h2>
                   <img height="30" width="30" ng-src="/uploads/profiles/{{shot.owner.avatar.avatar_small}}" alt="">
               </a>
@@ -20,63 +20,34 @@
 		</figure>
 
 		<!-- Notes -->
-		<div class="shot-info" style="padding: 1em 3em;min-height: 20px;background: #F8F8F8;">
-			<div class="shot-title" style="padding: 1em 0;">
-				<a href="#" ng-bind="shot.title"></a>
-			</div>
+		<div class="shot-info">
+
+			<!-- description -->
 			<div class="shot-description">
-				<p ng-bind="shot.description">
-				</p>
+				<p ng-bind="shot.description"></p>
 			</div>
-		</div>
 
-		<!-- Comments -->
-		<div class="mt-shots-info-wrap mt-card-light">
-		<div class="mt-shot-info-head">
-			<div class="mt-shot-user-actions-wrap">
-				<ul class="mt-shot-user-actions">
-					<li class="each-action">
-						<a href="#" class="">
-							<i class="mdi mdi-heart-outline" style="font-size: 2em;color: #F23054;"></i>
-							<span ng-bind="shot.likes"></span>
-						</a>
-					</li>
-					<li class="each-action">
-						<a>
-							<i class="mdi mdi-eye" style="font-size: 2em;"></i>
-							<span ng-bind="shot.views"></span>
-						</a>
-					</li>
-				</ul>
-			</div>
-			<div class="mt-shot-utility-icons">
-				<ul>
-					<li class="util-list-surcelink m-0">
-						<a class="btn mt-btn-circle m-0 waves-effect waves-button waves-float"  ng-href="{{shot.source_url}}" title="source URL">
-                              <i class="mdi mdi-link-variant"></i>
-                        </a>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<!-- All comments -->
-		<div class="mt-shot-comments-wrapper scroller hidden">
-
-			<div class="mt-shot-comment-cont"></div>
-
-		</div>
-
-		<!-- Comment Form -->
-		<div class="comment-form-wrapper">
-			<form action="" method="POST">
-				<div class="input-comment">
-					<input class="form-control" type="text" placeholder="Write your comment here ...">
-				</div>
-				
-			</form>
-		</div>
-
-		</div>
+			<div class="mdl-card__actions" style="padding:0">
+	              <button class="mdl-button mdl-js-button mdl-js-ripple-effect icon-round">
+	                  <i class="mdi mdi-heart icon-center"></i>
+	                  <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
+	              </button>
+	              <span style="font-size: 13px;margin: 0;">33</span>
+	              <button class="mdl-button mdl-js-button mdl-js-ripple-effect icon-round">
+	                  <i class="mdi mdi-comment icon-center"></i>
+	                  <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
+	              </button>
+	              <span style="font-size: 13px;margin: 0;">7</span>
+	              <button class="mdl-button mdl-js-button mdl-js-ripple-effect icon-round">
+	                  <i class="mdi mdi-eye icon-center"></i>
+	              </button>
+	              <span style="font-size: 13px;margin: 0;">{{shot.views}}</span>
+	              <span class="mdl-layout-spacer"></span>
+	              <button id="card-right-button" class="mdl-button mdl-js-button mdl-button--icon">
+	                <i class="icon-center mdi mdi-dots-vertical"></i>
+	             </button>
+	          </div>
+	    </div>
 	</section>
 
 </div>

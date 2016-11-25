@@ -67,6 +67,26 @@ class DbShotsRepository implements ShotsRepositoryInterface{
             ->groupBy('id')
             ->paginate(8);
     }
+
+    /**
+     * Gets the latest trending shot with a particular tag
+     *
+     *
+     * @param $tag
+     * @return mixed
+     * @internal param $cat
+     */
+    public function trendingShotIn($tag){
+        return $this->shots
+            ->with('image')
+            ->select(\DB::raw( '((views - 1) / (TIMESTAMPDIFF(HOUR, updated_at, NOW()) + 2)^1.5) as Popularity, shots.*'))
+            ->tag($tag)
+            ->orderBy('updated_at', 'desc')
+            ->orderBy('Popularity', 'desc')
+            ->where('published', '=', 1)
+            ->first();
+    }
+
     /**
      * Gets shots that are featured orderd by popularity.
      *

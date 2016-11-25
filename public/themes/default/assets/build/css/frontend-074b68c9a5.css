@@ -4727,7 +4727,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block; }
 
 html, body {
-  font-family: 'Helvetica', sans-serif;
+  font-family: "Helvetica","Arial",sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px; }
@@ -5228,15 +5228,13 @@ a.waves-effect .waves-ripple {
 .mt-shot-header {
   width: 100%;
   padding: 0.4em 0em;
-  border-bottom: 1px solid #eee;
-  border-radius: 4px; }
+  border-bottom: 1px solid #eee; }
   .mt-shot-header > section {
     display: -ms-flexbox;
     display: flex; }
     .mt-shot-header > section .time {
-      font-size: 11px;
-      color: #000000;
-      font-weight: 400;
+      font-size: 82%;
+      color: #262626;
       margin-left: 1em;
       margin-top: 1em; }
 
@@ -5256,6 +5254,14 @@ a.waves-effect .waves-ripple {
   border: 1px solid #eee;
   display: inline-block; }
 
+.mt-avatar-name {
+  font-size: 82%;
+  color: #262626;
+  margin-right: 1em;
+  float: left;
+  text-transform: capitalize;
+  display: inline-block; }
+
 /*colors*/
 /*
  * All UI colors on this file
@@ -5269,7 +5275,7 @@ a.waves-effect .waves-ripple {
 
 .dark {
   background-color: #202024;
-  color: #948E8E; }
+  color: #fff; }
 
 .dark-card {
   background-color: rgba(41, 41, 41, 0.97); }
@@ -5559,7 +5565,7 @@ button.icon-round {
   left: 0px;
   bottom: -7px;
   right: 0px;
-  height: 4px;
+  height: 2.5px;
   background-color: #F23054;
   position: absolute;
   transition: bottom 250ms ease-in-out; }
@@ -5568,11 +5574,13 @@ button.icon-round {
   background-color: #eee; }
   .mt-nav-has-border > .mdl-navigation__link.__active:after {
     bottom: 0 !important; }
+  .mt-nav-has-border > .mdl-navigation__link.__active svg {
+    fill: #F23054; }
 
 .mt-nav-has-border > .mdl-navigation__link {
   font-weight: 600;
   color: #4E4E4F;
-  line-height: 64px !important; }
+  line-height: 48px !important; }
   .mt-nav-has-border > .mdl-navigation__link:hover {
     background-color: #eee; }
     .mt-nav-has-border > .mdl-navigation__link:hover:after {
@@ -5685,6 +5693,10 @@ button#dropdown > i {
 .social-icon-color {
   opacity: .7;
   background-position: 0 -38px !important; }
+
+.android-search-box {
+  margin-left: 16px;
+  margin-right: 16px; }
 
 /*Texts*/
 /* ==========================================================================
@@ -5933,22 +5945,6 @@ p.attract-me {
 
 .location__text {
   color: rgba(255, 255, 255, 0.65); }
-
-.shot-description__text {
-  padding: 10px 1em 0;
-  line-height: 15px;
-  font-size: 13px;
-  color: rgba(0, 0, 0, 0.68); }
-
-.mt-avatar-name {
-  color: #000;
-  font-size: 11px;
-  font-weight: 400;
-  letter-spacing: .04em;
-  margin-right: 1em;
-  float: left;
-  text-transform: capitalize;
-  display: inline-block; }
 
 /*responsive*/
 #avatar ~ .mdl-menu__container {
@@ -6799,20 +6795,16 @@ a[ng-click] {
   .mdl-layout__header {
     display: block !important; }
   .mt-secondary__navigation, .mt-top-menu, .logo-wrap {
-    display: none !important; }
-  .mdl-layout__header .mdl-layout__drawer-button {
-    margin: 0 !important; } }
+    display: none !important; } }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 1024px) {
   .mt-nav-has-border {
     padding: 0 !important;
     width: 100%; }
   .mt-sub-header {
     padding: 0 !important; }
   .mt-nav-has-border > .mdl-navigation__link {
-    width: 33.3333%; }
-  button.top-menu-right {
-    top: 5px; } }
+    width: 33.3333%; } }
 
 /*
 * Layout Styles
@@ -6869,10 +6861,6 @@ a[ng-click] {
 .mt-glow-soft {
   box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 0px 2px 2px rgba(0, 0, 0, 0.098), 0px 0px 5px 1px rgba(0, 0, 0, 0.084); }
 
-.mt-global-header {
-  min-height: 48px;
-  max-height: 48px; }
-
 .flex-center {
   display: -ms-flexbox;
   display: flex;
@@ -6888,9 +6876,6 @@ a[ng-click] {
 .mdl-layout__header {
   min-height: 45px; }
 
-.mdl-layout__header.is-compact {
-  max-height: 45px; }
-
 .pull-left > a {
   padding: 1em 0.5em 1em 0; }
 
@@ -6898,7 +6883,7 @@ a[ng-click] {
   -ms-flex-pack: center;
   justify-content: center;
   background: #Fff;
-  height: 64px;
+  height: 48px;
   overflow: visible;
   overflow-y: hidden;
   padding: 0 40px 0 40px; }
@@ -7231,7 +7216,7 @@ a.mt-sidebar-link {
   width: 100%;
   margin: 0;
   padding: 0;
-  height: 64px;
+  height: 48px;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: row;
@@ -7246,7 +7231,7 @@ a.mt-sidebar-link {
   .mt-secondary__navigation li.mt-menu__item > a {
     display: block;
     padding: 0 15px;
-    line-height: 64px !important;
+    line-height: 49px !important;
     position: relative;
     font-weight: 600;
     color: #6f6f70; }
@@ -7262,7 +7247,7 @@ div.mt-drop-items {
   background: #eee;
   min-height: 64px;
   z-index: -1;
-  top: -2px;
+  top: -17px;
   opacity: 0;
   left: 0;
   transform-style: preserve-3d;
@@ -7297,15 +7282,16 @@ div.mt-drop-items {
 
 *********************************************************************************************/
 .shot-info {
-  padding: 3em 3em;
+  padding: 2em 3em;
   min-height: 20px;
   background: #fff; }
 
 .mt-shots-info-wrap {
   margin-top: 1px;
   padding: 0 45px;
-  background: inherit;
-  padding-bottom: 40px; }
+  background: #fff;
+  padding-bottom: 40px;
+  background: rgba(238, 238, 238, 0.35); }
 
 .mt-shot-info-head {
   border-bottom: 1px solid #eee;
@@ -7511,24 +7497,6 @@ figure.shot-cover.--profile__feed {
   transition-property: -webkit-transform;
   transition-property: opacity, background-color;
   border-radius: 4px; }
-  .mt-shot .mt-image-holder {
-    min-height: 250px; }
-  .mt-shot .shot-description {
-    padding: 10px 1em; }
-  .mt-shot .mdl-card__actions {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-align: center;
-    align-items: center;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    padding: 10px;
-    color: rgba(0, 0, 0, 0.54); }
-    .mt-shot .mdl-card__actions > button.mdl-button {
-      color: inherit;
-      margin: 0 5px; }
-      .mt-shot .mdl-card__actions > button.mdl-button i {
-        font-size: 20px; }
   .mt-shot:hover {
     background-color: #f7f7f7; }
 
@@ -7581,6 +7549,12 @@ figure.shot-cover.--profile__feed {
   font-size: 20px;
   position: relative;
   top: 2px; }
+
+#card-right-button {
+  position: absolute;
+  right: 10px;
+  color: #4d4d4d;
+  font-size: 1.2em; }
 
 .poster-card {
   min-height: 150px;

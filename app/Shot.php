@@ -87,6 +87,17 @@ class Shot extends Model {
             return $query;
     }
 
+    public function scopeTag($query, $tag) {
+        if ($tag) {
+
+            return $query->whereHas('tags', function($q) use ($tag) {
+                $q->where('tag_name', '=', $tag);
+            });
+
+        }
+        return $query;
+    }
+
 
     /*
     |--------------------------------------------------------------------------

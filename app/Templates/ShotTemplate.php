@@ -65,7 +65,7 @@ class ShotTemplate extends AbstractTemplate{
     {
         $title = ucfirst($shot->title);
         $description = strtok($shot->description, ".").'.';
-        $url = 'https://mytailorafrica.com/shot/'.$shot->file_name;
+        $url = 'https://www.afrodapp.com/shot/'.$shot->file_name;
 
         //Basic Meta Tags
         SEOMeta::setTitle($title)
@@ -79,7 +79,7 @@ class ShotTemplate extends AbstractTemplate{
         OpenGraph::setTitle($title)
             ->setDescription($description)
             ->setType('article')
-            ->addImage('https://s-media-cache-ak0.pinimg.com/200x150/b3/62/bd/b362bd94480261dbc6ee6be9a80ebac2.jpg')
+            ->addImage($shot->image->original)
             ->setArticle([
                 'published_time' => 'datetime',
                 'section' => 'category',
@@ -89,11 +89,11 @@ class ShotTemplate extends AbstractTemplate{
         //Meta tags for twitter
         Twitter::addValue('card', 'summary')
             ->setType('article')
-            ->addImage('https://s-media-cache-ak0.pinimg.com/200x150/b3/62/bd/b362bd94480261dbc6ee6be9a80ebac2.jpg')
+            ->addImage($shot->image->original)
             ->setTitle($title)
             ->setDescription($description)
             ->setUrl($url)
-            ->setSite('@MyTailor_Africa');
+            ->setSite('@afrodapp');
 
     }
 

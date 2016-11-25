@@ -1,0 +1,71 @@
+<div class="mt-shots-info-wrap mt-card-light">
+
+			<!-- Comment Form -->
+			<div class="comment-form-wrapper">
+				<div class="input-comment">
+					<form name="comment" class="comment-form" ui-keypress="{13:'like(id)'}" autocomplete="off">
+						<input class="form-control" name="body" type="text" placeholder="Write your comment here ...">
+					</form>
+				</div>
+			</div>
+
+			{{-- Coments --}}
+
+			<section>
+				<div>
+				<details>
+					<summary style="padding:1em;">{{$shot->comments->count()}} comments</summary>
+					<ul class="comments-list" ng-scrollbars ng-scrollbars-config="config">
+
+						@forelse($shot->comments as $comment)
+						  <li class="comment-list__item card">
+							  <a href="#" class="mt-shot-avatar" title="Mytailor">
+								    <span class="comment-avatar">
+									  <img src="/uploads/profiles/{{$comment->publishable->profile->avatar}}" alt="{{$comment->publishable->profile->username}}"> 
+								    </span>
+							    </a>
+							  	<main>
+								  <span class="comment-list__title"> 
+									  	<a href="#">{{$comment->publishable->profile->username}} </a> <span class="mdl-layout-spacer"></span>
+									  	{{-- <ul class="list-inline actions" href="#">
+											<li><a href="#"><i class="mdi mdi-pencil"></i></a></li>
+										</ul> --}}
+								  </span> 
+									  	<p class="comment__text">{{$comment->body}} <time> 1 hr</time></p>
+								</main>
+					  	</li>
+					  		@empty
+					  	@endforelse
+
+				  </ul> 
+				</details>
+
+				{{-- Last Comment --}}
+				<ul id="lastComment" class="comments-list">
+
+					<?php $comment = $shot->comments->last() ?: null ?>
+
+					@if($comment)
+						<li class="comment-list__item card">
+						  	<a href="#" class="mt-shot-avatar" title="Mytailor">
+							    <span class="comment-avatar">
+								  <img src="/uploads/profiles/{{$comment->publishable->profile->avatar}}" alt="{{$comment->publishable->profile->username}}"> 
+							    </span>
+						    </a>
+						  	<main>
+							  	<span class="comment-list__title"> 
+								  	<a href="#">{{$comment->publishable->profile->username}} </a> <span class="mdl-layout-spacer">	
+								</span>
+								  	{{-- <ul class="list-inline actions" href="#">
+										<li><a href="#"><i class="mdi mdi-pencil"></i></a></li>
+									</ul> --}}
+							  	</span> 
+								  	<p class="comment__text"><a href="#" class="tagged__name">Peter Carlsson</a> {{$comment->body}} <time> 1 hr</time></p>
+							</main>
+					  	</li>
+
+				  	@endif	
+
+
+				</ul>
+			</div>
