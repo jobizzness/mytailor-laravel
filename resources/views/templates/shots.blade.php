@@ -63,12 +63,12 @@
                   <i class="mdi mdi-heart icon-center"></i>
                   <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
               </button>
-              <span style="font-size: 13px;margin: 0;">33</span>
+              <span style="font-size: 13px;margin: 0;"></span>
               <button class="mdl-button mdl-js-button mdl-js-ripple-effect icon-round">
                   <i class="mdi mdi-comment icon-center"></i>
                   <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
               </button>
-              <span style="font-size: 13px;margin: 0;">7</span>
+              <span style="font-size: 13px;margin: 0;"></span>
               <button class="mdl-button mdl-js-button mdl-js-ripple-effect icon-round">
                   <i class="mdi mdi-eye icon-center"></i>
               </button>

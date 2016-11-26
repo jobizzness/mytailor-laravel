@@ -25,7 +25,7 @@
 
          <!-- The Figure -->
 		<figure class="mt-figure__card mdl-card shot-cover">
-			<img itemprop="image" itemscope itemtype="http://schema.org/primaryImageOfPage" src="{{$shot->image->original}}" alt="{{str_replace(' ', '-', $shot->alt)}}">
+			<a href="{{$shot->source_url}}"><img itemprop="image" itemscope itemtype="http://schema.org/primaryImageOfPage" src="{{$shot->image->original}}" alt="{{str_replace(' ', '-', $shot->alt)}}"></a>
 		</figure>
 
  		<!-- Notes -->
@@ -41,16 +41,16 @@
 	                  <i class="mdi mdi-heart icon-center"></i>
 	                  <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
 	              </button>
-	              <span style="font-size: 13px;margin: 0;">33</span>
+	              <span style="font-size: 13px;margin: 0;"></span>
 	              <button class="mdl-button mdl-js-button mdl-js-ripple-effect icon-round">
 	                  <i class="mdi mdi-comment icon-center"></i>
 	                  <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
 	              </button>
-	              <span style="font-size: 13px;margin: 0;">7</span>
+	              <span style="font-size: 13px;margin: 0;"></span>
 	              <button class="mdl-button mdl-js-button mdl-js-ripple-effect icon-round">
 	                  <i class="mdi mdi-eye icon-center"></i>
 	              </button>
-	              <span style="font-size: 13px;margin: 0;">@{{shot.views}}</span>
+	              <span style="font-size: 13px;margin: 0;">{{$shot->views}}</span>
 	              <span class="mdl-layout-spacer"></span>
 	              <button id="card-right-button" class="mdl-button mdl-js-button mdl-button--icon">
 	                <i class="icon-center mdi mdi-dots-vertical"></i>
