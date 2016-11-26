@@ -73,6 +73,15 @@ class ImageServer {
     }
 
     /**
+     *
+     * @param array $images
+     */
+    public function delete($images = [])
+    {
+        $this->filesystem->delete($images);
+    }
+
+    /**
      * Please Refactor Me.........
      * @param $file
      * @return $this
@@ -148,6 +157,7 @@ class ImageServer {
     {
         $this->filesystem->put($path.$this->name.'.jpg', $image, 'public');
     }
+
 
     /**
      * Generates methods based on the method call.

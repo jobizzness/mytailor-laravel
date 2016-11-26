@@ -90,36 +90,35 @@ class ShotsController extends Controller    {
         return true;
     }
 
-//    public function clean(ImageServerProd $imageServer)
-//    {
-//        $shots = Shot::where('image_id', '=', null)->get();
-//
-//        foreach($shots as $shot)
-//        {
-//            $name = pathinfo($shot->file_name, PATHINFO_FILENAME);
-//
-//            $i = $imageServer->make($name);
-//
-//
-//            $image = new Image();
-//            $image->small = $i->small();
-//            $image->original = $i->original();
-//            $image->phone = $i->phone();
-//            $image->medium = $i->medium();
-//            $image->large = $i->large();
-//            $image->save();
-//
-//            $shot->file_name = $i->getName();
-//            $shot->image_id = $image->id;
-//            $shot->save();
-//
-//
-//
-//
-//
-//
-//        }
-//    }
+    /*
+     * Temporaly for bulk actions
+     */
+    public function clean(ImageServerProd $imageServer)
+    {
+        $shots = Shot::where('published', '!=', 1)->get();
+
+        foreach($shots as $shot)
+        {
+
+            // Delete the image
+            $status = $imageServer->delete([
+                    $shot->image()->large,
+                    $shot->image()->medium,
+                    $shot->image()->original,
+                    $shot->image()->phone,
+                    $shot->image()->small
+            ]);
+
+            if($status){
+
+                $shot->image()->delete();
+                $shot->delete();
+                //Delete the shot and its image
+
+            }
+
+        }
+    }
 
     /**
      * @param $id
@@ -172,11 +171,6 @@ class ShotsController extends Controller    {
      * @return string
      */
     public function destroy($id){
-
-        $file = new UploadServer();
-        $file->delete(false, $id);
-
-        $this->shots->where('file_name', '=', $id)->delete();
 
         
     }
