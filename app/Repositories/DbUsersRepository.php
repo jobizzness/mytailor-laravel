@@ -18,6 +18,8 @@ class DbUsersRepository implements UsersRepositoryInterface
     public function findByEmailOrCreate($userData)
     {
 
+        dd($userData);
+        
         $user = User::where('email', $userData->email)->first();
 
         if(! $user){
