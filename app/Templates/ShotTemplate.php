@@ -37,7 +37,7 @@ class ShotTemplate extends AbstractTemplate{
     }
 
     /**
-     * Here us where it all happens
+     * Here is where it all happens
      *
      * @param View $view
      * @param array $parameters
@@ -52,6 +52,7 @@ class ShotTemplate extends AbstractTemplate{
         if($shot) {
             $this->dispatchEventsFor($shot);
             $this->seoMake($shot);
+            $this->view = 'shot';
             $view->with('shot', $shot);
         }
 

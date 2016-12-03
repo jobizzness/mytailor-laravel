@@ -51,20 +51,76 @@ ul.comments-list{
 	color: #E91E63;
 }
 
-.mt-list-followers{
+
+.profile__info-actions>ul{
 	display: flex;
-	flex-wrap:nowrap;
-	    margin: 2em 0;
+	border-top: 1px solid rgba(255, 255, 255, 0.09);
+		>li{
+	    height: 53px;
+	    line-height: 43px;
+		width: 50%;
+		padding: 5px;
 
-	    >li>a{
-	    	    margin-right: 1em;
-			    color: #fff;
-			    font-size: 15px;
-			    font-family: 'Josefin Sans';
-	    }
+			>a{
+				color: #fff;
+				font-size: 15px;
+			}
+			.__active{
+				color: #00e8d3 !important;
+			}
+				i{
+				    font-size: 22px;
+				    margin-right: 5px;
+				}
+		}
+}
 
-	    >li.with--border{
-	    	border-right: 1px solid rgba(255, 255, 255, 0.49);
-	    	 margin-right: 1em;
-	    }
+.mdl-list__item.--with_link{
+	&:hover {
+    	background: rgba(148, 159, 164, 0.13) !important;
+	}
+}
+
+.mt-list-centerd{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-list__item{
+
+	.social-list__item_link{
+		margin-left:5px;
+		i{
+			font-size: 2em;
+		}
+	}
+
+}
+
+.mdl-list__item-primary-content>.mdl-list__title{
+	    color: rgba(0, 0, 0, 0.77);
+}
+
+#contact_list>.mdl-list__item{
+	padding-left:0;
+	padding-bottom:0;
+
+	.mdl-list__item-primary-content{
+		flex-grow: 0;
+	    margin-right: 16px;
+	    color: rgba(32, 32, 36, 0.65);
+	    font-size: 20px;
+	}
+
+	>i {font-size: 23px;}
+
+	.mdl-sec-content{
+		color: #202024;
+		font-size: 13px;
+	}
+}
+
+.top-shots>li{
+	position: relative;
 }

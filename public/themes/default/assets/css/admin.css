@@ -24,7 +24,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block; }
 
 html, body {
-  font-family: 'Helvetica', sans-serif;
+  font-family: 'Roboto', 'Helvetica', sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px; }
@@ -586,9 +586,6 @@ a.waves-effect .waves-ripple {
 .bg-blue500 {
   background: #3f51b5; }
 
-.mdl-ripple, .waves-ripple {
-  background: #f34b6a; }
-
 /*banners*/
 /**
  * MyTailor Banners and viewports
@@ -811,7 +808,7 @@ button.icon-round {
   bottom: -7px;
   right: 0px;
   height: 4px;
-  background-color: #F23054;
+  background-color: #ff4081;
   position: absolute;
   transition: bottom 250ms ease-in-out; }
 
@@ -871,8 +868,21 @@ button#dropdown > i {
   font-weight: 400;
   padding: 0px 15px; }
 
+#main-caller_fab {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9;
+  width: 55.5px;
+  height: 55.5px; }
+  #main-caller_fab i {
+    line-height: 55px;
+    font-size: 30px !important; }
+
 .float {
-  box-shadow: 0px 1px 1.5px 1px rgba(0, 0, 0, 0.12); }
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }
+  .float:hover {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }
 
 @media (max-width: 480px) {
   .btn--mobile {
@@ -936,6 +946,18 @@ button#dropdown > i {
 .social-icon-color {
   opacity: .7;
   background-position: 0 -38px !important; }
+
+.mdl-button--fab.mdl-button--colored {
+  color: #ff4081;
+  background: white; }
+  .mdl-button--fab.mdl-button--colored:hover {
+    background-color: white; }
+
+#invite_btn {
+  width: 100%;
+  background: #48484c;
+  height: 50px;
+  line-height: 3.5; }
 
 /*Texts*/
 /* ==========================================================================
@@ -1179,8 +1201,7 @@ p.attract-me {
 
 .profile__title {
   color: rgba(255, 255, 255, 0.81);
-  font-size: 20px;
-  font-family: 'Bree Serif', serif; }
+  font-size: 20px; }
 
 .location__text {
   color: rgba(255, 255, 255, 0.65); }
@@ -1200,6 +1221,11 @@ p.attract-me {
   float: left;
   text-transform: capitalize;
   display: inline-block; }
+
+.mt-link {
+  color: #0c6ab5 !important; }
+  .mt-link:hover {
+    text-decoration: underline; }
 
 /*Forms*/
 .mt-forms {
@@ -1337,7 +1363,7 @@ span.icon-search {
 .mt-search-wrapper input:hover, .mt-search-wrapper input:focus {
   transition: all 0.2s ease;
   color: white;
-  background: rgba(255, 255, 255, 0.1) !important; }
+  background: #48484c !important; }
 
 @media (max-width: 700px) {
   .hide-on-phone {
@@ -1516,6 +1542,16 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
   background-color: transparent !important;
   background-image: none;
   color: black; }
+
+.contact-form > div.mdl-textfield {
+  width: calc(49% - 16px);
+  margin: 0 8px; }
+
+.mdl-checkbox.is-checked .mdl-checkbox__tick-outline, .mdl-checkbox__ripple-container .mdl-ripple, .mdl-switch__ripple-container .mdl-ripple, .mdl-switch.is-checked .mdl-switch__thumb {
+  background: #00e8d3; }
+
+.mdl-switch.is-checked .mdl-switch__track {
+  background: rgba(28, 173, 160, 0.45); }
 
 .mt-fullwidth-table {
   width: 100%;
@@ -1837,14 +1873,9 @@ a[ng-click] {
 
 .just-main {
   min-height: 48px;
-  max-height: 48px;
-  overflow: hidden !important; }
-
-.mdl-layout-spacer {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1; }
+  max-height: 48px; }
+  .just-main .mt-sub-header {
+    visibility: collapse; }
 
 .mt-glow-soft {
   box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 0px 2px 2px rgba(0, 0, 0, 0.098), 0px 0px 5px 1px rgba(0, 0, 0, 0.084); }
@@ -2132,6 +2163,9 @@ a.mt-sidebar-link {
   height: 45px;
   right: 0; }
 
+.profile--wrapper {
+  margin-top: 16px; }
+
 /*
  * Main layouts for our pages
  *
@@ -2398,7 +2432,7 @@ figure.shot-cover.--profile__feed {
 .mt-row, .mt-row--fullwidth {
   width: 80%;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 1em 20px;
   min-width: 75em; }
 
 .mt-row--fullwidth {
@@ -2514,8 +2548,6 @@ figure.shot-cover.--profile__feed {
       margin: 0 5px; }
       .mt-shot .mdl-card__actions > button.mdl-button i {
         font-size: 20px; }
-  .mt-shot:hover {
-    background-color: #f7f7f7; }
 
 .ais-hits--item > .grid-item {
   width: 25%; }
@@ -2575,14 +2607,15 @@ figure.shot-cover.--profile__feed {
   -ms-flex-pack: center;
   justify-content: center;
   background: #fff;
-  margin-bottom: 1em;
+  margin: 0 1em;
   -ms-flex-align: center;
   align-items: center; }
 
 .card--full {
   width: 100%;
-  padding: 0 2em;
-  background: #fff; }
+  background: #fff;
+  margin-bottom: 8px;
+  border-radius: 3px; }
 
 .padding-top {
   padding: 10px 0 0 16px; }
@@ -2590,6 +2623,13 @@ figure.shot-cover.--profile__feed {
 .card-media {
   max-height: 300px;
   overflow: hidden; }
+
+.header_card {
+  margin-top: 2em;
+  margin: 1em 16px;
+  min-height: 120px;
+  margin-bottom: 0;
+  width: calc(100% - 32px); }
 
 /*Animate*/
 .__visible {

@@ -78,7 +78,7 @@ class ImageServer {
      */
     public function delete($images = [])
     {
-        $this->filesystem->delete($images);
+        return $this->filesystem->delete($images);
     }
 
     /**

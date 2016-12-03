@@ -54,7 +54,7 @@
 									data-responsive_offset="on" 
 
 									
-									style="z-index: 6; white-space: nowrap;">MYTAILOR AFRICA 
+									style="z-index: 6; white-space: nowrap;">AFRODAPP 
 								</div>
 
 								<!-- LAYER NR. 3 -->
@@ -79,7 +79,7 @@
 									data-responsive_offset="on" 
 
 									
-									style="z-index: 7; white-space: nowrap; color: rgb(255, 50, 88);">GET INSPIRED 
+									style="z-index: 7; white-space: nowrap; color: rgb(255, 50, 88);">GET DISCOVERED 
 								</div>
 
 								<!-- LAYER NR. 4 -->

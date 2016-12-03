@@ -4,7 +4,7 @@
                   <!-- Notification Icon and Dropdown -->
                     <li>
                       <a href="#" id="notifications">
-                        <div class="material-icons mdl-badge mdl-badge--overlap" data-badge=""><i class="mdi mdi-bell"></i></div>
+                        <div class="material-icons mdl-badge mdl-badge--overlap" data-badge="5"><i class="mdi mdi-bell"></i></div>
                       </a>
                         {{-- Followers dropdown --}}
                         <ul class="mdl-menu mt-drop__menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"

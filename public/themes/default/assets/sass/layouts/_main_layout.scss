@@ -51,13 +51,9 @@
 .just-main{
     min-height: 48px;
     max-height: 48px;
-    overflow: hidden !important;
-}
-.mdl-layout-spacer {
--webkit-box-flex: 1;
-    -webkit-flex-grow: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
+    .mt-sub-header{
+        visibility: collapse;
+    }
 }
 
 .mt-glow-soft {
@@ -437,4 +433,8 @@ a.mt-sidebar-link{
     top: 0;
     height: 45px;
     right: 0;
+}
+
+.profile--wrapper{
+  margin-top: 16px; 
 }

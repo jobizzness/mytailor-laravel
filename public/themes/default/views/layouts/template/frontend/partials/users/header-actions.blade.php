@@ -4,7 +4,7 @@
                   <!-- Notification Icon and Dropdown -->
                     <li>
                       <a href="#" id="notifications">
-                        <div class="material-icons mdl-badge mdl-badge--overlap" data-badge=""><i class="mdi mdi-bell"></i></div>
+                        <div class="material-icons mdl-badge mdl-badge--overlap" ><i class="mdi mdi-bell"></i></div>
                       </a>
                         {{-- Followers dropdown --}}
                         <ul class="mdl-menu mt-drop__menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
@@ -36,7 +36,7 @@
                   <!-- Mail Icon and Dropdown -->
                     <li>
                       <a href="#" class="dropdown-toggle hover-initialized" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" id="messages">
-                        <div class="material-icons mdl-badge mdl-badge--overlap" data-badge=""><i class="mdi mdi-email"></i></div>
+                        <div class="material-icons mdl-badge mdl-badge--overlap" data-badge="5"><i class="mdi mdi-email"></i></div>
                       </a>
                         {{-- Followers dropdown --}}
                         <ul class="mdl-menu mt-drop__menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
@@ -47,7 +47,7 @@
                     <!-- Hmm Icon and Dropdown -->
                     <li>
                       <a href="#" class="dropdown-toggle hover-initialized" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" id="new-followers">
-                        <div class="material-icons mdl-badge mdl-badge--overlap" data-badge=""><i class="mdi mdi-account-multiple"></i></div>
+                        <div class="material-icons mdl-badge mdl-badge--overlap"><i class="mdi mdi-account-multiple"></i></div>
                       </a>
                           {{-- Followers dropdown --}}
                           <ul class="mdl-menu mt-drop__menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"

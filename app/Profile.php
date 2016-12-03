@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Profile extends Model
 {
-    protected $fillable = ['avatar', 'username'];
+    protected $fillable = ['avatar', 'display_name'];
 
     /*
     |--------------------------------------------------------------------------
@@ -22,7 +22,8 @@ class Profile extends Model
      */
     public function User()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class)
+            ->select(['id','display_name','avatar']);
     }
 
     /*

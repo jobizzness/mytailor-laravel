@@ -21,8 +21,8 @@ class DbUsersRepository implements UsersRepositoryInterface
         $user = User::where('email', $userData->email)->first();
 
         if(! $user){
-            $userData->username = 'Mytailor User';
-            $userData->password = "MikeDoeisabossbutHashed";
+            $userData->username = 'Afrodapp User';
+            $userData->password = Null;
 
             $user = $this->create($userData);
 

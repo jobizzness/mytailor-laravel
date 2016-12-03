@@ -1,6 +1,7 @@
 <?php namespace MyTailor\Templates;
 
 use Illuminate\View\View;
+
 abstract class AbstractTemplate {
 
     protected $view;

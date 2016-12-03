@@ -289,7 +289,6 @@ font-size: 20px;
 .profile__title{
      color: rgba(255, 255, 255, 0.81);
       font-size: 20px;
-      font-family: 'Bree Serif', serif;
 }
 
 .location__text{
@@ -312,4 +311,9 @@ font-size: 20px;
     float: left;
     text-transform: capitalize;
     display: inline-block;
+}
+
+.mt-link{
+        color: #0c6ab5 !important;
+        &:hover{text-decoration: underline;}
 }

@@ -6,6 +6,10 @@ use Carbon\Carbon;
 class ShotTransformer extends Transformer
 {
 
+    /**
+     * @param $shot
+     * @return array
+     */
     public function transform($shot)
     {
 
@@ -24,6 +28,7 @@ class ShotTransformer extends Transformer
 
             "owner" => [
 
+                "display_name" => $shot->publishable->profile->display_name,
                 "username" => $shot->publishable->profile->username,
                 "id"=> $shot->publishable_id,
                 "type" => $shot->publishable_type,
@@ -61,6 +66,10 @@ class ShotTransformer extends Transformer
 
     }
 
+    /**
+     * @param $value
+     * @return string
+     */
     public function prettyDate($value)
     {
         $diffForHumans = Carbon::createFromFormat('Y-m-d H:i:s', $value)->diffForHumans();

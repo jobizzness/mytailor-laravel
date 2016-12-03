@@ -48,7 +48,7 @@ class User extends Authenticatable
     public function profile()
     {
         return $this->hasOne(Profile::class, 'id', 'profile_id')
-                    ->select(['id','username','avatar']);
+                    ->select(['id','display_name','avatar']);
     }
 
     /**
@@ -136,12 +136,13 @@ class User extends Authenticatable
     {
         $profile = new Profile();
         $profile->avatar = $userData->avatar;
-        $profile->username = $userData->username;
+        $profile->display_name = Null;
         $profile->save();
 
         $user = new User();
         $user->email = $userData->email;
         $user->password = bcrypt($userData->password);
+        $profile->username = $userData->username;
         $user->profile_id = $profile->id;
         $user->save();
         $user->assignRole(4);

@@ -75,13 +75,13 @@ figure.shot-cover.--profile__feed{
 
 }
 
- /* ==========================================================================
+/* ==========================================================================
     Rows
    ========================================================================== */
 .mt-row{
   width: 80%;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 1em 20px;
   min-width: 75em;
 
 }
@@ -254,9 +254,6 @@ transition-property: -webkit-transform;
 
   }
 
-  &:hover{
-    background-color: #f7f7f7;
-  }
 
 }
 
@@ -326,19 +323,20 @@ transition-property: -webkit-transform;
 }
 
 .poster-card{
-        min-height: 150px;
+    min-height: 150px;
     display: flex;
     padding: 0 2em;
     justify-content: center;
     background: #fff;
-    margin-bottom: 1em;
+    margin: 0 1em;
     align-items: center;
 }
 
 .card--full{
   width: 100%;
-  padding: 0 2em;
   background: #fff;
+  margin-bottom: 8px;
+  border-radius: 3px;
 }
 
 .padding-top{
@@ -348,4 +346,12 @@ transition-property: -webkit-transform;
 .card-media{
   max-height: 300px;
   overflow: hidden;
+}
+
+.header_card{
+      margin-top: 2em;
+    margin: 1em 16px;
+    min-height: 120px;
+    margin-bottom: 0;
+    width: calc(100% - 32px);
 }

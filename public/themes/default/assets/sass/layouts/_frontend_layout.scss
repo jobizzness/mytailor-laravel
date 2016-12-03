@@ -161,7 +161,7 @@
                     margin: 0px 5px;
 
                     &:hover{
-                        background-color: rgb(255,64,129);
+                        background-color: #ff4081;
                         color: #fff;
                     }
                 }
@@ -256,3 +256,12 @@
     display: none;
 }
 
+.mt-layout__sides .mdl-card__title{
+    padding-bottom: 0;
+
+    .mdl-card__title-text{
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(32, 32, 36, 0.85);
+    }
+}

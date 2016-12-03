@@ -108,7 +108,7 @@ button.icon-round{
     bottom: -7px;
     right: 0px;
     height: 4px;
-    background-color: #F23054;
+    background-color: #ff4081;
     position: absolute;
     transition: bottom 250ms ease-in-out;
 }
@@ -182,8 +182,25 @@ button#dropdown>i{
     font-weight: 400;
     padding: 0px 15px;
 }
+
+#main-caller_fab{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9;
+    width: 55.5px;
+    height: 55.5px;
+    i{
+        line-height: 55px;
+        font-size: 30px !important;
+    }
+}
 .float{
-    box-shadow: 0px 1px 1.5px 1px rgba(0, 0, 0, 0.12);
+    box-shadow:  0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    
+    &:hover{
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    }
 }
 
 
@@ -270,4 +287,21 @@ button#dropdown>i{
 .social-icon-color {
     opacity: .7;
     background-position: 0 -38px!important;
+}
+
+.mdl-button--fab.mdl-button--colored {
+    color: rgb(255, 64, 129);
+    background: rgb(255, 255, 255);
+
+    &:hover{
+        background-color: rgb(255,255,255);
+    }
+    
+}
+
+#invite_btn{
+    width: 100%;
+    background: #48484c;
+    height: 50px;
+    line-height: 3.5;
 }

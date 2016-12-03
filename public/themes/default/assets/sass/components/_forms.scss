@@ -157,7 +157,7 @@ span.icon-search{
 .mt-search-wrapper input:hover, .mt-search-wrapper input:focus{
     transition: all 0.2s ease;
     color: white;
-    background:rgba(255, 255, 255, 0.1) !important;
+    background: rgb(72, 72, 76) !important;
 }
 
 
@@ -383,4 +383,17 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
     background-color: transparent !important;
     background-image: none;
     color: rgb(0, 0, 0);
+}
+
+.contact-form>div.mdl-textfield{
+    width: calc(49% - 16px);
+    margin: 0 8px;
+}
+
+.mdl-checkbox.is-checked .mdl-checkbox__tick-outline, .mdl-checkbox__ripple-container .mdl-ripple, .mdl-switch__ripple-container .mdl-ripple, .mdl-switch.is-checked .mdl-switch__thumb{
+        background: #00e8d3;
+}
+
+.mdl-switch.is-checked .mdl-switch__track {
+    background: rgba(28, 173, 160, 0.45);
 }

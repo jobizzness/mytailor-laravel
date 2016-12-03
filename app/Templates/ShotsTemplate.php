@@ -159,14 +159,14 @@ class ShotsTemplate extends AbstractTemplate   {
                 Default:
 
                     //Meta for google
-                    SEOMeta::setTitle('African Fashion Inspirations on Afrodapp')
+                    SEOMeta::setTitle('African Fashion Trends on Afrodapp')
                         ->setDescription('Get inspired by top African fashion designers and their amazing styles. comment, like and get engaged.')
                         ->setCanonical($path);
 
                     //OpenGraph for facebook
                     OpenGraph::setDescription('Get inspired by top African fashion designers and their amazing styles. comment, like and get engaged.')
                         ->setType('article')
-                        ->setTitle('African Fashion Inspirations on Afrodapp')
+                        ->setTitle('African Fashion Trends on Afrodapp')
                         ->addImage('https://s3.amazonaws.com/mytailor-v1/uploads/images/facebook_cover.jpg')
                         ->setUrl($path);
 
@@ -174,7 +174,7 @@ class ShotsTemplate extends AbstractTemplate   {
                     Twitter::addValue('card', 'summary_large_image')
                         ->setType('article')
                         ->addImage('https://s3.amazonaws.com/mytailor-v1/uploads/images/facebook_cover.jpg')
-                        ->setTitle('African Fashion Inspirations on Afrodapp')
+                        ->setTitle('African Fashion Trends on Afrodapp')
                         ->setDescription('Get inspired by top African fashion designers and their amazing styles. comment, like and get engaged.')
                         ->setUrl($path);
 

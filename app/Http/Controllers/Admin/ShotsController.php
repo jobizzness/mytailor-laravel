@@ -100,6 +100,8 @@ class ShotsController extends Controller    {
         foreach($shots as $shot)
         {
 
+            dd($shots);
+            
             // Delete the image
             $status = $imageServer->delete([
                     $shot->image()->large,
