@@ -73,7 +73,16 @@ class ExploreController extends ApiController
 
     public function index()
     {
-        $shots = $this->shots->trendingShotIn($tag);
+        $tags = ['men', 'kids'];
+
+        $shots = [];
+            foreach($tags as $tag){
+                $shot = $this->shots->trendingShotIn($tag);
+
+                array_push($shots, $shot);
+            }
+
+        dd($shots);
     }
 
 

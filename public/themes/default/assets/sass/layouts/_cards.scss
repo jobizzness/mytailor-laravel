@@ -355,3 +355,13 @@ transition-property: -webkit-transform;
     margin-bottom: 0;
     width: calc(100% - 32px);
 }
+
+#profile-shot{
+  .mt-image-holder{
+    max-height: 506px;
+    max-width: 506px;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+
+}

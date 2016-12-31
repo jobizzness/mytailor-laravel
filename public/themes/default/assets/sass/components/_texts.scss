@@ -8,18 +8,11 @@
 *
 */
 .mt-heading{
-    padding: 0.2em 0;
-    font-size: 30px;
-    font-weight: bold;
-    line-height: 113%
-}
-
-.mt-subheading{
-    max-width: 579px;
     font-size: 1.1em;
-    font-weight: normal;
+    font-weight: bold;
     letter-spacing: 2px;
     line-height: 180%;
+    margin: 8px;
 }
 
 .forgot-password{
@@ -49,7 +42,7 @@
 }
 
 .mt-title-grey{
-        text-align: center;
+    text-align: center;
     font-size: 1.5rem;
     color: #AEAEAE;
     margin: 13px 0;
@@ -316,4 +309,10 @@ font-size: 20px;
 .mt-link{
         color: #0c6ab5 !important;
         &:hover{text-decoration: underline;}
+}
+
+.title{
+    font-size: 1.6rem;
+    line-height: 110%;
+    margin: 0.82rem 0 0.656rem 0;
 }

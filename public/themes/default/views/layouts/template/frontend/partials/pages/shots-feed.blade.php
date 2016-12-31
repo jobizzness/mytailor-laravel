@@ -24,26 +24,30 @@
             </a>
           </figure>
 
-          <div class="mdl-card__actions">
-              <button class="mdl-button mdl-js-button mdl-js-ripple-effect icon-round">
-                  <i class="mdi mdi-heart icon-center"></i>
-                  <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
-              </button>
-              <span style="font-size: 13px;margin: 0;"></span>
-              <button class="mdl-button mdl-js-button mdl-js-ripple-effect icon-round">
-                  <i class="mdi mdi-comment icon-center"></i>
-                  <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
-              </button>
-              <span style="font-size: 13px;margin: 0;"></span>
-              <button class="mdl-button mdl-js-button mdl-js-ripple-effect icon-round">
-                  <i class="mdi mdi-eye icon-center"></i>
-              </button>
-              <span style="font-size: 13px;margin: 0;">@{{shot.views}}</span>
-              <span class="mdl-layout-spacer"></span>
-              <button id="card-right-button" class="mdl-button mdl-js-button mdl-button--icon">
-                <i class="icon-center mdi mdi-dots-vertical"></i>
-             </button>
-          </div>
+          <!-- Notes -->
+        <div style="padding: 10px">
+
+            <div class="mdl-card__actions" style="padding:0">
+                <button class="mdl-button mdl-js-button mdl-js-ripple-effect icon-round">
+                    <i class="mdi mdi-heart icon-center"></i>
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
+                </button>
+                <span style="font-size: 13px;margin: 0;"></span>
+                <button class="mdl-button mdl-js-button mdl-js-ripple-effect icon-round">
+                    <i class="mdi mdi-comment icon-center"></i>
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
+                </button>
+                <span style="font-size: 13px;margin: 0;"></span>
+                <button class="mdl-button mdl-js-button mdl-js-ripple-effect icon-round">
+                    <i class="mdi mdi-eye icon-center"></i>
+                </button>
+                <span style="font-size: 13px;margin: 0;">@{{shot.views}}</span>
+                <span class="mdl-layout-spacer"></span>
+                <button id="card-right-button" class="mdl-button mdl-js-button mdl-button--icon">
+                  <i class="icon-center mdi mdi-dots-vertical"></i>
+               </button>
+            </div>
+        </div>
     </div>
     
   </div>

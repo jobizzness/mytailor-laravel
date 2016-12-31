@@ -397,3 +397,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 .mdl-switch.is-checked .mdl-switch__track {
     background: rgba(28, 173, 160, 0.45);
 }
+
+.mdl-textfield__label:after {
+    background-color: map-get($ui-color, redish);
+    }

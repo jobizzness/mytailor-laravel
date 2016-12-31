@@ -10,13 +10,13 @@
 			    <span class="mdl-list__item-primary-content">
 			      <i class="mdi mdi-earth"></i>
 			    </span>
-			    <a href="#" class="mdl-sec-content mt-link">https://afrodapp.com</a>
+			    <a href="#" class="mdl-sec-content mt-link">{{$profile->website}}</a>
 			  </li>
 			  <li class="mdl-list__item">
 			    <span class="mdl-list__item-primary-content">
 			      <i class="mdi mdi-phone"></i>
 			    </span>
-			    <span class="mdl-sec-content">+95 (0) 123 456 789</span>
+			    <span class="mdl-sec-content">+95 (0) 123 456 789 {{$profile->mobile_number}}</span>
 			  </li>
 			  <li class="mdl-list__item">
 			    <span class="mdl-list__item-primary-content">

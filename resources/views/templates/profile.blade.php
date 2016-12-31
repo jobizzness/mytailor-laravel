@@ -11,7 +11,7 @@
                <i class="mdi mdi-pencil" id="avatar-edit__icon"></i>
             </a>
             <div class="mt-profile__info">
-                <a href="#" class="profile__title"><span>Afrodapp</span></a>
+                <a href="#" class="profile__title"><span>{{$profile->display_name}}</span></a>
                 <span class="location__text" style="margin: 8px;"><i class="mdi mdi-map-marker"></i>Sarasota, FL</span>
             </div>
         </div>

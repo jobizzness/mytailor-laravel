@@ -6,9 +6,10 @@
 </section>
 
 <main class="mt-row">
-		<div class="mdl-card mdl-shadow--2dp pad-1 card--full header_card">
-			<p class="title font-large-font-300">
-				Get in touch
+		<div class="mdl-card mdl-shadow--2dp pad-1 card--full header_card center">
+			<h2 class="mt-heading red">Need Something ?</h2>
+			<p>
+				Huh ! What took you so long <img class="img" aria-hidden="1" height="16" src="https://www.facebook.com/images/emoji.php/v6/f52/1/16/1f648.png" width="16" alt="">. We've been waiting.
 			</p>
 		</div>
 
@@ -17,23 +18,12 @@
 				<form action="#" class="contact-form">
 				  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 				    <input class="mdl-textfield__input" type="text" id="fname">
-				    <label class="mdl-textfield__label" for="fname">First Name</label>
-				  </div>
-
-				  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-				    <input class="mdl-textfield__input" type="text" id="lname">
-				    <label class="mdl-textfield__label" for="lname">Last Name</label>
+				    <label class="mdl-textfield__label" for="fname">Name</label>
 				  </div>
 
 				  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 				    <input class="mdl-textfield__input" type="email" id="email">
 				    <label class="mdl-textfield__label" for="email">Email</label>
-				  </div>
-
-				  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-				    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
-				    <label class="mdl-textfield__label" for="sample4">Phone</label>
-				    <span class="mdl-textfield__error">Input is not a number!</span>
 				  </div>
 
 				  <div class="mdl-textfield mdl-js-textfield" style="width: 100%;">
@@ -44,31 +34,31 @@
 				  <center>
 					  	<!-- Accent-colored raised button with ripple -->
 						<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-						  SEND<i class="mdi mdi-send"></i>
+						  SEND
 						</button>
 				  </center>
 				</form>		
 			</div>
-			<div class="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--2dp">
-					<h5 class="">Find us</h5>
-					<ul class="footer-link-icons">
+			<div class="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--2dp pad-1">
+					<h5 class="title">Find us</h5>
+					<ul class="contact-link-icons">
 						<li>
-							<a href="#!" class="grey-text darken-3">
-								<i class="mdi mdi-map-marker"></i> 60 Wall St, New York
+							<a href="#" class="darken-3">
+								<i class="mdi mdi-map-marker"></i> Kololi, Senegambia
 							</a>
 						</li>
 						<li>
-							<a href="#!" class="grey-text darken-3">
-								<i class="mdi mdi-email-outline"></i> info@info.com
+							<a href="#" class="grey-text darken-3">
+								<i class="mdi mdi-email-outline"></i> afrodapp@gmail.com
 							</a>
 						</li>
 						<li>
-							<a href="#!" class="grey-text darken-3">
-								<i class="mdi mdi-phone"></i> +333 645 8081
+							<a href="#" class="grey-text darken-3">
+								<i class="mdi mdi-phone"></i> +220 3011567
 							</a>
 						</li>
 					</ul><br>
-					<h5>Social</h5><br>
+					{{-- <h5>Social</h5><br>
 
 					<a href="#!" class="btn waves-effect btn-flat btn-floating btn-social btn-facebook colored">
 						<img src="/material_concept/images/social/ic_face.png" alt="">
@@ -90,7 +80,7 @@
 					</a>
 					<a href="#!" class="btn waves-effect btn-flat btn-floating btn-social btn-dribbble colored">
 						<img src="/material_concept/images/social/ic_dribbble.png" alt="">
-					</a>
+					</a> --}}
 			</div>
 		</div>
 	</main>

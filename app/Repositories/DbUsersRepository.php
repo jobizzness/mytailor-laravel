@@ -4,6 +4,7 @@
 namespace MyTailor\Repositories;
 
 use Laracasts\Commander\Events\EventGenerator;
+use MyTailor\Profile;
 use MyTailor\User;
 
 class DbUsersRepository implements UsersRepositoryInterface
@@ -19,11 +20,11 @@ class DbUsersRepository implements UsersRepositoryInterface
     {
 
         dd($userData);
-        
+
         $user = User::where('email', $userData->email)->first();
 
         if(! $user){
-            $userData->username = 'Afrodapp User';
+            $userData->username = null;
             $userData->password = Null;
 
             $user = $this->create($userData);
@@ -45,5 +46,10 @@ class DbUsersRepository implements UsersRepositoryInterface
        $user =  User::register( $userData, 'member');
 
         return $user;
+    }
+
+    public function getProfile($id)
+    {
+        return Profile::where('username', $id)->first();
     }
 }

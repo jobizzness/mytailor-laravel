@@ -9,7 +9,7 @@
 				<h2 class="mdl-card__title-text">About</h2>
 			</div>
 			<div class="mdl-card__supporting-text">
-				<p>Gambian. Humanist. Autodidact. Technophile. Mere Sally. Incoming Curator: @BanjulShapers Give Blood: @fong4life & Tweet #Apple to me. Snapchat: cherryolofnjie</p>
+				<p style="color: #48484c;">{{$profile->bio}}</p>
 			</div>
 		</div>
 

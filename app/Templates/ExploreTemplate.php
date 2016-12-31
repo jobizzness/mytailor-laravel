@@ -4,6 +4,7 @@
 namespace MyTailor\Templates;
 
 use Illuminate\View\View;
+use MyTailor\Modules\Core\Instagram\Instagram;
 use SEOMeta;
 use OpenGraph;
 use Twitter;
@@ -21,6 +22,12 @@ class ExploreTemplate  extends AbstractTemplate
 
     public function prepare(View $view, array $parameters)
     {
+
+        $instagram = new Instagram('4da4200a19b541689359101ceef707e7');
+
+        $data = $instagram->explore();
+
+        dd($data);
 
         $this->seoMake();
     }

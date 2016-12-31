@@ -513,7 +513,7 @@ a.waves-effect .waves-ripple {
  *
  */
 .redish {
-  background: #F23054; }
+  background: #ff4081; }
 
 .redish:hover {
   background-color: #D9183C !important; }
@@ -555,7 +555,7 @@ a.waves-effect .waves-ripple {
   color: #fff !important; }
 
 .red {
-  color: #F23054 !important; }
+  color: #ff4081 !important; }
 
 .btn-blue {
   color: #fff !important;
@@ -968,17 +968,11 @@ button#dropdown > i {
 *
 */
 .mt-heading {
-  padding: 0.2em 0;
-  font-size: 30px;
-  font-weight: bold;
-  line-height: 113%; }
-
-.mt-subheading {
-  max-width: 579px;
   font-size: 1.1em;
-  font-weight: normal;
+  font-weight: bold;
   letter-spacing: 2px;
-  line-height: 180%; }
+  line-height: 180%;
+  margin: 8px; }
 
 .forgot-password {
   display: inline-block;
@@ -1226,6 +1220,11 @@ p.attract-me {
   color: #0c6ab5 !important; }
   .mt-link:hover {
     text-decoration: underline; }
+
+.title {
+  font-size: 1.6rem;
+  line-height: 110%;
+  margin: 0.82rem 0 0.656rem 0; }
 
 /*Forms*/
 .mt-forms {
@@ -1532,7 +1531,7 @@ span.icon-search {
   margin-bottom: 25px; }
 
 .login-form > h3 {
-  color: #F23054;
+  color: #ff4081;
   text-align: center;
   font-size: 28px;
   font-weight: 400 !important;
@@ -1552,6 +1551,9 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 
 .mdl-switch.is-checked .mdl-switch__track {
   background: rgba(28, 173, 160, 0.45); }
+
+.mdl-textfield__label:after {
+  background-color: #ff4081; }
 
 .mt-fullwidth-table {
   width: 100%;
@@ -1741,7 +1743,7 @@ a#buzzle:hover .hvr-buzz-out {
   text-align: center; }
 
 .bar:nth-child(1) {
-  background-color: #F23054;
+  background-color: #ff4081;
   animation: loading 3s linear infinite; }
 
 .bar:nth-child(2) {
@@ -1749,7 +1751,7 @@ a#buzzle:hover .hvr-buzz-out {
   animation: loading 3s linear 1s infinite; }
 
 .bar:nth-child(3) {
-  background-color: #F23054;
+  background-color: #ff4081;
   animation: loading 3s linear 2s infinite; }
 
 @keyframes loading {
@@ -2032,7 +2034,7 @@ a.mt-sidebar-link {
 
 .mt-list-active > a {
   background: rgba(148, 159, 164, 0.13) !important;
-  color: #F23054; }
+  color: #ff4081; }
 
 /* ==========================================================================
   Page layout & content: 
@@ -2229,7 +2231,7 @@ ul.admin-call-icons li, .performance-title-wrapper > * {
     background-color: rgba(0, 0, 0, 0.06); }
   .admin-call-icons > li > a i {
     font-size: 1.8em;
-    color: #F23054; }
+    color: #ff4081; }
 
 .performance-title-wrapper {
   padding: 1em;
@@ -2309,7 +2311,7 @@ ul.admin-call-icons li, .performance-title-wrapper > * {
 .feed-header > span {
   display: inline-block;
   float: right;
-  color: #F23054; }
+  color: #ff4081; }
   .feed-header > span i {
     font-size: 1.5em; }
 
@@ -2631,6 +2633,12 @@ figure.shot-cover.--profile__feed {
   margin-bottom: 0;
   width: calc(100% - 32px); }
 
+#profile-shot .mt-image-holder {
+  max-height: 506px;
+  max-width: 506px;
+  overflow: hidden;
+  margin: 0 auto; }
+
 /*Animate*/
 .__visible {
   transform: translateX(0); }
@@ -2717,7 +2725,7 @@ a#buzzle:hover .hvr-buzz-out {
   text-align: center; }
 
 .bar:nth-child(1) {
-  background-color: #F23054;
+  background-color: #ff4081;
   animation: loading 3s linear infinite; }
 
 .bar:nth-child(2) {
@@ -2725,7 +2733,7 @@ a#buzzle:hover .hvr-buzz-out {
   animation: loading 3s linear 1s infinite; }
 
 .bar:nth-child(3) {
-  background-color: #F23054;
+  background-color: #ff4081;
   animation: loading 3s linear 2s infinite; }
 
 @keyframes loading {
