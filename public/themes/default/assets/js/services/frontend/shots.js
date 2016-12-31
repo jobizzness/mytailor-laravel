@@ -18,9 +18,9 @@ app.factory('shotsFactory', ['$http', function($http){
         return $http.post("/api/v1/shot/viewed/" + name);
     };
 
-    //this.explore = function($slug, params){
-    //    return $http.get('/api/explore/'+$slug, {params:params});
-    //};
+    this.explore = function(params){
+       return $http.get('/api/v1/explore/', {params:params});
+    };
 
 
 

@@ -26,13 +26,13 @@
     </div>
 </section>
 
-<section class="mt-row">
+<section class="mt-row" ng-repeat="section in sections">
   <div class="mdl-card__title" style="color: rgba(0, 0, 0, 0.66);">
-	 <h1 class="mdl-card__title-text">Instagram</h1>
+	 <h1 class="mdl-card__title-text" style="text-transform: capitalize;">@{{section.name}}</h1>
   </div>
   <div class="mdl-grid">
   	<!-- Shot Template -->
-	<div class="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--2dp mt-shot" itemprop="mainEntity" itemscope itemtype="http://schema.org/imageObject" ng-repeat="n in [42, 42, 43, 43, 33, 25] track by $index">
+	<div class="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--2dp mt-shot" itemprop="mainEntity" itemscope itemtype="http://schema.org/imageObject" ng-repeat="shot in section.shots.data">
         <!-- The header -->
           <header class="mt-shot-header clearfix">
             <section>
@@ -45,7 +45,7 @@
             </section>
           </header>
           {{-- Figure --}}
-          <figure>
+          <figure style="max-height: 287px;overflow: hidden;">
             <a href="" class="mt-grid___link" ng-click="open(shot.name)">
                 <div class="mt-image-holder" itemscope itemtype="http://schema.org/thumbnail">
                     <img itemprop="image" ng-src="@{{shot.image.original}}" alt="@{{shot.alt}}">

@@ -73,6 +73,7 @@ elixir.config.publicPath = 'public/themes/default/assets';
 					'../../../public/themes/default/assets/js/controllers/frontend/mainController.js',
 					'../../../public/themes/default/assets/js/controllers/frontend/shotsController.js',
 					'../../../public/themes/default/assets/js/controllers/frontend/ovalController.js',
+					'../../../public/themes/default/assets/js/controllers/frontend/exploreController.js',
 					'../../../public/themes/default/assets/js/controllers/frontend/designersController.js',
 					'../../../public/themes/default/assets/js/services/frontend/shot.js',
                     '../../../public/themes/default/assets/js/services/frontend/shots.js'

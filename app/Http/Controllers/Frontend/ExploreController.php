@@ -71,18 +71,27 @@ class ExploreController extends ApiController
 
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $tags = ['men', 'kids'];
+        $tags = ['men', 'traditional', 'shorts', 'sexy'];
 
         $shots = [];
             foreach($tags as $tag){
-                $shot = $this->shots->trendingShotIn($tag);
+                $data = $this->shots->trendingShotsIn($tag)->paginate(6);
+                //means we have shots so lets send them through.
+                $item = [
+                    'response' => [
+                        'name' =>$tag,
+                        'shots' => [
+                            'data' => $this->Transformer->transformCollection($data)
+                        ]
+                    ]
+                ];
 
-                array_push($shots, $shot);
+                array_push($shots, $item);
             }
 
-        dd($shots);
+        return $shots;
     }
 
 

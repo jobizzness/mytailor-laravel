@@ -74,15 +74,14 @@ class DbShotsRepository implements ShotsRepositoryInterface{
      * @return mixed
      * @internal param $cat
      */
-    public function trendingShotIn($tag){
+    public function trendingShotsIn($tag){
         return $this->shots
             ->with('image')
             ->select(\DB::raw( '((views - 1) / (TIMESTAMPDIFF(DAY, updated_at, NOW()) + 2)^1.5) as Popularity, shots.*'))
             ->tag($tag)
             ->orderBy('updated_at', 'desc')
             ->orderBy('Popularity', 'desc')
-            ->where('published', '=', 1)
-            ->first();
+            ->where('published', '=', 1);
     }
 
     /**
