@@ -73,7 +73,7 @@ class ExploreController extends ApiController
 
     public function index(Request $request)
     {
-        $tags = ['men', 'traditional', 'shorts', 'sexy'];
+        $tags = ['men', 'traditional', 'sexy', 'runway'];
 
         $shots = [];
             foreach($tags as $tag){

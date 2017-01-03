@@ -28,13 +28,13 @@
 
 <section class="mt-row" ng-repeat="section in sections">
   <div class="mdl-card__title" style="color: rgba(0, 0, 0, 0.66);">
-	 <h1 class="mdl-card__title-text" style="text-transform: capitalize;">@{{section.name}}</h1>
+	 <h1 class="mdl-card__title-text" style="text-transform: capitalize;color: #484848 !important;">@{{section.name}}</h1>
   </div>
   <div class="mdl-grid">
   	<!-- Shot Template -->
-	<div class="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--2dp mt-shot" itemprop="mainEntity" itemscope itemtype="http://schema.org/imageObject" ng-repeat="shot in section.shots.data">
+	<div class="mdl-cell mdl-cell--4-col mdl-card" itemprop="mainEntity" itemscope itemtype="http://schema.org/imageObject" ng-repeat="shot in section.shots.data">
         <!-- The header -->
-          <header class="mt-shot-header clearfix">
+{{--           <header class="mt-shot-header clearfix">
             <section>
               <span class="time">@{{shot.time}}</span>
               <span class="mdl-layout-spacer"></span>
@@ -43,36 +43,28 @@
                   <img height="30" width="30" ng-src="/uploads/profiles/@{{shot.owner.avatar.avatar_small}}" alt="">
               </a>
             </section>
-          </header>
+          </header> --}}
           {{-- Figure --}}
-          <figure style="max-height: 287px;overflow: hidden;">
-            <a href="" class="mt-grid___link" ng-click="open(shot.name)">
-                <div class="mt-image-holder" itemscope itemtype="http://schema.org/thumbnail">
-                    <img itemprop="image" ng-src="@{{shot.image.original}}" alt="@{{shot.alt}}">
+          <figure class="figure-overlay" style="max-height: 337px;overflow: hidden;">
+              <a href="" class="mt-grid___link" ng-click="open(shot.name)">
+                  <div class="mt-image-holder" itemscope itemtype="http://schema.org/thumbnail">
+                      <img itemprop="image" ng-src="@{{shot.image.original}}" alt="@{{shot.alt}}">
+                  </div>
+              </a>
+              <div class="entry-overlay__actions pad-1">
+                <div class="mdl-card__actions">
+                    <a href="#">
+                        <i class="mdi mdi-heart-outline"></i>
+                        <span style="font-size: 13px;margin: 0;">67</span>
+                    </a>
+                    <a href="#">
+                        <i class="mdi mdi-comment-outline"></i>
+                        <span style="font-size: 13px;margin: 0;">10</span>
+                    </a>              
                 </div>
-            </a>
+                <div class="dimGradient"></div>
+              </div>
           </figure>
-
-          <div class="mdl-card__actions">
-              <button class="mdl-button mdl-js-button mdl-js-ripple-effect icon-round">
-                  <i class="mdi mdi-heart icon-center"></i>
-                  <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
-              </button>
-              <span style="font-size: 13px;margin: 0;"></span>
-              <button class="mdl-button mdl-js-button mdl-js-ripple-effect icon-round">
-                  <i class="mdi mdi-comment icon-center"></i>
-                  <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
-              </button>
-              <span style="font-size: 13px;margin: 0;"></span>
-              <button class="mdl-button mdl-js-button mdl-js-ripple-effect icon-round">
-                  <i class="mdi mdi-eye icon-center"></i>
-              </button>
-              <span style="font-size: 13px;margin: 0;">@{{shot.views}}</span>
-              <span class="mdl-layout-spacer"></span>
-              <button id="card-right-button" class="mdl-button mdl-js-button mdl-button--icon">
-                <i class="icon-center mdi mdi-dots-vertical"></i>
-             </button>
-    	</div>
 	  </div>
 
 	</div> <!-- Grid ends -->
