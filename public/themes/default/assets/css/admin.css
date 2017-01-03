@@ -960,6 +960,18 @@ button#dropdown > i {
   height: 50px;
   line-height: 3.5; }
 
+.like-btn {
+  transition: border 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+  .like-btn:hover {
+    background: #ff4081;
+    border-color: #ff4081; }
+
+.comment-btn {
+  transition: border 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+  .comment-btn:hover {
+    background: #00BCD4;
+    border-color: #00BCD4; }
+
 /*Texts*/
 /* ==========================================================================
    This File is for all texts Css
@@ -1226,6 +1238,18 @@ p.attract-me {
   font-size: 1.6rem;
   line-height: 110%;
   margin: 0.82rem 0 0.656rem 0; }
+
+.icon_rounded {
+  border-radius: 60px;
+  font-size: 15px;
+  padding: 8px;
+  color: rgba(255, 255, 255, 0.76);
+  border: 2px solid rgba(255, 255, 255, 0.58); }
+
+.floated-actions_title {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.72);
+  margin: 13px 0; }
 
 /*Forms*/
 .mt-forms {
@@ -2654,29 +2678,26 @@ figure.shot-cover.--profile__feed {
 .figure-overlay > a:hover:after {
   background: rgba(0, 0, 0, 0.3); }
 
-.figure-overlay .entry-overlay__actions {
-  position: absolute;
-  width: 100%;
-  z-index: 6;
-  bottom: 0;
-  left: 0;
-  pointer-events: none; }
-  .figure-overlay .entry-overlay__actions .mdl-card__actions {
-    padding: 0; }
-  .figure-overlay .entry-overlay__actions a {
-    color: #fff;
-    font-size: 19px;
-    margin: 0 8px; }
-
 .dimGradient {
   background-color: #000;
   background-color: rgba(0, 0, 0, 0.15);
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.3));
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.65+100 */
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.89) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 );
+  /* IE6-9 */
   bottom: 0;
-  height: 100px;
+  height: 150px;
   left: 0;
   position: absolute;
   right: 0; }
+
+.mdl-card__actions.floated_actions {
+  position: absolute;
+  bottom: 0;
+  z-index: 9; }
 
 /*Animate*/
 .__visible {

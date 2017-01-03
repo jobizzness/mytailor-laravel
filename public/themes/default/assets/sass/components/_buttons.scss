@@ -305,3 +305,19 @@ button#dropdown>i{
     height: 50px;
     line-height: 3.5;
 }
+
+.like-btn{
+        transition: border .2s cubic-bezier(.4,0,1,1),background-color .2s cubic-bezier(.4,0,.2,1),color .2s cubic-bezier(.4,0,.2,1);
+        &:hover{
+            background: #ff4081;
+            border-color: #ff4081;
+            }
+}
+
+.comment-btn{
+        transition: border .2s cubic-bezier(.4,0,1,1),background-color .2s cubic-bezier(.4,0,.2,1),color .2s cubic-bezier(.4,0,.2,1);
+        &:hover{
+        background: #00BCD4;
+        border-color: #00BCD4;
+            }
+        }

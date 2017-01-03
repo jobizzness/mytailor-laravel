@@ -2,7 +2,7 @@
 				<!-- START REVOLUTION SLIDER 5.0.7 fullwidth mode -->
 					<div id="rev_slider_88_1" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.0.7">
 						<ul>	<!-- SLIDE  -->
-							<li data-index="rs-270" data-transition="zoomout" data-slotamount="default"  data-easein="Power3.easeInOut" data-easeout="Power3.easeInOut" data-masterspeed="3000"  data-rotate="0"  data-saveperformance="off"  data-title="Intro" data-description="">
+							<li data-index="rs-897" data-transition="fade" data-slotamount="default" data-easein="Power4.easeInOut" data-easeout="default" data-masterspeed="2000" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
 								<!-- MAIN IMAGE -->
 								<img src="/uploads/covers/im.png"  alt=""  alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="3" class="rev-slidebg" data-no-retina>
 								<!-- LAYERS -->

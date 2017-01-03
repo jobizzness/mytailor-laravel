@@ -51,20 +51,19 @@
                       <img itemprop="image" ng-src="@{{shot.image.original}}" alt="@{{shot.alt}}">
                   </div>
               </a>
-              <div class="entry-overlay__actions pad-1">
-                <div class="mdl-card__actions">
-                    <a href="#">
-                        <i class="mdi mdi-heart-outline"></i>
-                        <span style="font-size: 13px;margin: 0;">67</span>
-                    </a>
-                    <a href="#">
-                        <i class="mdi mdi-comment-outline"></i>
-                        <span style="font-size: 13px;margin: 0;">10</span>
-                    </a>              
-                </div>
                 <div class="dimGradient"></div>
-              </div>
           </figure>
+          <div class="mdl-card__actions floated_actions pad-1">
+              <p class="floated-actions_title">@{{shot.title}}</p>
+              <a href="#" style="margin-right: 15px;">
+                  <i class="mdi mdi-heart-outline icon_rounded like-btn"></i>
+                  <span style="font-size: 13px;color: #fff;">67</span>
+              </a>
+              <a href="#">
+                  <i class="mdi mdi-comment-outline icon_rounded comment-btn"></i>
+                  <span style="font-size: 13px;color: #fff;">10</span>
+              </a>              
+          </div>
 	  </div>
 
 	</div> <!-- Grid ends -->

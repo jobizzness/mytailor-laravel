@@ -354,8 +354,8 @@ app.controller("authController", ["$scope",
 			]);
 	'use strict';
 
-	app.controller("exploreController", ["$scope","shotsFactory",
-        function($scope, shotsFactory) {
+	app.controller("exploreController", ["$scope","shotsFactory","ngDialog",
+        function($scope, shotsFactory, ngDialog) {
 
             $scope.sections = [];
             $scope.busy = false;
@@ -378,6 +378,38 @@ app.controller("authController", ["$scope",
 
                 });
             })();
+
+                        /**
+             * Open Shot Overlay
+             *
+             * @param $name
+             */
+            $scope.open = function ($name) {
+
+                if(window.innerWidth < 430){
+                    window.location = '/shot/'+$name;
+                    return;
+                }
+
+                var dialogScope = $scope.$new();
+                dialogScope.name = $name;
+                history.pushState({}, '', '/shot/'+$name);
+
+                ngDialog.open({
+                    closeByNavigation: true,
+                    cache:false, 
+                    template: template_path + 'shots_overlay.html', className: 'mt-shots-overlay' ,
+                    controller: 'ovalController',
+                    scope: dialogScope,
+                    preCloseCallback: function() {
+                            history.back();
+                            return true;
+                    }
+
+                    
+                });
+
+            };
 
 
 		}]);
