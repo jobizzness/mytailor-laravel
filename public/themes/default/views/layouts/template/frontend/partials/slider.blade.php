@@ -1,10 +1,10 @@
-<div id="rev_slider_88_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-alias="youtube-hero" style="margin:0px auto;background-color:transparent;padding:0px;margin-top:0px;margin-bottom:0px;">
+<div id="rev_slider_88_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-alias="youtube-hero" style="background-color:#222222;padding:0px;">
 				<!-- START REVOLUTION SLIDER 5.0.7 fullwidth mode -->
 					<div id="rev_slider_88_1" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.0.7">
 						<ul>	<!-- SLIDE  -->
 							<li data-index="rs-270" data-transition="zoomout" data-slotamount="default"  data-easein="Power3.easeInOut" data-easeout="Power3.easeInOut" data-masterspeed="3000"  data-rotate="0"  data-saveperformance="off"  data-title="Intro" data-description="">
 								<!-- MAIN IMAGE -->
-								<img src=""  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+								<img src="/uploads/covers/im.png"  alt=""  alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="3" class="rev-slidebg" data-no-retina>
 								<!-- LAYERS -->
 
 								<!-- BACKGROUND VIDEO LAYER -->
@@ -15,13 +15,17 @@
 									data-videoheight="100%" 
 									data-videomp4="../../assets/videos/biness.mp4" 
 									data-videopreload="preload" 
-									data-videoloop="true" 
+									data-videoloop="loopandnoslidestop" 
 									data-forceCover="1" 
 									data-aspectratio="16:9" 
 									data-autoplay="true" 
 									data-autoplayonlyfirsttime="false" 
-									data-nextslideatend="true" 
+									data-nextslideatend="false" 
 								></div>
+
+                            <!-- Filter things -->
+{{--                             <div class="tp-caption tp-shape tp-shapewrapper " id="slide-897-layer-1" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']" data-width="full" data-height="full" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="opacity:0;s:1500;e:Power3.easeInOut;" data-transform_out="opacity:0;s:500;s:500;" data-start="0" data-basealign="slide" data-responsive_offset="off" data-responsive="off" style="z-index: 7;background-color:rgba(51, 51, 51, 0.75);border-color:rgba(0, 0, 0, 0);">
+                            </div> --}}
 
 								<!-- LAYER NR. 3 -->
 								<div class="tp-caption NotGeneric-Title   tp-resizeme rs-parallaxlevel-0" 
