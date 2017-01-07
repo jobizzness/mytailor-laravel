@@ -8,7 +8,7 @@ class Designer extends Model
 {
     public function user()
     {
-        return $this->hasOne(User::class, 'id')
+        return $this->hasOne(User::class, 'id', 'user_id')
             ->select(['id', 'profile_id']);
     }
 

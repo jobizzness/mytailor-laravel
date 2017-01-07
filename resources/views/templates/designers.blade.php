@@ -32,7 +32,7 @@
             <!-- The header -->
             <header class="designer-item__header">
                   <a href="#" class="mt-shot-avatar" title="">
-                      <img height="40" width="40" ng-src="/uploads/profiles/11698517_10205466839968531_5750592294516276713_n.jpg" alt="">
+                      <img height="40" width="40" ng-src="/uploads/profiles/@{{designer.avatar.avatar_small}}" alt="">
                       <h2 class="mt-avatar-name bold_text">@{{designer.display_name}}</h2>
                       <span class="username">@@{{designer.username}}</span>
                   </a>

@@ -30,14 +30,14 @@
           <li class="{{ Route::is('explore.index')? 'mt-list-active' : ''}}">
             <a href="/explore" class="mt-sidebar-link btn"><i class="mdi mdi-crosshairs-gps"></i>Explore</a>
           </li>
-          <li class="{{ Route::is('saves.index')? 'mt-list-active' : ''}}">
-            <a href="/saves" class="mt-sidebar-link btn"><i class="mdi mdi-cloud-download"></i>Saves</a>
+          <li class="{{ Route::is('designers.index')? 'mt-list-active' : ''}}">
+            <a href="/designers" class="mt-sidebar-link btn"><i class="mdi mdi-tshirt-v"></i>Designers</a>
           </li>
           <li class="{{ Route::is('brands.index')? 'mt-list-active' : ''}}">
             <a href="/brands" class="mt-sidebar-link btn"><i class="mdi mdi-medium"></i>Brands</a>
           </li>
-           <li class="{{ Route::is('designers.index')? 'mt-list-active' : ''}}">
-            <a href="/designers" class="mt-sidebar-link btn"><i class="mdi mdi-tshirt-v"></i>Designers</a>
+          <li class="{{ Route::is('saves.index')? 'mt-list-active' : ''}}">
+            <a href="/saves" class="mt-sidebar-link btn"><i class="mdi mdi-cloud-download"></i>Saves</a>
           </li>
           <li class="{{ Route::is('contact.index')? 'mt-list-active' : ''}}">
             <a href="/contact" class="mt-sidebar-link btn"><i class="mdi mdi-contact-mail"></i>Contact</a></li>
