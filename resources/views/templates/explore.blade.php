@@ -26,45 +26,35 @@
     </div>
 </section>
 
-<section class="mt-row" ng-repeat="section in sections">
+<section class="mt-row" ng-repeat="section in sections" ng-cloak>
   <div class="mdl-card__title" style="color: rgba(0, 0, 0, 0.66);">
 	 <h1 class="mdl-card__title-text" style="text-transform: capitalize;color: #484848 !important;">@{{section.name}}</h1>
   </div>
   <div class="mdl-grid">
   	<!-- Shot Template -->
-	<div class="mdl-cell mdl-cell--4-col mdl-card" itemprop="mainEntity" itemscope itemtype="http://schema.org/imageObject" ng-repeat="shot in section.shots.data">
-        <!-- The header -->
-{{--           <header class="mt-shot-header clearfix">
-            <section>
-              <span class="time">@{{shot.time}}</span>
-              <span class="mdl-layout-spacer"></span>
-              <a href="/profile/1" class="mt-shot-avatar" title="@{{shot.owner.username}}">
-                 <h2 class="mt-avatar-name">@{{shot.owner.username}}</h2>
-                  <img height="30" width="30" ng-src="/uploads/profiles/@{{shot.owner.avatar.avatar_small}}" alt="">
-              </a>
-            </section>
-          </header> --}}
-          {{-- Figure --}}
-          <figure class="figure-overlay" style="max-height: 337px;overflow: hidden;">
-              <a href="" class="mt-grid___link" ng-click="open(shot.name)">
-                  <div class="mt-image-holder" itemscope itemtype="http://schema.org/thumbnail">
-                      <img itemprop="image" ng-src="@{{shot.image.original}}" alt="@{{shot.alt}}">
-                  </div>
-              </a>
-                <div class="dimGradient"></div>
-          </figure>
-          <div class="mdl-card__actions floated_actions pad-1">
-              <p class="floated-actions_title">@{{shot.title}}</p>
-              <a href="#" style="margin-right: 15px;">
-                  <i class="mdi mdi-heart-outline icon_rounded like-btn"></i>
-                  <span style="font-size: 13px;color: #fff;">67</span>
-              </a>
-              <a href="#">
-                  <i class="mdi mdi-comment-outline icon_rounded comment-btn"></i>
-                  <span style="font-size: 13px;color: #fff;">10</span>
-              </a>              
-          </div>
-	  </div>
+  	<div class="mdl-cell mdl-cell--4-col mdl-card" itemprop="mainEntity" itemscope itemtype="http://schema.org/imageObject" ng-repeat="shot in section.shots.data">
+        <!-- Figure -->
+        <figure class="figure-overlay" style="max-height: 337px;overflow: hidden;">
+            <a href="" class="mt-grid___link" ng-click="open(shot.name)">
+                <div class="mt-image-holder" itemscope itemtype="http://schema.org/thumbnail">
+                    <img itemprop="image" ng-src="@{{shot.image.original}}" alt="@{{shot.alt}}">
+                </div>
+            </a>
+              <div class="dimGradient"></div>
+        </figure>
+        {{-- Figure Actions --}}
+        <div class="mdl-card__actions floated_actions pad-1">
+            <p class="floated-actions_title">@{{shot.title}}</p>
+            <a href="#" style="margin-right: 15px;">
+                <i class="mdi mdi-heart-outline icon_rounded like-btn"></i>
+                <span style="font-size: 13px;color: #fff;">67</span>
+            </a>
+            <a href="#">
+                <i class="mdi mdi-comment-outline icon_rounded comment-btn"></i>
+                <span style="font-size: 13px;color: #fff;">10</span>
+            </a>              
+        </div>
+  	  </div>
 
 	</div> <!-- Grid ends -->
 </section>

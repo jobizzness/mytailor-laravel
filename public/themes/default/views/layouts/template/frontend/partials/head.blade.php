@@ -59,6 +59,12 @@
 
     @yield('page_styles')
 
+    <style type="text/css">
+    [ng-cloak]{
+        display: none;
+        opacity: 0;
+    }
+    </style>
 </head>
 <body itemscope itemtype="http://schema.org/WebPage">
     <div class="mdl-layout__container @yield('bg')" ng-controller="MainController">

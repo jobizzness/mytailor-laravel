@@ -94,7 +94,7 @@
  * @var app
  */
 var app = angular.module('app', ['ngAnimate', 'ngMessages', 'ngSanitize', 'ui.select',
-                                'ngDialog', 'infinite-scroll', 'angularGrid', 'pusher-angular'])
+                                'ngDialog', 'infinite-scroll', 'angularGrid', 'pusher-angular', 'slickCarousel','ngMap'])
 
     .value('THROTTLE_MILLISECONDS', 5000);
 

@@ -5250,7 +5250,6 @@ a.waves-effect .waves-ripple {
   align-items: center; }
 
 .mt-shot-avatar > img {
-  width: 30px;
   margin-right: 1em;
   border-radius: 27em;
   border: 1px solid #eee;
@@ -5471,6 +5470,12 @@ span.special:hover {
 /*Buttons*/
 .btn {
   color: #fff; }
+
+.slider-buttons svg {
+  fill: #fff;
+  height: 26px;
+  width: 40px;
+  display: block; }
 
 .mt-shot-actions-back-btn {
   cursor: pointer;
@@ -5977,6 +5982,10 @@ p.attract-me {
   float: left;
   text-transform: capitalize;
   display: inline-block; }
+  .mt-avatar-name.bold_text {
+    color: rgba(32, 32, 36, 0.88);
+    font-size: 12px;
+    font-weight: 600; }
 
 .mt-link {
   color: #0c6ab5 !important; }
@@ -6606,7 +6615,27 @@ ul.contact-link-icons > li {
   background: #fff;
   display: -ms-flexbox;
   display: flex;
-  padding: 15px; }
+  padding: 15px;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -ms-flex-line-pack: justify;
+  align-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between; }
+  .designer-item .designer-item__header .mt-avatar-name {
+    margin-top: -20px; }
+  .designer-item .designer-item__header span.username {
+    margin-top: -20px;
+    font-size: 14px;
+    margin-left: -7px; }
+  .designer-item .designer-item__header .designer__location-text {
+    color: #676767;
+    width: 100%;
+    display: block;
+    text-align: left;
+    margin-left: 56px;
+    font-size: 12px;
+    margin-top: -18px; }
 
 .designer-item .mdl-card__actions {
   position: absolute;

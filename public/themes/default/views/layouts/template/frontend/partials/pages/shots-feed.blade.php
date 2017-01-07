@@ -1,8 +1,8 @@
-<section class="pad-1" infinite-scroll="updateShots('{{$resource}}')" infinite-scroll-disabled='busy' infinite-scroll-distance="5" ng-cloak infinite-scroll-container='".mdl-layout__content"' ng-cloak>
+<section class="pad-1" infinite-scroll="updateShots('{{$resource}}')" infinite-scroll-disabled='busy' infinite-scroll-distance="5" infinite-scroll-container='".mdl-layout__content"'>
 
 <div angular-grid="shots">
     <!-- Shot Template -->
-    <div class="mdl-shadow--2dp mt-shot" itemprop="mainEntity" itemscope itemtype="http://schema.org/imageObject" ng-repeat="shot in shots">
+    <div class="mdl-shadow--2dp mt-shot" itemprop="mainEntity" itemscope itemtype="http://schema.org/imageObject" ng-repeat="shot in shots" ng-cloak>
 
         <!-- The header -->
           <header class="mt-shot-header clearfix">

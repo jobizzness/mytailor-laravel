@@ -2,8 +2,8 @@
 
 	app.controller("shotsController", ["$scope", "ngDialog","$window",
                     "shotsFactory", "$timeout", '$pusher', "$filter",
-                    "$log",
-        function($scope, ngDialog, $window, shotsFactory, $timeout, $pusher, $filter, $log) {
+                    "$log","$Request",
+        function($scope, ngDialog, $window, shotsFactory, $timeout, $pusher, $filter, $log, $Request) {
 
             var client = new Pusher('67b6f9a2b88b9350c8fa');
             var pusher = $pusher(client);
@@ -16,8 +16,8 @@
             var pathArray = window.location.pathname.split( '/' );
 
             var $slug = pathArray[2] ? pathArray[2] : 'trending',
-                $cat = getParameterByName('cat') || null,
-                $page = getParameterByName('page', $scope.after);
+                $cat = $Request.search('cat') || null,
+                $page = $Request.search('page', $scope.after);
 
             pusher.subscribe('shotsChannel');
 
@@ -39,7 +39,7 @@
                     });
 
                     $scope.after = response.data.response.shots['nextPage'];
-                    $page = getParameterByName('page', $scope.after);
+                    $page = $Request.search('page', $scope.after);
                 });
             };
 
@@ -94,18 +94,6 @@
     			});
 
 			};
-
-            //Move To Custom Helpers
-            function getParameterByName(name, url) {
-                if (!url) url = window.location.href;
-                name = name.replace(/[\[\]]/g, "\\$&");
-                var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-                    results = regex.exec(url);
-                if (!results) return null;
-                if (!results[2]) return '';
-                return decodeURIComponent(results[2].replace(/\+/g, " "));
-            }
-
 
             /**
              * Icrement Views when a shot is viewed

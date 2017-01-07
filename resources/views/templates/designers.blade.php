@@ -1,4 +1,9 @@
 @section('bg', 'grey60')
+@section('page_styles')
+    <link rel="stylesheet" href="{{theme('css/vendor/slick-carousel/slick/slick.css')}}">
+    <link rel="stylesheet" href="{{theme('css/vendor/slick-carousel/slick/slick-theme.css')}}">
+
+@endsection
 @section('sub_header')
 
     <nav class="mdl-navigation mt-nav-has-border">
@@ -11,25 +16,58 @@
 
 @endsection
 
+<!-- Main map section -->
 <section class="mdl-shadow--2dp dark">
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3880.5143434572506!2d-16.724699685618848!3d13.44236099054827!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xec29a083f73013d%3A0xe8f413bd08a9e58f!2sSenegambia+Beach+Hotel!5e0!3m2!1sen!2sgm!4v1480378205768" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+  <div map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="@{{googleMapsUrl}}">
+    <map center="current-location" zoom="10" class="designers-map" default-style="false" style="height: 450px;" styles="@{{mapStyles}}">
+      <marker animation="DROP" position="current-location"></marker>
+    </map>
+  </div>
 </section>
 
 <div class="grid mt-row">
     
-      <section class="mdl-grid designer-item center" id="">
-        <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--2dp demo-card-image">
+      <section class="mdl-grid" infinite-scroll="updateDesigners()" infinite-scroll-disabled='busy' infinite-scroll-distance="5" infinite-scroll-container='".mdl-layout__content"'>
+        <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--2dp designer-item" ng-repeat="designer in designers" ng-cloak>
             <!-- The header -->
             <header class="designer-item__header">
                   <a href="#" class="mt-shot-avatar" title="">
-                      <img height="40" width="40" ng-src="/uploads/profiles/MyTailor.png" alt="">
-                      <h2 class="mt-avatar-name">Afrodapp</h2>
-                      <span>@afrodapp</span>
-                      <p>Banjul, Gm</p>
+                      <img height="40" width="40" ng-src="/uploads/profiles/11698517_10205466839968531_5750592294516276713_n.jpg" alt="">
+                      <h2 class="mt-avatar-name bold_text">@{{designer.display_name}}</h2>
+                      <span class="username">@@{{designer.username}}</span>
                   </a>
+                  <p class="designer__location-text">Banjul, Gm</p>
              </header>
-             <div class="mdl-card__title mdl-card--expand"></div>
-             <div class="dimGradient"></div>
+
+               <slick settings="slickConfig2" prev-arrow=".slick-prev" next-arrow=".slick-next">
+                <!-- Shot Template -->
+                  <div class="mdl-card" itemprop="mainEntity" itemscope itemtype="http://schema.org/imageObject" ng-repeat="shot in designer.shots">
+                      <!-- Figure -->
+                      <figure class="figure-overlay" style="height: 346px;overflow: hidden;">
+                          <a href="" class="mt-grid___link" ng-click="open(shot.name)">
+                              <div class="mt-image-holder" itemscope itemtype="http://schema.org/thumbnail">
+                                  <img itemprop="image" ng-src="@{{shot.image.original}}" alt="@{{shot.alt}}">
+                              </div>
+                          </a>
+                            <div class="dimGradient"></div>
+                      </figure>
+                      {{-- Figure Actions --}}
+                      <div class="mdl-card__actions floated_actions pad-1">
+                          <p class="floated-actions_title">@{{shot.title}}</p>
+                          <a href="#" style="margin-right: 15px;">
+                              <i class="mdi mdi-heart-outline icon_rounded like-btn"></i>
+                              <span style="font-size: 13px;color: #fff;">67</span>
+                          </a>
+                          <a href="#">
+                              <i class="mdi mdi-comment-outline icon_rounded comment-btn"></i>
+                              <span style="font-size: 13px;color: #fff;">10</span>
+                          </a>              
+                      </div>
+                    </div>
+                </slick>
+                {{-- Arrows --}}
+                <button type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Previous" role="button" style="display: block;"><span class="slider-buttons" data-reactid=".q5km6lna4g.0.2.0.0"><svg viewBox="0 0 18 18" data-reactid=".q5km6lna4g.0.2.0.0.0"><path d="M13.703 16.293a1 1 0 1 1-1.415 1.414l-7.995-8a1 1 0 0 1 0-1.414l7.995-8a1 1 0 1 1 1.415 1.414L6.413 9l7.29 7.293z" data-reactid=".q5km6lna4g.0.2.0.0.0.0"></path></svg></span></button>
+                <button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: block;"><span class="slider-buttons" data-reactid=".q5km6lna4g.0.3.0.0"><svg viewBox="0 0 18 18" data-reactid=".q5km6lna4g.0.3.0.0.0"><path d="M4.293 1.707A1 1 0 1 1 5.708.293l7.995 8a1 1 0 0 1 0 1.414l-7.995 8a1 1 0 1 1-1.415-1.414L11.583 9l-7.29-7.293z" data-reactid=".q5km6lna4g.0.3.0.0.0.0"></path></svg></span></button>
         </div>
       </section>
 
@@ -39,3 +77,7 @@
     @endforelse --}}
 
 </div>
+
+@section('page_scripts')
+
+@endsection

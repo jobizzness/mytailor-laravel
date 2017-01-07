@@ -304,6 +304,12 @@ font-size: 20px;
     float: left;
     text-transform: capitalize;
     display: inline-block;
+
+    &.bold_text{
+            color: rgba(32, 32, 36, 0.88);
+        font-size: 12px;
+        font-weight: 600;
+    }
 }
 
 .mt-link{

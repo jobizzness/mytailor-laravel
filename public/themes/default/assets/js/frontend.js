@@ -94,7 +94,7 @@
  * @var app
  */
 var app = angular.module('app', ['ngAnimate', 'ngMessages', 'ngSanitize', 'ui.select',
-                                'ngDialog', 'infinite-scroll', 'angularGrid', 'pusher-angular'])
+                                'ngDialog', 'infinite-scroll', 'angularGrid', 'pusher-angular', 'slickCarousel','ngMap'])
 
     .value('THROTTLE_MILLISECONDS', 5000);
 
@@ -184,8 +184,8 @@ app.controller("authController", ["$scope",
 
 	app.controller("shotsController", ["$scope", "ngDialog","$window",
                     "shotsFactory", "$timeout", '$pusher', "$filter",
-                    "$log",
-        function($scope, ngDialog, $window, shotsFactory, $timeout, $pusher, $filter, $log) {
+                    "$log","$Request",
+        function($scope, ngDialog, $window, shotsFactory, $timeout, $pusher, $filter, $log, $Request) {
 
             var client = new Pusher('67b6f9a2b88b9350c8fa');
             var pusher = $pusher(client);
@@ -198,8 +198,8 @@ app.controller("authController", ["$scope",
             var pathArray = window.location.pathname.split( '/' );
 
             var $slug = pathArray[2] ? pathArray[2] : 'trending',
-                $cat = getParameterByName('cat') || null,
-                $page = getParameterByName('page', $scope.after);
+                $cat = $Request.search('cat') || null,
+                $page = $Request.search('page', $scope.after);
 
             pusher.subscribe('shotsChannel');
 
@@ -221,7 +221,7 @@ app.controller("authController", ["$scope",
                     });
 
                     $scope.after = response.data.response.shots['nextPage'];
-                    $page = getParameterByName('page', $scope.after);
+                    $page = $Request.search('page', $scope.after);
                 });
             };
 
@@ -276,18 +276,6 @@ app.controller("authController", ["$scope",
     			});
 
 			};
-
-            //Move To Custom Helpers
-            function getParameterByName(name, url) {
-                if (!url) url = window.location.href;
-                name = name.replace(/[\[\]]/g, "\\$&");
-                var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-                    results = regex.exec(url);
-                if (!results) return null;
-                if (!results[2]) return '';
-                return decodeURIComponent(results[2].replace(/\+/g, " "));
-            }
-
 
             /**
              * Icrement Views when a shot is viewed
@@ -414,20 +402,78 @@ app.controller("authController", ["$scope",
 
 		}]);
 
-'use strict';
+	'use strict';
 
-	app.controller("designersController", ["$scope","shotFactory",
-		function($scope, shotFactory) {
+	app.controller("designersController", ["$scope","designersFactory","NgMap","$Request",
+		function($scope, designersFactory, NgMap, $Request) {
 
-//this should be moved
-			// angular.forEach(angular.element(document.querySelector(".designer-item")), function(value, key){
-			//      var a = angular.element(value);
-			//      a.addClass('ss');
+			$scope.designers = [];
+			$scope.busy = false;
+            $scope.after = '/?page=1';
+            $scope.per_page = 0;
 
-			// });
-		}
+			//Google Map URL with API
+		    $scope.googleMapsUrl = 'https://maps.google.com/maps/api/js?v=3.20&key=AIzaSyDMknbbjCbtZVr3Ga4n7Fnr1dJDr8lvZoA';
 
-		]);
+		    //Custom Map Styles
+		    $scope.mapStyles=[{"stylers":[{"hue":"#ff1a00"},{"invert_lightness":true},{"saturation":-100},{"lightness":33},{"gamma":0.5}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#2D333C"}]}];
+
+			//Slider configuration
+		    $scope.slickConfig2 = {autoplay: true,infinite: true,autoplaySpeed: 5000,slidesToShow: 3,slidesToScroll: 1,method: {}};
+
+		    var pathArray = window.location.pathname.split( '/' );
+		    var $slug = pathArray[2] ? pathArray[2] : 'local',
+                $page = $Request.search('page', $scope.after);
+
+            /**
+             * gets Designers from storage.
+             *
+             * @param $sort
+             */
+            $scope.getDesigners = function($slug, $params){
+
+                designersFactory.index($slug, $params).then(function(response){
+
+                    var items = response.data.response.designers.data;
+                    $scope.per_page = $scope.per_page +response.data.per_page;
+
+                    angular.forEach(items, function(value, key) {
+                        $scope.designers.push(value);
+                    });
+
+                    // angular.forEach(items, function(value, key) {
+                    //     this.getPopularShots(value.id);
+                    // });
+                    
+
+                    $scope.after = response.data.response.designers['nextPage'];
+                    $page = $Request.search('page', $scope.after);
+                });
+            };
+
+
+            /**
+             * Loads more shots from server
+             */
+            $scope.updateDesigners = function($repo){
+                if ($scope.busy) return;
+                if(!$page) return;
+
+                $scope.busy = true;
+                $scope.getDesigners($slug, {page:$page});
+                $scope.busy = false;
+
+                ga('send', {
+                  hitType: 'event',
+                  eventCategory: 'PaginatedContent',
+                  eventAction: 'scroll',
+                  eventLabel: 'Load More Designers'
+                });
+            };
+
+
+	}]);    
+
 	app.factory('shotFactory', ['$http', function($http){
 
 
@@ -501,4 +547,37 @@ app.factory('shotsFactory', ['$http', function($http){
     return this;
 }]);
 
+app.factory('designersFactory', ['$http', function($http){
+
+        this.items = [];
+        this.busy = false;
+        this.after = '';
+
+
+     this.index = function($sort, params){
+     	return $http.get('/api/v1/designers/'+$sort, {params:params});
+     };
+
+
+
+    return this;
+}]);
+
+
+app.service('$Request', function () {
+	
+	            //Move To Custom Helpers
+            this.search = function(name, url) {
+                if (!url) url = window.location.href;
+                name = name.replace(/[\[\]]/g, "\\$&");
+                var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                    results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, " "));
+            }
+
+            return this;
+
+});
 //# sourceMappingURL=frontend.js.map

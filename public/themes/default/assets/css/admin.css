@@ -723,6 +723,12 @@ span.special:hover {
 .btn {
   color: #fff; }
 
+.slider-buttons svg {
+  fill: #fff;
+  height: 26px;
+  width: 40px;
+  display: block; }
+
 .mt-shot-actions-back-btn {
   cursor: pointer;
   background: #EEE;
@@ -1228,6 +1234,10 @@ p.attract-me {
   float: left;
   text-transform: capitalize;
   display: inline-block; }
+  .mt-avatar-name.bold_text {
+    color: rgba(32, 32, 36, 0.88);
+    font-size: 12px;
+    font-weight: 600; }
 
 .mt-link {
   color: #0c6ab5 !important; }

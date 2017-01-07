@@ -138,6 +138,29 @@
         background: #fff;
         display: flex;
         padding: 15px;
+        flex-flow: row wrap;
+        align-content: space-between;
+        justify-content: space-between;
+
+      .mt-avatar-name{
+          margin-top: -20px;
+        }
+
+        span.username{
+          margin-top: -20px;
+          font-size: 14px;
+          margin-left: -7px;
+        }
+
+        .designer__location-text{
+          color: #676767;
+          width: 100%;
+          display: block;
+          text-align: left;
+          margin-left: 56px;
+          font-size: 12px;
+          margin-top: -18px;
+        }
     }
 
     .mdl-card__actions{

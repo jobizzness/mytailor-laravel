@@ -116,7 +116,10 @@ Route::group(['prefix' => 'api/v1'], function () {
 					'as' => 'shot',
 					'uses' => 'Frontend\ShotsController@show']
 	);
-
+	Route::get('/designers/{sort}',  [
+					'as' => 'designers.sort',
+					'uses' => 'Frontend\DesignersController@index']
+	);
 	Route::post('/shot/viewed/{id}',  [
 					'as' => 'shot.viewed',
 					'uses' => 'Frontend\ShotsController@viewed']

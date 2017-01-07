@@ -18,10 +18,10 @@ interface DesignersRepositoryInterface
     public function favorites($cat);
 
     /**
-     * @param $cat
+     *
      * @return mixed
      */
-    public function latest($cat);
+    public function latest();
 
     /**
      * @param $cat
@@ -33,11 +33,11 @@ interface DesignersRepositoryInterface
      * @param $cat
      * @return mixed
      */
-    public function local($cat);
+    public function local();
 
     /**
      * @param $cat
      * @return mixed
      */
-    public function mostViewed($cat);
+    public function popular($cat);
 }
