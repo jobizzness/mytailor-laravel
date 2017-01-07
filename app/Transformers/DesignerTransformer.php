@@ -25,7 +25,7 @@ class DesignerTransformer extends Transformer
 
         ];
 
-       foreach($designer->shots as $shot){
+       foreach($designer->user->shots as $shot){
 
            $raw['shots'][] = [
                "id" => $shot->id,

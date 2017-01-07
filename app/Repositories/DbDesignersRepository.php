@@ -29,10 +29,6 @@ class DbDesignersRepository implements DesignersRepositoryInterface
     public function favorites($cat)
     {
 
-        return $this->designers->with('user', 'profile', 'shots')
-            ->orderByRaw("id")
-            ->limit(20)
-            ->get();
 
     }
 
@@ -48,7 +44,7 @@ class DbDesignersRepository implements DesignersRepositoryInterface
 
     public function local()
     {
-        return $this->designers->with('user.profile', 'shots.image')
+        return $this->designers->with('user.profile', 'user.shots.image')
             ->orderBy("id")
             ->paginate(8);
     }

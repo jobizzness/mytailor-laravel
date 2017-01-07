@@ -61,6 +61,21 @@ class User extends Authenticatable
     }
 
     /**
+     * A shot can be owned by a Designer.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function topShots() {
+
+        return $this->morphMany(Shot::class, 'publishable')
+            ->select(\DB::raw( '((views - 1) / (TIMESTAMPDIFF(MINUTE, updated_at, NOW()) + 2)^1.5) as Popularity, shots.*'))
+            ->orderBy('Popularity', 'desc')
+            ->where('published', '=', 1)
+            ->groupBy('id')
+            ->limit(6);
+    }
+
+    /**
      * A user may have many roles.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany

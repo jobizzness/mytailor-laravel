@@ -18,19 +18,4 @@ class Designer extends Model
             ->select(['id','display_name','avatar']);;
     }
 
-    /**
-     * A shot can be owned by a Designer.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function shots() {
-
-        return $this->morphMany(Shot::class, 'publishable')
-            ->select(\DB::raw( '((views - 1) / (TIMESTAMPDIFF(MINUTE, updated_at, NOW()) + 2)^1.5) as Popularity, shots.*'))
-            ->orderBy('Popularity', 'desc')
-            ->where('published', '=', 1)
-            ->groupBy('id')
-            ->limit(6);
-    }
-
 }
