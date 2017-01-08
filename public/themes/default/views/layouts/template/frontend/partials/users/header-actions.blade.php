@@ -2,7 +2,18 @@
                 <div class="mt-top-menu">
                   <ul class="user-actions flex-center">
                   <!-- Notification Icon and Dropdown -->
-                    <li>
+                  
+                  <li style="margin-top: -10px;">
+                      <a href="/saves" title="saves">
+                        <div class="material-icons mdl-badge mdl-badge--overlap" ><i class="mdi mdi-arrow-down-bold-circle"></i></div>
+                      </a>
+                    </li>
+                  <li style="margin-top: -10px;">
+                      <a href="/explore" title="explore">
+                        <div class="material-icons mdl-badge mdl-badge--overlap" ><i class="mdi mdi-crosshairs-gps"></i></div>
+                      </a>
+                    </li>
+                    <li style="margin-top: -10px;">
                       <a href="#" id="notifications">
                         <div class="material-icons mdl-badge mdl-badge--overlap" ><i class="mdi mdi-bell"></i></div>
                       </a>

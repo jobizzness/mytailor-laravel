@@ -2006,20 +2006,17 @@ header.mt-layout-sidebar__users-info-wrapp {
   -ms-flex-pack: start;
   justify-content: flex-start;
   padding: 16px;
-  height: 120px;
   box-shadow: 0 2px 2px 0 rgba(148, 148, 148, 0.14), 0 3px 1px -2px rgba(132, 132, 132, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); }
 
 .mt-sidebar-avatar > img {
-  max-width: 50px;
-  width: 48px;
-  height: 48px;
-  border-radius: 27px;
+  width: 70px;
+  height: 70px;
+  border-radius: 43px;
   display: inline-block;
   overflow: hidden; }
 
 .sidebar-title-wrapper {
   margin-top: 1em;
-  color: #fff;
   display: -ms-flexbox;
   display: flex;
   position: relative;

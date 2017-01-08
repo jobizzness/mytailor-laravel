@@ -1,12 +1,14 @@
 <div class="mt-layout-sidebar" ng-class="{'__visible': toggle}">
-    <header class="mt-layout-sidebar__users-info-wrapp" style="background:#FB4164;">
+    <header class="mt-layout-sidebar__users-info-wrapp">
         @if($user)
             <div class="mt-sidebar-avatar">
-              <img src="{{'/uploads/profiles/'.$user->profile->avatar}}">
+                <img src="{{'/uploads/profiles/'.$user->profile->avatar}}">
+            </div>
+              
 
               <div class="sidebar-title-wrapper">
-                <span>{{$user->profile->username}}</span>
-                <div class="mdl-layout-spacer"></div>
+                <span>{{'@'.$user->profile->username}}</span>
+                <span class="mdl-layout-spacer"></span>
                 <!-- Right aligned menu below button -->
                   <button id="menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">
                     <i class="mdi mdi-menu-down"></i>
@@ -17,11 +19,10 @@
                   <li class="mdl-menu__item"><a href="{{route('auth.logout')}}" class="m-0">Logout</a></li>
                   </ul>
               </div>
-            </div>
         @endif
     </header>
 
-    <nav id="mt-nav-main" class="mt-nav" rrole="navigataion" itemscope itemtype="https://schema.org/WPSideBar">
+    <nav id="mt-nav-main" class="mt-nav" role="navigataion" itemscope itemtype="https://schema.org/WPSideBar">
                       
       <ul class="mt-sidebar-list">
           <li class="{{ Route::is('home.feed') || Route::is('shots.index') ? 'mt-list-active' : ''}}">
