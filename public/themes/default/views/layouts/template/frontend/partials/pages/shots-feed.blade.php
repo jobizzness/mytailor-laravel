@@ -28,9 +28,9 @@
         <div style="padding: 10px">
 
             <div class="mdl-card__actions" style="padding:0">
-              <a ng-click="like(shot.name, $event)" class="material-icons mdl-badge mdl-badge--overlap like-btn2" ng-class="{'red-color': shot.likes.is_liked}"><i class="mdi mdi-heart"></i><span class="count_text">@{{shot.likes.like_count}}</span></a>
+              <a ng-click="like(shot.name)" class="material-icons mdl-badge mdl-badge--overlap like-btn2" ng-class="{'red-color': shot.likes.is_liked}"><i class="mdi mdi-heart"></i><span class="count_text">@{{shot.likes.like_count}}</span></a>
 
-              <a ng-click="like(shot.name, $event)" class="material-icons mdl-badge mdl-badge--overlap"><i class="mdi mdi-comment"></i><span class="count_text"></span></a>
+              <a ng-click="" class="material-icons mdl-badge mdl-badge--overlap"><i class="mdi mdi-comment"></i><span class="count_text"></span></a>
 
                 {{-- <span style="font-size: 13px;margin: 0;">@{{shot.views}}</span> --}}
 {{--                 <span class="mdl-layout-spacer"></span>
