@@ -151,12 +151,12 @@ class User extends Authenticatable
         $profile = new Profile();
         $profile->avatar = $userData->avatar;
         $profile->display_name = $userData->name;
+        $profile->username = $userData->username;
         $profile->save();
 
         $user = new User();
         $user->email = $userData->email;
         $user->password = bcrypt($userData->password);
-        $user->username = $userData->username;
         $user->profile_id = $profile->id;
         $user->save();
         $user->assignRole($role);
