@@ -13,21 +13,20 @@ class DbUsersRepository implements UsersRepositoryInterface
     /**
      * Find a user by email or create.
      *
-     * @param $userData
+     * @param $data
      * @return User
      */
-    public function findByEmailOrCreate($userData)
+    public function findByEmailOrCreate($data)
     {
 
-        dd($userData);
 
-        $user = User::where('email', $userData->email)->first();
+        $user = User::where('email', $data->email)->first();
 
         if(! $user){
-            $userData->username = null;
-            $userData->password = Null;
+            $data->username = $data->nickname;
+            $data->password = Null;
 
-            $user = $this->create($userData);
+            $user = $this->create($data);
 
         }
 

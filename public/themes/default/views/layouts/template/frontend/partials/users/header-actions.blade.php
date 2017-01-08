@@ -52,10 +52,11 @@
                           {{-- avatar menu --}}
                           <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
                             for="avatar">
-                          <li class="mdl-menu__item">Some Action</li>
-                          <li class="mdl-menu__item mdl-menu__item--full-bleed-divider">Another Action</li>
-                          <li disabled class="mdl-menu__item">Disabled Action</li>
-                          <li class="mdl-menu__item">Yet Another Action</li>
+                          <li class="mdl-menu__item"><a href="/jobizzness">Profile</a></li>
+                          <li class="mdl-menu__item"><a href="/">Collections</a></li>
+                          <li class="mdl-menu__item"><a href="/">Saves</a></li>
+                          <li class="mdl-menu__item"><a href="/">Settings</a></li>
+                          <li class="mdl-menu__item"><a href="/">Logout</a></li>
                         </ul>
                     </li>
                   </ul>

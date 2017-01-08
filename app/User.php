@@ -146,7 +146,7 @@ class User extends Authenticatable
      * @param $role
      * @return User
      */
-    public static function register($userData, $role)
+    public static function register($userData, $role=4)
     {
         $profile = new Profile();
         $profile->avatar = $userData->avatar;
@@ -159,7 +159,7 @@ class User extends Authenticatable
         $user->username = $userData->username;
         $user->profile_id = $profile->id;
         $user->save();
-        $user->assignRole(4);
+        $user->assignRole($role);
 
 
         $user->raise(new UserRegistered($user));

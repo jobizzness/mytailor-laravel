@@ -38,7 +38,7 @@ return [
     'facebook' => [
         'client_id'     => env('FACEBOOK_CLIENT_ID'),
         'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
-        'redirect'      => 'http://jobizzness.com/login/facebook'
+        'redirect'      => 'https://www.afrodapp.com/facebook'
     ],
 
 //    'twitter' => [

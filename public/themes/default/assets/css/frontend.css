@@ -7038,8 +7038,6 @@ a[ng-click] {
   padding: 0; }
   .mt-top-menu > ul.user-actions > li {
     margin: 0 14px 0 10px; }
-    .mt-top-menu > ul.user-actions > li:hover {
-      background-color: rgba(0, 0, 0, 0.17); }
 
 ul.user-actions > li > a {
   transition: color linear 2ms;

@@ -66,7 +66,7 @@
                           <li class="mdl-menu__item">Some Action</li>
                           <li class="mdl-menu__item mdl-menu__item--full-bleed-divider">Another Action</li>
                           <li disabled class="mdl-menu__item">Disabled Action</li>
-                          <li class="mdl-menu__item">Yet Another Action</li>
+                          <li class="mdl-menu__item">Profile</li>
                         </ul>
                     </li>
                   </ul>
