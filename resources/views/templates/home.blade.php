@@ -23,7 +23,7 @@
                 </div>
             </section>
 
-            <section class="mt-layout_calls-wrapper mt-row">
+            <section class="mt-row">
                   <section class="mt-call-actions mdl-grid">
 
                       <a class="mt-call-items mdl-cell mdl-cell--3-col wow bounceIn" href="{{URL::to('shots/trending')}}" title="Trending">

@@ -37,11 +37,6 @@
                         $scope.designers.push(value);
                     });
 
-                    // angular.forEach(items, function(value, key) {
-                    //     this.getPopularShots(value.id);
-                    // });
-                    
-
                     $scope.after = response.data.response.designers['nextPage'];
                     $page = $Request.search('page', $scope.after);
                 });

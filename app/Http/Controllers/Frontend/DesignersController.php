@@ -54,7 +54,6 @@ class DesignersController extends ApiController
             return $this->NotFound('No results Found');
         }
 
-        dd($designers);
 
         //means we have shots so lets send them through.
         return $this->respond([

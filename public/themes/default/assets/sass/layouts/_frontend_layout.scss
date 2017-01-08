@@ -1,11 +1,6 @@
 
 /*Call to action section*/
 
-.mt-layout_calls-wrapper{
-	box-sizing: border-box;
-    background: map-get($ui-color, darkbrown);
-}
-
 .mt-call-actions{
     padding: 25px 0;
     display: -webkit-flex;
@@ -26,11 +21,26 @@
         justify-content: center;
 }
 
-.mt-call-items>.call-item{
+.call-item{
 	padding: 0 30px;
     text-align: center;
-	& div.icon{
-		    padding: 2em 0em;
+	.landing__inline-item-icon{
+        text-align: center;
+        background: #fff;
+        border-radius: 50%;
+        box-shadow: 0 1px 1px rgba(0,0,0,.1);
+        padding: 30px;
+        width: 148px;
+        height: 148px;
+        margin: 0 auto;
+        border: 6px solid transparent;
+        color: #ff4081;
+
+        i{    font-size: 74px;
+            height: 74px;
+            padding: 0;
+            margin: 0;
+        }
 	}
 }
 

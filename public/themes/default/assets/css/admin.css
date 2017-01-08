@@ -1007,10 +1007,6 @@ button#dropdown > i {
   border-color: #fbe1e3;
   color: #e73d4a; }
 
-.mt-menu-text {
-  color: rgba(255, 255, 255, 0.6);
-  text-shadow: 0px 1px 0px black, 2px 0px 1px rgba(0, 0, 0, 0.87); }
-
 .grey-text {
   color: #9e9e9e; }
 
@@ -1030,17 +1026,14 @@ button#dropdown > i {
 
 /*More specific texts*/
 .mt-call-items-title {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 1em;
+  color: #202024;
+  font-size: 16px;
   font-weight: 600;
-  margin-bottom: 10px; }
+  margin: 25px 0; }
 
 .mt-call-items-text {
-  color: #868686;
-  font-size: 15px; }
-
-a.mt-call-items:hover .mt-call-items-title {
-  color: #F23054; }
+  color: #373737;
+  font-size: 14px; }
 
 .mt-md-title {
   color: #9e9e9e;
@@ -1213,17 +1206,19 @@ p.attract-me {
   background: rgba(148, 159, 164, 0.13); }
 
 .profile__title {
-  color: rgba(255, 255, 255, 0.81);
-  font-size: 20px; }
+  color: #202024;
+  font-size: 20px;
+  margin: 8px; }
+
+.profile-bio__text {
+  font-size: 15px;
+  max-width: 600px;
+  margin: 5px 0;
+  text-align: center;
+  color: rgba(32, 32, 36, 0.86); }
 
 .location__text {
-  color: rgba(255, 255, 255, 0.65); }
-
-.shot-description__text {
-  padding: 10px 1em 0;
-  line-height: 15px;
-  font-size: 13px;
-  color: rgba(0, 0, 0, 0.68); }
+  color: rgba(32, 32, 36, 0.81); }
 
 .mt-avatar-name {
   color: #000;
@@ -2635,18 +2630,6 @@ figure.shot-cover.--profile__feed {
   font-size: 20px;
   position: relative;
   top: 2px; }
-
-.poster-card {
-  min-height: 150px;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 0 2em;
-  -ms-flex-pack: center;
-  justify-content: center;
-  background: #fff;
-  margin: 0 1em;
-  -ms-flex-align: center;
-  align-items: center; }
 
 .card--full {
   width: 100%;

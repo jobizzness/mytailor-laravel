@@ -32,11 +32,6 @@
     color: #e73d4a;
 }
 
-.mt-menu-text {
-    color: rgba(255, 255, 255, 0.6);
-    text-shadow: 0px 1px 0px black, 2px 0px 1px rgba(0, 0, 0, 0.87);
-}
-
 .grey-text{
     color: #9e9e9e;
 }
@@ -58,20 +53,15 @@
 }
 /*More specific texts*/
 .mt-call-items-title {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 1em;
+    color: rgb(32, 32, 36);
+    font-size: 16px;
     font-weight: 600;
-    margin-bottom: 10px;
+    margin: 25px 0;
 }
 
 .mt-call-items-text {
-    color: #868686;
-    font-size: 15px;
-}
-
-
-a.mt-call-items:hover .mt-call-items-title {
-    color: #F23054;
+    color: #373737;
+    font-size: 14px;
 }
 
 
@@ -280,19 +270,21 @@ font-size: 20px;
 }
 
 .profile__title{
-     color: rgba(255, 255, 255, 0.81);
+        color: rgb(32, 32, 36);
       font-size: 20px;
+          margin: 8px;
+}
+
+.profile-bio__text{
+      font-size: 15px;
+    max-width: 600px;
+    margin: 5px 0;
+    text-align: center;
+    color: rgba(32, 32, 36, 0.86);
 }
 
 .location__text{
-    color: rgba(255, 255, 255, 0.65);
-}
-
-.shot-description__text {
-    padding: 10px 1em 0;
-    line-height: 15px;
-    font-size: 13px;
-    color: rgba(0, 0, 0, 0.68);
+    color: rgba(32, 32, 36, 0.81);
 }
 
 .mt-avatar-name {

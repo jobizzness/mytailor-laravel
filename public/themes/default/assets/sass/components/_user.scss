@@ -41,30 +41,6 @@
     position: relative;
 }
 
-.mt-profile-cover{
-    overflow: hidden;
-    height: 55vh;
-    justify-content: center;
-
-}
-
-.mt-profile-cover__link{
-    display: block;
-    position: relative;
-    height: 72vh;
-    overflow: hidden;
-    text-decoration: none;
-}
-
-.mt-profile-cover__image{
-        top: 0px;
-    width: 100%;
-    image-rendering: optimizeQuality;
-    min-height: 100%;
-    min-width: 100%;
-    position: absolute;
-    left: 0;
-}
 .mt-profile__info-box{
     display: -ms-flexbox;
     display: flex;
@@ -73,7 +49,6 @@
     align-items: center;
     flex-direction: column;
     padding: 1em;
-    height: 85%;
 
     >a{
         height: 130px !important;
@@ -98,6 +73,7 @@
     flex-direction: column;
     align-items: center;
 }
+
 
 
 .profile-tag_name{
