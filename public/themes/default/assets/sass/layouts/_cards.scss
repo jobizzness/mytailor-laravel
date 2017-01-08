@@ -243,12 +243,11 @@ transition-property: -webkit-transform;
     color:rgba(0,0,0,0.54);
 
 
-    >button.mdl-button{
-      color: inherit;
-      margin: 0 5px;
+    >a{
+      margin: 0 8px;
 
       i{
-        font-size: 20px;
+        font-size: 22px;
       }
     }
 

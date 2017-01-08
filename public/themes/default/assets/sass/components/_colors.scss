@@ -15,6 +15,9 @@ $ui-color: (
 	background: map-get($ui-color, redish);
 }
 
+.red-color{
+    color: map-get($ui-color, redish);
+}
 .redish:hover{
 	background-color: map-get($ui-color, redish_strong) !important;
 }

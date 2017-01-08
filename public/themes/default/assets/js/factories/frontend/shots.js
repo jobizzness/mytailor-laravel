@@ -22,6 +22,9 @@ app.factory('shotsFactory', ['$http', function($http){
        return $http.get('/api/v1/explore/', {params:params});
     };
 
+    this.like = function($name){
+       return $http.get('/api/v1/shot/'+$name+'/like');
+    };
 
 
     return this;

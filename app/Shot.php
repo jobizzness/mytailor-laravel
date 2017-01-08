@@ -7,11 +7,12 @@ use AlgoliaSearch\Laravel\AlgoliaEloquentTrait;
 use Laracasts\Commander\Events\EventGenerator;
 use Laracasts\Presenter\PresentableTrait;
 use MyTailor\Modules\Shots\Events\ShotWasPosted;
+use MyTailor\Modules\Traits\LikableTrait;
 
 
 class Shot extends Model {
 
-    use EventGenerator, AlgoliaEloquentTrait, PresentableTrait;
+    use EventGenerator, AlgoliaEloquentTrait, PresentableTrait, LikableTrait;
 
     /**
      * Path to Shots Presenter Class.
@@ -149,6 +150,13 @@ class Shot extends Model {
 
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function likes()
+    {
+        return $this->morphMany(Like::class, 'likable');
+    }
 
     /**
      * A shot must have an image.

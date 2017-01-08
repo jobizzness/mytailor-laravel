@@ -245,6 +245,23 @@ app.controller("authController", ["$scope",
                 });
             };
 
+
+            $scope.like = function($name) {
+              shotsFactory.like($name).then(function(response){
+                    toggleLike($name);
+                });
+            }
+
+            var toggleLike = function($name){
+              $shot = $filter('findByName')($scope.shots, $name);
+
+              if($shot.likes.is_liked == true){
+                    $shot.likes.like_count--;
+                  return $shot.likes.is_liked = false;
+              }
+              $shot.likes.like_count++;
+              return $shot.likes.is_liked = true;
+            }
             /**
              * Open Shot Overlay
              *
@@ -441,11 +458,6 @@ app.controller("authController", ["$scope",
                         $scope.designers.push(value);
                     });
 
-                    // angular.forEach(items, function(value, key) {
-                    //     this.getPopularShots(value.id);
-                    // });
-                    
-
                     $scope.after = response.data.response.designers['nextPage'];
                     $page = $Request.search('page', $scope.after);
                 });
@@ -542,6 +554,9 @@ app.factory('shotsFactory', ['$http', function($http){
        return $http.get('/api/v1/explore/', {params:params});
     };
 
+    this.like = function($name){
+       return $http.get('/api/v1/shot/'+$name+'/like');
+    };
 
 
     return this;

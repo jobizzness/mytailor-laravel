@@ -44,6 +44,12 @@ class DesignerTransformer extends Transformer
                    "medium" => $shot->image->medium,
                    "large" => $shot->image->large,
                    "small" => $shot->image->small
+               ],
+               "likes" => [
+                   "like_count" => $shot->LikesCount,
+//                   "data" => [
+//                       $shot->tags
+//                   ],
                ]
            ];
 

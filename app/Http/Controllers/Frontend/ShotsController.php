@@ -66,6 +66,13 @@ class ShotsController extends ApiController
 
     }
 
+    public function toggleLike($name)
+    {
+        $shot = $this->shots->findByName($name);
+
+        $shot->toggle();
+    }
+
     /**
      * Gets info about a shot and response in Json
      *

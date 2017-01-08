@@ -39,12 +39,13 @@ class ShotTransformer extends Transformer
                 ]
 
             ],
-//            "tags" => [
-//                   "uri" => "/",
+            "likes" => [
+                "is_liked" => $shot->isLiked(),
+                   "like_count" => $shot->LikesCount,
 //                   "data" => [
 //                       $shot->tags
 //                   ],
-//            ],
+            ],
 
             "comments" => [
                     "uri" => "/",

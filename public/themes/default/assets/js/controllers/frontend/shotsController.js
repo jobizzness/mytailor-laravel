@@ -63,6 +63,23 @@
                 });
             };
 
+
+            $scope.like = function($name) {
+              shotsFactory.like($name).then(function(response){
+                    toggleLike($name);
+                });
+            }
+
+            var toggleLike = function($name){
+              $shot = $filter('findByName')($scope.shots, $name);
+
+              if($shot.likes.is_liked == true){
+                    $shot.likes.like_count--;
+                  return $shot.likes.is_liked = false;
+              }
+              $shot.likes.like_count++;
+              return $shot.likes.is_liked = true;
+            }
             /**
              * Open Shot Overlay
              *

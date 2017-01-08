@@ -515,6 +515,9 @@ a.waves-effect .waves-ripple {
 .redish {
   background: #ff4081; }
 
+.red-color {
+  color: #ff4081; }
+
 .redish:hover {
   background-color: #D9183C !important; }
 
@@ -972,6 +975,9 @@ button#dropdown > i {
     background: #ff4081;
     border-color: #ff4081; }
 
+.like-btn2:hover {
+  color: #ff4081; }
+
 .comment-btn {
   transition: border 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
   .comment-btn:hover {
@@ -1222,7 +1228,7 @@ p.attract-me {
 
 .mt-avatar-name {
   color: #000;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 400;
   letter-spacing: .04em;
   margin-right: 1em;
@@ -1255,6 +1261,11 @@ p.attract-me {
   font-size: 14px;
   color: rgba(255, 255, 255, 0.72);
   margin: 13px 0; }
+
+.count_text {
+  font-size: 13px;
+  margin: 4px;
+  color: #949494; }
 
 /*Forms*/
 .mt-forms {
@@ -2572,11 +2583,10 @@ figure.shot-cover.--profile__feed {
     flex-direction: row;
     padding: 10px;
     color: rgba(0, 0, 0, 0.54); }
-    .mt-shot .mdl-card__actions > button.mdl-button {
-      color: inherit;
-      margin: 0 5px; }
-      .mt-shot .mdl-card__actions > button.mdl-button i {
-        font-size: 20px; }
+    .mt-shot .mdl-card__actions > a {
+      margin: 0 8px; }
+      .mt-shot .mdl-card__actions > a i {
+        font-size: 22px; }
 
 .ais-hits--item > .grid-item {
   width: 25%; }
