@@ -17,7 +17,7 @@
               <span class="mdl-layout-spacer"></span>
               <a href="/@{{shot.owner.username}}" class="mt-shot-avatar" title="@{{shot.owner.display_name}}">
                  <h2 class="mt-avatar-name">@{{shot.owner.display_name}}</h2>
-                 <img height="30" width="30" ng-src="/uploads/profiles/@{{shot.owner.avatar.avatar_small}}" alt="">
+                 <img height="30" width="30" ng-src="@{{shot.owner.avatar.avatar_small}}" alt="">
               </a>
             </section>
           </header>

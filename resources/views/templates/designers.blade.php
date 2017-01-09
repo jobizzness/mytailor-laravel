@@ -27,12 +27,17 @@
 
 <div class="grid mt-row">
     
-      <section class="mdl-grid" infinite-scroll="updateDesigners()" infinite-scroll-disabled='busy' infinite-scroll-distance="5" infinite-scroll-container='".mdl-layout__content"'>
+      <section class="mdl-grid" 
+      ng-init="updateDesigners()"
+      ag-id="designers"
+      ag-scroll-container=".mdl-layout__content" 
+      ag-infinite-scroll="updateDesigners()"
+       >
         <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--2dp designer-item" ng-repeat="designer in designers" ng-cloak>
             <!-- The header -->
             <header class="designer-item__header">
                   <a href="#" class="mt-shot-avatar" title="">
-                      <img height="40" width="40" ng-src="/uploads/profiles/@{{designer.avatar.avatar_small}}" alt="">
+                      <img height="40" width="40" ng-src="@{{designer.avatar.avatar_small}}" alt="">
                       <h2 class="mt-avatar-name bold_text">@{{designer.display_name}}</h2>
                       <span class="username">@@{{designer.username}}</span>
                   </a>

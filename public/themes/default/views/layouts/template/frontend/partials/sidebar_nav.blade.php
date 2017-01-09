@@ -2,7 +2,7 @@
     <header class="mt-layout-sidebar__users-info-wrapp">
         @if($user)
             <div class="mt-sidebar-avatar">
-                <img src="{{'/uploads/profiles/'.$user->profile->avatar}}">
+                <img src="{{$user->profile->avatar}}">
             </div>
               
 
