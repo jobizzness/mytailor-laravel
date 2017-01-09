@@ -45,10 +45,10 @@ class ProfilesTemplate extends AbstractTemplate{
     protected function seoMake($profile)
     {
         SEOMeta::setTitle($profile->display_name);
-        SEOMeta::setDescription('See what'.$profile->display_name.'posted on Afrodapp');
+        SEOMeta::setDescription($profile->display_name.' on Afrodapp');
         //SEOMeta::setCanonical('https://codecasts.com.br/lesson');
 
-        OpenGraph::setDescription($profile->display_name.'on Afrodapp');
+        OpenGraph::setDescription($profile->display_name.' on Afrodapp');
         OpenGraph::setTitle('Brands');
         OpenGraph::setUrl('/'.$profile->username);
         OpenGraph::addProperty('type', 'business.fashion');

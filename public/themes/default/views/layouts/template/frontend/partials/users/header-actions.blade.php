@@ -46,7 +46,7 @@
                     </li>
                     <!-- Avatar Dropdown -->
                    <li>
-                      <a href="#" class="dropdown-toggle mt-top-avatar" id="avatar">
+                      <a href="/{{$user->username}}" class="dropdown-toggle mt-top-avatar" id="avatar">
                         <img alt="" class="img-circle" src="{{$user->profile->avatar}}" width="40px" height="40px">
                       </a>
                           {{-- avatar menu --}}

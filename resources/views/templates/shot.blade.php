@@ -9,7 +9,7 @@
 @section('main')
 	<div class="overlay-wrapper animated fadeIn">
 
-	<section class="mdl-cell mt-shot mdl-cell--12-col mdl-shadow--2dp mt-shot-wrapper" itemprop="mainEntity">
+	<section class="mdl-cell mt-shot mdl-cell--12-col mdl-shadow--2dp mt-shot-wrapper" itemprop="mainEntity" ng-cloak>
 
         <!-- The header -->
 		<header class="mt-shot-header clearfix">
@@ -37,25 +37,10 @@
 			</div>
 
 			<div class="mdl-card__actions" style="padding:0">
-	              <button class="mdl-button mdl-js-button mdl-js-ripple-effect icon-round">
-	                  <i class="mdi mdi-heart icon-center"></i>
-	                  <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
-	              </button>
-	              <span style="font-size: 13px;margin: 0;"></span>
-	              <button class="mdl-button mdl-js-button mdl-js-ripple-effect icon-round">
-	                  <i class="mdi mdi-comment icon-center"></i>
-	                  <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
-	              </button>
-	              <span style="font-size: 13px;margin: 0;"></span>
-	              <button class="mdl-button mdl-js-button mdl-js-ripple-effect icon-round">
-	                  <i class="mdi mdi-eye icon-center"></i>
-	              </button>
-	              <span style="font-size: 13px;margin: 0;">{{$shot->views}}</span>
-	              <span class="mdl-layout-spacer"></span>
-	              <button id="card-right-button" class="mdl-button mdl-js-button mdl-button--icon">
-	                <i class="icon-center mdi mdi-dots-vertical"></i>
-	             </button>
-	          </div>
+              <a ng-click="like(shot.name)" class="material-icons mdl-badge mdl-badge--overlap like-btn2" ng-class="{'red-color': shot.likes.is_liked}"><i class="mdi mdi-heart"></i><span class="count_text">@{{shot.likes.like_count}}</span></a>
+
+              <a ng-click="" class="material-icons mdl-badge mdl-badge--overlap"><i class="mdi mdi-comment"></i><span class="count_text"></span></a>
+	        </div>
 	    </div>
 
 		<!--  -->

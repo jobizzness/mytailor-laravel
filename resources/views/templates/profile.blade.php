@@ -6,14 +6,14 @@
     {{-- Info Side --}}
       <div class="mdl-cell mdl-cell--12-col">
         <div class="mt-profile__info-box">
-            <a href="/@{{designer.username}}" class="mt-avatar-circle">
-               <img height="130" width="130" src="@{{designer.avatar.avatar_large}}" alt="@{{designer.username}}">
+            <a href="/{{$profile->username}}" class="mt-avatar-circle">
+               <img height="130" width="130" src="{{$profile->avatar}}" alt="{{$profile->username}}">
                <i class="mdi mdi-pencil" id="avatar-edit__icon"></i>
             </a>
             <div class="mt-profile__info">
                 <a href="#" class="profile__title"><span>{{$profile->display_name}}</span></a>
                 <span class="location__text" style="margin: 8px;"><i class="mdi mdi-map-marker"></i>Sarasota, FL</span>
-                <p class="profile-bio__text">@{{shot.owner.bio}}<a href="#"></a></p>
+                <p class="profile-bio__text">{{$profile->bio}}<a href="#"></a></p>
             </div>
             <div class="profile__info-actions">
              <ul>
