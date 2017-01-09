@@ -59,7 +59,6 @@ elixir.config.publicPath = 'public/themes/default/assets';
 					//Pusher
 				'../pusher-js-3.2.1/dist/web/pusher.min.js',
 					'../pusher-angular-0.1.9/lib/pusher-angular.min.js',
-				'https://cdn.rawgit.com/sroze/ngInfiniteScroll/master/build/ng-infinite-scroll.js',
 					'../angulargrid/angulargrid.js'
         
         

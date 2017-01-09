@@ -1,6 +1,10 @@
 
 {{-- Users Posts --}}
-<section class="pad-1" infinite-scroll="updateShots('{{$resource}}')" infinite-scroll-disabled='busy' infinite-scroll-distance="5" ng-cloak infinite-scroll-container='".mdl-layout__content"' ng-cloak>
+<section class="pad-1" 
+          ng-init="updateShots('{{$resource}}')"
+          ag-id="shots"
+          ag-scroll-container=".mdl-layout__content" 
+          ag-infinite-scroll="updateShots('{{$resource}}')">
 
   <div class="mdl-grid">
     <!-- Shot Template -->

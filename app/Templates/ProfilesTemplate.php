@@ -35,25 +35,25 @@ class ProfilesTemplate extends AbstractTemplate{
 
         $profile = $this->users->getProfile($id);
 
-        $this->seoMake();
+        $this->seoMake($profile);
 
 
        $view->with('resource', 'shots')
             ->with('profile', $profile);
     }
 
-    protected function seoMake()
+    protected function seoMake($profile)
     {
-        SEOMeta::setTitle('Jobizzness Watumad');
-        //SEOMeta::setDescription('This is my page description');
+        SEOMeta::setTitle($profile->display_name);
+        SEOMeta::setDescription('See what'.$profile->display_name.'posted on Afrodapp');
         //SEOMeta::setCanonical('https://codecasts.com.br/lesson');
 
-        OpenGraph::setDescription('This is my page description');
+        OpenGraph::setDescription($profile->display_name.'on Afrodapp');
         OpenGraph::setTitle('Brands');
-        OpenGraph::setUrl('http://mytailor.me');
+        OpenGraph::setUrl('/'.$profile->username);
         OpenGraph::addProperty('type', 'business.fashion');
 
-        Twitter::setTitle('Home');
-        Twitter::setSite('@LuizVinicius73');
+//        Twitter::setTitle('Home');
+//        Twitter::setSite('@LuizVinicius73');
     }
 }

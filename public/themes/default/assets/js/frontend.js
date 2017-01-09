@@ -420,8 +420,8 @@ app.controller("authController", ["$scope",
 
 	'use strict';
 
-	app.controller("designersController", ["$scope","designersFactory","NgMap","$Request","dialogScope"
-		function($scope, designersFactory, NgMap, $Request, dialogScope) {
+	app.controller("designersController", ["$scope","designersFactory","NgMap","$Request","ngDialog",
+		function($scope, designersFactory, NgMap, $Request, ngDialog) {
 
 			$scope.designers = [];
 			$scope.busy = false;
