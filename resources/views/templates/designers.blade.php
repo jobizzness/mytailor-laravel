@@ -36,7 +36,7 @@
         <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--2dp designer-item" ng-repeat="designer in designers" ng-cloak>
             <!-- The header -->
             <header class="designer-item__header">
-                  <a href="#" class="mt-shot-avatar" title="">
+                  <a href="/@{{designer.username}}" class="mt-shot-avatar" title="">
                       <img height="40" width="40" ng-src="@{{designer.avatar.avatar_small}}" alt="">
                       <h2 class="mt-avatar-name bold_text">@{{designer.display_name}}</h2>
                       <span class="username">@@{{designer.username}}</span>
@@ -49,7 +49,7 @@
                   <div class="mdl-card" itemprop="mainEntity" itemscope itemtype="http://schema.org/imageObject" ng-repeat="shot in designer.shots">
                       <!-- Figure -->
                       <figure class="figure-overlay" style="height: 346px;overflow: hidden;">
-                          <a href="" class="mt-grid___link" ng-click="open(shot.name)">
+                          <a class="mt-grid___link" ng-click="open(shot.name)">
                               <div class="mt-image-holder" itemscope itemtype="http://schema.org/thumbnail">
                                   <img itemprop="image" ng-src="@{{shot.image.original}}" alt="@{{shot.alt}}">
                               </div>
