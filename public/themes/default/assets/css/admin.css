@@ -2495,31 +2495,11 @@ figure.shot-cover.--profile__feed {
   .featured-grid > .mdl-cell--4-col, .mdl-cell--4-col-desktop.mdl-cell--4-col-desktop {
     width: calc(34.3444444% - 15px) !important; } }
 
-/*Featured Shots*/
-.mt-shot-item {
-  overflow: hidden;
-  border-top-right-radius: 3px;
-  border-top-left-radius: 3px;
-  background: #F4F4F4; }
-  .mt-shot-item .shot-img_view {
-    position: relative;
-    display: block;
-    overflow: hidden;
-    padding-bottom: 100%;
-    background-color: #000; }
-    .mt-shot-item .shot-img_view:hover img {
-      opacity: .8; }
-  .mt-shot-item img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    width: 100%;
-    transition: opacity linear .2s; }
+.card-shadow {
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 2px 1px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 2px 1px;
+  background: #fff;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 2px 1px; }
 
 /*Lets look at what breaks*/
 @media (max-width: 1049px) {

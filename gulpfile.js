@@ -56,13 +56,11 @@ elixir.config.publicPath = 'public/themes/default/assets';
 				'../wow/dist/wow.min.js',
 				//	Custom Scrollbars
 				'../ngmap/build/scripts/ng-map.min.js',
-				//'../jquery-mousewheel/jquery.mousewheel.min.js',
 					//Pusher
 				'../pusher-js-3.2.1/dist/web/pusher.min.js',
 					'../pusher-angular-0.1.9/lib/pusher-angular.min.js',
-				'../ng-scrollbars/dist/scrollbars.min.js',
-				'../infinite-scroll/ng-infinite-scroll.min.js',
-					'../angulargrid/angulargrid.min.js'
+				'https://cdn.rawgit.com/sroze/ngInfiniteScroll/master/build/ng-infinite-scroll.js',
+					'../angulargrid/angulargrid.js'
         
         
 			  ], 	 'public/themes/default/assets/js/vendor.js');

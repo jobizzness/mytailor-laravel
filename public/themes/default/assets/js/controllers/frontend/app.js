@@ -94,9 +94,8 @@
  * @var app
  */
 var app = angular.module('app', ['ngAnimate', 'ngMessages', 'ngSanitize', 'ui.select',
-                                'ngDialog', 'infinite-scroll', 'angularGrid', 'pusher-angular', 'slickCarousel','ngMap'])
-
-    .value('THROTTLE_MILLISECONDS', 5000);
+                                'ngDialog', 'angularGrid', 'pusher-angular', 
+                                'slickCarousel','ngMap']);
 
 /**
  * Path to {Angular} Templates

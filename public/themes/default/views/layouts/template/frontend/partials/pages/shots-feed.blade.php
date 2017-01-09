@@ -1,8 +1,14 @@
-<section class="pad-1" infinite-scroll="updateShots('{{$resource}}')" infinite-scroll-disabled='busy' infinite-scroll-distance="5" infinite-scroll-container='".mdl-layout__content"'>
+<section class="pad-1">
 
-<div angular-grid="shots">
+<div  angular-grid="shots" 
+      ng-init="updateShots('{{$resource}}')"
+      ag-id="shots"
+      ag-scroll-container=".mdl-layout__content" 
+      ag-infinite-scroll="updateShots('{{$resource}}')"
+
+    >
     <!-- Shot Template -->
-    <div class="mdl-shadow--2dp mt-shot" itemprop="mainEntity" itemscope itemtype="http://schema.org/imageObject" ng-repeat="shot in shots" ng-cloak>
+    <div class="mt-shot card-shadow" itemprop="mainEntity" itemscope itemtype="http://schema.org/imageObject" ng-repeat="shot in shots" ng-cloak>
 
         <!-- The header -->
           <header class="mt-shot-header clearfix">

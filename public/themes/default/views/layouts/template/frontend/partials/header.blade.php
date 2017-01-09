@@ -1,4 +1,4 @@
-<header class="mdl-layout__header mdl-layout__header--waterfall mt-glow-soft @yield('header_type')" itemscope itemtype='https://schema.org/WPHeader'>
+<header class="mdl-layout__header  mt-glow-soft @yield('header_type')" itemscope itemtype='https://schema.org/WPHeader'>
 
     <div class="mt-global-header mdl-layout__header-row flex-center dark">
       <div ng-click="toggleSidebar()" class="mdl-layout__drawer-button pull-left"><i class="mdi mdi-menu"></i></div>
