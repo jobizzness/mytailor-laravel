@@ -97,10 +97,7 @@ class DesignersController extends ApiController
         // DELETE => /questions/{id}
     }
 
-    public function shots($username)
-    {
-        $shots = $this->designers->shots($username);
-    }
+
 
 
     /**

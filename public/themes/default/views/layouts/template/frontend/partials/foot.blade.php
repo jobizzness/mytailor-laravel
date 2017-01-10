@@ -30,7 +30,8 @@
     <script src="{{theme('vendor/material-design-lite/material.min.js')}}"></script>
     <!-- Main Application Scripts -->
     <script src="{{ theme('js/frontendScript.js') }}"></script>
-    <script src="{{ theme('js/frontend.js') }}"></script>
+
+    <script src="{{ elixir('js/frontend.js', 'themes/default/assets/build') }}"></script>
 
     <!-- Load any additional page scripts here -->
 

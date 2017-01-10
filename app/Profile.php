@@ -20,10 +20,10 @@ class Profile extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function User()
+    public function Owner()
     {
         return $this->belongsTo(User::class)
-            ->select(['id','display_name','avatar']);
+            ->select(['id', 'first_name', 'last_name']);
     }
 
     /*

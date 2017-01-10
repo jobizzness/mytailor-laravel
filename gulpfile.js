@@ -108,5 +108,8 @@ elixir.config.publicPath = 'public/themes/default/assets';
  |--------------------------------------------------------------------------*/
 
 elixir(function(mix) {
-	mix.version(['public/themes/default/assets/css/frontend.css']);
+	mix.version(['public/themes/default/assets/css/frontend.css',
+		'public/themes/default/assets/js/frontend.js'
+	]);
+
 });

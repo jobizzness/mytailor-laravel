@@ -102,6 +102,24 @@ class DbShotsRepository implements ShotsRepositoryInterface{
     }
 
     /**
+     * Gets shots that are featured orderd by popularity.
+     *
+     * @param $id
+     * @return mixed
+     * @internal param $cat
+     */
+    public function byUser($id){
+        return $this->shots
+            ->with('image','comments', 'publishable.profile')
+            ->where('publishable_id', $id)
+            ->where('publishable_type','!=', 'MyTailor\\Brand')
+            //->select(\DB::raw( '((views - 1) / (TIMESTAMPDIFF(MINUTE, updated_at, NOW()) + 2)^1.5) as Popularity, shots.*'))
+            ->orderBy('created_at', 'desc')
+            ->where('published', '=', 1)
+            ->paginate(9);
+    }
+
+    /**
      * Find a shot by its file_name.
      *
      * @param $name

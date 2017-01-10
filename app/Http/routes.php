@@ -110,10 +110,10 @@ Route::group(['prefix' => 'api/v1'], function () {
 					'as' => 'shot.viewed',
 					'uses' => 'Frontend\ShotsController@viewed']
 	);
-//	Route::get('/{username}/shots',  [
-//					'as' => 'designers.sort',
-//					'uses' => 'Frontend\DesignersController@shots']
-//	);
+	Route::get('/{username}/shots',  [
+					'as' => 'designers.sort',
+					'uses' => 'Frontend\ShotsController@byUser']
+	);
 
 
 });

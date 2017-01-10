@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 use Laracasts\Commander\CommandBus;
 use Laracasts\Commander\Events\DispatchableTrait;
 use MyTailor\Modules\Shots\ViewShotCommand;
+use MyTailor\Profile;
 use MyTailor\Repositories\ShotsRepositoryInterface;
 use MyTailor\Http\Requests;
 use MyTailor\Transformers\ShotTransformer;
+use MyTailor\User;
 
 class ShotsController extends ApiController
 {
@@ -139,7 +141,30 @@ class ShotsController extends ApiController
 
         $shot->toggle();
     }
-    
+
+    public function byUser($id)
+    {
+        $profile = Profile::where('username', $id)->first();
+
+        $id = User::where('profile_id', $profile->id)->first()->id;
+
+        $shots = $profile ? $this->shots->byUser($id): null;
+
+        if(! $shots) {
+            //we have no shots sorry.
+            return $this->NotFound('No results Found');
+        }
+
+        //means we have shots so lets send them through.
+        return $this->respond([
+            'response' => [
+                'shots' => [
+                    'data' => $this->Transformer->transformCollection($shots),
+                    'nextPage' => $shots->nextPageUrl()
+                ]
+            ]
+        ]);
+    }
     /**
      * @param Request $request
      * @return mixed

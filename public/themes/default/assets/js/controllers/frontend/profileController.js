@@ -10,7 +10,7 @@ app.controller("profileController", ["$scope","designersFactory","NgMap","$Reque
         $scope.per_page = 0;
 
         var pathArray = window.location.pathname.split( '/' );
-        var $username = pathArray[2] ? pathArray[2] : null,
+        var $username = pathArray[1],
             $page = $Request.search('page', $scope.after);
 
         /**
@@ -22,14 +22,14 @@ app.controller("profileController", ["$scope","designersFactory","NgMap","$Reque
 
             designersFactory.shots($username, $params).then(function(response){
 
-                var items = response.data.response.designers.data;
+                var items = response.data.response.shots.data;
                 $scope.per_page = $scope.per_page +response.data.per_page;
 
                 angular.forEach(items, function(value, key) {
                     $scope.shots.push(value);
                 });
 
-                $scope.after = response.data.response.designers['nextPage'];
+                $scope.after = response.data.response.shots['nextPage'];
                 $page = $Request.search('page', $scope.after);
                 $scope.busy = false;
             });
