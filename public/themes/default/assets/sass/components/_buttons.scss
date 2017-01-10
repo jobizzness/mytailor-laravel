@@ -77,9 +77,23 @@ button.icon-round{
 
 
 .mt-logo__icon{
-    background-image: url("../images/logo.png");
+    background-image: url("/images/logo.png");
     background-repeat: no-repeat;
     background-size: 35px 35px;
+    background-position: center center;
+    display: block;
+    height: 38px;
+    outline: none;
+    overflow: hidden;
+    text-indent: -999px;
+    white-space: nowrap;
+    width: 38px;
+}
+
+.loader__icon{
+    background-image: url("/images/log.png");
+    background-repeat: no-repeat;
+    background-size: 60px 60px;
     background-position: center center;
     display: block;
     height: 38px;

@@ -30,7 +30,6 @@ class DesignerTransformer extends Transformer
 
            $raw['shots'][] = [
                "id" => $shot->id,
-               "title" => $shot->title,
                "description" => $shot->description,
                "name" => $shot->file_name,
                "featured" => $shot->featured,

@@ -40,6 +40,29 @@ class ExploreController extends ApiController
         $this->Transformer = $Transformer;
     }
 
+    public function index(Request $request)
+    {
+        $tags = ['men', 'traditional', 'sexy', 'runway'];
+
+        $shots = [];
+        foreach($tags as $tag){
+            $data = $this->shots->trendingShotsIn($tag)->paginate(6);
+            //means we have shots so lets send them through.
+            $item = [
+                'response' => [
+                    'name' =>$tag,
+                    'shots' => [
+                        'data' => $this->Transformer->transformCollection($data)
+                    ]
+                ]
+            ];
+
+            array_push($shots, $item);
+        }
+
+        return $shots;
+    }
+
     /**
      * Lets Explore Shots
      *
@@ -71,27 +94,33 @@ class ExploreController extends ApiController
 
     }
 
-    public function index(Request $request)
+    public function create()
     {
-        $tags = ['men', 'traditional', 'sexy', 'runway'];
+        // GET => /shots/create
+    }
 
-        $shots = [];
-            foreach($tags as $tag){
-                $data = $this->shots->trendingShotsIn($tag)->paginate(6);
-                //means we have shots so lets send them through.
-                $item = [
-                    'response' => [
-                        'name' =>$tag,
-                        'shots' => [
-                            'data' => $this->Transformer->transformCollection($data)
-                        ]
-                    ]
-                ];
+    /**
+     * @param $id
+     */
+    public function edit($id)
+    {
+        // GET => /shots/{id}/edit
+    }
 
-                array_push($shots, $item);
-            }
+    /**
+     * @param $id
+     */
+    public function update($id)
+    {
+        // PUT/PATCH => /shots/{id}
+    }
 
-        return $shots;
+    /**
+     * @param $id
+     */
+    public function destroy($id)
+    {
+        // DELETE => /questions/{id}
     }
 
 

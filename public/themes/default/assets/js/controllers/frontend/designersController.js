@@ -8,6 +8,9 @@
             $scope.after = '/?page=1';
             $scope.per_page = 0;
 
+            // App is done loading
+            $scope.$emit('AppIsLoaded', 'done');
+
 			//Google Map URL with API
 		    $scope.googleMapsUrl = 'https://maps.google.com/maps/api/js?v=3.20&key=AIzaSyDMknbbjCbtZVr3Ga4n7Fnr1dJDr8lvZoA';
 
@@ -18,7 +21,7 @@
 		    $scope.slickConfig2 = {autoplay: true,infinite: true,autoplaySpeed: 5000,slidesToShow: 3,slidesToScroll: 1,method: {}};
 
 		    var pathArray = window.location.pathname.split( '/' );
-		    var $slug = pathArray[2] ? pathArray[2] : 'local',
+		    var $sort = pathArray[2] ? pathArray[2] : 'local',
                 $page = $Request.search('page', $scope.after);
 
             /**
@@ -26,9 +29,9 @@
              *
              * @param $sort
              */
-            $scope.getDesigners = function($slug, $params){
+            $scope.getDesigners = function($params){
 
-                designersFactory.index($slug, $params).then(function(response){
+                designersFactory.index($params).then(function(response){
 
                     var items = response.data.response.designers.data;
                     $scope.per_page = $scope.per_page +response.data.per_page;
@@ -51,7 +54,7 @@
                 if(!$page) return;
 
                 $scope.busy = true;
-                $scope.getDesigners($slug, {page:$page});
+                $scope.getDesigners({page:$page, sort:$sort});
                 $scope.busy = false;
 
                 ga('send', {
@@ -61,38 +64,6 @@
                   eventLabel: 'Load More Designers'
                 });
             };
-
-                        /**
-             * Open Shot Overlay
-             *
-             * @param $name
-             */
-      $scope.open = function ($name) {
-
-                if(window.innerWidth < 430){
-                    window.location = '/shot/'+$name;
-                    return;
-                }
-
-        var dialogScope = $scope.$new();
-        dialogScope.name = $name;
-        history.pushState({}, '', '/shot/'+$name);
-
-          ngDialog.open({
-            closeByNavigation: true,
-            cache:false, 
-            template: template_path + 'shots_overlay.html', className: 'mt-shots-overlay' ,
-            controller: 'ovalController',
-            scope: dialogScope,
-          preCloseCallback: function() {
-                  history.back();
-                    return true;
-            }
-
-            
-          });
-
-      };
 
 
 	}]);    

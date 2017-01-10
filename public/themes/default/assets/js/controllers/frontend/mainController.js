@@ -1,64 +1,111 @@
 /*
- * @author Jobizzness@gmail.com
- * Application scripts
- *
+ |--------------------------------------------------------------------------
+ | Application Main Class
+ |--------------------------------------------------------------------------
+ |
+ | This is mostly responsible for loading our apps direct methods and
+ | Linking with other classes. So Our app communicates with other modules
+ | through here. If disabled, the app wont be able to do any work.
+ |
  */
 
+    'use strict';
+    app.controller("MainController", ["$scope", "ngDialog", "shotFactory", "$pusher", "$rootScope",
+                            function($scope, ngDialog, shotFactory, $pusher, $rootScope) {
+
+        /**
+         * State of the App
+         * @type {boolean}
+         */
+        $scope.loading = true;
+
+        /**
+         * Toggle Sidebar
+         * @type {boolean}
+         */
+        $scope.toggle = false;
+
+        /**
+         * Initialize pusher and store ref in root
+          * @type {Pusher}
+         */
+        var client = new Pusher('67b6f9a2b88b9350c8fa');
+        $rootScope.pusher = $pusher(client);
+
+        // we should look into this
+        $scope.links = shotFactory.getParmalinks();
+
+        /*****************************************************************************
+         *
+         * Methods for Event Listeners.
+         *
+         ****************************************************************************/
+
+        /**
+         * When the app is loaded this will fire ->*
+         * @return {boolean}
+         */
+        $scope.$on('AppIsLoaded', function (event, data) {
+            return $scope.loading = false;
+        });
+
+        /*****************************************************************************
+         *
+         * Methods for dealing with the model
+         *
+         ****************************************************************************/
+
+        /**
+         * Toggle sidebar method
+         */
+        $scope.toggleSidebar = function () {
+            $scope.toggle = !$scope.toggle;
+        };
 
 
+        /*****************************************************************************
+         *
+         * Methods for dealing dialogs
+         *
+         ****************************************************************************/
+        /**
+         * Opens Shot Dialog View
+         * @param $name
+         */
+        $scope.open = function ($name) {
 
-/*
- * Sidebar toggle
- *
- */
-app.controller("MainController", ["$scope", "ngDialog", "shotFactory", function($scope, ngDialog, shotFactory) {
+            if(window.innerWidth < 430){window.location = '/shot/'+$name;return;}
 
-    //$location.search({ref: ''});
+            var dialogScope = $scope.$new();
+            dialogScope.name = $name;
+            history.pushState({}, '', '/shot/'+$name);
 
-    $scope.toggle = false;
-    $scope.showForm = false;
-    $scope.searching = false;
-    $scope.links = shotFactory.getParmalinks();
+            ngDialog.open({
+                closeByNavigation: true,
+                cache:false,
+                template: template_path + 'shots_overlay.html', className: 'mt-shots-overlay' ,
+                controller: 'ovalController',
+                scope: dialogScope,
+                preCloseCallback: function() {
+                    history.back();
+                    return true;
+                }
+            });
 
-    $scope.toggleSidebar = function () {
-        $scope.toggle = !$scope.toggle;
-    };
+        };
 
-    $scope.regsign = function($q){
-        history.pushState({}, '', '/'+$q);
+        /**
+         * Open Shot Poster Dialog
+         */
+       $scope.showShotPoster = function(){
 
-        ngDialog.open({
-            closeByNavigation: true,
-            cache:false,
-            template: template_path + $q+'.html', className: 'small-oval-theme' ,
-            controller: 'authController',
-            preCloseCallback: function() {
-                history.back();
-                return true;
-            }
-        }); //Dialogs
-    };
-
-
-   $scope.showShotPoster = function(){
-
-        ngDialog.open({
-            closeByNavigation: true,
-            cache:false,
-            template: template_path + 'shot-upload.html', className: 'mt-large-overlay' ,
-            controller: 'shotsController'
-        }); //Dialog
-}
+            ngDialog.open({
+                closeByNavigation: true,
+                cache:false,
+                template: template_path + 'shot-upload.html', className: 'mt-large-overlay' ,
+                controller: 'shotsController'
+            }); //Dialog
+    }
 
 
-}]); //End
-
-app.controller("authController", ["$scope",
-
-    function($scope, $location) {
-
-        //$location.path('/').search({id: '92938920'});
-
-        $scope.token = angular.element(document.getElementById('csrf')).val();
-
-    }]);
+    }]); //End

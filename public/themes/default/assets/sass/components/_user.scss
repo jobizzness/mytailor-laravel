@@ -59,7 +59,6 @@
         &:hover{
           border: none !important;
           >img{opacity: .7;}
-          i{background: rgba(255, 255, 255, 0.63) !important;}
         }
     }
 }
@@ -104,6 +103,21 @@
     background: rgb(241, 241, 241);
     border-radius: 27px;
     font-size: 16px;
+  }
+
+  #avatar-call__icon{
+        top: 11px;
+    position: absolute;
+    right: 5px;
+    color: #ffffff;
+    padding: 5px;
+    background: #009688;
+    border-radius: 24px;
+    font-size: 20px;
+
+    &:hover{
+
+    }
   }
 
   // Designers

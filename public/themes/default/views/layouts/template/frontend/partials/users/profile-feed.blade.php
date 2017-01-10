@@ -7,8 +7,12 @@
           ag-infinite-scroll="updateShots('{{$resource}}')">
 
   <div class="mdl-grid">
+
+    <div class="mdl-card__title" style="color: rgba(0, 0, 0, 0.66);">
+   <h1 class="mdl-card__title-text" style="text-transform: capitalize;color: #484848 !important;">Shots</h1>
+  </div>
     <!-- Shot Template -->
-    <div class="mdl-cell mdl-cell--4-col mdl-card" itemprop="mainEntity" itemscope itemtype="http://schema.org/imageObject" ng-repeat="shot in shots">
+    <div class="mdl-cell mdl-cell--4-col mdl-card" itemprop="mainEntity" itemscope itemtype="http://schema.org/imageObject" ng-repeat="shot in shots" ng-cloak>
         <!-- Figure -->
         <figure class="figure-overlay" style="max-height: 337px;overflow: hidden;">
             <a href="" class="mt-grid___link" ng-click="open(shot.name)">

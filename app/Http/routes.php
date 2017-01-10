@@ -96,41 +96,24 @@ Route::group(['prefix' => 'api/v1'], function () {
 	/**
 	 * Frontend Api Routes
 	 */
-	Route::get('/explore/{slug}', [
-			'as' => 'shots.sort',
-			'uses' => 'Frontend\ExploreController@show'
-	]);
-	Route::get('/explore/', [
-			'as' => 'shots.sort',
-			'uses' => 'Frontend\ExploreController@index'
-	]);
-	Route::get('/shots/{sort}', [
-			'as' => 'shots.sort',
-			'uses' => 'Frontend\ShotsController@index'
-	]);
-	Route::get('/collections/{slug}', [
-			'as' => 'shots.sort',
-			'uses' => 'Frontend\CollectionsController@show'
-	]);
-	Route::get('/shot/{id}',  [
-					'as' => 'shot',
-					'uses' => 'Frontend\ShotsController@show']
-	);
-	Route::get('/shot/{id}/like',  [
+	Route::resource('shots', 'Frontend\ShotsController');
+	Route::resource('explore','Frontend\ExploreController');
+	Route::resource('designers', 'Frontend\DesignersController');
+	Route::resource('collections', 'Frontend\CollectionController');
+
+
+	Route::post('/shots/{id}/like',  [
 					'as' => 'shot',
 					'uses' => 'Frontend\ShotsController@toggleLike']
-	);
-	Route::get('/designers/{sort}',  [
-					'as' => 'designers.sort',
-					'uses' => 'Frontend\DesignersController@index']
 	);
 	Route::post('/shot/viewed/{id}',  [
 					'as' => 'shot.viewed',
 					'uses' => 'Frontend\ShotsController@viewed']
 	);
+//	Route::get('/{username}/shots',  [
+//					'as' => 'designers.sort',
+//					'uses' => 'Frontend\DesignersController@shots']
+//	);
+
 
 });
-
-Route::get('/collection',[
-		'as' => 'collection',
-         'uses' =>'Frontend\ShotsController@shots']);

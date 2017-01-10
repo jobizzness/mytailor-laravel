@@ -57,12 +57,12 @@
   </div>
 
     {{-- Loader --}}
-{{--     <section class="mt-load-more-wrapper" ng-show='busy'>
+{{--     <section class="mt-load-more-wrapper" ng-show='busy' style="display: none">
           <div class="mt-load-bar">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
-          </div>
-    </section> --}}
+          </div> --}}
+    </section>
 
 </section>

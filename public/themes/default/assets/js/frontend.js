@@ -116,82 +116,156 @@ app.config(function (ngDialogProvider) {
 
 
 /*
- * @author Jobizzness@gmail.com
- * Application scripts
- *
+ |--------------------------------------------------------------------------
+ | Application Main Class
+ |--------------------------------------------------------------------------
+ |
+ | This is mostly responsible for loading our apps direct methods and
+ | Linking with other classes. So Our app communicates with other modules
+ | through here. If disabled, the app wont be able to do any work.
+ |
  */
 
+    'use strict';
+    app.controller("MainController", ["$scope", "ngDialog", "shotFactory", "$pusher", "$rootScope",
+                            function($scope, ngDialog, shotFactory, $pusher, $rootScope) {
+
+        /**
+         * State of the App
+         * @type {boolean}
+         */
+        $scope.loading = true;
+
+        /**
+         * Toggle Sidebar
+         * @type {boolean}
+         */
+        $scope.toggle = false;
+
+        /**
+         * Initialize pusher and store ref in root
+          * @type {Pusher}
+         */
+        var client = new Pusher('67b6f9a2b88b9350c8fa');
+        $rootScope.pusher = $pusher(client);
+
+        // we should look into this
+        $scope.links = shotFactory.getParmalinks();
+
+        /*****************************************************************************
+         *
+         * Methods for Event Listeners.
+         *
+         ****************************************************************************/
+
+        /**
+         * When the app is loaded this will fire ->*
+         * @return {boolean}
+         */
+        $scope.$on('AppIsLoaded', function (event, data) {
+            return $scope.loading = false;
+        });
+
+        /*****************************************************************************
+         *
+         * Methods for dealing with the model
+         *
+         ****************************************************************************/
+
+        /**
+         * Toggle sidebar method
+         */
+        $scope.toggleSidebar = function () {
+            $scope.toggle = !$scope.toggle;
+        };
 
 
+        /*****************************************************************************
+         *
+         * Methods for dealing dialogs
+         *
+         ****************************************************************************/
+        /**
+         * Opens Shot Dialog View
+         * @param $name
+         */
+        $scope.open = function ($name) {
 
+            if(window.innerWidth < 430){window.location = '/shot/'+$name;return;}
+
+            var dialogScope = $scope.$new();
+            dialogScope.name = $name;
+            history.pushState({}, '', '/shot/'+$name);
+
+            ngDialog.open({
+                closeByNavigation: true,
+                cache:false,
+                template: template_path + 'shots_overlay.html', className: 'mt-shots-overlay' ,
+                controller: 'ovalController',
+                scope: dialogScope,
+                preCloseCallback: function() {
+                    history.back();
+                    return true;
+                }
+            });
+
+        };
+
+        /**
+         * Open Shot Poster Dialog
+         */
+       $scope.showShotPoster = function(){
+
+            ngDialog.open({
+                closeByNavigation: true,
+                cache:false,
+                template: template_path + 'shot-upload.html', className: 'mt-large-overlay' ,
+                controller: 'shotsController'
+            }); //Dialog
+    }
+
+
+    }]); //End
 /*
- * Sidebar toggle
- *
+ |--------------------------------------------------------------------------
+ | Shots Controller Class
+ |--------------------------------------------------------------------------
+ |
+ | This is mostly responsible for loading our apps direct methods and
+ | Linking with other classes. So Our app communicates with other modules
+ | through here. If disabled, the app wont be able to do any work.
+ |
  */
-app.controller("MainController", ["$scope", "ngDialog", "shotFactory", function($scope, ngDialog, shotFactory) {
 
-    //$location.search({ref: ''});
-
-    $scope.toggle = false;
-    $scope.showForm = false;
-    $scope.searching = false;
-    $scope.links = shotFactory.getParmalinks();
-
-    $scope.toggleSidebar = function () {
-        $scope.toggle = !$scope.toggle;
-    };
-
-    $scope.regsign = function($q){
-        history.pushState({}, '', '/'+$q);
-
-        ngDialog.open({
-            closeByNavigation: true,
-            cache:false,
-            template: template_path + $q+'.html', className: 'small-oval-theme' ,
-            controller: 'authController',
-            preCloseCallback: function() {
-                history.back();
-                return true;
-            }
-        }); //Dialogs
-    };
-
-
-   $scope.showShotPoster = function(){
-
-        ngDialog.open({
-            closeByNavigation: true,
-            cache:false,
-            template: template_path + 'shot-upload.html', className: 'mt-large-overlay' ,
-            controller: 'shotsController'
-        }); //Dialog
-}
-
-
-}]); //End
-
-app.controller("authController", ["$scope",
-
-    function($scope, $location) {
-
-        //$location.path('/').search({id: '92938920'});
-
-        $scope.token = angular.element(document.getElementById('csrf')).val();
-
-    }]);
-	'use strict';
+    'use strict';
 
 	app.controller("shotsController", ["$scope", "ngDialog","$window",
-                    "shotsFactory", "$timeout", '$pusher', "$filter",
-                    "$log","$Request",
-        function($scope, ngDialog, $window, shotsFactory, $timeout, $pusher, $filter, $log, $Request) {
+                    "shotsFactory", "$timeout","$filter",
+                    "$log","$Request", "$rootScope",
+        function($scope, ngDialog, $window, shotsFactory, $timeout, $filter, $log, $Request, $rootScope) {
 
-            var client = new Pusher('67b6f9a2b88b9350c8fa');
-            var pusher = $pusher(client);
-
+            /**
+             * shots items will be stored here.
+             * @type {Array}
+             */
             $scope.shots = [];
+
+            /**
+             * For async operations.
+             * @type {boolean}
+             */
             $scope.busy = false;
+
+            /**
+             * Page URL
+             * @type {string}
+             */
             $scope.after = '/?page=1';
+
+            /**
+             * shots per page
+             * @type {number}
+             */
             $scope.per_page = 0;
 
             var pathArray = window.location.pathname.split( '/' );
@@ -200,131 +274,112 @@ app.controller("authController", ["$scope",
                 $cat = $Request.search('cat') || null,
                 $page = $Request.search('page', $scope.after);
 
-            pusher.subscribe('shotsChannel');
+        /*****************************************************************************
+         *
+         * Methods for Event Listeners.
+         *
+         ****************************************************************************/
+
+
+            /**
+             * Subscribe pusher to shotschannel
+             */
+            $rootScope.pusher.subscribe('shotsChannel');
+
+            /**
+             * Icrement Views when a shot is viewed
+             */
+            $rootScope.pusher.bind('shotWasViewed',
+                function(data) {
+                    var $shot = $filter('findByName')($scope.shots, data.name);
+                    if($shot){
+                        $shot.views++;
+                    }
+                }
+            );
+
+            /*****************************************************************************
+             *
+             * Methods to update/refresh the UI
+             *
+             ****************************************************************************/
+            /**
+             * Loads more shots from server
+             */
+            $scope.updateShots = function($repo){
+                if ($scope.busy || !$page) return;
+                if($page==1){
+                    // The shots are available now.
+                    $scope.$emit('AppIsLoaded', 'done');
+                }
+                $scope.busy = true;
+                $scope.getShots($repo, {cat: $cat, page:$page,sort:$slug});
+
+                if($page > 1){
+                    ga('send', {
+                        hitType: 'event',
+                        eventCategory: 'PaginatedContent',
+                        eventAction: 'scroll',
+                        eventLabel: 'Load More Shots'
+                    });
+                }
+
+            };
+
+            /**
+             * Like or unlike a shot
+             * @param $name
+             */
+            $scope.like = function($name) {
+                shotsFactory.like($name).then(function(response){
+                    toggleLike($name);
+                });
+            }
+            /*****************************************************************************
+             *
+             * Methods for dealing with the model
+             *
+             ****************************************************************************/
 
             /**
              * gets shots from storage.
              *
              * @param $sort
              */
-            $scope.getShots = function($repo, $slug, $params){
+            $scope.getShots = function($repo, $params){
 
-                shotsFactory.index($repo, $slug, $params).then(function(response){
-
+                shotsFactory.index($repo, $params).then(function(response){
                     var items = response.data.response.shots.data;
-
                     $scope.per_page = $scope.per_page +response.data.per_page;
 
                     angular.forEach(items, function(value, key) {
                         $scope.shots.push(value);
                     });
-
                     $scope.after = response.data.response.shots['nextPage'];
                     $page = $Request.search('page', $scope.after);
+                    $scope.busy = false;
                 });
             };
 
-
             /**
-             * Loads more shots from server
-             */
-            $scope.updateShots = function($repo){
-                if ($scope.busy) return;
-                if(!$page) return;
-
-                $scope.busy = true;
-                $scope.getShots($repo, $slug, {cat: $cat, page:$page});
-                $scope.busy = false;
-
-                ga('send', {
-                  hitType: 'event',
-                  eventCategory: 'PaginatedContent',
-                  eventAction: 'scroll',
-                  eventLabel: 'Load More'
-                });
-            };
-
-
-            $scope.like = function($name) {
-              shotsFactory.like($name).then(function(response){
-                    toggleLike($name);
-                });
-            }
-
-            var toggleLike = function($name){
-              $shot = $filter('findByName')($scope.shots, $name);
-
-              if($shot.likes.is_liked == true){
-                    $shot.likes.like_count--;
-                  return $shot.likes.is_liked = false;
-              }
-              $shot.likes.like_count++;
-              return $shot.likes.is_liked = true;
-            }
-            /**
-             * Open Shot Overlay
-             *
+             * Toggle like
              * @param $name
+             * @return {boolean}
              */
-			$scope.open = function ($name) {
+            var toggleLike = function($name){
+                    $shot = $filter('findByName')($scope.shots, $name);
 
-                if(window.innerWidth < 430){
-                    window.location = '/shot/'+$name;
-                    return;
-                }
+                  if($shot.likes.is_liked == true){
+                        $shot.likes.like_count--;
+                        return $shot.likes.is_liked = false;
+                  }
+                      $shot.likes.like_count++;
+                      return $shot.likes.is_liked = true;
+            }
 
-				var dialogScope = $scope.$new();
-				dialogScope.name = $name;
-				history.pushState({}, '', '/shot/'+$name);
-
-    			ngDialog.open({
-    				closeByNavigation: true,
-				    cache:false, 
-    				template: template_path + 'shots_overlay.html', className: 'mt-shots-overlay' ,
-    				controller: 'ovalController',
-				    scope: dialogScope,
-					preCloseCallback: function() {
-				       		history.back();
-				            return true;
-    				}
-
-				    
-    			});
-
-			};
-
-            /**
-             * Icrement Views when a shot is viewed
-             */
-            pusher.bind('shotWasViewed',
-                function(data) {
-                    
-                    var $shot = $filter('findByName')($scope.shots, data.name);
-                    if($shot){
-                        $log.info('a shot was just viewed');
-                        $shot.views++; 
-                    }
-                }
-            );
             
 		}]);
 
-    /**
-     * Move this to a Custom Filters Refactor id possible
-     */
-    app.filter('findByName', function() {
-
-        return function(input, name) {
-            var i=0, len=input.length;
-            for (; i<len; i++) {
-                    var itemName = input[i].name;
-                if (itemName == name) {
-                    return input[i];
-                }
-            }
-            return null;
-        }
-    });
 	'use strict';
 
 	app.controller("ovalController", ["$scope","shotsFactory", "$timeout",
@@ -364,6 +419,9 @@ app.controller("authController", ["$scope",
             $scope.sections = [];
             $scope.busy = false;
 
+            // App is done loading
+            $scope.$emit('AppIsLoaded', 'done');
+
             /**
              * gets shots from storage.
              *
@@ -383,38 +441,6 @@ app.controller("authController", ["$scope",
                 });
             })();
 
-                        /**
-             * Open Shot Overlay
-             *
-             * @param $name
-             */
-            $scope.open = function ($name) {
-
-                if(window.innerWidth < 430){
-                    window.location = '/shot/'+$name;
-                    return;
-                }
-
-                var dialogScope = $scope.$new();
-                dialogScope.name = $name;
-                history.pushState({}, '', '/shot/'+$name);
-
-                ngDialog.open({
-                    closeByNavigation: true,
-                    cache:false, 
-                    template: template_path + 'shots_overlay.html', className: 'mt-shots-overlay' ,
-                    controller: 'ovalController',
-                    scope: dialogScope,
-                    preCloseCallback: function() {
-                            history.back();
-                            return true;
-                    }
-
-                    
-                });
-
-            };
-
 
 		}]);
 
@@ -428,6 +454,9 @@ app.controller("authController", ["$scope",
             $scope.after = '/?page=1';
             $scope.per_page = 0;
 
+            // App is done loading
+            $scope.$emit('AppIsLoaded', 'done');
+
 			//Google Map URL with API
 		    $scope.googleMapsUrl = 'https://maps.google.com/maps/api/js?v=3.20&key=AIzaSyDMknbbjCbtZVr3Ga4n7Fnr1dJDr8lvZoA';
 
@@ -438,7 +467,7 @@ app.controller("authController", ["$scope",
 		    $scope.slickConfig2 = {autoplay: true,infinite: true,autoplaySpeed: 5000,slidesToShow: 3,slidesToScroll: 1,method: {}};
 
 		    var pathArray = window.location.pathname.split( '/' );
-		    var $slug = pathArray[2] ? pathArray[2] : 'local',
+		    var $sort = pathArray[2] ? pathArray[2] : 'local',
                 $page = $Request.search('page', $scope.after);
 
             /**
@@ -446,9 +475,9 @@ app.controller("authController", ["$scope",
              *
              * @param $sort
              */
-            $scope.getDesigners = function($slug, $params){
+            $scope.getDesigners = function($params){
 
-                designersFactory.index($slug, $params).then(function(response){
+                designersFactory.index($params).then(function(response){
 
                     var items = response.data.response.designers.data;
                     $scope.per_page = $scope.per_page +response.data.per_page;
@@ -471,7 +500,7 @@ app.controller("authController", ["$scope",
                 if(!$page) return;
 
                 $scope.busy = true;
-                $scope.getDesigners($slug, {page:$page});
+                $scope.getDesigners({page:$page, sort:$sort});
                 $scope.busy = false;
 
                 ga('send', {
@@ -482,40 +511,68 @@ app.controller("authController", ["$scope",
                 });
             };
 
-                        /**
-             * Open Shot Overlay
-             *
-             * @param $name
-             */
-      $scope.open = function ($name) {
-
-                if(window.innerWidth < 430){
-                    window.location = '/shot/'+$name;
-                    return;
-                }
-
-        var dialogScope = $scope.$new();
-        dialogScope.name = $name;
-        history.pushState({}, '', '/shot/'+$name);
-
-          ngDialog.open({
-            closeByNavigation: true,
-            cache:false, 
-            template: template_path + 'shots_overlay.html', className: 'mt-shots-overlay' ,
-            controller: 'ovalController',
-            scope: dialogScope,
-          preCloseCallback: function() {
-                  history.back();
-                    return true;
-            }
-
-            
-          });
-
-      };
-
 
 	}]);    
+
+'use strict';
+
+app.controller("profileController", ["$scope","designersFactory","NgMap","$Request",
+    function($scope, designersFactory, NgMap, $Request) {
+
+        $scope.shots = [];
+        $scope.busy = false;
+        $scope.$emit('AppIsLoaded', 'done');
+        $scope.after = '/?page=1';
+        $scope.per_page = 0;
+
+        var pathArray = window.location.pathname.split( '/' );
+        var $username = pathArray[2] ? pathArray[2] : null,
+            $page = $Request.search('page', $scope.after);
+
+        /**
+         * gets Designers from storage.
+         *
+         * @param $sort
+         */
+        $scope.getshots = function($username, $params){
+
+            designersFactory.shots($username, $params).then(function(response){
+
+                var items = response.data.response.designers.data;
+                $scope.per_page = $scope.per_page +response.data.per_page;
+
+                angular.forEach(items, function(value, key) {
+                    $scope.shots.push(value);
+                });
+
+                $scope.after = response.data.response.designers['nextPage'];
+                $page = $Request.search('page', $scope.after);
+                $scope.busy = false;
+            });
+        };
+
+
+        /**
+         * Loads more shots from server
+         */
+        $scope.updateShots = function(){
+            if ($scope.busy || !$page) return;
+            $scope.busy = true;
+            $scope.getshots($username, {page:$page});
+
+            if($page > 1){
+                ga('send', {
+                    hitType: 'event',
+                    eventCategory: 'PaginatedContent',
+                    eventAction: 'scroll',
+                    eventLabel: 'Load More Shots'
+                });
+            }
+
+        };
+
+
+    }]);
 
 	app.factory('shotFactory', ['$http', function($http){
 
@@ -568,8 +625,8 @@ app.factory('shotsFactory', ['$http', function($http){
         this.after = '';
 
 
-     this.index = function($resource,$sort, params){
-     	return $http.get('/api/v1/'+$resource+'/'+$sort, {params:params});
+     this.index = function($resource, params){
+     	return $http.get('/api/v1/'+$resource, {params:params});
      };
 
         // will return object of a single shot
@@ -600,9 +657,13 @@ app.factory('designersFactory', ['$http', function($http){
         this.after = '';
 
 
-     this.index = function($sort, params){
-     	return $http.get('/api/v1/designers/'+$sort, {params:params});
+     this.index = function(params){
+     	return $http.get('/api/v1/designers', {params:params});
      };
+
+    this.shots = function($username, params){
+        return $http.get('/api/v1/'+$username+'/shots', {params:params});
+    };
 
 
 
@@ -626,4 +687,28 @@ app.service('$Request', function () {
             return this;
 
 });
+app.filter('linkfy',['$filter', '$sce',
+    function($filter, $sce) {
+        return function(text, target) {
+            if (!text) return text;
+
+            var replacedText = $filter('linky')(text, target);
+            var targetAttr = "";
+            if (angular.isDefined(target)) {
+                targetAttr = ' target="' + target + '"';
+            }
+
+            // replace #hashtags
+            var replacePattern1 = /(^|\s)#(\w*[a-zA-Z_]+\w*)/gim;
+            replacedText = replacedText.replace(replacePattern1, '$1<a href="https://www.afrodapp.com/explore/$2"' + targetAttr + '>#$2</a>');
+
+            // replace @mentions
+            var replacePattern2 = /(^|\s)\@(\w*[a-zA-Z_]+\w*)/gim;
+            replacedText = replacedText.replace(replacePattern2, '$1<a href="https://www.afrodapp.com/$2"' + targetAttr + '>@$2</a>');
+
+            $sce.trustAsHtml(replacedText);
+            return replacedText;
+        };
+    }
+]);
 //# sourceMappingURL=frontend.js.map

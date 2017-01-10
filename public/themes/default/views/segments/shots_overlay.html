@@ -7,9 +7,9 @@
             <section>
               <span class="time">{{shot.published_at}}</span>
               <span class="mdl-layout-spacer"></span>
-              <a href="#" class="mt-shot-avatar" title="{{shot.owner.username}}">
-                 <h2 class="mt-avatar-name">{{shot.owner.username}}</h2>
-                  <img height="30" width="30" ng-src="/uploads/profiles/{{shot.owner.avatar.avatar_small}}" alt="">
+              <a ng-href="/{{shot.owner.username}}" class="mt-shot-avatar" title="{{shot.owner.display_name}}">
+                 <h2 class="mt-avatar-name">{{shot.owner.display_name}}</h2>
+                  <img height="30" width="30" ng-src="{{shot.owner.avatar.avatar_small}}" alt="{{shot.owner.display_name}}">
               </a>
             </section>
          </header>
@@ -24,7 +24,7 @@
 
 			<!-- description -->
 			<div class="shot-description">
-				<p ng-bind="shot.description"></p>
+				<p ng-bind-html="shot.description | linkfy:'_blank'"></p>
 			</div>
 
 			<div class="mdl-card__actions" style="padding:0">

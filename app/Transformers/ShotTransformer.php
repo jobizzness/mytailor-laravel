@@ -16,7 +16,6 @@ class ShotTransformer extends Transformer
         return [
 
             "id" => $shot->id,
-            "title" => $shot->title,
             "description" => $shot->description,
             "name" => $shot->file_name,
             "featured" => $shot->featured,

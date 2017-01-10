@@ -22,46 +22,63 @@
     overflow: hidden;
 }
 
-.progress-bar {
-    float: left;
-    width: 0;
-    height: 100%;
-    font-size: 12px;
-    line-height: 20px;
-    color: #fff;
-    text-align: center;
-    background-color: #337ab7;
-    -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
-    box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
-    -webkit-transition: width .6s ease;
-    -o-transition: width .6s ease;
-    transition: width .6s ease;
+$color: #ff4081;
+$speed: 1s;
+$ease: cubic-bezier(0.730, -0.600, 0.465, 1.640);
+$stroke: 3vmin;
+$ripples: 4;
+$alpha: 0.2;
+$size: 15vmin;
+
+.pulsating {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  box-sizing: border-box;
+  height: $size;
+  width: $size;
+  margin: $size / -2;
+  border-radius: 100%;
+    background: #f79aba;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: codefights-pulsating $speed $ease infinite;
+
+  span {
+    //fill: white;
+    width: $size / 5 * 4;
+    height: $size / 5 * 4;
+  }
 }
 
-.progress-bar-success {
-    background-color: #3fc9d5;
-}
+@keyframes codefights-pulsating {
+$from: ();
+$to: ();
+  @for $i from 0 to $ripples {
+    @if $i < $ripples - 1 {
+      $shadow: 0 0 0 ($i * $stroke) rgba($color, $alpha);
+      $from: append($from, $shadow, comma);
+      $shadow: 0 0 0 (($i + 1) * $stroke) rgba($color, $alpha);
+      $to: append($to, $shadow, comma);
+    }
 
-.progress-bar, .progress-striped .progress-bar-success {
-    background-image: -webkit-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
-    background-image: -o-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
-}
+    @else if $i == $ripples - 1 {
+      $shadow: 0 0 0 ($i * $stroke) rgba($color, $alpha);
+      $from: append($from, $shadow, comma);
+      $shadow: 0 0 0 (($i + 1) * $stroke) rgba($color, 0);
+      $to: append($to, $shadow, comma);
+    }
+  }
 
-.progress-bar-striped, .progress-striped .progress-bar {
-    background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
-    background-size: 40px 40px;
-}
+  0% {
+    box-shadow: $from;
+  }
 
-.progress-striped .progress-bar-success {
-    background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+  100% {
+    box-shadow: $to;
+  }
 }
-
-.progress-bar.active, .progress.active .progress-bar {
-    -webkit-animation: progress-bar-stripes 2s linear infinite;
-    -o-animation: progress-bar-stripes 2s linear infinite;
-    animation: progress-bar-stripes 2s linear infinite;
-}
-
 //Paginations
 .pagination{
     display: inline-block;

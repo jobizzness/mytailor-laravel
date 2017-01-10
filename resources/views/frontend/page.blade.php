@@ -8,7 +8,16 @@
 @section('main')
     @if($page->view)
 
-    	<a ng-click="showShotPoster()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--fab mdl-button--mini-fab mdl-button--colored float" id="main-caller_fab"><i class="mdi mdi-camera"></i></a>
+    	{{-- Main Fab Action Button --}}
+    	@if($user)
+            <a ng-click="showShotPoster()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--fab mdl-button--mini-fab mdl-button--colored float" id="main-caller_fab"><i class="mdi mdi-camera"></i></a>
+        @endif
+
+        {{-- Main App Loader --}}
+        <div class="pulsating" ng-show="loading">
+		  <span class="loader__icon">Afrodapp</span>
+		  </svg>
+		</div>
 
         {!! $page->view->render() !!}
 

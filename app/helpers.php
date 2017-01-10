@@ -17,3 +17,30 @@ if (! function_exists('setActive'))	{
 		return Request::is($path) ? $active : '';
 	}
 }
+
+
+
+if (! function_exists('profileCheck'))	{
+
+	function profileCheck($profile, $user) {
+
+		if($user) {
+			if($profile->username == $user->profile->username)
+				return true;
+		}
+		return false;
+	}
+}
+
+if (! function_exists('avatarRoute'))	{
+
+	function avatarRoute($profileA, $user) {
+		if($user) {
+			if($profileA->username == $user->profile->username)
+
+			return 'edit';
+		}
+
+		return "contact";
+	}
+}

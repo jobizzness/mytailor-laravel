@@ -47,7 +47,7 @@
             <p class="floated-actions_title">@{{shot.title}}</p>
             <a href="#" style="margin-right: 15px;">
                 <i class="mdi mdi-heart-outline icon_rounded like-btn"></i>
-                <span style="font-size: 13px;color: #fff;">67</span>
+                <span style="font-size: 13px;color: #fff;"@{{shot.likes.like_count}}7</span>
             </a>
             <a href="#">
                 <i class="mdi mdi-comment-outline icon_rounded comment-btn"></i>

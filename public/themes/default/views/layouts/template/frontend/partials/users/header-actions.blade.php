@@ -46,17 +46,17 @@
                     </li>
                     <!-- Avatar Dropdown -->
                    <li>
-                      <a href="/{{$user->username}}" class="dropdown-toggle mt-top-avatar" id="avatar">
+                      <a href="#" class="dropdown-toggle mt-top-avatar" id="avatar">
                         <img alt="" class="img-circle" src="{{$user->profile->avatar}}" width="40px" height="40px">
                       </a>
                           {{-- avatar menu --}}
                           <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
                             for="avatar">
                           <li class="mdl-menu__item"><a href="/jobizzness">Profile</a></li>
-                          <li class="mdl-menu__item"><a href="/">Collections</a></li>
-                          <li class="mdl-menu__item"><a href="/">Saves</a></li>
-                          <li class="mdl-menu__item"><a href="/">Settings</a></li>
-                          <li class="mdl-menu__item"><a href="/">Logout</a></li>
+                          <li class="mdl-menu__item"><a href="#">Collections</a></li>
+                          <li class="mdl-menu__item"><a href="#">Saves</a></li>
+                          <li class="mdl-menu__item"><a href="#">Settings</a></li>
+                          <li class="mdl-menu__item"><a href="/logout">Logout</a></li>
                         </ul>
                     </li>
                   </ul>

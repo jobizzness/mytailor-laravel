@@ -5,9 +5,13 @@ app.factory('designersFactory', ['$http', function($http){
         this.after = '';
 
 
-     this.index = function($sort, params){
-     	return $http.get('/api/v1/designers/'+$sort, {params:params});
+     this.index = function(params){
+     	return $http.get('/api/v1/designers', {params:params});
      };
+
+    this.shots = function($username, params){
+        return $http.get('/api/v1/'+$username+'/shots', {params:params});
+    };
 
 
 

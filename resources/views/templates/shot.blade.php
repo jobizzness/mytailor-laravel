@@ -16,9 +16,9 @@
             <section>
               <span class="time">6h</span>
               <span class="mdl-layout-spacer"></span>
-              <a href="#" class="mt-shot-avatar" title="{{$shot->publishable->present()->displayName()}}">
+              <a href="/{{$shot->publishable->profile->username}}" class="mt-shot-avatar" title="{{$shot->publishable->present()->displayName()}}">
                  <h2 class="mt-avatar-name">{{$shot->publishable->present()->displayName()}}</h2>
-                  <img height="30" width="30" ng-src="/uploads/profiles/{{$shot->publishable->profile->avatar}}" alt="">
+                  <img height="30" width="30" ng-src="/uploads/profiles/{{$shot->publishable->profile->avatar}}" alt="{{$shot->publishable->profile->username}}">
               </a>
             </section>
          </header>
@@ -33,7 +33,7 @@
 
 			{{-- Description --}}
 			<div class="shot-description">
-				<p>{{$shot->description}}</p>
+				<p ng-bind-html="'{{$shot->description}}' | linkfy:'_blank'"></p>
 			</div>
 
 			<div class="mdl-card__actions" style="padding:0">

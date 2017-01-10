@@ -5,8 +5,8 @@ app.factory('shotsFactory', ['$http', function($http){
         this.after = '';
 
 
-     this.index = function($resource,$sort, params){
-     	return $http.get('/api/v1/'+$resource+'/'+$sort, {params:params});
+     this.index = function($resource, params){
+     	return $http.get('/api/v1/'+$resource, {params:params});
      };
 
         // will return object of a single shot

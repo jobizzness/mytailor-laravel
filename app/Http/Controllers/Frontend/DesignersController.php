@@ -44,10 +44,10 @@ class DesignersController extends ApiController
      * @return mixed
      */
 
-    public function index($sort, Request $request)
+    public function index(Request $request)
     {
 
-        $designers = $this->getDesigners($sort, $request);
+        $designers = $this->getDesigners($request);
 
         if(! $designers) {
             //we have no designers sorry.
@@ -68,16 +68,51 @@ class DesignersController extends ApiController
     }
 
 
+    public function create()
+    {
+        // GET => /shots/create
+    }
+
+    /**
+     * @param $id
+     */
+    public function edit($id)
+    {
+        // GET => /shots/{id}/edit
+    }
+
+    /**
+     * @param $id
+     */
+    public function update($id)
+    {
+        // PUT/PATCH => /shots/{id}
+    }
+
+    /**
+     * @param $id
+     */
+    public function destroy($id)
+    {
+        // DELETE => /questions/{id}
+    }
+
+    public function shots($username)
+    {
+        $shots = $this->designers->shots($username);
+    }
+
+
     /**
      * @param $sort
      * @param Request $request
      * @return mixed
      */
-    protected function getDesigners($sort, Request $request)
+    protected function getDesigners(Request $request)
     {
 
         $cat = $request->get('cat') ?: null;
-
+        $sort = $request->get('sort') ?: null;
         switch ($sort) {
             case 'latest':
                 $shots = $this->designers->featured($cat);

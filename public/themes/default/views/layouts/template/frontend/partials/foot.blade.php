@@ -28,8 +28,6 @@
 
     <!-- Material Javascript -->
     <script src="{{theme('vendor/material-design-lite/material.min.js')}}"></script>
-    <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/assets-cache.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/ngInfiniteScroll/1.3.0/ng-infinite-scroll.min.js'></script>
     <!-- Main Application Scripts -->
     <script src="{{ theme('js/frontendScript.js') }}"></script>
     <script src="{{ theme('js/frontend.js') }}"></script>

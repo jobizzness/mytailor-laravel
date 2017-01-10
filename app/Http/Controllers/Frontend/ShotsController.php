@@ -39,15 +39,14 @@ class ShotsController extends ApiController
     }
 
     /**
-     * @param $sort
      * @param Request $request
      * @return mixed
      */
 
-    public function index($sort, Request $request)
+    public function index(Request $request)
     {
 
-        $shots = $this->getShots($sort, $request);
+        $shots = $this->getShots($request);
 
         if(! $shots) {
             //we have no shots sorry.
@@ -66,12 +65,6 @@ class ShotsController extends ApiController
 
     }
 
-    public function toggleLike($name)
-    {
-        $shot = $this->shots->findByName($name);
-
-        $shot->toggle();
-    }
 
     /**
      * Gets info about a shot and response in Json
@@ -97,6 +90,36 @@ class ShotsController extends ApiController
         return $this->NotFound('Shot was not Found');
     }
 
+    public function create()
+    {
+        // GET => /shots/create
+    }
+
+    /**
+     * @param $id
+     */
+    public function edit($id)
+    {
+        // GET => /shots/{id}/edit
+    }
+
+    /**
+     * @param $id
+     */
+    public function update($id)
+    {
+        // PUT/PATCH => /shots/{id}
+    }
+
+    /**
+     * @param $id
+     */
+    public function destroy($id)
+    {
+        // DELETE => /questions/{id}
+    }
+
+
     /**
      * Increment views for $this shot
      *
@@ -110,15 +133,22 @@ class ShotsController extends ApiController
 
     }
 
+    public function toggleLike($name)
+    {
+        $shot = $this->shots->findByName($name);
+
+        $shot->toggle();
+    }
+    
     /**
-     * @param $sort
      * @param Request $request
      * @return mixed
      */
-    protected function getShots($sort, Request $request)
+    protected function getShots(Request $request)
     {
 
         $cat = $request->get('cat') ?: null;
+        $sort = $request->get('sort') ?: null;
 
         switch ($sort) {
             case 'featured':
