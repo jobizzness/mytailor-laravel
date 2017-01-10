@@ -631,7 +631,7 @@ app.factory('shotsFactory', ['$http', function($http){
 
         // will return object of a single shot
     this.show = function (name) {
-        return $http.get("/api/v1/shot/" + name);
+        return $http.get("/api/v1/shots/" + name);
     };
 
     this.viewed = function(name){

@@ -112,7 +112,7 @@ class DbShotsRepository implements ShotsRepositoryInterface{
         return $this->shots
             ->with('image','comments', 'publishable.profile')
             ->where('publishable_id', $id)
-            ->where('publishable_type','!=', 'MyTailor\\Brand')
+            ->where('publishable_type','=', 'MyTailor\\Brand')
             //->select(\DB::raw( '((views - 1) / (TIMESTAMPDIFF(MINUTE, updated_at, NOW()) + 2)^1.5) as Popularity, shots.*'))
             ->orderBy('created_at', 'desc')
             ->where('published', '=', 1)
