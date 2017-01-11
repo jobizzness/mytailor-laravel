@@ -311,8 +311,11 @@ app.config(function (ngDialogProvider) {
                 if($page==1){
                     // The shots are available now.
                     $scope.$emit('AppIsLoaded', 'done');
-                }
-                $scope.busy = true;
+
+                    $scope.busy = false;
+                } else{$scope.busy = true;}
+
+                
                 $scope.getShots($repo, {cat: $cat, page:$page,sort:$slug});
 
                 if($page > 1){
