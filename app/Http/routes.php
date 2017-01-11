@@ -106,13 +106,13 @@ Route::group(['prefix' => 'api/v1'], function () {
 					'as' => 'shot',
 					'uses' => 'Frontend\ShotsController@toggleLike']
 	);
-	Route::post('/shot/viewed/{id}',  [
+	Route::post('/shots/{id}/viewed',  [
 					'as' => 'shot.viewed',
 					'uses' => 'Frontend\ShotsController@viewed']
 	);
 	Route::get('/{username}/shots',  [
 					'as' => 'designers.sort',
-					'uses' => 'Frontend\ShotsController@byUser']
+					'uses' => 'Frontend\ShotsController@by']
 	);
 
 

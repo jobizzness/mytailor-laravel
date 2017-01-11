@@ -18,7 +18,7 @@
               <span class="mdl-layout-spacer"></span>
               <a href="/{{$shot->publishable->profile->username}}" class="mt-shot-avatar" title="{{$shot->publishable->present()->displayName()}}">
                  <h2 class="mt-avatar-name">{{$shot->publishable->present()->displayName()}}</h2>
-                  <img height="30" width="30" ng-src="/uploads/profiles/{{$shot->publishable->profile->avatar}}" alt="{{$shot->publishable->profile->username}}">
+                  <img height="30" width="30" ng-src="{{$shot->publishable->profile->avatar}}" alt="{{$shot->publishable->profile->username}}">
               </a>
             </section>
          </header>

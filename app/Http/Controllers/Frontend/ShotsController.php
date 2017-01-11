@@ -50,20 +50,7 @@ class ShotsController extends ApiController
 
         $shots = $this->getShots($request);
 
-        if(! $shots) {
-            //we have no shots sorry.
-            return $this->NotFound('No results Found');
-        }
-
-        //means we have shots so lets send them through.
-        return $this->respond([
-            'response' => [
-                 'shots' => [
-                    'data' => $this->Transformer->transformCollection($shots),
-                    'nextPage' => $shots->nextPageUrl()
-                    ]
-            ]
-        ]);
+        return $this->responder($shots);
 
     }
 
@@ -135,6 +122,9 @@ class ShotsController extends ApiController
 
     }
 
+    /**
+     * @param $name
+     */
     public function toggleLike($name)
     {
         $shot = $this->shots->findByName($name);
@@ -142,28 +132,21 @@ class ShotsController extends ApiController
         $shot->toggle();
     }
 
-    public function byUser($id)
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function by($id)
     {
+
         $profile = Profile::where('username', $id)->first();
+        $type = $profile->type;
 
-        $id = User::where('profile_id', $profile->id)->first()->id;
+        $user = $type::where('profile_id', $profile->id)->first();
 
-        $shots = $profile ? $this->shots->byUser($id): null;
+        $shots = $user ? $this->shots->by($user): null;
 
-        if(! $shots) {
-            //we have no shots sorry.
-            return $this->NotFound('No results Found');
-        }
-
-        //means we have shots so lets send them through.
-        return $this->respond([
-            'response' => [
-                'shots' => [
-                    'data' => $this->Transformer->transformCollection($shots),
-                    'nextPage' => $shots->nextPageUrl()
-                ]
-            ]
-        ]);
+        return $this->responder($shots);
     }
     /**
      * @param Request $request
@@ -187,6 +170,28 @@ class ShotsController extends ApiController
                 return $shots;
         }
         return $shots;
+    }
+
+    /**
+     * @param $shots
+     * @return mixed
+     */
+    protected function responder($shots)
+    {
+        if (!$shots) {
+            //we have no shots sorry.
+            return $this->NotFound('No results Found');
+        }
+
+        //means we have shots so lets send them through.
+        return $this->respond([
+            'response' => [
+                'shots' => [
+                    'data' => $this->Transformer->transformCollection($shots),
+                    'nextPage' => $shots->nextPageUrl()
+                ]
+            ]
+        ]);
     }
 
 }

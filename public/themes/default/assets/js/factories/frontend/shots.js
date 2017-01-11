@@ -15,7 +15,7 @@ app.factory('shotsFactory', ['$http', function($http){
     };
 
     this.viewed = function(name){
-        return $http.post("/api/v1/shot/viewed/" + name);
+        return $http.post('/api/v1/shots/'+$name+'/viewed');
     };
 
     this.explore = function(params){
@@ -23,7 +23,7 @@ app.factory('shotsFactory', ['$http', function($http){
     };
 
     this.like = function($name){
-       return $http.get('/api/v1/shot/'+$name+'/like');
+       return $http.post('/api/v1/shots/'+$name+'/like');
     };
 
 
