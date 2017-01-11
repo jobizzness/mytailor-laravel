@@ -17,6 +17,7 @@ class ShotTransformer extends Transformer
 
             "id" => $shot->id,
             "description" => $shot->description,
+            "title" => $shot->present()->title(),
             "name" => $shot->file_name,
             "featured" => $shot->featured,
             "views" => $shot->views,

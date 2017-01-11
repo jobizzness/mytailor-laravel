@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="{{theme('css/vendor/slick-carousel/slick/slick-theme.css')}}">
 
 @endsection
+@section('header_type', 'just-main')
 @section('sub_header')
 
     <nav class="mdl-navigation mt-nav-has-border">
@@ -16,11 +17,75 @@
 
 @endsection
 
+<style>
+    .map {
+        height: 85vh !important;
+    }
+
+    .marker {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 130px; /*positions our marker*/
+    left: 200px; /*positions our marker*/
+    display: block;  
+}
+    .pin {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: 38px;
+    left: 38px;
+    background: rgba(5, 124, 255, 1);    
+    border: 2px solid #FFF;
+    border-radius: 50%;
+    z-index: 1000;
+}
+
+.pin-effect {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 0;
+    display: block;
+    background: rgba(5, 124, 255, 0.6);
+    border-radius: 50%;
+    opacity: 0;
+    animation: pulsate 2400ms ease-out infinite;
+}
+@keyframes pulsate {
+    0% {
+    transform: scale(0.1);
+    opacity: 0;
+    }
+    50% {
+    opacity: 1;
+    }
+    100% {
+    transform: scale(1.2);
+    opacity: 0;
+    }
+}
+
+</style>
+
 <!-- Main map section -->
-<section class="mdl-shadow--2dp dark">
-  <div map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="@{{googleMapsUrl}}">
-    <map center="current-location" zoom="10" class="designers-map" default-style="false" style="height: 450px;" styles="@{{mapStyles}}">
-      <marker animation="DROP" position="current-location"></marker>
+<section class="mdl-shadow--2dp dark map">
+  <div map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="@{{googleMapsUrl}}" class="map">
+    <map
+        center="current-location" 
+        zoom="12"
+        height="780";
+        scrollwheel="false" 
+        class="map" 
+        default-style="false" 
+        styles="@{{mapStyles}}" 
+        disable-default-u-i="true"
+        >
+
+      <custom-marker animation="DROP" position="current-location">
+        <div class="marker"><div class="pin"></div><div class="pin-effect"></div></div>
+      </custom-marker>
     </map>
   </div>
 </section>
