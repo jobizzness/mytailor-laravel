@@ -81,10 +81,10 @@
             $scope.updateShots = function($repo){
                 if ($scope.busy || !$page) return;
                 if($page==1){
-                    // The shots are available now.
+                    // This is the apps first load
+                    
                     $scope.$emit('AppIsLoaded', 'done');
 
-                    $scope.busy = false;
                 } else{$scope.busy = true;}
 
                 
