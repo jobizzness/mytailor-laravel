@@ -40,8 +40,12 @@ app.controller("profileController", ["$scope","designersFactory","NgMap","$Reque
          * Loads more shots from server
          */
         $scope.updateShots = function(){
-            if ($scope.busy || !$page) return;
-            $scope.busy = true;
+                if ($scope.busy || !$page) return;
+                if($page==1){
+
+                    $scope.busy = false;
+                    
+                } else{$scope.busy = true;}
             $scope.getshots($username, {page:$page});
 
             if($page > 1){

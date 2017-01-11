@@ -51,7 +51,7 @@
             </a>
             <a href="#">
                 <i class="mdi mdi-comment-outline icon_rounded comment-btn"></i>
-                <span style="font-size: 13px;color: #fff;">10</span>
+                <span style="font-size: 13px;color: #fff;"></span>
             </a>              
         </div>
   	  </div>

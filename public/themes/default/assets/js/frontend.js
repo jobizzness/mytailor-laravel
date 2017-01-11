@@ -499,19 +499,23 @@ app.config(function (ngDialogProvider) {
              * Loads more shots from server
              */
             $scope.updateDesigners = function($repo){
-                if ($scope.busy) return;
-                if(!$page) return;
+              if ($scope.busy || !$page) return;
+              if($page==1){
 
-                $scope.busy = true;
-                $scope.getDesigners({page:$page, sort:$sort});
-                $scope.busy = false;
+                  $scope.busy = false;
+                  
+              } else{$scope.busy = true;}
+              $scope.getDesigners({page:$page, sort:$sort});
 
-                ga('send', {
-                  hitType: 'event',
-                  eventCategory: 'PaginatedContent',
-                  eventAction: 'scroll',
-                  eventLabel: 'Load More Designers'
-                });
+              if($page > 1){
+                  ga('send', {
+                      hitType: 'event',
+                      eventCategory: 'PaginatedContent',
+                      eventAction: 'scroll',
+                      eventLabel: 'Load More Shots'
+                  });
+              }
+
             };
 
 
@@ -559,8 +563,12 @@ app.controller("profileController", ["$scope","designersFactory","NgMap","$Reque
          * Loads more shots from server
          */
         $scope.updateShots = function(){
-            if ($scope.busy || !$page) return;
-            $scope.busy = true;
+                if ($scope.busy || !$page) return;
+                if($page==1){
+
+                    $scope.busy = false;
+                    
+                } else{$scope.busy = true;}
             $scope.getshots($username, {page:$page});
 
             if($page > 1){
