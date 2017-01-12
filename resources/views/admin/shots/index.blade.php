@@ -88,7 +88,7 @@
                       <label class="top-label">URL</label>
                   </div>
                   <div class="mt-form-group">
-                      <input type="text" class="" ng-model="shot.title">
+                      <input type="text" class="" ng-model="shot.views">
                       <label class="top-label">Title</label>
                   </div>
                   <div class="mt-form-group">

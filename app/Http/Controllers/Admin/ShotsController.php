@@ -93,34 +93,34 @@ class ShotsController extends Controller    {
     /*
      * Temporaly for bulk actions
      */
-    public function clean(ImageServerProd $imageServer)
-    {
-        $shots = Shot::where('published', '!=', 1)->get();
-
-        foreach($shots as $shot)
-        {
-
-            dd($shots);
-            
-            // Delete the image
-            $status = $imageServer->delete([
-                    $shot->image()->large,
-                    $shot->image()->medium,
-                    $shot->image()->original,
-                    $shot->image()->phone,
-                    $shot->image()->small
-            ]);
-
-            if($status){
-
-                $shot->image()->delete();
-                $shot->delete();
-                //Delete the shot and its image
-
-            }
-
-        }
-    }
+//    public function clean(ImageServerProd $imageServer)
+//    {
+//        $shots = Shot::where('published', '!=', 1)->get();
+//
+//        foreach($shots as $shot)
+//        {
+//
+//            dd($shots);
+//
+//            // Delete the image
+//            $status = $imageServer->delete([
+//                    $shot->image()->large,
+//                    $shot->image()->medium,
+//                    $shot->image()->original,
+//                    $shot->image()->phone,
+//                    $shot->image()->small
+//            ]);
+//
+//            if($status){
+//
+//                $shot->image()->delete();
+//                $shot->delete();
+//                //Delete the shot and its image
+//
+//            }
+//
+//        }
+//    }
 
     /**
      * @param $id
@@ -147,7 +147,7 @@ class ShotsController extends Controller    {
         $shot = $this->shots->findOrFail($id);
 
 
-        $update = $shot->fill($request->only('title', 'category', 'featured', 'published', 'views', 'source_url', 'description'))->save();
+        $update = $shot->fill($request->only('views', 'category', 'featured', 'published', 'views', 'source_url', 'description'))->save();
 
         $this->attachTags($request, $shot);
 
