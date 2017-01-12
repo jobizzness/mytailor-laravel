@@ -10,7 +10,7 @@
                     </li>
                   <li style="margin-top: -10px;">
                       <a href="/explore" title="explore">
-                        <div class="material-icons mdl-badge mdl-badge--overlap" ><i class="mdi mdi-crosshairs-gps"></i></div>
+                        <div class="material-icons mdl-badge mdl-badge--overlap" ><i class="mdi mdi-compass"></i></div>
                       </a>
                     </li>
                     <li style="margin-top: -10px;">

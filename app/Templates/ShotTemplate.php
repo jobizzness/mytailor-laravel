@@ -64,7 +64,7 @@ class ShotTemplate extends AbstractTemplate{
      */
     private function seoMake($shot)
     {
-        $title = ucfirst($shot->title);
+        $title = ucfirst($shot->present()->title());
         $description = strtok($shot->description, ".").'.';
         $url = 'https://www.afrodapp.com/shot/'.$shot->file_name;
 

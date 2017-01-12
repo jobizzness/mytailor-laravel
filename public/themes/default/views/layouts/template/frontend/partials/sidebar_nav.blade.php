@@ -29,7 +29,7 @@
             <a href="/" class="mt-sidebar-link btn"><i class="mt-icon mdi mdi-home-variant"></i>Home</a>
           </li>
           <li class="{{ Route::is('explore.index')? 'mt-list-active' : ''}}">
-            <a href="/explore" class="mt-sidebar-link btn"><i class="mdi mdi-crosshairs-gps"></i>Explore</a>
+            <a href="/explore" class="mt-sidebar-link btn"><i class="mdi mdi-compass"></i>Explore</a>
           </li>
           <li class="{{ Route::is('designers.index')? 'mt-list-active' : ''}}">
             <a href="/designers" class="mt-sidebar-link btn"><i class="mdi mdi-tshirt-v"></i>Designers</a>

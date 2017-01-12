@@ -44,16 +44,21 @@ class ProfilesTemplate extends AbstractTemplate{
 
     protected function seoMake($profile)
     {
-        SEOMeta::setTitle($profile->display_name);
-        SEOMeta::setDescription($profile->display_name.' on Afrodapp');
-        //SEOMeta::setCanonical('https://codecasts.com.br/lesson');
-
-        OpenGraph::setDescription($profile->display_name.' on Afrodapp');
-        OpenGraph::setTitle('Brands');
+        $title = $profile->display_name .' on Afrodapp';
+        SEOMeta::setTitle($title);
+        SEOMeta::setDescription($profile->bio);
+        SEOMeta::setCanonical('/'.$profile->username);
+        OpenGraph::setDescription($profile->bio);
+        OpenGraph::setTitle($title);
         OpenGraph::setUrl('/'.$profile->username);
-        OpenGraph::addProperty('type', 'business.fashion');
+        //OpenGraph::addProperty('type', 'business.fashion');
 
-//        Twitter::setTitle('Home');
-//        Twitter::setSite('@LuizVinicius73');
+        Twitter::addValue('card', 'summary')
+            ->setType('article')
+            ->addImage($profile->avatar)
+            ->setTitle($title)
+            ->setDescription($profile->bio)
+            ->setUrl('/'.$profile->username)
+            ->setSite('@afrodapp');
     }
 }
