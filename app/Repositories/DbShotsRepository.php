@@ -170,19 +170,12 @@ class DbShotsRepository implements ShotsRepositoryInterface{
      * @return \stdClass
      * @internal param array $facets
      */
-    public function explore($slug, $cat)
+    public function explore($tag, $cat)
     {
 
-        $searchValues = preg_split('/\s+/', $slug);
+        return Shot::whereHas('tags', function($query) use ($tag){
 
-        unset($searchValues[0]);
-        unset($searchValues[1]);
-
-        return Shot::whereHas('tags', function($query) use ($searchValues){
-
-            foreach ($searchValues as $value) {
-                $query->orWhere('tags.tag_name', 'LIKE', "%$value%");
-            }
+                $query->where('tags.tag_name', "$tag");
 
         })  ->with('image','comments', 'publishable.profile')
             ->select(\DB::raw( '((views - 1) / (TIMESTAMPDIFF(HOUR, updated_at, NOW()) + 2)^1.5) as Popularity, shots.*'))

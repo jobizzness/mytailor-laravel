@@ -7,7 +7,7 @@ $ui-color: (
     darkbrown : #202024,
     redish : rgb(255,64,129),
     redish_strong : #D9183C,
-    grey60	: #eee,
+    grey60	: #efefef,
     blue : #03A9F4
 );
 
@@ -18,6 +18,10 @@ $ui-color: (
 .red-color{
     color: map-get($ui-color, redish);
 }
+.mdl-tabs__tab .mdl-tabs__ripple-container .mdl-ripple {
+    background: map-get($ui-color, redish);
+}
+
 .redish:hover{
 	background-color: map-get($ui-color, redish_strong) !important;
 }

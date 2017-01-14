@@ -1,5 +1,5 @@
 
-@section('bg', 'grey60')
+@section('bg', 'dark')
 @section('header_type', 'just-main')
 
 @section('page_styles')
@@ -26,37 +26,47 @@
     </div>
 </section>
 
-<section class="mt-row" ng-repeat="section in sections" ng-cloak>
-  <div class="mdl-card__title" style="color: rgba(0, 0, 0, 0.66);">
-	 <h1 class="mdl-card__title-text" style="text-transform: capitalize;color: #484848 !important;">@{{section.name}}</h1>
-  </div>
-  <div class="mdl-grid">
-  	<!-- Shot Template -->
-  	<div class="mdl-cell mdl-cell--4-col mdl-card" itemprop="mainEntity" itemscope itemtype="http://schema.org/imageObject" ng-repeat="shot in section.shots.data">
-        <!-- Figure -->
-        <figure class="figure-overlay" style="max-height: 337px;overflow: hidden;">
-            <a href="" class="mt-grid___link" ng-click="open(shot.name)">
-                <div class="mt-image-holder" itemscope itemtype="http://schema.org/thumbnail">
-                    <img itemprop="image" ng-src="@{{shot.image.original}}" alt="@{{shot.alt}}">
-                </div>
-            </a>
-              <div class="dimGradient"></div>
-        </figure>
-        {{-- Figure Actions --}}
-        <div class="mdl-card__actions floated_actions pad-1">
-            <p class="floated-actions_title">@{{shot.title}}</p>
-            <a href="#" style="margin-right: 15px;">
-                <i class="mdi mdi-heart-outline icon_rounded like-btn"></i>
-                <span style="font-size: 13px;color: #fff;"@{{shot.likes.like_count}}7</span>
-            </a>
-            <a href="#">
-                <i class="mdi mdi-comment-outline icon_rounded comment-btn"></i>
-                <span style="font-size: 13px;color: #fff;"></span>
-            </a>              
+<section class="mdl-grid">
+  <main class="mdl-cell mdl-cell--8-col">
+    @include('layouts.template.frontend.partials.explore-feed')
+  </main>
+  <div class="mdl-cell mdl-cell--4-col">
+    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect dark__tab">
+        <div class="mdl-tabs__tab-bar tab__no-border">
+            <a href="#starks-panel" class="mdl-tabs__tab is-active">Activity</a>
+            <a href="#targaryens-panel" class="mdl-tabs__tab">People</a>
         </div>
-  	  </div>
 
-	</div> <!-- Grid ends -->
+        <div class="mdl-tabs__panel is-active" id="starks-panel">
+          <ul class="demo-list-two mdl-list">
+            <li class="mdl-list__item mdl-list__item--two-line" ng-repeat="n in [1,2,3,4,5]">
+              <span class="mdl-list__item-primary-content">
+                <i class="mdi mdl-list__item-avatar mdi-person"></i>
+                <span>Bryan Cranston</span>
+                <span class="mdl-list__item-sub-title">liked Jobizzness watumad's post</span>
+              </span>
+              <span class="mdl-list__item-secondary-content">
+                3 min ago
+              </span>
+            </li>
+          </ul>
+        </div>
+        <div class="mdl-tabs__panel" id="targaryens-panel">
+          <ul class="demo-list-two mdl-list">
+            <li class="mdl-list__item mdl-list__item--two-line" ng-repeat="n in [1,2,3,4,5]">
+              <span class="mdl-list__item-primary-content">
+                <i class="mdi mdl-list__item-avatar mdi-person"></i>
+                <span>Bryan Cranston</span>
+                <span class="mdl-list__item-sub-title">liked Jobizzness watumad's post</span>
+              </span>
+              <span class="mdl-list__item-secondary-content">
+                <button class="mdl-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">follow</button>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+  </div>
 </section>
 
 @section('page_scripts')

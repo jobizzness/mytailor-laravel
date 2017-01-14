@@ -33,7 +33,7 @@
         $rootScope.pusher = $pusher(client);
 
         // we should look into this
-        $scope.links = shotFactory.getParmalinks();
+        //$scope.links = shotFactory.getParmalinks();
 
         /*****************************************************************************
          *

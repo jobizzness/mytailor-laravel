@@ -122,8 +122,8 @@
              * @param $sort
              */
             $scope.getShots = function($repo, $params){
-
                 shotsFactory.index($repo, $params).then(function(response){
+                     console.log(response);
                     var items = response.data.response.shots.data;
                     $scope.per_page = $scope.per_page +response.data.per_page;
 

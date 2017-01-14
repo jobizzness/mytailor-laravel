@@ -27,5 +27,9 @@ app.factory('shotsFactory', ['$http', function($http){
     };
 
 
+    this.exploreTag = function($tag, params){
+       return $http.get('/api/v1/explore/'+$tag, {params:params});
+    };
+
     return this;
 }]);

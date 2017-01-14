@@ -18,7 +18,7 @@
 
                 shotsFactory.explore($params).then(function(response){
 
-                    console.log(response);
+                   
                     var items = response.data;
 
                     angular.forEach(items, function(value, key) {

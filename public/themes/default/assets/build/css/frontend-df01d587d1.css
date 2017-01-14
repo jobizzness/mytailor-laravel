@@ -5266,6 +5266,9 @@ a.waves-effect .waves-ripple {
 .red-color {
   color: #ff4081; }
 
+.mdl-tabs__tab .mdl-tabs__ripple-container .mdl-ripple {
+  background: #ff4081; }
+
 .redish:hover {
   background-color: #D9183C !important; }
 
@@ -5282,7 +5285,7 @@ a.waves-effect .waves-ripple {
   background: #2196F3; }
 
 .grey60 {
-  background-color: #eee; }
+  background-color: #efefef; }
 
 .redy-card {
   background: #f24f86; }
@@ -6646,13 +6649,20 @@ ul.comments-list {
 .top-shots > li {
   position: relative; }
 
-ul.contact-link-icons > li {
-  margin-bottom: 16px; }
-  ul.contact-link-icons > li a {
-    color: #202024; }
-  ul.contact-link-icons > li i {
-    font-size: 26px;
-    margin-right: 7px; }
+.tab__no-border {
+  border: 0; }
+  .tab__no-border > a {
+    width: 50%; }
+
+.dark__tab.mdl-tabs.is-upgraded .mdl-tabs__tab.is-active:after {
+  background-color: #ff4081; }
+
+.dark__tab .mdl-tabs__tab {
+  font-weight: 600;
+  color: #757575; }
+
+.dark__tab.mdl-tabs.is-upgraded .mdl-tabs__tab.is-active {
+  color: #ff4081; }
 
 /*something about a user*/
 .mt-avatar-circle {
@@ -7163,7 +7173,7 @@ a[ng-click] {
     visibility: collapse; }
 
 .mt-glow-soft {
-  box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 0px 2px 2px rgba(0, 0, 0, 0.098), 0px 0px 5px 1px rgba(0, 0, 0, 0.084); }
+  box-shadow: 0 0.125rem 0.25rem 0 rgba(0, 0, 0, 0.11); }
 
 .mt-global-header {
   min-height: 48px;
@@ -7518,13 +7528,13 @@ a.mt-sidebar-link {
   margin-top: 4em; }
 
 .after-shots-action > a > span.btn {
-  box-shadow: inset 0 0 0 2px #eee;
+  box-shadow: inset 0 0 0 2px #efefef;
   min-width: 11em;
   padding: 1.2em 0; }
   .after-shots-action > a > span.btn:hover {
     font-weight: 600;
     color: #202024;
-    background-color: #eee; }
+    background-color: #efefef; }
 
 /*********************************************************************************************
 
@@ -7753,7 +7763,12 @@ figure.shot-cover.--profile__feed {
   -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 2px 1px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 2px 1px;
   background: #fff;
-  box-shadow: rgba(0, 0, 0, 0.2) 0 2px 1px; }
+  box-shadow: rgba(0, 0, 0, 0.2) 0 1px 1px; }
+
+.light.figure-overlay {
+  position: relative; }
+  .light.figure-overlay > a:hover:after {
+    background-color: rgba(0, 0, 0, 0.13); }
 
 /*Lets look at what breaks*/
 @media (max-width: 1049px) {

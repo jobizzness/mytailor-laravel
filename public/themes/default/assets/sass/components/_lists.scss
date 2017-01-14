@@ -118,11 +118,20 @@ ul.comments-list{
 	position: relative;
 }
 
-ul.contact-link-icons>li{
-	a{
-		color: #202024;
-	}
-	margin-bottom: 16px;
-	i{font-size: 26px;
-    margin-right: 7px;}
+.tab__no-border{
+	border: 0;
+	>a{width: 50%;}
+}
+
+.dark__tab.mdl-tabs.is-upgraded .mdl-tabs__tab.is-active:after{
+	background-color: #ff4081;
+}
+
+.dark__tab .mdl-tabs__tab{
+	font-weight: 600;
+    color: #757575;
+}
+
+.dark__tab.mdl-tabs.is-upgraded .mdl-tabs__tab.is-active {
+    color: map-get($ui-color, redish);
 }

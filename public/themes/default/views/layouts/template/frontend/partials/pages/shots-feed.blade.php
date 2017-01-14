@@ -1,4 +1,4 @@
-<section class="pad-1">
+<section class="pad-1" style="padding: 2em;">
 
 <div  angular-grid="shots" 
       ng-init="updateShots('{{$resource}}')"
@@ -22,7 +22,7 @@
             </section>
           </header>
           {{-- Figure --}}
-          <figure>
+          <figure class="figure-overlay light">
             <a href="" class="mt-grid___link" ng-click="open(shot.name)">
                 <div class="mt-image-holder" itemscope itemtype="http://schema.org/thumbnail">
                     <img itemprop="image" ng-src="@{{shot.image.original}}" alt="@{{shot.alt}}">
@@ -32,17 +32,14 @@
 
           <!-- Notes -->
         <div style="padding: 10px">
-
+            <!-- description -->
+            <div class="shot-description">
+              <p ng-bind-html="shot.title | linkfy:'_blank'"></p>
+            </div>
             <div class="mdl-card__actions" style="padding:0">
               <a ng-click="like(shot.name)" class="material-icons mdl-badge mdl-badge--overlap like-btn2" ng-class="{'red-color': shot.likes.is_liked}"><i class="mdi mdi-heart"></i><span class="count_text">@{{shot.likes.like_count}}</span></a>
 
               <a ng-click="" class="material-icons mdl-badge mdl-badge--overlap"><i class="mdi mdi-comment"></i><span class="count_text"></span></a>
-
-                {{-- <span style="font-size: 13px;margin: 0;">@{{shot.views}}</span> --}}
-{{--                 <span class="mdl-layout-spacer"></span>
-                <button id="shot-more__button" class="mdl-button mdl-js-button mdl-button--icon">
-                  <i class="icon-center mdi mdi-dots-vertical"></i>
-               </button> --}}
                  <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
                     for="shot-more__button">
                   <li class="mdl-menu__item">Some Action</li>

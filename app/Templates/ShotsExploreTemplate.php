@@ -39,8 +39,6 @@ class ShotsExploreTemplate extends AbstractTemplate
 
     public function prepare(View $view, array $parameters)
     {
-
-
         $slug = $parameters['slug'];
         $this->seoMake($slug);
 
@@ -50,24 +48,22 @@ class ShotsExploreTemplate extends AbstractTemplate
 
     protected function seoMake($slug)
     {
-        $slugURL = str_replace('-', ' ', $slug);
 
 
         {
-
-                SEOMeta::setTitle('Latest '.$slugURL.' on MyTailor Africa');
-                SEOMeta::setDescription('Find Latest '. $slugURL .' on MyTailor Africa. From cultural, modern to classic office wears Ankara Weddings and more.');
-                OpenGraph::setDescription('Find Latest '. $slugURL .' on MyTailor Africa. From cultural, modern to classic office wears Ankara Weddings and more.');
-                OpenGraph::setUrl('http://mytailorafrica.com/explore/' . $slugURL);
-                OpenGraph::setTitle($slug);
-                Twitter::setTitle($slug);
+            SEOMeta::setTitle('#'.$slug.' - Arican Fashion Afrodapp');
+            SEOMeta::setDescription('Explore the hashtag #'. $slug .'on Afrodapp. African Fashion trends.');
+            OpenGraph::setDescription('Explore the hashtag #'. $slug .'on Afrodapp. African Fashion trends.');
+            OpenGraph::setUrl('http://www.afrodapp.com/explore/' . $slug);
+            OpenGraph::setTitle($slug);
+            Twitter::setTitle($slug);
         }
 
 
-        SEOMeta::setCanonical('http://mytailorafrica.com/explore/' . $slug);
+        SEOMeta::setCanonical('http://www.afrodapp.com/explore/' . $slug);
         OpenGraph::addProperty('type', 'business.clothing');
         Twitter::setTitle(ucwords($slug));
-        Twitter::setSite('@MyTailor_Africa');
+        Twitter::setSite('@afrodapp');
     }
 
 

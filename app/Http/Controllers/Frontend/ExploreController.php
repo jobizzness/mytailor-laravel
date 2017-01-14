@@ -40,7 +40,7 @@ class ExploreController extends ApiController
         $this->Transformer = $Transformer;
     }
 
-    public function index(Request $request)
+    public function blaa(Request $request)
     {
         $tags = ['men', 'traditional', 'sexy', 'runway'];
 
@@ -69,13 +69,14 @@ class ExploreController extends ApiController
      * @param $slug
      * @return mixed
      */
-    public function show($slug)
+    public function index()
     {
-        $slug = str_replace('-', ' ', $slug);
         $cat = $this->request->get('cat') ?: null;
         $cat = $this->append($cat);
+        $slug = $this->request->get('sort');
 
         $shots = $this->shots->explore($slug, $cat);
+
 
         if(! $shots) {
             //we have no shots sorry.
