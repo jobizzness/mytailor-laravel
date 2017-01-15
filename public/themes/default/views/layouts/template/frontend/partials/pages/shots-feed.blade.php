@@ -34,7 +34,7 @@
         <div style="padding: 10px">
             <!-- description -->
             <div class="shot-description">
-              <p ng-bind-html="shot.title | linkfy:'_blank'"></p>
+              <p ng-bind-html="shot.title | linkfy:'_self'"></p>
             </div>
             <div class="mdl-card__actions" style="padding:0">
               <a ng-click="like(shot.name)" class="material-icons mdl-badge mdl-badge--overlap like-btn2" ng-class="{'red-color': shot.likes.is_liked}"><i class="mdi mdi-heart"></i><span class="count_text">@{{shot.likes.like_count}}</span></a>
