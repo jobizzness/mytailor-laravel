@@ -23,8 +23,6 @@ app.config(function (ngDialogProvider) {
  */
 app.controller("MainController", function($scope, ngDialog, $location) {
 
-    $location.search({id: '92938920', cat:'fm'});
-
     $scope.toggle = false;
     $scope.showForm = false;
 
@@ -53,8 +51,6 @@ app.controller("MainController", function($scope, ngDialog, $location) {
 app.controller("authController", ["$scope",
 
     function($scope, $location) {
-
-        $location.path('/').search({id: '92938920'});
 
         $scope.token = angular.element(document.getElementById('csrf')).val();
 

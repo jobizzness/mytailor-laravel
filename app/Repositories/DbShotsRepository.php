@@ -41,7 +41,7 @@ class DbShotsRepository implements ShotsRepositoryInterface{
          return $this->shots
             ->with('image','comments', 'publishable.profile')
             ->category($cat)
-            ->orderBy('updated_at', 'desc')
+            ->orderBy('created_at', 'desc')
             ->orderBy('views', 'desc')
             ->orderBy('id', 'desc')
             ->where('published', '=', 1)
@@ -58,7 +58,7 @@ class DbShotsRepository implements ShotsRepositoryInterface{
     public function trending($cat){
         return $this->shots
             ->with('image','comments', 'publishable.profile')
-            ->select(\DB::raw( '((views - 1) / (TIMESTAMPDIFF(MINUTE, updated_at, NOW()) + 2)^1.5) as Popularity, shots.*'))
+            ->select(\DB::raw( '((views - 1) / (TIMESTAMPDIFF(MINUTE, created_at, NOW()) + 2)^1.5) as Popularity, shots.*'))
             ->category($cat)
             ->orderBy('Popularity', 'desc')
             ->where('published', '=', 1)
@@ -94,7 +94,7 @@ class DbShotsRepository implements ShotsRepositoryInterface{
         return $this->shots
             ->with('image','comments', 'publishable.profile')
             ->category($cat)
-            ->select(\DB::raw( '((views - 1) / (TIMESTAMPDIFF(MINUTE, updated_at, NOW()) + 2)^1.5) as Popularity, shots.*'))
+            ->select(\DB::raw( '((views - 1) / (TIMESTAMPDIFF(MINUTE, created_at, NOW()) + 2)^1.5) as Popularity, shots.*'))
             ->orderBy('Popularity', 'desc')
             ->where('published', '=', 1)
             ->where('featured', '=', 1)
@@ -178,7 +178,7 @@ class DbShotsRepository implements ShotsRepositoryInterface{
                 $query->where('tags.tag_name', "$tag");
 
         })  ->with('image','comments', 'publishable.profile')
-            ->select(\DB::raw( '((views - 1) / (TIMESTAMPDIFF(HOUR, updated_at, NOW()) + 2)^1.5) as Popularity, shots.*'))
+            ->select(\DB::raw( '((views - 1) / (TIMESTAMPDIFF(HOUR, created_at, NOW()) + 2)^1.5) as Popularity, shots.*'))
             ->category($cat)
             ->orderBy('Popularity', 'desc')
             ->paginate(8);

@@ -40,13 +40,10 @@
               <a ng-click="like(shot.name)" class="material-icons mdl-badge mdl-badge--overlap like-btn2" ng-class="{'red-color': shot.likes.is_liked}"><i class="mdi mdi-heart"></i><span class="count_text">@{{shot.likes.like_count}}</span></a>
 
               <a ng-click="" class="material-icons mdl-badge mdl-badge--overlap"><i class="mdi mdi-comment"></i><span class="count_text"></span></a>
-                 <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
-                    for="shot-more__button">
-                  <li class="mdl-menu__item">Some Action</li>
-                  <li class="mdl-menu__item mdl-menu__item--full-bleed-divider">Another Action</li>
-                  <li disabled class="mdl-menu__item">Disabled Action</li>
-                  <li class="mdl-menu__item">Yet Another Action</li>
-                </ul>
+              <span class="mdl-layout-spacer"></span>
+
+              {{-- Share --}}
+              <a ng-click="like(shot.name)" class="material-icons mdl-badge mdl-badge--overlap like-btn2" ng-class="{'red-color': shot.likes.is_liked}"><i class="mdi mdi-share"></i><span class="count_text">@{{shot.likes.like_count}}</span></a>
             </div>
         </div>
     </div>

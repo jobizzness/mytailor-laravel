@@ -191,8 +191,6 @@ app.config(function (ngDialogProvider) {
          */
         $scope.open = function ($name) {
 
-            if(window.innerWidth < 430){window.location = '/shot/'+$name;return;}
-
             var dialogScope = $scope.$new();
             dialogScope.name = $name;
             history.pushState({}, '', '/shot/'+$name);
@@ -224,6 +222,27 @@ app.config(function (ngDialogProvider) {
             }); //Dialog
     }
 
+        /**
+         * Opens Share Dialog
+         * @param $name
+         */
+        $scope.share = function ($name) {
+
+            var dialogScope = $scope.$new();
+            dialogScope.name = $name;
+
+            ngDialog.open({
+                closeByNavigation: true,
+                cache:false,
+                template: template_path + 'share.html', className: 'mt-share-overlay' ,
+                controller: 'ovalController',
+                scope: dialogScope,
+                preCloseCallback: function() {
+                    return true;
+                }
+            });
+
+        };
 
     }]); //End
 /*
@@ -414,38 +433,162 @@ app.config(function (ngDialogProvider) {
 		}
 
 			]);
-	'use strict';
+/*
+ |--------------------------------------------------------------------------
+ | Shots Controller Class
+ |--------------------------------------------------------------------------
+ |
+ | This is mostly responsible for loading our apps direct methods and
+ | Linking with other classes. So Our app communicates with other modules
+ | through here. If disabled, the app wont be able to do any work.
+ |
+ */
 
-	app.controller("exploreController", ["$scope","shotsFactory","ngDialog",
-        function($scope, shotsFactory, ngDialog) {
+    'use strict';
 
-            $scope.sections = [];
+    app.controller("exploreController", ["$scope", "ngDialog","$window",
+                    "shotsFactory", "$timeout","$filter",
+                    "$log","$Request", "$rootScope",
+        function($scope, ngDialog, $window, shotsFactory, $timeout, $filter, $log, $Request, $rootScope) {
+
+            /**
+             * shots items will be stored here.
+             * @type {Array}
+             */
+            $scope.shots = [];
+
+            /**
+             * For async operations.
+             * @type {boolean}
+             */
             $scope.busy = false;
 
-            // App is done loading
-            $scope.$emit('AppIsLoaded', 'done');
+            /**
+             * Page URL
+             * @type {string}
+             */
+            $scope.after = '/?page=1';
+
+            /**
+             * shots per page
+             * @type {number}
+             */
+            $scope.per_page = 0;
+
+            var pathArray = window.location.pathname.split( '/' );
+
+            var $slug = pathArray[2] ? pathArray[2] : 'trending',
+                $cat = $Request.search('cat') || null,
+                $page = $Request.search('page', $scope.after);
+
+        /*****************************************************************************
+         *
+         * Methods for Event Listeners.
+         *
+         ****************************************************************************/
+
+
+            /**
+             * Subscribe pusher to shotschannel
+             */
+            $rootScope.pusher.subscribe('shotsChannel');
+
+            /**
+             * Icrement Views when a shot is viewed
+             */
+            $rootScope.pusher.bind('shotWasViewed',
+                function(data) {
+                    var $shot = $filter('findByName')($scope.shots, data.name);
+                    if($shot){
+                        $shot.views++;
+                    }
+                }
+            );
+
+            /*****************************************************************************
+             *
+             * Methods to update/refresh the UI
+             *
+             ****************************************************************************/
+            /**
+             * Loads more shots from server
+             */
+            $scope.updateShots = function($repo){
+                if ($scope.busy || !$page) return;
+                if($page==1){
+                    // This is the apps first load
+                    
+                    $scope.$emit('AppIsLoaded', 'done');
+
+                } else{$scope.busy = true;}
+
+                
+                $scope.getShots($repo, {cat: $cat, page:$page,sort:$slug});
+
+                if($page > 1){
+                    ga('send', {
+                        hitType: 'event',
+                        eventCategory: 'PaginatedContent',
+                        eventAction: 'scroll',
+                        eventLabel: 'Load More Shots'
+                    });
+                }
+
+            };
+
+            /**
+             * Like or unlike a shot
+             * @param $name
+             */
+            $scope.like = function($name) {
+                shotsFactory.like($name).then(function(response){
+                    toggleLike($name);
+                });
+            }
+            /*****************************************************************************
+             *
+             * Methods for dealing with the model
+             *
+             ****************************************************************************/
 
             /**
              * gets shots from storage.
              *
              * @param $sort
              */
-            (function($params){
-
-                shotsFactory.explore($params).then(function(response){
-
-                   
-                    var items = response.data;
+            $scope.getShots = function($repo, $params){
+                shotsFactory.index($repo, $params).then(function(response){
+                     console.log(response);
+                    var items = response.data.response.shots.data;
+                    $scope.per_page = $scope.per_page +response.data.per_page;
 
                     angular.forEach(items, function(value, key) {
-                        $scope.sections.push(value.response);
+                        $scope.shots.push(value);
                     });
-
+                    $scope.after = response.data.response.shots['nextPage'];
+                    $page = $Request.search('page', $scope.after);
+                    $scope.busy = false;
                 });
-            })();
+            };
 
+            /**
+             * Toggle like
+             * @param $name
+             * @return {boolean}
+             */
+            var toggleLike = function($name){
+                    $shot = $filter('findByName')($scope.shots, $name);
 
-		}]);
+                  if($shot.likes.is_liked == true){
+                        $shot.likes.like_count--;
+                        return $shot.likes.is_liked = false;
+                  }
+                      $shot.likes.like_count++;
+                      return $shot.likes.is_liked = true;
+            }
+
+            
+        }]);
 
 	'use strict';
 
@@ -739,4 +882,35 @@ app.filter('linkfy',['$filter', '$sce',
         };
     }
 ]);
+/*
+ |--------------------------------------------------------------------------
+ | Application Main Class
+ |--------------------------------------------------------------------------
+ |
+ | This is mostly responsible for loading our apps direct methods and
+ | Linking with other classes. So Our app communicates with other modules
+ | through here. If disabled, the app wont be able to do any work.
+ |
+ */
+
+'use strict';
+app.directive('mtFabSpeedDial', function () {
+	return {
+		restrict:'E',
+		template:
+		'<div>' +
+                '<div>' +
+                    '<button id="@{{shot.id}}"class="mdl-button mdl-js-button mdl-button--icon">' +
+                      '<i class="mdi mdi-share-variant"></i>' +
+                    '</button>' +
+                  '</div>' +
+                '<ul class="share-fab__list">' +
+                  '<li><a ng-click="mtTap" class="mdl-button mdl-js-button mdl-button--icon mdl-button--raised"><i class="mdi mdi-facebook-box"></i></a></li>' +
+                  '<li><a ng-click="mtTap" class="mdl-button mdl-js-button mdl-button--icon mdl-button--raised"><i class="mdi mdi-twitter"></i></a></li>' +
+                  '<li><a ng-click="mtTap" class="mdl-button mdl-js-button mdl-button--icon mdl-button--raised"><i class="mdi mdi-link"></i></a></li>' +
+                 ' <li><a ng-click="mtTap" class="mdl-button mdl-js-button mdl-button--icon mdl-button--raised"><i class="mdi mdi-pinterest"></i></a></li>' +
+                '</ul>' +
+              '</div>'
+	}
+});
 //# sourceMappingURL=frontend.js.map

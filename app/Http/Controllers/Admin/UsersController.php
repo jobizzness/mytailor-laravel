@@ -22,7 +22,8 @@ class UsersController extends Controller  {
      */
     public function index(){
 
-        $users = $this->users->all();
+        dd('wow');
+        //$users = null;
 
         return view('admin.users.index', compact('users'));
 

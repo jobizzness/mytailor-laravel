@@ -167,13 +167,13 @@ class ShotsTemplate extends AbstractTemplate   {
                     OpenGraph::setDescription('Get inspired by top African fashion designers and their amazing styles. comment, like and get engaged.')
                         ->setType('article')
                         ->setTitle('African Fashion Trends on Afrodapp')
-                        ->addImage('https://s3.amazonaws.com/mytailor-v1/uploads/images/facebook_cover.jpg')
+                        ->addImage('https://static1.squarespace.com/static/5346bdbae4b0b4931a2ab884/t/57fa865ae58c6208093d3e29/1476036188467/tash+and+cody.jpeg')
                         ->setUrl($path);
 
                     //Meta tags for twitter
                     Twitter::addValue('card', 'summary_large_image')
                         ->setType('article')
-                        ->addImage('https://s3.amazonaws.com/mytailor-v1/uploads/images/facebook_cover.jpg')
+                        ->addImage('https://static1.squarespace.com/static/5346bdbae4b0b4931a2ab884/t/57fa865ae58c6208093d3e29/1476036188467/tash+and+cody.jpeg')
                         ->setTitle('African Fashion Trends on Afrodapp')
                         ->setDescription('Get inspired by top African fashion designers and their amazing styles. comment, like and get engaged.')
                         ->setUrl($path);

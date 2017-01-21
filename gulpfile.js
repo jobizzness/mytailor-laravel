@@ -79,7 +79,8 @@ elixir.config.publicPath = 'public/themes/default/assets';
                     '../../../public/themes/default/assets/js/factories/frontend/designers.js',
                     '../../../public/themes/default/assets/js/services/frontend/request.js',
 					'../../../public/themes/default/assets/js/filters/findbyname.js',
-					'../../../public/themes/default/assets/js/filters/linkfy.js'
+					'../../../public/themes/default/assets/js/filters/linkfy.js',
+					'../../../public/themes/default/assets/js/directives/mt-fab-speed-dial.js'
 				],		'public/themes/default/assets/js/frontend.js');
 
 		// Backend Scripts

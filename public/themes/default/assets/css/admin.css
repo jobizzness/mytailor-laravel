@@ -592,6 +592,9 @@ a.waves-effect .waves-ripple {
 .bg-blue500 {
   background: #3f51b5; }
 
+.fb-blue {
+  color: #2196F3; }
+
 /*banners*/
 /**
  * MyTailor Banners and viewports
@@ -998,6 +1001,20 @@ button#dropdown > i {
   .comment-btn:hover {
     background: #00BCD4;
     border-color: #00BCD4; }
+
+.share-fab__list {
+  position: absolute;
+  right: 11px;
+  bottom: 50px;
+  z-index: 7; }
+  .share-fab__list .closed {
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(164px); }
+  .share-fab__list li {
+    margin: 8px 0; }
+    .share-fab__list li > a {
+      background-color: #fff; }
 
 /*Texts*/
 /* ==========================================================================

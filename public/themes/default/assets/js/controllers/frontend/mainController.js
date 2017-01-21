@@ -74,8 +74,6 @@
          */
         $scope.open = function ($name) {
 
-            if(window.innerWidth < 430){window.location = '/shot/'+$name;return;}
-
             var dialogScope = $scope.$new();
             dialogScope.name = $name;
             history.pushState({}, '', '/shot/'+$name);
@@ -107,5 +105,26 @@
             }); //Dialog
     }
 
+        /**
+         * Opens Share Dialog
+         * @param $name
+         */
+        $scope.share = function ($name) {
+
+            var dialogScope = $scope.$new();
+            dialogScope.name = $name;
+
+            ngDialog.open({
+                closeByNavigation: true,
+                cache:false,
+                template: template_path + 'share.html', className: 'mt-share-overlay' ,
+                controller: 'ovalController',
+                scope: dialogScope,
+                preCloseCallback: function() {
+                    return true;
+                }
+            });
+
+        };
 
     }]); //End

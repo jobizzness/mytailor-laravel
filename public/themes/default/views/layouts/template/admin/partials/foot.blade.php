@@ -1,7 +1,4 @@
 
-            
-            </div> <!-- Page wrapper ends -->
-
         {{-- Material --}}
         <script src="{{ theme('vendor/material-design-lite/material.min.js') }}"></script>
         {{-- Algolia --}}

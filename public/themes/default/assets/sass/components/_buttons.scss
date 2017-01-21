@@ -346,3 +346,18 @@ button#dropdown>i{
         border-color: #00BCD4;
             }
         }
+.share-fab__list{
+    position: absolute;
+    right: 11px;
+    bottom: 50px;
+    z-index: 7;
+    .closed{
+        z-index: 1;
+        opacity: 0;
+        transform: translateY(164px);
+    }
+    li{
+        margin: 8px 0; 
+        >a{background-color: #fff;}
+    }
+}

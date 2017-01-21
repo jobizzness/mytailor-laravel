@@ -88,7 +88,7 @@ class ShotTemplate extends AbstractTemplate{
             ])->setUrl($url);
 
         //Meta tags for twitter
-        Twitter::addValue('card', 'summary')
+        Twitter::addValue('card', 'summary_large_image')
             ->setType('article')
             ->addImage($shot->image->original)
             ->setTitle($title)
