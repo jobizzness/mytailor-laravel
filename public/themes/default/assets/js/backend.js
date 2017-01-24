@@ -1,6 +1,12 @@
 // Here we declare our ng-app and modules we need
-var app = angular.module('app', ['ngAnimate', 'ngMessages', 'ngSanitize', 'ui.select', 
-								'ngDialog', 'gridshore.c3js.chart']);
+var app = angular.module('app', ['ngAnimate', 
+								'ngMessages', 
+								'ngSanitize', 
+								'ui.select', 
+								'ngDialog', 
+								'gridshore.c3js.chart',
+							 	'ui.tinymce'
+							 ]);
 
 
 var template_path = '/themes/default/views/segments/';
@@ -247,6 +253,30 @@ app.controller("authController", ["$scope",
 
 
 			 }]);
+
+
+})();
+(function () {
+   'use strict';
+
+
+	app.controller("PostsController", function($scope,  $timeout) {
+
+		$scope.createPost = function(){
+			$scope.showForm = true;
+		}
+
+		$scope.tinymceOptions = {
+		    onChange: function(e) {
+		      // put logic here for keypress and cut/paste changes
+		    },
+		    inline: false,
+		    plugins : 'advlist autolink link image lists charmap print preview',
+		    skin: 'lightgray',
+		    theme : 'modern'
+		  };
+
+			 });
 
 
 })();

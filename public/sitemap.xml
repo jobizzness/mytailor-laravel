@@ -1,0 +1,50 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!--
+ created with Free Online Sitemap Generator www.xml-sitemaps.com 
+-->
+<url>
+	<loc>https://www.afrodapp.com/</loc>
+	<changefreq>daily</changefreq>
+	<priority>1.00</priority>
+</url>
+<url>
+	<loc>https://www.afrodapp.com/shots/latest</loc>
+	<priority>0.3</priority>
+	<changefreq>daily</changefreq>
+</url>
+<url>
+	<loc>https://www.afrodapp.com/shots/trending</loc>
+	<priority>0.3</priority>
+	<changefreq>daily</changefreq>
+</url>
+<url>
+	<loc>https://www.afrodapp.com/shots/featured</loc>
+	<priority>0.3</priority>
+	<changefreq>daily</changefreq>
+</url>
+<url>
+	<loc>https://www.afrodapp.com/explore</loc>
+	<priority>0.50</priority>
+	<changefreq>daily</changefreq>
+</url>
+<url>
+	<loc>https://www.afrodapp.com/designers</loc>
+	<priority>0.60</priority>
+	<changefreq>daily</changefreq>
+</url>
+<url>
+	<loc>https://www.afrodapp.com/brands</loc>
+	<priority>0.60</priority>
+	<changefreq>daily</changefreq>
+</url>
+<url>
+	<loc>https://www.afrodapp.com/saves</loc>
+	<priority>0.10</priority>
+	<changefreq>daily</changefreq>
+</url>
+<url>
+	<loc>https://www.afrodapp.com/contact</loc>
+	<priority>0.80</priority>
+	<changefreq>monthly</changefreq>
+</url>
+</urlset>

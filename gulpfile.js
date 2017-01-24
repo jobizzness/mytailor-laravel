@@ -91,6 +91,7 @@ elixir.config.publicPath = 'public/themes/default/assets';
 					'../../../public/themes/default/assets/js/controllers/backend/shotsController.js',
 					'../../../public/themes/default/assets/js/controllers/backend/pagesController.js',
 					'../../../public/themes/default/assets/js/controllers/backend/dashboardController.js',
+					'../../../public/themes/default/assets/js/controllers/backend/postsController.js',
 					'../../../public/themes/default/assets/js/factories/backend/shot.js',
 					'../../../public/themes/default/assets/js/factories/backend/pages.js',
 					'../../../public/themes/default/assets/js/factories/backend/analytics.js'

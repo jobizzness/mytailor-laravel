@@ -31,14 +31,12 @@ class CategoryTemplate extends AbstractTemplate   {
 
         $cat = $this->request->segment(2);
 
-        $path = $this->request->fullUrl();
-
-        $this->seoMake($cat, $path);
-        $view->with('res', 'categories');
+        $this->seoMake($cat);
+        $view->with('resource', 'explore');
 
     }
 
-    protected function seoMake($cat, $path)
+    protected function seoMake($cat)
     {
 
         // African dresses - Dashiki shirts, Anakara, modern dresses for women
@@ -46,86 +44,95 @@ class CategoryTemplate extends AbstractTemplate   {
             case 'women':
 
                 //Meta for google
-                SEOMeta::setTitle('Women - Dashiki, Anakara, kitenge styles')
-                    ->setDescription('African Fashion Dresses ladies, Ankara styles, Nigerian, Ghanaian styles. Choose your best fit on MytailorAfrica— Discover more')
-                    ->setCanonical('https://mytailorafrica.com/categories/women');
+                SEOMeta::setTitle('Women - Afrodapp')
+                    ->setDescription('Elegant African Dresses For Ladies, Latest Ankara Styles Prints for women. Casual, Office Wears, Prom Wedding Dresses on Afrodapp. — Discover More.
+                        ')
+                    ->setCanonical('https://www.afrodapp.com/categories/women');
 
                 //OpenGraph for facebook
-                OpenGraph::setDescription('African Fashion Dresses ladies, Ankara styles, Nigerian, Ghanaian styles. Choose your best fit on MytailorAfrica— Discover more')
+                OpenGraph::setDescription('Elegant African Dresses For Ladies, Latest Ankara Styles Prints for women. Casual, Office Wears, Prom Wedding Dresses on Afrodapp. — Discover More.
+                    ')
                     ->setType('article')
-                    ->setTitle('Women - Dashiki, Anakara, kitenge styles')
+                    ->setTitle('Beautiful African Women Dresses From Top African Designers')
                     ->addImage('https://s-media-cache-ak0.pinimg.com/200x150/b3/62/bd/b362bd94480261dbc6ee6be9a80ebac2.jpg')
-                    ->setUrl('https://mytailorafrica.com/categories/women');
+                    ->setUrl('https://www.afrodapp.com/categories/women');
 
                 //Meta tags for twitter
                 Twitter::addValue('card', 'summary_large_image')
                     ->setType('article')
                     ->addImage('https://s-media-cache-ak0.pinimg.com/200x150/b3/62/bd/b362bd94480261dbc6ee6be9a80ebac2.jpg')
-                    ->setTitle('Women - Dashiki, Anakara, kitenge styles')
-                    ->setDescription('African Fashion Dresses ladies, Ankara styles, Nigerian, Ghanaian styles. Choose your best fit on MytailorAfrica— Discover more')
-                    ->setUrl('https://mytailorafrica.com/categories/women');
+                    ->setTitle('Beautiful African Women Dresses From Top African Designers')
+                    ->setDescription('Elegant African Dresses For Ladies, Latest Ankara Styles Prints for women. Casual, Office Wears, Prom Wedding Dresses on Afrodapp. — Discover More.
+                        ')
+                    ->setUrl('https://www.afrodapp.com/categories/women');
 
                 break;
             case 'men':
 
                 //Meta for google
-                SEOMeta::setTitle('Men - Dashiki, Anakara, kitenge styles')
-                    ->setDescription('African clothing for men, Ankara styles, Nigerian, Ghanaian styles. Blazers, Shirts, Kente on MytailorAfrica— Discover more. ')
-                    ->setCanonical('https://mytailorafrica.com/categories/men');
+                SEOMeta::setTitle('Men - Afrodapp')
+                    ->setDescription('African Clothing For Men, Ankara Styles, Nigerian, Ghanaian Styles. Blazers, Shirts, Kente On Afrodapp — Discover more. 
+                        ')
+                    ->setCanonical('https://www.afrodapp.com/categories/men');
 
                 //OpenGraph for facebook
-                OpenGraph::setDescription('African clothing for men, Ankara styles, Nigerian, Ghanaian styles. Blazers, Shirts, Kente on MytailorAfrica— Discover more. ')
+                OpenGraph::setDescription('African Clothing For Men, Ankara Styles, Nigerian, Ghanaian Styles. Blazers, Shirts, Kente On Afrodapp — Discover more.
+                    ')
                     ->setType('article')
-                    ->setTitle('Men - Dashiki, Anakara, kitenge styles')
+                    ->setTitle('Top African Men Clothing You Need To See')
                     ->addImage('https://s-media-cache-ak0.pinimg.com/200x150/b3/62/bd/b362bd94480261dbc6ee6be9a80ebac2.jpg')
-                    ->setUrl('https://mytailorafrica.com/categories/men');
+                    ->setUrl('https://www.afrodapp.com/categories/men');
 
                 //Meta tags for twitter
                 Twitter::addValue('card', 'summary_large_image')
                     ->setType('article')
                     ->addImage('https://s-media-cache-ak0.pinimg.com/200x150/b3/62/bd/b362bd94480261dbc6ee6be9a80ebac2.jpg')
-                    ->setTitle('Men - Dashiki, Anakara, kitenge styles')
-                    ->setDescription('African clothing for men, Ankara styles, Nigerian, Ghanaian styles. Blazers, Shirts, Kente on MytailorAfrica— Discover more. ')
-                    ->setUrl('https://mytailorafrica.com/categories/men');
+                    ->setTitle('Top African Men Clothing You Need To See')
+                    ->setDescription('
+                        African Clothing For Men, Ankara Styles, Nigerian, Ghanaian Styles. Blazers, Shirts, Kente On Afrodapp — Discover more.')
+                    ->setUrl('https://www.afrodapp.com/categories/men');
 
 
                 break;
             case 'couples':
 
                 //Meta for google
-                SEOMeta::setTitle('Couples - Dashiki, Anakara, kitenge styles')
-                    ->setDescription('African clothing for couples, wedding dresses south african styles. prom dresses on MytailorAfrica— Discover more. ')
-                    ->setCanonical('https://mytailorafrica.com/categories/couples');
+                SEOMeta::setTitle('Couple - Afrodapp')
+                    ->setDescription('Couple Wears African Wedding Dresses South African Styles. Prom Dresses On Afrodapp — Discover more. ')
+                    ->setCanonical('https://www.afrodapp.com/categories/couples');
 
                 //OpenGraph for facebook
-                OpenGraph::setDescription('African clothing for couples, wedding dresses south african styles. prom dresses on MytailorAfrica— Discover more. ')
+                OpenGraph::setDescription('Couple Wears African Wedding Dresses South African Styles. Prom Dresses On Afrodapp — Discover more. ')
                     ->setType('article')
                     ->setTitle('Couples - Dashiki, Anakara, kitenge styles')
                     ->addImage('https://s-media-cache-ak0.pinimg.com/200x150/b3/62/bd/b362bd94480261dbc6ee6be9a80ebac2.jpg')
-                    ->setUrl('https://mytailorafrica.com/categories/couples');
+                    ->setUrl('https://www.afrodapp.com/categories/couples');
 
                 //Meta tags for twitter
                 Twitter::addValue('card', 'summary_large_image')
                     ->setType('article')
                     ->addImage('https://s-media-cache-ak0.pinimg.com/200x150/b3/62/bd/b362bd94480261dbc6ee6be9a80ebac2.jpg')
                     ->setTitle('Couples - Dashiki, Anakara, kitenge styles')
-                    ->setDescription('African clothing for couples, wedding dresses south african styles. prom dresses on MytailorAfrica— Discover more. ')
-                    ->setUrl('https://mytailorafrica.com/categories/couples');
+                    ->setDescription('Couple Wears African Wedding Dresses South African Styles. Prom Dresses On Afrodapp — Discover more. ')
+                    ->setUrl('https://www.afrodapp.com/categories/couples');
 
                 break;
             case 'kids':
 
                 //Meta for google
-                SEOMeta::setTitle('Kids - Dashiki, Anakara, kitenge styles')
-                    ->setDescription('African clothing for couples, wedding dresses south african styles. prom dresses on MytailorAfrica— Discover more. ')
-                    ->setCanonical('https://mytailorafrica.com/categories/kids');
+                SEOMeta::setTitle('Kids - Afrodapp')
+                    ->setDescription('Ankara Clothes For Kids On Afrodapp. Top Styles From The Best African Designers,
+                        African Prints.
+                        ')
+                    ->setCanonical('https://www.afrodapp.com/categories/kids');
 
                 //OpenGraph for facebook
-                OpenGraph::setDescription('African clothing for couples, wedding dresses south african styles. prom dresses on MytailorAfrica— Discover more. ')
+                OpenGraph::setDescription('Ankara Clothes For Kids On Afrodapp. Top Styles From The Best African Designers,African Prints.
+                    ')
                     ->setType('article')
                     ->setTitle('Kids - Dashiki, Anakara, kitenge styles')
                     ->addImage('https://s-media-cache-ak0.pinimg.com/200x150/b3/62/bd/b362bd94480261dbc6ee6be9a80ebac2.jpg')
-                    ->setUrl('https://mytailorafrica.com/categories/kids');
+                    ->setUrl('https://www.afrodapp.com/categories/kids');
 
                 //Meta tags for twitter
                 Twitter::addValue('card', 'summary_large_image')
@@ -133,53 +140,33 @@ class CategoryTemplate extends AbstractTemplate   {
                     ->addImage('https://s-media-cache-ak0.pinimg.com/200x150/b3/62/bd/b362bd94480261dbc6ee6be9a80ebac2.jpg')
                     ->setTitle('Kids - Dashiki, Anakara, kitenge styles')
                     ->setDescription('African clothing for couples, wedding dresses south african styles. prom dresses on MytailorAfrica— Discover more. ')
-                    ->setUrl('https://mytailorafrica.com/categories/kids');
-
-                break;
-            case 'accessories':
-
-                //Meta for google
-                SEOMeta::setTitle('Accessories - Shoes, bangles, jewelry')
-                    ->setDescription('Shoes, bangles, jewelry African Fashion Prints accessories on MytailorAfrica— Discover more. ')
-                    ->setCanonical('https://mytailorafrica.com/categories/accessories');
-
-                //OpenGraph for facebook
-                OpenGraph::setDescription('Shoes, bangles, jewelry African Fashion Prints accessories on MytailorAfrica— Discover more. ')
-                    ->setType('article')
-                    ->setTitle('Accessories - Shoes, bangles, jewelry')
-                    ->addImage('https://s-media-cache-ak0.pinimg.com/200x150/b3/62/bd/b362bd94480261dbc6ee6be9a80ebac2.jpg')
-                    ->setUrl('https://mytailorafrica.com/categories/accessories');
-
-                //Meta tags for twitter
-                Twitter::addValue('card', 'summary_large_image')
-                    ->setType('article')
-                    ->addImage('https://s-media-cache-ak0.pinimg.com/200x150/b3/62/bd/b362bd94480261dbc6ee6be9a80ebac2.jpg')
-                    ->setTitle('Accessories - Shoes, bangles, jewelry')
-                    ->setDescription('Shoes, bangles, jewelry African Fashion Prints accessories on MytailorAfrica— Discover more. ')
-                    ->setUrl('https://mytailorafrica.com/categories/accessories');
+                    ->setUrl('https://www.afrodapp.com/categories/kids');
 
                 break;
             Default:
 
                 //Meta for google
-                SEOMeta::setTitle('African Fashion Inspirations on MyTailorAfrica')
-                    ->setDescription('Get inspired by top African fashion designers and their amazing styles. comment, like and get engaged.')
-                    ->setCanonical($path);
+                SEOMeta::setTitle('Accessories - Afrodapp')
+                    ->setDescription('Shoes, bangles, jewelry African Fashion Prints accessories on Afrodapp Discover more. ')
+                    ->setCanonical('https://www.afrodapp.com/categories/accessories');
 
                 //OpenGraph for facebook
-                OpenGraph::setDescription('Get inspired by top African fashion designers and their amazing styles. comment, like and get engaged.')
+                OpenGraph::setDescription('Shoes, bangles, jewelry African Fashion Prints accessories on Afrodapp — Discover more. ')
                     ->setType('article')
-                    ->setTitle('African Fashion Inspirations on MyTailorAfrica')
+                    ->setTitle('Accessories - Shoes, bangles, jewelry')
                     ->addImage('https://s-media-cache-ak0.pinimg.com/200x150/b3/62/bd/b362bd94480261dbc6ee6be9a80ebac2.jpg')
-                    ->setUrl($path);
+                    ->setUrl('https://www.afrodapp.com/categories/accessories');
 
                 //Meta tags for twitter
                 Twitter::addValue('card', 'summary_large_image')
                     ->setType('article')
                     ->addImage('https://s-media-cache-ak0.pinimg.com/200x150/b3/62/bd/b362bd94480261dbc6ee6be9a80ebac2.jpg')
-                    ->setTitle('African Fashion Inspirations on MyTailorAfrica')
-                    ->setDescription('Get inspired by top African fashion designers and their amazing styles. comment, like and get engaged.')
-                    ->setUrl($path);
+                    ->setTitle('Accessories - Shoes, bangles, jewelry')
+                    ->setDescription('Shoes, bangles, jewelry African Fashion Prints accessories on Afrodapp — Discover more. ')
+                    ->setUrl('https://www.afrodapp.com/categories/accessories');
+
+
+
 
         }
 

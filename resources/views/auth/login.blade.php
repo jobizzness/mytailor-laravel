@@ -5,47 +5,67 @@
 
 @section('main')
 
-<link rel="stylesheet" type="text/css" href="{{theme('css/register.css')}}">
-
-        <section class="mdl-grid mdl-card mdl-shadow--2dp" style="width: 720px;margin-top: 5em;">
-            <div class="mdl-cell mdl-cell--6-col" style="background-image: url('https://s-media-cache-ak0.pinimg.com/564x/b8/76/01/b876015c44544117880fe41f539cf649.jpg');margin: -8px;background-size: cover;">
+<section class="main_layout" style="background-color: #ff4081">
+    <div class="">
+            <div class="logo-wrap">
+                    <a href="https://www.afrodapp.com"><span class="mt-logo__icon">Afrodapp</span></a>
+                    <h1 class="logo_text">Afrodapp</h1>
             </div>
-                {{-- Form --}}
-            <div class="mdl-cell mdl-cell--6-col" style="margin-left: 30px;">
-                <div style="margin:30px auto 0;position:relative;width:55px;">
-                    <img src="/images/logo.png" alt="afrodapp-logo" style="width: 100%;">
-                </div>
-                <div>
-                    <p style="text-align: center;color: #000;font-size: 16px;margin-top: 10px;font-weight: 600;">Afrodapp</p>
-                </div>
-                <form method="post">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" name="email" type="text" id="username" />
-                        <label class="mdl-textfield__label" for="username">Email</label>
-                    </div>
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" name="password" type="password" id="userpass" />
-                        <label class="mdl-textfield__label" for="userpass">Password</label>
-                    </div>
-                    <div class="mdl-card__actions">
-                        <center>
-                            {{-- Facebook --}}
-                            <a href="/login/facebook" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent btn-lg" style="background-color: #3b5998;height: 50px;margin-bottom: 30px;    line-height: 49px;">
-                                <span style="margin-right: 10px;">
-                                    <img src="https://www.facebook.com/rsrc.php/v3/yo/r/jVG1f1GslU7.png" alt="" width="31" height="31"></span><span>Login with Facebook</span>
-                            </a>
 
-                            <p class="AlternativesSeparator" style="margin-bottom:10px;overflow:hidden;text-align:center;color:#000;font-weight:bold;" data-reactid="33">or</p>
+            <div class="">
+                <form action="/login?remember=true" class="login_form" method="POST">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="email" id="email" name="email">
+                    <label class="mdl-textfield__label" for="email">Username or Email</label>
+                  </div>
+                  <input type="hidden" name="_token"value="{{csrf_token()}}"></input>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="password" id="pass" name="password">
+                    <label class="mdl-textfield__label" for="pass">Password</label>
+                  </div>
 
-                            <!-- Accent-colored raised button with ripple -->
-                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent btn-lg" style="background-color:#FB4164">
-                              Continue
-                            </button>
-                            <input type="hidden" class="hidden" name="_token" value="{{ csrf_token() }}">
-                        </center>
-                    </div>
-                </form> 
+                  <div class="form_actions">
+                    <div style="color: rgba(255, 255, 255, 0.66);"><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
+                      <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input" checked>
+                      <span class="mdl-checkbox__label">Remember</span>
+                    </label></div>
+                    <a href="/auth/reset" id="forget-pass">Forgot Password?</a>
+                  </div>
+                  <div class="login_button">
+                        <!-- Accent-colored raised button with ripple -->
+                      <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
+                         <i class="material-icons">chevron_right</i>
+                      </button>
+                  </div>
+
+                </form>     
             </div>
-        </section>
+        </div>
+</section>
+                
+<div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
+  <div class="mdl-snackbar__text"></div>
+  <button class="mdl-snackbar__action" type="button"></button>
+</div>
 
+<script>
+(function() {
+  'use strict';
+  var snackbarContainer = document.querySelector('#demo-snackbar-example');
+  console.log(snackbarContainer);
+    var data = {
+      message: 'Oh No ! Sorry we found errors',
+      timeout: 2000,
+      actionHandler: function(event) {},
+      actionText: 'Undo'
+    };
+
+    <?php
+     if(count($errors) > 0){
+      ?>
+        snackbarContainer.MaterialSnackbar.showSnackbar(data);
+        <?php } ?>
+
+}());
+</script>
 @endsection

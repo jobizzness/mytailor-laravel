@@ -12,6 +12,7 @@
     "ng-file-upload-shim": "^12.2.9",
     "angular-slick-carousel": "^3.1.7",
     "ngmap": "^1.17.8",
-    "angular-socialshare": "^1.4.5"
+    "angular-socialshare": "^1.4.5",
+    "angular-ui-tinymce": "^0.0.18"
   }
 }

@@ -13,6 +13,18 @@
 |
 */
 
+Route::get('/auth/reset', [
+		'uses' => 'Auth\PasswordController@getEmail',
+		'as'   => 'auth.login'
+]);
+Route::post('/auth/reset', [
+		'uses' => 'Auth\PasswordController@postEmail',
+		'as'   => 'auth.login'
+]);
+Route::get('/register', [
+		'uses' => 'Auth\AuthController@getRegister',
+		'as'   => 'auth.login'
+]);
 Route::get('/login', [
 		'uses' => 'Auth\AuthController@getLogin',
 		'as'   => 'auth.login'
@@ -64,6 +76,7 @@ Route::resource('admin/pages', 'Admin\PagesController');
 Route::resource('admin/users', 'Admin\UsersController');
 Route::resource('admin/shots', 'Admin\ShotsController');
 Route::resource('admin/tags', 'Admin\TagsController');
+Route::resource('admin/blog', 'Admin\BlogController');
 
 
 
@@ -100,7 +113,11 @@ Route::group(['prefix' => 'api/v1'], function () {
 	Route::resource('explore','Frontend\ExploreController');
 	Route::resource('designers', 'Frontend\DesignersController');
 	Route::resource('collections', 'Frontend\CollectionController');
+	Route::resource('blog', 'Frontend\BlogController');
 
+	Route::post('/login', [
+			'uses'=>'Frontend\CollectionController@login']
+	);
 
 	Route::post('/shots/{id}/like',  [
 					'as' => 'shot',

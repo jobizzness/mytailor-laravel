@@ -98,6 +98,18 @@ class AuthController extends Controller
      * @param Request $request
      * @return Redirect user.
      */
+    public function getRegister(Request $request)
+    {
+
+        return view('auth.register');
+    }
+
+    /**
+     * Registers a new user.
+     *
+     * @param Request $request
+     * @return Redirect user.
+     */
     public function postRegister(Request $request)
     {
         $this->register($request);
