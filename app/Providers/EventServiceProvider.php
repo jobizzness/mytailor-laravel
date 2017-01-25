@@ -13,8 +13,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'auth.login' => [
-            'MyTailor\Listeners\UpdateLastLoginOnLogin',
+        'Illuminate\Auth\Events\Login' => [
+            'MyTailor\Listeners\Users\UpdateLastLoginOnLogin',
         ],
     ];
 
@@ -37,7 +37,7 @@ class EventServiceProvider extends ServiceProvider
     public function register()
     {
 
-        $this->app['events']->listen('MyTailor.Modules.Shots.Events.ShotWasPosted', 'MyTailor\Listeners\Shots\GenerateShotColors');
+        ///$this->app['events']->listen('MyTailor.Modules.Shots.Events.ShotWasPosted', 'MyTailor\Listeners\Shots\GenerateShotColors');
         $this->app['events']->listen('MyTailor.Modules.Shots.Events.ShotWasViewed', 'MyTailor\Listeners\Shots\IncrementDomViews');
     }
 }

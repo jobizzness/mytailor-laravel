@@ -1,11 +1,5 @@
 <?php
 
-
-
-//Event::listen('MyTailor.Modules.Shots.Events.ShotWasPosted', function($event){
-//	dd($event);
-//});
-
 /*
 |--------------------------------------------------------------------------
 | Authentication Routes

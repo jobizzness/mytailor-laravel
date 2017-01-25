@@ -75,17 +75,16 @@ class ShotsController extends Controller    {
 
 
         $file = $request->file('files')[0];
-        $publishable_id = $request->only('publishable_id');
-        $publishable_type = $request->only('publishable_type');
+        $publishable_id = Auth::user()->id;
+        $publishable_type = 'MyTailor\Brand';
         $published_by = Auth::user()->id;
 
         // Upload the image and Add a new Shot
         $command = new PostShotCommand($publishable_type, $publishable_id, $published_by, $file);
-        $this->commandBus->execute($command);
+        return $this->commandBus->execute($command);
 
-        return true;
     }
-    
+
 
     /**
      * @param $id
@@ -135,14 +134,19 @@ class ShotsController extends Controller    {
 
     /**
      * @param $id
+     * @param ImageServer $imageServer
      * @return string
      */
-    public function destroy($id){
+    public function destroy($id, ImageServer $imageServer){
 
         $shot = $this->shots->findOrFail($id);
 
         if($shot){
-            dd($shot);
+            //Delete Images
+            $imageServer->delete($id);
+            //$shot->delete();
+
+
         }
         //Find the shot with ID
         //If Found Delete the images

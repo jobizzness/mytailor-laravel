@@ -18,7 +18,7 @@ class User extends Authenticatable
      */
     protected $fillable = ['name', 'email', 'password'];
 
-
+    protected $dates = ['last_login_at'];
     /**
      * Attributes that are hidden from the model.
      *

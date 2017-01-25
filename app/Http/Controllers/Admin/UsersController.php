@@ -22,8 +22,7 @@ class UsersController extends Controller  {
      */
     public function index(){
 
-        dd('wow');
-        //$users = null;
+        $users = $this->users->with('profile', 'roles')->paginate(10);
 
         return view('admin.users.index', compact('users'));
 

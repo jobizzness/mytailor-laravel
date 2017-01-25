@@ -2,6 +2,8 @@
 
 
 use Laracasts\Commander\CommandHandler;
+use MyTailor\Brand;
+use MyTailor\Modules\Core\Images\ImageServer;
 use MyTailor\Repositories\ShotsRepositoryInterface;
 use Laracasts\Commander\Events\DispatchableTrait;
 
@@ -17,8 +19,9 @@ class PostShotCommandHandler implements CommandHandler {
      * PostShotCommandHandler constructor.
      *
      * @param ShotsRepositoryInterface $shots
+     * @param ImageServer $imageServer
      */
-    public function __construct(ShotsRepositoryInterface $shots)
+    public function __construct(ShotsRepositoryInterface $shots, ImageServer $imageServer)
     {
 
         $this->shots = $shots;
@@ -30,22 +33,54 @@ class PostShotCommandHandler implements CommandHandler {
      */
     public function handle($command)
     {
+        $validated = $this->validateUser($command);
 
-        // if Auth user in no user then it must be a brand or spam
-        // if user type is not brand then Respond with error
+        if($validated){
 
-        // If user type is brand then check if user has permission
+            $image = $this->imageServer->upload($command->file);
 
-        //if they do then upload the file
-
-//        $image = $imageServer->upload($file);
-
+            $shot = $this->shots->post($command->publishable_type, $command->publishable_id,
+                $command->published_by, $image);
 
 
-        $shot = $this->shots->post($command->publishable_type, $command->publishable_id, $command->published_by, $command->image);
+            $this->dispatchEventsFor($shot);
+        }
 
-        $this->dispatchEventsFor($shot);
+        return false;
+    }
 
+    /**
+     * Checks if Its a user or a Brand
+     *
+     * @param $command
+     * @return bool
+     */
+    private function validateUser($command)
+    {
+        if($command->publishable_id != $command->published_by){
+
+            // Hmm does this user have permission to post as the brand
+            return $this->userHasPermission($command->publishable_id, $command->published_by);
+
+        }
+
+        return false;
+    }
+
+    /**
+     * @param $publishable_id
+     * @param $published_by
+     * @return bool
+     */
+    private function userHasPermission($publishable_id, $published_by)
+    {
+       $brand = Brand::find($publishable_id);
+
+        if($brand){
+           return $brand->checkUserHasPermissions($published_by);
+        }
+
+        return false;
     }
 
 

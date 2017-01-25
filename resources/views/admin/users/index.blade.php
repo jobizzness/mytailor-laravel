@@ -52,12 +52,13 @@
                 </thead>
                 <tbody>
                 @forelse($users as $user)
+                
                     <tr>
-                        <td class="mdl-data-table__cell--non-numeric"><a href="#">{{$user->name}}</a></td>
-                        <td class="mdl-data-table__cell--non-numeric"></td>
+                        <td class="mdl-data-table__cell--non-numeric"><a href="#">{{$user->profile->username}}</a></td>
+                        <td class="mdl-data-table__cell--non-numeric">{{$user->present()->fullName()}}</td>
                         <td class="mdl-data-table__cell--non-numeric">{{$user->email}}</td>
-                        <td class="mdl-data-table__cell--non-numeric">Admin</td>
-                        <td class="mdl-data-table__cell--non-numeric">{{$user->present()->last_seen() or 'Never'}}</td>
+                        <td class="mdl-data-table__cell--non-numeric">{{$user->present()->role()}}</td>
+                        <td class="mdl-data-table__cell--non-numeric">{{$user->present()->last_seen()}}</td>
                         <td class="mdl-data-table__cell--non-numeric"><a href="#" id="e{{$user->id}}"><i class="mdi mdi-pencil"></i></a>
                             <div class="mdl-tooltip" for="e{{$user->id}}">Edit</div>
                         </td>
