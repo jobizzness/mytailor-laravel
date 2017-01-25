@@ -6,22 +6,23 @@ class PostShotCommand
     public $published_by;
     public $publishable_type;
     public $publishable_id;
-    public $image;
+    public $file;
 
 
     /**
      * PostShotCommand constructor.
      *
-     * @param $published_by
      * @param $publishable_type
      * @param $publishable_id
+     * @param $published_by
+     * @param $file
      */
-    public function __construct($publishable_type, $publishable_id, $published_by, $image)
+    public function __construct($publishable_type, $publishable_id, $published_by, $file)
     {
 
         $this->published_by = $published_by;
         $this->publishable_type = $publishable_type;
         $this->publishable_id = $publishable_id;
-        $this->image = $image;
+        $this->image = $file;
     }
 }

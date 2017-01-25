@@ -40,7 +40,8 @@
 				</form>		
 			</div>
 			<div class="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--2dp pad-1">
-					<h5 class="title">Find us</h5>
+					<h5 class="title">Contact Detail</h5>
+					<p>We are excited to hear from you. Please contact Afrodapp by sending us an email or filling the contact form. We will get back to you as soon as possible.</p>
 					<ul class="contact-link-icons">
 						<li>
 							<a href="#" class="darken-3">

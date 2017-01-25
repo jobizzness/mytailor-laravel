@@ -7473,6 +7473,39 @@ a.mt-sidebar-link {
 .profile--wrapper {
   margin-top: 16px; }
 
+.explore-item {
+  min-height: 500px;
+  position: relative;
+  padding: 5px; }
+  .explore-item > figure {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background: transparent;
+    border-radius: 3px; }
+    .explore-item > figure figcaption {
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-pack: end;
+      justify-content: flex-end;
+      -ms-flex-align: start;
+      align-items: flex-start;
+      height: 100%;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      padding: 2em; }
+      .explore-item > figure figcaption h3 {
+        font-size: 20px;
+        color: rgba(255, 255, 255, 0.81);
+        margin: 0;
+        line-height: 24px; }
+      .explore-item > figure figcaption p {
+        color: rgba(255, 255, 255, 0.81);
+        margin: 8px 0;
+        text-transform: capitalize;
+        font-size: 14px;
+        line-height: 22px; }
+
 /*Call to action section*/
 .mt-call-actions {
   padding: 25px 0;

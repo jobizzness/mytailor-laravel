@@ -30,8 +30,9 @@ class ContactTemplate  extends AbstractTemplate
      */
     private function seoMake()
     {
-        $title = 'Contact Us | Afrodapp';
-        $description = '';
+        $title = 'Contact - Afrodapp';
+        $description = 'Contact Afrodapp. We can\'t wait for you to need something. We are always ready to help
+        you attain your goals. Let us know how we can improve - Discover African Fashion';
         $url = 'https://www.afrodapp.com/contact';
 
         //Basic Meta Tags

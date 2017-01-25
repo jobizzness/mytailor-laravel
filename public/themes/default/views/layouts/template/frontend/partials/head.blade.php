@@ -31,6 +31,14 @@
 
     <!-- Color the status bar on mobile devices -->
     <meta name="theme-color" content="#e1e1e1">
+
+    {{--  Redirect To Mobile If Window size is less then 770 --}}
+    <script type="text/javascript">
+        if(window.innerWidth < 770){
+            window.location = "https://afrodapp-623d4.firebaseapp.com" + window.location.pathname;
+        }
+    </script>
+
     <!-- Seo Generate -->
     {!! SEOMeta::generate() !!}
     {!! OpenGraph::generate() !!}

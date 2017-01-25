@@ -25,8 +25,72 @@
         </div>
     </div>
 </section>
+<section>
+  <div class="mdl-grid mdl-grid--no-spacing">
+        {{-- Explore Items Here --}}
+        <div class="mdl-cell mdl-cell--3-col explore-item">
+          <figure style="background-image:url('https://s-media-cache-ak0.pinimg.com/564x/e9/45/b5/e945b5affb8a8de41df35c6957329d3d.jpg');">
+              <a href="/categories/men">
+                  <figcaption>
+                    <h3>Men</h3>
+                    <p>Explore latest dresses for  that will make you go crazy, i mean you def omg.</p>
+                  </figcaption>
+            </a>
+            </figure>
+        </div>
+        <div class="mdl-cell mdl-cell--3-col explore-item">
+          <figure style="background-image:url('https://s-media-cache-ak0.pinimg.com/564x/87/d4/e9/87d4e99fcac3500713c47e7fb542bbf8.jpg');">
+              <a href="/explore/ankara">
+                  <figcaption>
+                    <h3>Ankara</h3>
+                    <p>Explore latest dresses you go crazy, i mean you def need to wear this one omg.</p>
+                  </figcaption>
+            </a>
+            </figure>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col explore-item">
+          <figure style="background-image:url('https://static1.squarespace.com/static/5346bdbae4b0b4931a2ab884/t/57fa865ae58c6208093d3e29/1476036188467/tash+and+cody.jpeg?format=1500w');">
+              <a href="/categories/women">
+                  <figcaption>
+                    <h3>Women</h3>
+                    <p>Explore latest dresses for women ankara prints that will make you go crazy, i mean you def need to wear this one omg.</p>
+                  </figcaption>
+            </a>
+            </figure>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col explore-item">
+          <figure style="background-image:url('https://static1.squarespace.com/static/5346bdbae4b0b4931a2ab884/t/57fa865ae58c6208093d3e29/1476036188467/tash+and+cody.jpeg?format=1500w');">
+              <a href="#">
+                  <figcaption>
+                    <h3>Women</h3>
+                    <p>Explore latest dresses for women ankara prints that will make you go crazy, i mean you def need to wear this one omg.</p>
+                  </figcaption>
+            </a>
+            </figure>
+        </div>
+        <div class="mdl-cell mdl-cell--3-col explore-item">
+          <figure style="background-image:url('https://s-media-cache-ak0.pinimg.com/564x/2f/fd/90/2ffd904eba627e28222af614b1c184ef.jpg');">
+              <a href="/categories/accessories">
+                  <figcaption>
+                    <h3>Accessories</h3>
+                    <p>Explore latest dresses for  that will make you go crazy, i mean you def omg.</p>
+                  </figcaption>
+            </a>
+            </figure>
+        </div>
+        <div class="mdl-cell mdl-cell--3-col explore-item">
+          <figure style="background-image:url('https://s3.amazonaws.com/mytailor-v1/uploads/shots/original/b8/c6/c8/mt_b8c6c84e06c348a5b30780e24371ef87.jpg');">
+              <a href="/categories/couples">
+                  <figcaption>
+                    <h3>Couples</h3>
+                    <p>Explore latest dresses you go crazy, i mean you def need to wear this one omg.</p>
+                  </figcaption>
+            </a>
+            </figure>
+        </div>
 
-    @include('layouts.template.frontend.partials.explore-feed')
+</div>
+</section>
 
 
 @section('page_scripts')

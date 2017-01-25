@@ -434,3 +434,44 @@ a.mt-sidebar-link{
 .profile--wrapper{
   margin-top: 16px; 
 }
+
+.explore-item{
+    min-height: 500px;
+    position: relative;
+    padding: 5px;
+
+    >figure{
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+        background: transparent; 
+        border-radius: 3px;
+
+        figcaption{
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-pack: end;
+            justify-content: flex-end;
+            -ms-flex-align: start;
+            align-items: flex-start;
+            height: 100%;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            padding: 2em;
+
+            h3{
+                font-size: 20px;
+                color: rgba(255, 255, 255, 0.81);
+                margin: 0;
+                line-height: 24px;
+            }
+            p {
+                color: rgba(255, 255, 255, 0.81);
+                margin: 8px 0;
+                text-transform: capitalize;
+                font-size: 14px;
+                line-height: 22px;
+            }
+        }
+    }
+}

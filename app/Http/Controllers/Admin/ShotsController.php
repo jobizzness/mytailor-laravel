@@ -69,58 +69,23 @@ class ShotsController extends Controller    {
     /**
      * save a new shot
      * @param Request $request
-     * @param ImageServer $imageServer
-     * @internal param UploadServer $uploadServer
      * @return bool
      */
-    public function store(Request $request, ImageServer $imageServer) {
+    public function store(Request $request) {
+
 
         $file = $request->file('files')[0];
-
-        $image = $imageServer->upload($file);
-
-        $publishable_type = 'MyTailor\\Brand';
-        $publishable_id = 1;
+        $publishable_id = $request->only('publishable_id');
+        $publishable_type = $request->only('publishable_type');
         $published_by = Auth::user()->id;
 
-
-        $command = new PostShotCommand($publishable_type, $publishable_id, $published_by, $image);
+        // Upload the image and Add a new Shot
+        $command = new PostShotCommand($publishable_type, $publishable_id, $published_by, $file);
         $this->commandBus->execute($command);
 
         return true;
     }
-
-    /*
-     * Temporaly for bulk actions
-     */
-//    public function clean(ImageServerProd $imageServer)
-//    {
-//        $shots = Shot::where('published', '!=', 1)->get();
-//
-//        foreach($shots as $shot)
-//        {
-//
-//            dd($shots);
-//
-//            // Delete the image
-//            $status = $imageServer->delete([
-//                    $shot->image()->large,
-//                    $shot->image()->medium,
-//                    $shot->image()->original,
-//                    $shot->image()->phone,
-//                    $shot->image()->small
-//            ]);
-//
-//            if($status){
-//
-//                $shot->image()->delete();
-//                $shot->delete();
-//                //Delete the shot and its image
-//
-//            }
-//
-//        }
-//    }
+    
 
     /**
      * @param $id
@@ -174,7 +139,15 @@ class ShotsController extends Controller    {
      */
     public function destroy($id){
 
-        
+        $shot = $this->shots->findOrFail($id);
+
+        if($shot){
+            dd($shot);
+        }
+        //Find the shot with ID
+        //If Found Delete the images
+        //Delete The Shot
+
     }
 
     /**
