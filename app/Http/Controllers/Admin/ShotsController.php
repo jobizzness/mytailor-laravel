@@ -140,22 +140,19 @@ class ShotsController extends Controller    {
     public function destroy($id, ImageServer $imageServer){
 
 
-        $shot = $this->shots->findOrFail($id);
+        $shot = $this->shots->where('name', $id);
 
         if($shot){
 
             $shot->image();
 
             $images = [$shot->image->original, $shot->image->phone, $shot->image->medium, $shot->image->large];
-            //Delete Images
+
             $imageServer->delete($id, $images);
             //$shot->delete();
 
 
         }
-        //Find the shot with ID
-        //If Found Delete the images
-        //Delete The Shot
 
     }
 
