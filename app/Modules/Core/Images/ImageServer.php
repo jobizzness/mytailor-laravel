@@ -73,27 +73,22 @@ class ImageServer {
     }
 
 
+
     public function uploadFromUrl($url)
     {
 
     }
 
     /**
-     * @param $name
+     * @param array $images
      * @return bool
      */
-    public function delete($name)
+    public function delete(array $images = [])
     {
-        $this->name = $name;
-        $this->generateDirectory();
 
-        $versions = Config::get('assets.images.versions');
+        foreach($images as $image) {
 
-        foreach($versions as $name => $version) {
-
-            $path = $this->baseDir . '/' . $name . $this->Directory . '/';
-
-            return $this->filesystem->delete($path);
+            return $this->filesystem->delete($image);
 
         }
     }

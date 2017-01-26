@@ -49,12 +49,6 @@ Route::get('/login/{provider?}',[
 
 
 //Form to upload shots
-Route::get('admin/shots/bulk', [
-		'uses' => 'Admin\ShotsController@clean'
-]);
-
-
-//Form to upload shots
 Route::get('admin/shots/upload', [
 		'as' => 'shots.upload',
 		'uses' => 'Admin\ShotsController@create'
