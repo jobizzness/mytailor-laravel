@@ -40,7 +40,7 @@ class PostShotCommandHandler implements CommandHandler {
     {
         $validated = $this->validateUser($command);
 
-       // if($validated){
+        if($validated){
 
             $image = $this->imageServer->upload($command->image);
 
@@ -49,9 +49,9 @@ class PostShotCommandHandler implements CommandHandler {
 
 
             $this->dispatchEventsFor($shot);
-        //}
+        }
 
-       // return false;
+        return false;
     }
 
     /**
@@ -62,6 +62,7 @@ class PostShotCommandHandler implements CommandHandler {
      */
     private function validateUser($command)
     {
+        return true;
         if($command->publishable_id != $command->published_by){
 
             // Hmm does this user have permission to post as the brand

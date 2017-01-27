@@ -63,7 +63,6 @@ class ImageServer {
      */
     public function upload(UploadedFile $file)
     {
-        dd('herhe');
         $fileName = $file->getClientOriginalName();
 
         $this->generateName($fileName)
