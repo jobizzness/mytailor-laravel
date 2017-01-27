@@ -140,7 +140,7 @@ class ShotsController extends Controller    {
     public function destroy($id, ImageServer $imageServer){
 
 
-        $shot = $this->shots->where('name', $id);
+        $shot = $this->shots->where('name', $id)->first();
 
         if($shot){
 
