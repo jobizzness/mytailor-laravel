@@ -14,6 +14,10 @@ class PostShotCommandHandler implements CommandHandler {
      * @var ShotsRepositoryInterface
      */
     private $shots;
+    /**
+     * @var ImageServer
+     */
+    private $imageServer;
 
     /**
      * PostShotCommandHandler constructor.
@@ -25,6 +29,7 @@ class PostShotCommandHandler implements CommandHandler {
     {
 
         $this->shots = $shots;
+        $this->imageServer = $imageServer;
     }
     /**
      * Post a shot and release events
