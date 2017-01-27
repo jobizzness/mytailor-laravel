@@ -45,9 +45,9 @@ class ShotsController extends Controller    {
 
         $query = $request->get('q');
         $shots = $query ? Shot::search($query)->paginate(15)
-                : $this->shots->with('image')
-                        ->where('image_id', '!=', 0)
-                        ->orderBy('shots.created_at', 'desc')->paginate(15);
+            : $this->shots->with('image')
+                ->where('image_id', '!=', 0)
+                ->orderBy('shots.created_at', 'desc')->paginate(15);
 
         //also send along tags
         $tags = Tag::lists('id', 'tag_name');
@@ -92,10 +92,10 @@ class ShotsController extends Controller    {
      */
     public function show($id) {
 
-         $shot = Shot::with('tags')->where(
-             'id', '=', $id)->first();
+        $shot = Shot::with('tags')->where(
+            'id', '=', $id)->first();
 
-         return $shot;
+        return $shot;
 
     }
 
@@ -140,16 +140,14 @@ class ShotsController extends Controller    {
     public function destroy($id, ImageServer $imageServer){
 
 
-        $shot = $this->shots->where('name', $id)->first();
+        $shot = $this->shots->where('file_name', $id)->first();
 
         if($shot){
 
-            $shot->image();
-
             $images = [$shot->image->original, $shot->image->phone, $shot->image->medium, $shot->image->large];
 
-            $imageServer->delete($id, $images);
-            //$shot->delete();
+            $imageServer->delete($images);
+            $shot->delete();
 
 
         }

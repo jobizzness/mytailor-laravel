@@ -35,18 +35,18 @@ class PostShotCommandHandler implements CommandHandler {
     {
         $validated = $this->validateUser($command);
 
-        if($validated){
+       // if($validated){
 
-            $image = $this->imageServer->upload($command->file);
+            $image = $this->imageServer->upload($command->image);
 
             $shot = $this->shots->post($command->publishable_type, $command->publishable_id,
                 $command->published_by, $image);
 
 
             $this->dispatchEventsFor($shot);
-        }
+        //}
 
-        return false;
+       // return false;
     }
 
     /**

@@ -63,11 +63,12 @@ class ImageServer {
      */
     public function upload(UploadedFile $file)
     {
+        dd('herhe');
         $fileName = $file->getClientOriginalName();
 
         $this->generateName($fileName)
-             ->generateDirectory()
-             ->makeVersions($file->getRealPath());
+            ->generateDirectory()
+            ->makeVersions($file->getRealPath());
 
         return $this;
     }
@@ -83,12 +84,13 @@ class ImageServer {
      * @param array $images
      * @return bool
      */
-    public function delete(array $images = [])
+    public function delete($images = [])
     {
 
         foreach($images as $image) {
 
-            return $this->filesystem->delete($image);
+            $image = substr($image, 37);
+            $this->filesystem->delete($image);
 
         }
     }
@@ -100,6 +102,7 @@ class ImageServer {
      */
     public function makeVersions($file)
     {
+
         $versions = Config::get('assets.images.versions');
 
         foreach($versions as $name => $version){
@@ -220,9 +223,9 @@ class ImageServer {
      */
     private function getHeight($version)
     {
-            if(array_key_exists('height', $version)){
-               return $version['height'];
-            }
+        if(array_key_exists('height', $version)){
+            return $version['height'];
+        }
         return null;
     }
 

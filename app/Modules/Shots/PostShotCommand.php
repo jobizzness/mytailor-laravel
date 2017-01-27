@@ -6,7 +6,7 @@ class PostShotCommand
     public $published_by;
     public $publishable_type;
     public $publishable_id;
-    public $file;
+    public $image;
 
 
     /**

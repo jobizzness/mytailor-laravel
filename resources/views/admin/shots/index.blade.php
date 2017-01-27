@@ -45,7 +45,7 @@
                       <div class="shot-item mdl-cell mdl-cell--4-col">
                          <a ng-click="show({{$shot->id}})">
                           <figure class="">
-                             <img src="{{$shot->image->medium}}">
+                             <img src="{{$shot->image->original}}">
                           </figure>
                          </a>ss
                       </div>
