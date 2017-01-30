@@ -54,7 +54,7 @@ class CollectionTemplate extends AbstractTemplate
     {
         $title = ucfirst($collection->slug);
         $description = strtok($collection->description, ".").'.';
-        $url = 'https://mytailorafrica.com/collections/'.$collection->slug;
+        $url = 'https://afrodapp.com/collections/'.$collection->slug;
 
         //Basic Meta Tags
         SEOMeta::setTitle($title)
@@ -82,7 +82,7 @@ class CollectionTemplate extends AbstractTemplate
             ->setTitle($title)
             ->setDescription($description)
             ->setUrl($url)
-            ->setSite('@MyTailor_Africa');
+            ->setSite('@afrodapp');
 
     }
 
