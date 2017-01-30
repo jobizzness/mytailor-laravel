@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="657023bf-231f-4b50-a0d6-45ddd5d5ba3a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/templates/collection.blade.php" afterPath="$PROJECT_DIR$/resources/views/templates/collection.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Templates/CollectionTemplate.php" afterPath="$PROJECT_DIR$/app/Templates/CollectionTemplate.php" />
     </list>
     <ignored path="mytailor.dev.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,24 +39,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CollectionTemplate.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CollectionTemplate.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Templates/CollectionTemplate.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="78" column="31" selection-start-line="78" selection-start-column="31" selection-end-line="78" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.57755774">
+              <caret line="55" column="73" selection-start-line="55" selection-start-column="73" selection-end-line="55" selection-end-column="73" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="collection.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="collection.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/templates/collection.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.62376237">
-              <caret line="21" column="64" selection-start-line="21" selection-start-column="64" selection-end-line="21" selection-end-column="64" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="22" column="64" selection-start-line="22" selection-start-column="64" selection-end-line="22" selection-end-column="64" />
               <folding>
                 <element signature="e#302#356#0#HTML" expanded="true" />
-                <element signature="e#937#972#0#HTML" expanded="true" />
+                <element signature="e#966#1001#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -138,8 +138,8 @@
         <option value="$PROJECT_DIR$/tests/functional/SignInCept.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Frontend/CollectionsController.php" />
-        <option value="$PROJECT_DIR$/app/Templates/CollectionTemplate.php" />
         <option value="$PROJECT_DIR$/resources/views/templates/collection.blade.php" />
+        <option value="$PROJECT_DIR$/app/Templates/CollectionTemplate.php" />
       </list>
     </option>
   </component>
@@ -914,22 +914,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Templates/CollectionTemplate.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/templates/collection.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="78" column="31" selection-start-line="78" selection-start-column="31" selection-end-line="78" selection-end-column="31" />
-          <folding />
+          <caret line="22" column="64" selection-start-line="22" selection-start-column="64" selection-end-line="22" selection-end-column="64" />
+          <folding>
+            <element signature="e#302#356#0#HTML" expanded="true" />
+            <element signature="e#966#1001#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/templates/collection.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Templates/CollectionTemplate.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.62376237">
-          <caret line="21" column="64" selection-start-line="21" selection-start-column="64" selection-end-line="21" selection-end-column="64" />
-          <folding>
-            <element signature="e#302#356#0#HTML" expanded="true" />
-            <element signature="e#937#972#0#HTML" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.57755774">
+          <caret line="55" column="73" selection-start-line="55" selection-start-column="73" selection-end-line="55" selection-end-column="73" />
+          <folding />
         </state>
       </provider>
     </entry>

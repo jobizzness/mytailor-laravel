@@ -53,7 +53,7 @@ class CollectionTemplate extends AbstractTemplate
     protected function seoMake(Collection $collection)
     {
         $title = ucwords($collection->title);
-        $description = strtok($collection->description, ".").'.';
+        $description = ucwords(strtok($collection->description, ".").'.');
         $url = 'https://afrodapp.com/collections/'.$collection->slug;
         $image = $collection->image;
 

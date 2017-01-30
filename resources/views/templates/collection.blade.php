@@ -3,7 +3,7 @@
 @section('header_type', 'just-main')
 
 <section class="pad-1">
-  <div class="mdl-grid mdl-grid--no-spacing mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
+  <div class="mdl-grid mdl-grid--no-spacing mdl-cell mdl-cell--12-col mdl-card card-shadow">
       <div class="mdl-card__media mdl-cell mdl-cell--12-col-tablet card-media">
           <div class="article-image" style="background-image:url('{{$collection->image}}')" alt="{{$collection->title}}"></div>
       </div>
@@ -20,7 +20,9 @@
           <h1 class="mdl-card__title-text padding-top" style="text-transform: capitalize;">{{$collection->title}}</h1>
           <div class="mdl-card__supporting-text no-left-padding">
               <p class="article__text" ng-bind-html="'{{addslashes($collection->description)}}' | linkfy:'_blank'"></p>
-              <span>Category: <a href="#">Women, Dresses, Latest</a></span>
+          </div>
+          <div style="padding-bottom: 30px">
+            <span>Category: <a href="#">Women, Dresses, Latest</a></span>
           </div>
       </div>
   </div>
