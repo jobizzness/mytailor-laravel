@@ -52,6 +52,12 @@ class CollectionsController extends ApiController
         //means we have shots so lets send them through.
         return $this->respond([
             'response' => [
+                'collection' => [
+                  'title' => $collection->title,
+                  'description' => $collection->description,
+                  'slug' => $collection->slug,
+                    'time' =>$collection->published_at
+                ],
                 'shots' => [
                     'data' => $this->Transformer->transformCollection($collection->shots),
                     'nextPage' => $collection->shots->nextPageUrl()

@@ -21,7 +21,7 @@
           <div class="mdl-card__supporting-text no-left-padding">
               <p class="article__text" ng-bind-html="'{{addslashes($collection->description)}}' | linkfy:'_blank'"></p>
           </div>
-          <div style="padding-bottom: 30px">
+          <div style="padding-bottom: 30px" class="mdl-card__supporting-text">
             <span>Category: <a href="#">Women, Dresses, Latest</a></span>
           </div>
       </div>

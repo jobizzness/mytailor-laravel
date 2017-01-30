@@ -93,6 +93,13 @@ Route::group(['prefix' => 'admin/api'], function () {
 |
 */
 Route::group(['prefix' => 'api/v1'], function () {
+
+	header('Access-Control-Allow-Origin: https://afrodapp-623d4.firebaseapp.com, http://localhost:3000');  //I have also tried the * wildcard and get the same response
+	header("Access-Control-Allow-Credentials: true");
+	header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
+	header('Access-Control-Max-Age: 1000');
+	header('Access-Control-Allow-Headers: Content-Type, Content-Range, Content-Disposition, Content-Description');
+
 	/**
 	 * Frontend Api Routes
 	 */
