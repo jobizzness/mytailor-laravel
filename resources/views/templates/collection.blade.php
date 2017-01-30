@@ -17,7 +17,7 @@
               </div>
           </div>
           
-          <h2 class="mdl-card__title-text padding-top" style="text-transform: capitalize;">{{$collection->slug}}</h2>
+          <h2 class="mdl-card__title-text padding-top" style="text-transform: capitalize;">{{$collection->title}}</h2>
           <div class="mdl-card__supporting-text no-left-padding">
               <p style="padding-bottom: 16px;" ng-bind-html="'{{$collection->description}}' | linkfy:'_blank'"></p>
               <span>Category: <a href="#">Women, Dresses, Latest</a></span>
