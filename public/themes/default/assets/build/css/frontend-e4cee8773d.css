@@ -6206,7 +6206,13 @@ p.attract-me {
   color: #fe7faa;
   margin: 15px 0;
   display: block;
-  font-size: 12px; }
+  font-size: 14px; }
+
+.article__text {
+  padding-bottom: 16px;
+  color: #8b8b8b;
+  font-size: 15px;
+  line-height: 23px; }
 
 /*responsive*/
 #avatar ~ .mdl-menu__container {
@@ -7961,6 +7967,12 @@ figure.shot-cover.--profile__feed {
 
 .upload-wrapper {
   padding: 3em 0; }
+
+.article-image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat; }
 
 /*Animate*/
 .__visible {

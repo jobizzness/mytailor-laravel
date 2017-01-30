@@ -5,7 +5,7 @@
 <section class="pad-1">
   <div class="mdl-grid mdl-grid--no-spacing mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
       <div class="mdl-card__media mdl-cell mdl-cell--12-col-tablet card-media">
-          <img class="article-image" src="{{$collection->image}}" border="0" alt="">
+          <div class="article-image" style="background-image:url('{{$collection->image}}')"></div>
       </div>
       <div class="mdl-cell mdl-cell--8-col">
           <div class="mdl-card__supporting-text padding-top">
@@ -19,7 +19,7 @@
           
           <h2 class="mdl-card__title-text padding-top" style="text-transform: capitalize;">{{$collection->title}}</h2>
           <div class="mdl-card__supporting-text no-left-padding">
-              <p style="padding-bottom: 16px;" ng-bind-html="'{{$collection->description}}' | linkfy:'_blank'"></p>
+              <p class="article__text" ng-bind-html="'{{addslashes($collection->description)}}' | linkfy:'_blank'"></p>
               <span>Category: <a href="#">Women, Dresses, Latest</a></span>
           </div>
       </div>
