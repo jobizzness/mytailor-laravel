@@ -52,9 +52,10 @@ class CollectionTemplate extends AbstractTemplate
      */
     protected function seoMake(Collection $collection)
     {
-        $title = ucfirst($collection->slug);
+        $title = ucwords($collection->title);
         $description = strtok($collection->description, ".").'.';
         $url = 'https://afrodapp.com/collections/'.$collection->slug;
+        $image = $collection->image;
 
         //Basic Meta Tags
         SEOMeta::setTitle($title)
@@ -68,7 +69,7 @@ class CollectionTemplate extends AbstractTemplate
         OpenGraph::setTitle($title)
             ->setDescription($description)
             ->setType('article')
-            ->addImage('')
+            ->addImage($image)
             ->setArticle([
                 'published_time' => 'datetime',
                 'section' => 'category',
@@ -78,7 +79,7 @@ class CollectionTemplate extends AbstractTemplate
         //Meta tags for twitter
         Twitter::addValue('card', 'summary_large_image')
             ->setType('article')
-            ->addImage('')
+            ->addImage($image)
             ->setTitle($title)
             ->setDescription($description)
             ->setUrl($url)

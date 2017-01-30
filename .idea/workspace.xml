@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="657023bf-231f-4b50-a0d6-45ddd5d5ba3a" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Templates/CollectionTemplate.php" afterPath="$PROJECT_DIR$/app/Templates/CollectionTemplate.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/templates/collection.blade.php" afterPath="$PROJECT_DIR$/resources/views/templates/collection.blade.php" />
     </list>
     <ignored path="mytailor.dev.iws" />
@@ -39,23 +40,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CollectionTemplate.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CollectionTemplate.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Templates/CollectionTemplate.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5066007">
-              <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="78" column="31" selection-start-line="78" selection-start-column="31" selection-end-line="78" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="collection.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="collection.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/templates/collection.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="26" column="10" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
+            <state vertical-scroll-proportion="0.20792079">
+              <caret line="7" column="82" selection-start-line="7" selection-start-column="82" selection-end-line="7" selection-end-column="82" />
               <folding>
-                <element signature="e#1065#1100#0#HTML" expanded="true" />
+                <element signature="e#923#958#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -137,8 +138,8 @@
         <option value="$PROJECT_DIR$/tests/functional/SignInCept.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Frontend/CollectionsController.php" />
-        <option value="$PROJECT_DIR$/resources/views/templates/collection.blade.php" />
         <option value="$PROJECT_DIR$/app/Templates/CollectionTemplate.php" />
+        <option value="$PROJECT_DIR$/resources/views/templates/collection.blade.php" />
       </list>
     </option>
   </component>
@@ -913,21 +914,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/templates/collection.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Templates/CollectionTemplate.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="10" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
-          <folding>
-            <element signature="e#1065#1100#0#HTML" expanded="true" />
-          </folding>
+          <caret line="78" column="31" selection-start-line="78" selection-start-column="31" selection-end-line="78" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Templates/CollectionTemplate.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/templates/collection.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5066007">
-          <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.20792079">
+          <caret line="7" column="82" selection-start-line="7" selection-start-column="82" selection-end-line="7" selection-end-column="82" />
+          <folding>
+            <element signature="e#923#958#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

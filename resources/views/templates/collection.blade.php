@@ -5,7 +5,7 @@
 <section class="pad-1">
   <div class="mdl-grid mdl-grid--no-spacing mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
       <div class="mdl-card__media mdl-cell mdl-cell--12-col-tablet card-media">
-          <img class="article-image" src="https://s3.amazonaws.com/mytailor-v1/uploads/images/covers/collections/{{str_replace(' ', '-', $collection->slug).'/'.str_replace(' ', '-', $collection->slug)}}.png" border="0" alt="">
+          <img class="article-image" src="{{$collection->image}}" border="0" alt="">
       </div>
       <div class="mdl-cell mdl-cell--8-col">
           <div class="mdl-card__supporting-text padding-top">
