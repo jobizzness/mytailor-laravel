@@ -95,13 +95,17 @@
         /**
          * Open Shot Poster Dialog
          */
-       $scope.showShotPoster = function(){
+       $scope.uploadShot = function(file){
 
+            var shotScope = $scope.$new();
+            shotScope.file = file;
+            
             ngDialog.open({
                 closeByNavigation: true,
                 cache:false,
                 template: template_path + 'shot-upload.html', className: 'mt-large-overlay' ,
-                controller: 'shotsController'
+                controller: 'ShotUploadCtrl',
+                scope:shotScope
             }); //Dialog
     }
 

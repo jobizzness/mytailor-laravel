@@ -25,7 +25,7 @@ class post extends Model
     }
 
     public function publisher(){
-    	return $this->belongsTo(User::class);
+    	return $this->belongsTo(User::class, 'author_id');
     }
     //
 }

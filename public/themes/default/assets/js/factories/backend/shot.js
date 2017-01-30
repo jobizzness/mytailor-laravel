@@ -17,6 +17,10 @@
 				return $http.delete('/admin/shots/' + name);
 			};
 
+			this.create = function(post){
+				return $http.post('/admin/blog', post);
+			};
+
 			return this;
 	}]);
 

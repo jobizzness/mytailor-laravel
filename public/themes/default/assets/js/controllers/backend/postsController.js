@@ -2,9 +2,10 @@
    'use strict';
 
 
-	app.controller("PostsController", function($scope,  $timeout) {
+	app.controller("PostsController", function($scope,  $timeout, shotFactory) {
 
-		$scope.createPost = function(){
+
+		$scope.showpostForm = function(){
 			$scope.showForm = true;
 		}
 
@@ -17,6 +18,25 @@
 		    skin: 'lightgray',
 		    theme : 'modern'
 		  };
+
+		  /**
+             * Updates a shot and responds with a snackbar.
+             *
+             */
+			$scope.createPost = function(){
+				shotFactory.create($scope.post).then(function(response){
+    				var responseData = response.data;
+					  
+					  	var snackbarContainer = document.querySelector('#demo-snackbar-example');
+					    var data = {
+					      			message: responseData,
+					      			timeout: 2000,
+					      			actionText: 'Undo'
+					    		};
+					    snackbarContainer.MaterialSnackbar.showSnackbar(data);
+			 	});
+			 };
+
 
 			 });
 

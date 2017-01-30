@@ -16,7 +16,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['first_name','last_name', 'email', 'password'];
 
     protected $dates = ['last_login_at'];
     /**
@@ -143,23 +143,24 @@ class User extends Authenticatable
      * registers the user and raise event.
      *
      * @param $userData
-     * @param $role
      * @return User
      */
-    public static function register($userData, $role=4)
+    public static function register($userData)
     {
+
         $profile = new Profile();
-        $profile->avatar = $userData->avatar;
-        $profile->display_name = $userData->name;
-        $profile->username = $userData->username;
+        $profile->display_name = $userData->first_name. ' ' . $userData->last_name;
+        //$profile->username = $userData->username;
         $profile->save();
 
         $user = new User();
+        $user->first_name = $userData->first_name;
+        $user->last_name = $userData->last_name;
         $user->email = $userData->email;
         $user->password = bcrypt($userData->password);
         $user->profile_id = $profile->id;
         $user->save();
-        $user->assignRole($role);
+        $user->assignRole($userData->roleID);
 
 
         $user->raise(new UserRegistered($user));

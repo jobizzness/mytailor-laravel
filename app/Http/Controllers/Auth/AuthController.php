@@ -14,6 +14,7 @@ class AuthController extends Controller
 {
 
     use AuthenticatesUsers;
+
     /**
      * Where to redirect users after login / registration.
      *
@@ -92,6 +93,12 @@ class AuthController extends Controller
         return $this->login($request);
     }
 
+
+    public function username()
+    {
+        return 'username';
+    }
+
     /**
      * Registers a new user.
      *
@@ -137,4 +144,5 @@ class AuthController extends Controller
 
         return redirect('/');
     }
+
 }

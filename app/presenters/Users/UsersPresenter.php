@@ -20,8 +20,9 @@ class UsersPresenter extends Presenter
 
     public function role()
     {
-        if($this->roles){
-            return $this->roles->first()->name;
+        $role = $this->roles->first();
+        if($role){
+            return $role->name;
         }
 
         return 'BUGGY';

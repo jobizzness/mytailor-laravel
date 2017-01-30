@@ -35,7 +35,7 @@
                     <a class="mdl-navigation__link" href="">Managers</a>
                 </nav>
             </div>
-            <a ng-click="createPost()" class="btn bluegreen">Create</a>
+            <a ng-click="showpostForm()" class="btn bluegreen">Create</a>
             <table class="mdl-data-table mdl-js-data-table mt-fullwidth-table mdl-data-table--selectable">
                 <thead>
                 <tr>
@@ -73,44 +73,39 @@
     </div>
 
     {{-- Form --}}
-    <div class="mt-portlet-wrapper mt-card mdl-cell mdl-cell--12-col-desktop" ng-show="showForm" ng-cloak> 
+    <div class="mt-portlet-wrapper mdl-cell mdl-cell--12-col-desktop mdl-grid" ng-show="showForm" ng-cloak> 
+        <section class="mdl-grid mdl-cell mdl-cell--8-col-desktop mt-card">
 
-        <form ng-submit="doIt()" novalidate class="post_form">
+            <form ng-submit="createPost()" novalidate style="width: 100%">
 
-                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" ng-mo>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
                     <input class="mdl-textfield__input" type="text" id="title" ng-model="post.title">
                     <label class="mdl-textfield__label" for="title">Title</label>
-                  </div>
+                </div>
 
 
-                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
                     <input class="mdl-textfield__input" type="text" id="slug" ng-model="post.slug">
                     <label class="mdl-textfield__label" for="slug">Slug</label>
-                  </div>
+                </div>
 
-                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
                     <input class="mdl-textfield__input" type="date" id="published_at" ng-model="post.published_at">
                     <label class="mdl-textfield__label" for="published_at">Published At</label>
-                  </div>
+                </div>
+                      
+                <textarea class="tinyMCE" ui-tinymce="tinymceOptions" ng-model="post.excerpt" type="text" ></textarea>
+                <textarea class="tinyMCE" ui-tinymce="tinymceOptions" type="text" ng-model="post.body"></textarea>
+                      
 
-                  <div class="mdl-textfield mdl-js-textfield" style="width: 100%;">
-                    <textarea class="mdl-textfield__input" ui-tinymce="tinymceOptions" ng-model="post.excerpt" type="text" rows="6" id="excerpt" ></textarea>
-                    <label class="mdl-textfield__label" for="excerpt">Excerpt</label>
-                  </div>
+                <div class="login_button mdl-cell mdl-cell--12-col">
+                    <!-- Accent-colored raised button with ripple -->
+                  <button class="mdl-button mdl-js-button" type="submin">Create New Post</button>
+                </div>
 
-                  <div class="mdl-textfield mdl-js-textfield" style="width: 100%;">
-                    <textarea class="mdl-textfield__input" type="text" rows="6" id="body" ng-model="post.body"></textarea>
-                    <label class="mdl-textfield__label" for="body">Body</label>
-                  </div>
-
-                  <div class="login_button">
-                        <!-- Accent-colored raised button with ripple -->
-                      <button class="mdl-button mdl-js-button  mdl-button--mini-fab">
-                         Create New Post
-                      </button>
-                  </div>
-
-                </form>     
+                    </form>
+        </section>
+                <section class="mdl-cell mdl-cell--4-col-desktop mt-card"></section>     
     </div>
 
 @endsection

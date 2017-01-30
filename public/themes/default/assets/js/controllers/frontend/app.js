@@ -95,7 +95,7 @@
  */
 var app = angular.module('app', ['ngAnimate', 'ngMessages', 'ngSanitize', 'ui.select',
                                 'ngDialog', 'angularGrid', 'pusher-angular', 
-                                'slickCarousel','ngMap']);
+                                'slickCarousel','ngMap', 'ngFileUpload']);
 
 /**
  * Path to {Angular} Templates

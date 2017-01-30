@@ -1,11 +1,42 @@
-<div class="mt-upload-wrapper">
-	<section>
-		<div>
-			<h1>Add photos here</h1> 
-			<!-- Colored FAB button with ripple -->
-			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-			  <i class="mdi mdi-plus"></i>
-			</button>
-		</div>
+	<section class="upload-wrapper flex-center">
+	<!-- Shot Template -->
+    <div class="mt-shot card-shadow preview_card" ng-cloak>
+
+        <!-- The header -->
+          <header class="mt-shot-header clearfix">
+            <section>
+              <span class="mdl-layout-spacer"></span>
+              <a href="#" 
+                  class="mt-shot-avatar" 
+                  title="@{{shot.owner.display_name}}"
+                  >
+                 <h2 class="mt-avatar-name">Jobizzness Watumad</h2>
+                 <img height="30" width="30" ng-src="https://graph.facebook.com/v2.6/10208235267337485/picture?type=normal">
+              </a>
+            </section>
+          </header>
+
+          <figure class="figure-overlay light">
+            <a class="mt-grid___link">
+                <div class="mt-image-holder">
+                    <img ng-src="{{image}}">
+                </div>
+            </a>
+          </figure>
+    </div>
+    <span class="mdl-layout-spacer"></span>
+          <!-- Notes -->
+        <div style="padding: 10px">
+            <!-- description -->
+
+				  <div>
+					    <textarea class="mt-comment__input" 
+					    			contentEditable="true"
+					    			placeholder="Say something about this photo !" 
+					    			id="sample5" 
+					    			ng-model="description">
+					    </textarea>
+				  </div>	
+
+        </div>
 	</section>
-</div>

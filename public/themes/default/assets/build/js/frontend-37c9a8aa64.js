@@ -95,7 +95,7 @@
  */
 var app = angular.module('app', ['ngAnimate', 'ngMessages', 'ngSanitize', 'ui.select',
                                 'ngDialog', 'angularGrid', 'pusher-angular', 
-                                'slickCarousel','ngMap']);
+                                'slickCarousel','ngMap', 'ngFileUpload']);
 
 /**
  * Path to {Angular} Templates
@@ -212,13 +212,17 @@ app.config(function (ngDialogProvider) {
         /**
          * Open Shot Poster Dialog
          */
-       $scope.showShotPoster = function(){
+       $scope.uploadShot = function(file){
 
+            var shotScope = $scope.$new();
+            shotScope.file = file;
+            
             ngDialog.open({
                 closeByNavigation: true,
                 cache:false,
                 template: template_path + 'shot-upload.html', className: 'mt-large-overlay' ,
-                controller: 'shotsController'
+                controller: 'ShotUploadCtrl',
+                scope:shotScope
             }); //Dialog
     }
 
@@ -433,6 +437,41 @@ app.config(function (ngDialogProvider) {
 		}
 
 			]);
+
+app.controller("ShotUploadCtrl", ['$scope', 'imageUploader', 'fileReader', function($scope, imageUploader, fileReader) {
+
+	        $scope.progress = 0;
+
+	        fileReader.readAsDataUrl($scope.file, $scope).then(function(result) {
+	                $scope.image = result;
+	        });
+
+	        $scope.storeShot = function(){
+	        	imageUploader.store($scope.file)
+	        }
+
+			            //Display the file
+            //Wait for user to trigger send
+            //Store
+	}]);
+
+app.directive("ngFileSelect",function(){
+
+  return {
+    link: function($scope,el){
+      
+      el.bind("change", function(e){
+      
+        $scope.file = (e.srcElement || e.target).files[0];
+        $scope.getFile();
+      })
+      
+    }
+    
+  }
+  
+  
+});
 /*
  |--------------------------------------------------------------------------
  | Shots Controller Class
@@ -845,6 +884,85 @@ app.service('$Request', function () {
             return this;
 
 });
+
+app.service('imageUploader', function () {
+	
+            this.store = function(file){
+                if (file) {
+                    file.upload = Upload.upload({
+                        url: 'https://angular-file-upload-cors-srv.appspot.com/upload',
+                        data: {file: file}
+                    });
+
+                    file.upload.then(function (response) {
+                       
+                            file.result = response.data;
+
+                    }, function (response) {
+                        if (response.status > 0)
+                            $scope.errorMsg = response.status + ': ' + response.data;
+                    }, function (evt) {
+                        file.progress = Math.min(100, parseInt(100.0 * 
+                                                 evt.loaded / evt.total));
+                    });
+                }   
+            }
+
+            return this;
+
+});
+app.service('fileReader', function ($q, $log) {
+     
+ 
+        var onLoad = function(reader, deferred, scope) {
+            return function () {
+                scope.$apply(function () {
+                    deferred.resolve(reader.result);
+                });
+            };
+        };
+ 
+        var onError = function (reader, deferred, scope) {
+            return function () {
+                scope.$apply(function () {
+                    deferred.reject(reader.result);
+                });
+            };
+        };
+ 
+        var onProgress = function(reader, scope) {
+            return function (event) {
+                scope.$broadcast("fileProgress",
+                    {
+                        total: event.total,
+                        loaded: event.loaded
+                    });
+            };
+        };
+ 
+        var getReader = function(deferred, scope) {
+            var reader = new FileReader();
+            reader.onload = onLoad(reader, deferred, scope);
+            reader.onerror = onError(reader, deferred, scope);
+            reader.onprogress = onProgress(reader, scope);
+            return reader;
+        };
+ 
+        var readAsDataURL = function (file, scope) {
+            var deferred = $q.defer();
+             
+            var reader = getReader(deferred, scope);         
+            reader.readAsDataURL(file);
+             
+            return deferred.promise;
+        };
+ 
+        return {
+            readAsDataUrl: readAsDataURL  
+        };
+    });
+ 
+    
 app.filter('findByName', function() {
 
     return function(input, name) {
@@ -882,35 +1000,4 @@ app.filter('linkfy',['$filter', '$sce',
         };
     }
 ]);
-/*
- |--------------------------------------------------------------------------
- | Application Main Class
- |--------------------------------------------------------------------------
- |
- | This is mostly responsible for loading our apps direct methods and
- | Linking with other classes. So Our app communicates with other modules
- | through here. If disabled, the app wont be able to do any work.
- |
- */
-
-'use strict';
-app.directive('mtFabSpeedDial', function () {
-	return {
-		restrict:'E',
-		template:
-		'<div>' +
-                '<div>' +
-                    '<button id="@{{shot.id}}"class="mdl-button mdl-js-button mdl-button--icon">' +
-                      '<i class="mdi mdi-share-variant"></i>' +
-                    '</button>' +
-                  '</div>' +
-                '<ul class="share-fab__list">' +
-                  '<li><a ng-click="mtTap" class="mdl-button mdl-js-button mdl-button--icon mdl-button--raised"><i class="mdi mdi-facebook-box"></i></a></li>' +
-                  '<li><a ng-click="mtTap" class="mdl-button mdl-js-button mdl-button--icon mdl-button--raised"><i class="mdi mdi-twitter"></i></a></li>' +
-                  '<li><a ng-click="mtTap" class="mdl-button mdl-js-button mdl-button--icon mdl-button--raised"><i class="mdi mdi-link"></i></a></li>' +
-                 ' <li><a ng-click="mtTap" class="mdl-button mdl-js-button mdl-button--icon mdl-button--raised"><i class="mdi mdi-pinterest"></i></a></li>' +
-                '</ul>' +
-              '</div>'
-	}
-});
 //# sourceMappingURL=frontend.js.map

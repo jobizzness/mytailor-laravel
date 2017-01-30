@@ -40,7 +40,7 @@ elixir.config.publicPath = 'public/themes/default/assets';
         mix.sass('../../../public/themes/default/assets/sass/frontend.scss');
 
         //  //This will mix vendor scripts
-        // mix.scripts(
+   //      mix.scripts(
 			// [
 			// 	'../jquery/dist/jquery.min.js',
 			//    '../angular/angular.min.js',
@@ -50,18 +50,16 @@ elixir.config.publicPath = 'public/themes/default/assets';
 			// 	'../mustache.js/mustache.min.js',
 			//    '../Waves/dist/waves.min.js',
 			// 	'../ng-dialog/js/ngDialog.min.js',
-        //        '../slick-carousel/slick/slick.js',
-        //        '../angular-slick-carousel/dist/angular-slick.min.js',
+   //             '../slick-carousel/slick/slick.js',
+   //             '../angular-slick-carousel/dist/angular-slick.min.js',
 			// 	'../angular-ui-select/dist/select.min.js',
-			// 	'../wow/dist/wow.min.js',
-			// 	//	Custom Scrollbars
+			// 	'../ng-file-upload/ng-file-upload.min.js',
 			// 	'../ngmap/build/scripts/ng-map.min.js',
-			// 		//Pusher
 			// 	'../pusher-js-3.2.1/dist/web/pusher.min.js',
-			// 		'../pusher-angular-0.1.9/lib/pusher-angular.min.js',
-			// 		'../angulargrid/angulargrid.js'
-        //
-        //
+			// 	'../pusher-angular-0.1.9/lib/pusher-angular.min.js',
+			// 	'../angulargrid/angulargrid.js'
+        
+        
 			//   ], 	 'public/themes/default/assets/js/vendor.js');
 
 		 //Frontend Scripts
@@ -78,9 +76,10 @@ elixir.config.publicPath = 'public/themes/default/assets';
                     '../../../public/themes/default/assets/js/factories/frontend/shots.js',
                     '../../../public/themes/default/assets/js/factories/frontend/designers.js',
                     '../../../public/themes/default/assets/js/services/frontend/request.js',
+                    '../../../public/themes/default/assets/js/services/frontend/image-uploader.js',
+                    '../../../public/themes/default/assets/js/services/frontend/file-reader.js',
 					'../../../public/themes/default/assets/js/filters/findbyname.js',
 					'../../../public/themes/default/assets/js/filters/linkfy.js',
-					'../../../public/themes/default/assets/js/directives/mt-fab-speed-dial.js'
 				],		'public/themes/default/assets/js/frontend.js');
 
 		// Backend Scripts

@@ -6,24 +6,27 @@ namespace MyTailor\Modules\Users\Registration;
 
 class RegisterUserCommand
 {
-    public $username;
+    public $first_name;
+    public $last_name;
     public $email;
     public $password;
-    public $avatar;
+    public $roleID;
 
     /**
      * RegisterUserCommand constructor.
      *
-     * @param $username
+     * @param $first_name
+     * @param $last_name
      * @param $email
      * @param $password
-     * @param $avatar
+     * @param $roleID
      */
-    public function __construct($username, $email, $password, $avatar) {
+    public function __construct($first_name, $last_name, $email, $password, $roleID) {
 
-        $this->username = $username;
+        $this->first_name = $first_name;
+        $this->last_name = $last_name;
         $this->email = $email;
         $this->password = $password;
-        $this->avatar = $avatar;
+        $this->roleID = $roleID;
     }
 }

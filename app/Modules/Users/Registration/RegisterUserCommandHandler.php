@@ -35,10 +35,19 @@ class RegisterUserCommandHandler implements CommandHandler
      */
     public function handle($command) {
 
+        //Try to create the user and if successful return the user object
         $user = $this->create($command);
-        Auth::guard($this->getGuard())->login($user);
 
+
+        if($user){
+            // If User object exists then Log them IN
+            Auth::guard($this->getGuard())->login($user);
+        }
+
+        //Fire off any events
         $this->dispatchEventsFor($user);
+
+        return $user;
 
     }
 

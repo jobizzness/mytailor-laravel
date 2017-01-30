@@ -29,3 +29,38 @@
 		}
 
 			]);
+
+app.controller("ShotUploadCtrl", ['$scope', 'imageUploader', 'fileReader', function($scope, imageUploader, fileReader) {
+
+	        $scope.progress = 0;
+
+	        fileReader.readAsDataUrl($scope.file, $scope).then(function(result) {
+	                $scope.image = result;
+	        });
+
+	        $scope.storeShot = function(){
+	        	imageUploader.store($scope.file)
+	        }
+
+			            //Display the file
+            //Wait for user to trigger send
+            //Store
+	}]);
+
+app.directive("ngFileSelect",function(){
+
+  return {
+    link: function($scope,el){
+      
+      el.bind("change", function(e){
+      
+        $scope.file = (e.srcElement || e.target).files[0];
+        $scope.getFile();
+      })
+      
+    }
+    
+  }
+  
+  
+});

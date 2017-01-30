@@ -6,7 +6,13 @@
 |--------------------------------------------------------------------------
 |
 */
-
+Route::get('/register', [
+		'uses' => 'Auth\RegistrationController@create'
+]);
+Route::post('/register', [
+		'uses' => 'Auth\RegistrationController@store',
+		'as'   => 'auth.register'
+]);
 Route::get('/auth/reset', [
 		'uses' => 'Auth\PasswordController@getEmail',
 		'as'   => 'auth.login'
@@ -15,23 +21,16 @@ Route::post('/auth/reset', [
 		'uses' => 'Auth\PasswordController@postEmail',
 		'as'   => 'auth.login'
 ]);
-Route::get('/register', [
-		'uses' => 'Auth\AuthController@getRegister',
-		'as'   => 'auth.login'
-]);
 Route::get('/login', [
 		'uses' => 'Auth\AuthController@getLogin',
 		'as'   => 'auth.login'
 	]);
+Route::post('/login', [
+		'uses' => 'Auth\AuthController@postLogin'
+]);
 Route::get('/logout', [
 		'uses' => 'Auth\AuthController@logout',
 		'as'   => 'auth.logout'
-	]);
-Route::post('/login', [
-		'uses' => 'Auth\AuthController@postLogin'
-	]);
-Route::post('/register', [
-		'uses' => 'Auth\AuthController@postRegister'
 	]);
 
 //Social Auth
@@ -100,11 +99,11 @@ Route::group(['prefix' => 'api/v1'], function () {
 	Route::resource('shots', 'Frontend\ShotsController');
 	Route::resource('explore','Frontend\ExploreController');
 	Route::resource('designers', 'Frontend\DesignersController');
-	Route::resource('collections', 'Frontend\CollectionController');
+	Route::resource('collections', 'Frontend\CollectionsController');
 	Route::resource('blog', 'Frontend\BlogController');
 
 	Route::post('/login', [
-			'uses'=>'Frontend\CollectionController@login']
+			'uses'=>'Frontend\AuthController@login']
 	);
 
 	Route::post('/shots/{id}/like',  [

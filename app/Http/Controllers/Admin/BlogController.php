@@ -52,7 +52,10 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->posts->create(
+            ['author_id' => auth()->user()->id] + $request->only('title', 'slug', 'body', 'excerpt', 'published_at'));
+
+        return 'done dead';
     }
 
     /**

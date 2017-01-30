@@ -42,7 +42,7 @@ class DbUsersRepository implements UsersRepositoryInterface
      */
     public function create($userData)
     {
-       $user =  User::register( $userData, 'member');
+       $user =  User::register($userData);
 
         return $user;
     }

@@ -1,46 +1,76 @@
 
 @extends('layouts.auth')
 @section('pagetitle', 'Sign Up')
-@section('heading', 'Welcome, please login.')
 
 @section('main')
 
-<section class="main_layout" style="background-color: #ff4081">
-    <div class="">
-        <div class="logo-wrap">
-            <a href="https://www.afrodapp.com"><span class="mt-logo__icon">Afrodapp</span></a>
-            <h1 class="logo_text">Afrodapp</h1>
+<section class="main_layout">
+    
+    <div class="mdl-grid mdl-grid--no-spacing mdl-shadow--2dp auth-card">
+        <div class="mdl-cell mdl-cell--6-col">
+                <div class="heading">
+                    <p>Welcome, Get Started Today</p>
+                </div>
+                <form class="mdl-grid" method="POST" style="width: 500px;" action="{{route('auth.register')}}">
+                    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--6-col">
+                        <input class="mdl-textfield__input" type="text" id="first_name" name="first_name" required="">
+                        <label class="mdl-textfield__label" for="first_name">First name</label>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--6-col">
+                        <input class="mdl-textfield__input" type="text" id="last_name" name="last_name" required="">
+                        <label class="mdl-textfield__label" for="last_name">Last name</label>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                        <input class="mdl-textfield__input" type="email" id="email" name="email" required="">
+                        <label class="mdl-textfield__label" for="email">Email</label>
+                    </div>
+                    <input type="hidden" name="_token"value="{{csrf_token()}}"></input>
+                    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--6-col">
+                        <input class="mdl-textfield__input" type="password" id="password" name="password">
+                        <label class="mdl-textfield__label" for="password">Password</label>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--6-col">
+                        <input class="mdl-textfield__input" type="password" id="password_confirmation" name="password_confirmation">
+                        <label class="mdl-textfield__label" for="password_confirmation">Re-enter Password</label>
+                    </div>
+                    <div class="login_button mdl-cell mdl-cell--12-col">
+                        <!-- Accent-colored raised button with ripple -->
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                          Continue
+                        </button>
+                        <div style="margin-top:15px;"><span class="" style="-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:11px;font-weight:normal;text-align:center;-webkit-transition:opacity .2s linear;transition:opacity .2s linear;color:#aaa;width:224px;" data-reactid="30"><span data-reactid="31">Creating an account means you’re okay with Afrodapp's <a href="/_/_/about/terms-service/" target="_blank">Terms of Service</a>, <a href="/_/_/about/privacy/plain.html" target="_blank">Privacy Policy</a></span></span></div>
+                    </div>
+                    <div class="login-options mdl-cell mdl-cell--12-col">
+                        <span style="margin-bottom: 3px;overflow: hidden;text-align: center;color: #555;font-weight: bold;">Or</span>
+                        <ul class="social-icons">
+                            <li>
+                                <a class="social-icon-color facebook" href="/login/facebook">
+                                    <i class="mdi mdi-facebook-box"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="social-icon-color twitter" href="/login/twitter">
+                                    <i class="mdi mdi-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="social-icon-color google" href="/login/google">
+                                    <i class="mdi mdi-gmail"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="social-icon-color linkedin" href="/login/linkedin">
+                                    <i class="mdi mdi-linkedin"></i>
+                                </a>
+                            </li>
+                        </ul>
+                </div>
+                </form>
         </div>
-
-        <div class="">
-            <form action="/login?remember=true" class="login_form" method="POST">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="email" id="email" name="email">
-                    <label class="mdl-textfield__label" for="email">Username or Email</label>
-                </div>
-                <input type="hidden" name="_token"value="{{csrf_token()}}"></input>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="password" id="pass" name="password">
-                    <label class="mdl-textfield__label" for="pass">Password</label>
-                </div>
-
-                <div class="form_actions">
-                    <div style="color: rgba(255, 255, 255, 0.66);"><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
-                            <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input" checked>
-                            <span class="mdl-checkbox__label">Remember</span>
-                        </label></div>
-                    <a href="/auth/reset" id="forget-pass">Forgot Password?</a>
-                </div>
-                <div class="login_button">
-                    <!-- Accent-colored raised button with ripple -->
-                    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
-                        <i class="material-icons">chevron_right</i>
-                    </button>
-                </div>
-
-            </form>
+        <div class="mdl-cell mdl-cell--6-col auth-card__image" style="background: url('http://jobizzness.com/wp-content/uploads/2014/03/mock3-3200x2302.png');">
+            
         </div>
-        </div>
+    </div>
 </section>
 
 <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">

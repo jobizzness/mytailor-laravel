@@ -260,9 +260,10 @@ app.controller("authController", ["$scope",
    'use strict';
 
 
-	app.controller("PostsController", function($scope,  $timeout) {
+	app.controller("PostsController", function($scope,  $timeout, shotFactory) {
 
-		$scope.createPost = function(){
+
+		$scope.showpostForm = function(){
 			$scope.showForm = true;
 		}
 
@@ -275,6 +276,25 @@ app.controller("authController", ["$scope",
 		    skin: 'lightgray',
 		    theme : 'modern'
 		  };
+
+		  /**
+             * Updates a shot and responds with a snackbar.
+             *
+             */
+			$scope.createPost = function(){
+				shotFactory.create($scope.post).then(function(response){
+    				var responseData = response.data;
+					  
+					  	var snackbarContainer = document.querySelector('#demo-snackbar-example');
+					    var data = {
+					      			message: responseData,
+					      			timeout: 2000,
+					      			actionText: 'Undo'
+					    		};
+					    snackbarContainer.MaterialSnackbar.showSnackbar(data);
+			 	});
+			 };
+
 
 			 });
 
@@ -297,6 +317,10 @@ app.controller("authController", ["$scope",
 
 			this.destroy = function(name){
 				return $http.delete('/admin/shots/' + name);
+			};
+
+			this.create = function(post){
+				return $http.post('/admin/blog', post);
 			};
 
 			return this;

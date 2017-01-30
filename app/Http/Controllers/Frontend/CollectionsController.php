@@ -1,6 +1,7 @@
 <?php namespace MyTailor\Http\Controllers\Frontend;
 
 
+use Illuminate\Http\Request;
 use MyTailor\Repositories\CollectionRepositoryInterface;
 use MyTailor\Transformers\ShotTransformer;
 
@@ -31,13 +32,15 @@ class CollectionsController extends ApiController
     /**
      * Gets info about a shot and response in Json
      *
-     * @param $slug
+     * @param Request $request
      * @return mixed
+     * @internal param $slug
      */
-    public function show($slug)
+    public function index(Request $request)
     {
+        $slug = $request->get('sort');
 
-        $slug = str_replace('-', ' ', $slug);
+         $slug = str_replace('-', ' ', $slug);
 
         $collection = $this->collections->find($slug);
 

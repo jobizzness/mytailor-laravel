@@ -1,17 +1,37 @@
+@import "../fonts/MaterialDesign-Font/css/materialdesignicons.min.css";
+
 .main_layout{
-	width: 100%;
-	height: 100%;
-	display: flex;
-	justify-content:center;
-	align-items:center
+    background: #ff4081;
+    text-align: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
 }
 
-.logo-wrap{
+.auth-card{
+	height: 525px;
+	width: 80%;
+	background: #fff;
+}
+
+.auth-card__image{
+    background-size: cover !important;
+    background-position: 50% 50% !important;
+}
+.heading, .login-options{
 	display: flex;
 	justify-content:center;
 	align-items:center;
 	flex-direction:column;
-	padding-bottom: 50px; 
+}
+.heading>p{
+	margin: 25px 26px 16px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 28px;
+    color: #555;
 }
 .mt-logo__icon {
     background-image: url(/images/logo.png);
@@ -19,7 +39,7 @@
     background-size: contain;
     background-position: center center;
     display: block;
-    height: 100px;
+    height: 60px;
     outline: none;
     overflow: hidden;
     text-indent: -999px;
@@ -27,9 +47,9 @@
     width: 100px;
 }
 .logo_text{
-		margin: 0;
+	margin: 0;
 	font-family: 'Amaranth', sans-serif;
-	color: #fff;
+    color: #ff4081;
 	font-weight: 300;
 }
 .login_form{
@@ -40,14 +60,14 @@
 .login_form>.mdl-textfield{
 		color: #eee;
 	}
-.login_form>.mdl-textfield .mdl-textfield__label{
-			color: rgba(255, 255, 255, 0.69) !important;
+.mdl-textfield .mdl-textfield__label{
+			color: rgba(0, 0, 0, 0.64); !important;
 	}
-.login_form>.mdl-textfield .mdl-textfield__input{
-	border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+.mdl-textfield .mdl-textfield__input{
+	    border-bottom: 1px solid rgba(0, 0, 0, 0.41);
 }
 .mdl-textfield__label:after{
-	background-color: #eee;
+	background-color: #ff4081;
 }
 
 .mdl-textfield--floating-label.is-focused.mdl-textfield__label{
@@ -56,10 +76,7 @@
 
 .login_button>button{
     width: 305px;
-    margin-top: 36px;
-    color: #ff4081;
     height: 45px;
-    background-color: #fff !important;
 }
 
 .form_actions{
@@ -76,4 +93,33 @@
 }
 .mdl-checkbox.is-checked .mdl-checkbox__tick-outline {
     background: rgb(238, 238, 238)url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiI…lsZT0iZmlsbDojZmZmZmZmO2ZpbGwtb3BhY2l0eToxO3N0cm9rZTpub25lIiAvPgo8L3N2Zz4K);
+}
+
+.social-icons{
+	display: flex;
+
+}
+.social-icons>li{
+    list-style: none;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-size: 19px;
+    background: #fff;
+    padding: 5px 7px;
+    border: 1px solid #eee;
+}
+.social-icons>li:hover{
+	background-color: #eee;
+}
+.social-icon-color.facebook{
+	color: #4267b2;
+}
+.social-icon-color.twitter{
+	color: #1da1f2;
+}
+.social-icon-color.google{
+	color:  #d34836.;
+}
+.social-icon-color.linkedin{
+	color: #0077B5;
 }

@@ -10,7 +10,16 @@
 
     	{{-- Main Fab Action Button --}}
     	@if($user)
-            <a ng-click="showShotPoster()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--fab mdl-button--mini-fab mdl-button--colored float" id="main-caller_fab"><i class="mdi mdi-camera"></i></a>
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--fab mdl-button--mini-fab mdl-button--colored float" 
+                type="file" 
+                ngf-select="uploadShot($file, $invalidFiles)"
+                accept="image/*" 
+                ngf-max-height="1000" 
+                ngf-max-size="5MB" 
+                id="main-caller_fab">
+
+                <i class="mdi mdi-camera"></i>
+            </button>
         @endif
 
         {{-- Main App Loader --}}
