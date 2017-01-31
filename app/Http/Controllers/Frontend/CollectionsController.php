@@ -40,8 +40,6 @@ class CollectionsController extends ApiController
     {
         $slug = $request->get('sort');
 
-         $slug = str_replace('-', ' ', $slug);
-
         $collection = $this->collections->find($slug);
 
         if(! $collection) {
