@@ -56,7 +56,8 @@ class CollectionsController extends ApiController
                   'title' => $collection->title,
                   'description' => $collection->description,
                   'slug' => $collection->slug,
-                    'time' =>$collection->published_at
+                    'time' =>$collection->published_at,
+                    'image'=> $collection->image
                 ],
                 'shots' => [
                     'data' => $this->Transformer->transformCollection($collection->shots),
