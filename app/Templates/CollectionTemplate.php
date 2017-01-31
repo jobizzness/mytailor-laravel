@@ -34,8 +34,8 @@ class CollectionTemplate extends AbstractTemplate
     public function prepare(View $view, array $parameters)
     {
         $slug = $parameters['slug'];
-        $keyword = str_replace('-', ' ', $slug);
-        $collection = Collection::whereSlug($keyword)->first();
+        //$keyword = str_replace('-', ' ', $slug);
+        $collection = Collection::whereSlug($slug)->first();
 
         if($collection) {
 
@@ -56,6 +56,8 @@ class CollectionTemplate extends AbstractTemplate
         $description = ucwords(strtok($collection->description, ".").'.');
         $url = 'https://afrodapp.com/collections/'.$collection->slug;
         $image = $collection->image;
+
+        dd($url);
 
         //Basic Meta Tags
         SEOMeta::setTitle($title)

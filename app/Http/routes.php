@@ -6,6 +6,10 @@
 |--------------------------------------------------------------------------
 |
 */
+Route::get('/collections/30 beautiful african print for ladies', function(){
+		return redirect('collections/30-beautiful-african-print-for-ladies', 301);
+});
+
 Route::get('/register', [
 		'uses' => 'Auth\RegistrationController@create'
 ]);
