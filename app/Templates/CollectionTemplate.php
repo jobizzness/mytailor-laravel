@@ -57,8 +57,6 @@ class CollectionTemplate extends AbstractTemplate
         $url = 'https://afrodapp.com/collections/'.$collection->slug;
         $image = $collection->image;
 
-        dd($url);
-
         //Basic Meta Tags
         SEOMeta::setTitle($title)
             ->setDescription($description)
