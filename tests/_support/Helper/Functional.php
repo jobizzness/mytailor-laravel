@@ -31,5 +31,6 @@ class Functional extends \Codeception\Module
 
 
         $user = User::register($user);
+
     }
 }

@@ -22,7 +22,8 @@
         "pusher/pusher-php-server": "^2.6",
         "intervention/image": "^2.3",
         "league/flysystem-aws-s3-v3": "^1.0",
-        "vinkla/instagram": "^4.2"
+        "vinkla/instagram": "^4.2",
+        "tymon/jwt-auth": "^0.5.10"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

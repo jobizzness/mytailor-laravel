@@ -26,7 +26,7 @@
                   <ul class="mt-sidebar-list">
             <li class="mt-list-active"><a href="{{route('admin.dashboard')}}" class="mt-sidebar-link btn"><i class="mt-icon mdi mdi-image-filter-tilt-shift"></i>Dashboard</a></li>
     <li><a href="{{route('admin.shots.index')}}" class="mt-sidebar-link btn"><i class="mdi mdi-image"></i>Shots</a></li>
-    <li><a href="#" class="mt-sidebar-link btn"><i class="mdi mdi-tshirt-v"></i>Tailors</a></li>
+    <li><a href="{{route('admin.blog.index')}}" class="mt-sidebar-link btn"><i class="mdi mdi-border-color"></i>Posts</a></li>
     <li><a href="#" class="mt-sidebar-link btn"><i class="mdi mdi-camera-iris"></i>Apps</a></li>
     <li><a href="#" class="mt-sidebar-link btn"><i class="mdi mdi-message-alert"></i>Responses</a></li>
     <li><a href="{{route('admin.users.index')}}" class="mt-sidebar-link btn"><i class="mdi mdi-account"></i>Users</a></li>

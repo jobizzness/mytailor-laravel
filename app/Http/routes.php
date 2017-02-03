@@ -39,7 +39,7 @@ Route::get('/logout', [
 
 //Social Auth
 Route::get('/login/{provider?}',[
-		'uses' => 'Auth\AuthController@getSocialAuth',
+		'uses' => 'Auth\SocialAuthController@getSocialAuth',
 		'as'   => 'auth.getSocialAuth'
 	]);
 
@@ -98,7 +98,7 @@ Route::group(['prefix' => 'admin/api'], function () {
 */
 Route::group(['prefix' => 'api/v1'], function () {
 
-	header('Access-Control-Allow-Origin: https://afrodapp-623d4.firebaseapp.com, http://localhost:3000');  //I have also tried the * wildcard and get the same response
+	header('Access-Control-Allow-Origin: *');  //I have also tried the * wildcard and get the same response
 	header("Access-Control-Allow-Credentials: true");
 	header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
 	header('Access-Control-Max-Age: 1000');
@@ -113,8 +113,8 @@ Route::group(['prefix' => 'api/v1'], function () {
 	Route::resource('collections', 'Frontend\CollectionsController');
 	Route::resource('blog', 'Frontend\BlogController');
 
-	Route::post('/login', [
-			'uses'=>'Frontend\AuthController@login']
+	Route::post('/authenticate', [
+			'uses'=>'Frontend\AuthController@apiLogin']
 	);
 
 	Route::post('/shots/{id}/like',  [
@@ -129,6 +129,7 @@ Route::group(['prefix' => 'api/v1'], function () {
 					'as' => 'designers.sort',
 					'uses' => 'Frontend\ShotsController@by']
 	);
+
 
 
 });

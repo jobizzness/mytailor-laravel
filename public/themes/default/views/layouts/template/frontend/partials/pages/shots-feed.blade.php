@@ -27,7 +27,7 @@
           </header>
           {{-- Figure --}}
           <figure class="figure-overlay light">
-            <a href="" class="mt-grid___link" ng-click="open(shot.name)" itemprop="url">
+            <a href="#" class="mt-grid___link" ng-click="open(shot.name)" itemprop="url">
                 <div class="mt-image-holder">
                     <img itemprop="image" ng-src="@{{shot.image.original}}" alt="@{{shot.alt}}" itemscope itemtype="http://schema.org/thumbnail">
                 </div>

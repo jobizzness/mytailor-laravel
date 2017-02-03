@@ -2,19 +2,22 @@
 
 namespace MyTailor\Http\Controllers\Auth;
 
-use Illuminate\Http\Request;
-use Laracasts\Commander\CommandBus;
-use MyTailor\Modules\Core\Flash\Flasher;
-use MyTailor\Modules\Users\AuthenticateUser;
-use MyTailor\Modules\Users\Registration\RegisterUserCommand;
-use Validator;
-use MyTailor\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-class AuthController extends Controller
+use Illuminate\Http\Request;
+use MyTailor\Http\Controllers\Frontend\ApiController;
+use MyTailor\Modules\Traits\AuthResponder;
+use Tymon\JWTAuth\Facades\JWTAuth;
+use Validator;
+
+
+class AuthController extends ApiController
 {
 
-    use AuthenticatesUsers;
 
+
+    use AuthResponder;
+
+    use AuthenticatesUsers;
     /**
      * Where to redirect users after login / registration.
      *
@@ -22,127 +25,48 @@ class AuthController extends Controller
      */
     protected $redirectTo = '/';
     /**
-     * @var CommandBus
+     * @var Request
      */
-    private $commandBus;
+    private $request;
 
     /**
      * Create a new authentication controller instance.
-     * @param CommandBus $commandBus
+     * @param Request $request
      */
-    public function __construct(CommandBus $commandBus)
+    public function __construct(Request $request)
     {
-        $this->commandBus = $commandBus;
 
         $this->redirectAfterLogout = route('auth.login');
         $this->redirectTo = route('admin.dashboard');
-        $this->registerWizard = '/register/wizard';
 
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+        $this->request = $request;
     }
 
-
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
+    public function getLogin()
     {
-        return Validator::make($data, [
-            'username' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6',
-        ]);
-    }
-
-
-    /**
-     * Handle a registration request for the application.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function register($request)
-    {
-        $validator = $this->validator($request->all());
-
-        if ($validator->fails()) {
-            $this->throwValidationException(
-                $request, $validator
-            );
-        }
-
-        extract($request->only('username', 'email', 'password'));
-
-        $command = new RegisterUserCommand($username, $email, $password, $avatar = null);
-        $this->commandBus->execute($command);
-
+        return $this->showLoginForm();
     }
 
     /**
      * Handle a login request to the application.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function postLogin(Request $request)
+    public function postLogin()
     {
-
-        return $this->login($request);
+        return $this->login($this->request);
     }
 
-
-    public function username()
-    {
-        return 'username';
-    }
 
     /**
-     * Registers a new user.
-     *
-     * @param Request $request
-     * @return Redirect user.
+     * @param $request
+     * @param $user
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|mixed
      */
-    public function getRegister(Request $request)
+    public function authenticated($request, $user)
     {
-
-        return view('auth.register');
-    }
-
-    /**
-     * Registers a new user.
-     *
-     * @param Request $request
-     * @return Redirect user.
-     */
-    public function postRegister(Request $request)
-    {
-        $this->register($request);
-
-        Flasher::flash('info', 'Welcome To MyTailorAfrica', true);
-        return redirect('/shots');
-    }
-
-    /**
-     * Redirect user to login to thirdparty.
-     *
-     * @param null $provider
-     * @param AuthenticateUser $authenticateUser
-     * @param Request $request
-     * @return mixed
-     */
-    public function getSocialAuth($provider = null, AuthenticateUser $authenticateUser, Request $request)
-    {
-        if (!config("services.$provider")) abort('404');
-
-        return $authenticateUser->execute($provider, $request->has('code'), $this);
-    }
-
-    public function userHasLoggedIn($user){
-
-        return redirect('/');
+        return $this->userHasLoggedIn($user);
     }
 
 }

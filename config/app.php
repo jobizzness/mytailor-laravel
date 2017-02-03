@@ -161,7 +161,8 @@ return [
         Laracasts\Commander\CommanderServiceProvider::class,
         AlgoliaSearch\Laravel\AlgoliaServiceProvider::class,
         Spatie\LaravelAnalytics\LaravelAnalyticsServiceProvider::class,
-        Intervention\Image\ImageServiceProvider::class
+        Intervention\Image\ImageServiceProvider::class,
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class
 
 
     ],
@@ -209,16 +210,20 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        // other Facades ommited
+
+        /*
+         * Application Facades...
+         */
         'SEOMeta'   => Artesaos\SEOTools\Facades\SEOMeta::class,
         'OpenGraph' => Artesaos\SEOTools\Facades\OpenGraph::class,
         'Twitter'   => Artesaos\SEOTools\Facades\TwitterCard::class,
-        // or
         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
         //OtherStuff
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Analytics' => Spatie\LaravelAnalytics\LaravelAnalyticsFacade::class,
-        'Image' => Intervention\Image\Facades\Image::class
+        'Image' => Intervention\Image\Facades\Image::class,
+        'JWTAuth'   => \Tymon\JWTAuth\Facades\JWTAuth::class,
+        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class
 
     ],
 

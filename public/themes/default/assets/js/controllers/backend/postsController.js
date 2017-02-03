@@ -24,7 +24,7 @@
              *
              */
 			$scope.createPost = function(){
-				shotFactory.create($scope.post).then(function(response){
+				postsFactory.create($scope.post).then(function(response){
     				var responseData = response.data;
 					  
 					  	var snackbarContainer = document.querySelector('#demo-snackbar-example');
@@ -36,6 +36,22 @@
 					    snackbarContainer.MaterialSnackbar.showSnackbar(data);
 			 	});
 			 };
+
+			 $scope.editPost = function(id){
+			 	$scope.showForm = true;
+			 }
+
+			 $scope.deletePost = function(id){
+			 	var responseData = 'I AM DELETEING';
+					  
+				  	var snackbarContainer = document.querySelector('#demo-snackbar-example');
+				    var data = {
+				      			message: responseData,
+				      			timeout: 2000,
+				      			actionText: 'Undo'
+				    		};
+				    snackbarContainer.MaterialSnackbar.showSnackbar(data);
+			 }
 
 
 			 });

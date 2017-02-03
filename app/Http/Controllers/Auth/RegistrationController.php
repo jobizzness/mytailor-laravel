@@ -4,36 +4,36 @@ namespace MyTailor\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 
+use MyTailor\Http\Controllers\Frontend\ApiController;
 use MyTailor\Http\Requests;
-use MyTailor\Http\Controllers\Controller;
+use MyTailor\Modules\Traits\AuthResponder;
 use MyTailor\Modules\Traits\CommandBus;
 use MyTailor\Modules\Users\Registration\RegisterUserCommand;
+use Tymon\JWTAuth\Facades\JWTAuth;
 use Validator;
 
-class RegistrationController extends Controller
+class RegistrationController extends ApiController
 {
+    use AuthResponder;
+
     use CommandBus;
+    /**
+     * @var Request
+     */
+    private $request;
 
 
     /**
      * Create a new authentication controller instance.
-
+     * @param Request $request
      */
-    public function __construct()
+    public function __construct(Request $request)
     {
 
-        $this->middleware('guest', ['except' => 'logout']);
+        $this->middleware('guest');
+        $this->request = $request;
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -48,29 +48,27 @@ class RegistrationController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        $validator = $this->validator($request->all());
+        $validator = $this->validator($this->request->all());
 
         if ($validator->fails()) {
             $this->throwValidationException(
-                $request, $validator
+                $this->request, $validator
             );
         }
 
-        extract($request->only('first_name', 'last_name', 'email', 'password'));
+        extract($this->request->only('first_name', 'last_name', 'email', 'password'));
         $command =  new RegisterUserCommand($first_name, $last_name, $email, $password, 4);
 
 
         $user = $this->execute($command);
 
-        if($user){
-            return redirect('/');
-        }
+        return $this->userHasLoggedIn($user);
     }
+
 
     /**
      * Get a validator for an incoming registration request.
@@ -88,48 +86,5 @@ class RegistrationController extends Controller
         ]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

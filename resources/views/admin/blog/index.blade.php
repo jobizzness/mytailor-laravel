@@ -56,10 +56,10 @@
                         <td class="mdl-data-table__cell--non-numeric">{{$post->publisher->profile->display_name}}</td>
                         <td class="mdl-data-table__cell--non-numeric">{{$post->present()->publishedDate()}}</td>
                         <td class="mdl-data-table__cell--non-numeric">{{-- {{$post->present()->last_seen() or 'Never'}} --}}</td>
-                        <td class="mdl-data-table__cell--non-numeric"><a href="{{route('admin.blog.edit', $post->id)}}" id="e{{$post->id}}"><i class="mdi mdi-pencil"></i></a>
+                        <td class="mdl-data-table__cell--non-numeric"><a ng-click="editPost({{$post->id}})" id="e{{$post->id}}"><i class="mdi mdi-pencil"></i></a>
                             <div class="mdl-tooltip" for="e{{$post->id}}">Edit</div>
                         </td>
-                        <td class="mdl-data-table__cell--non-numeric"><a href="{route('admin.blog.edit', $post->id)}}" id="d{{$post->id}}"><i class="mdi mdi-delete"></i></a></td>
+                        <td class="mdl-data-table__cell--non-numeric"><a ng-click="deletePost({{$post->id}})" id="d{{$post->id}}"><i class="mdi mdi-delete"></i></a></td>
                         <div class="mdl-tooltip" for="d{{$post->id}}">Delete</div>
                     </tr>
                 @empty
