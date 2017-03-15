@@ -6214,6 +6214,17 @@ p.attract-me {
   font-size: 15px;
   line-height: 23px; }
 
+.contact-info .contact-link i {
+  font-size: 23px;
+  color: #000;
+  margin-right: 4px;
+  margin-bottom: 4px; }
+
+.section_title {
+  line-height: 1.4;
+  margin: 16px 5px;
+  font-size: 17px; }
+
 /*responsive*/
 #avatar ~ .mdl-menu__container {
   right: 15px !important;
@@ -6646,6 +6657,9 @@ ul.comments-list {
 
 .dark__tab.mdl-tabs.is-upgraded .mdl-tabs__tab.is-active {
   color: #ff4081; }
+
+.contact-link {
+  margin: 16px 8px; }
 
 /*something about a user*/
 .mt-avatar-circle {
@@ -7150,8 +7164,8 @@ a[ng-click] {
   flex-shrink: 0; }
 
 .just-main {
-  min-height: 48px;
-  max-height: 48px; }
+  min-height: 56px;
+  max-height: 56px; }
   .just-main .mt-sub-header {
     visibility: collapse; }
 
@@ -7159,8 +7173,8 @@ a[ng-click] {
   box-shadow: 0 0.125rem 0.25rem 0 rgba(0, 0, 0, 0.11); }
 
 .mt-global-header {
-  min-height: 48px;
-  max-height: 48px; }
+  min-height: 56px;
+  max-height: 56px; }
 
 .flex-center {
   display: -ms-flexbox;
@@ -7178,7 +7192,7 @@ a[ng-click] {
   min-height: 45px; }
 
 .mdl-layout__header.is-compact {
-  max-height: 45px; }
+  max-height: 54px; }
 
 .pull-left > a {
   padding: 1em 0.5em 1em 0; }
@@ -7199,17 +7213,14 @@ a[ng-click] {
 
 ul.user-actions > li > a {
   transition: color linear 2ms;
-  margin-bottom: 9px; }
-  ul.user-actions > li > a:hover {
-    color: #d3d1d1; }
+  margin-bottom: 9px;
+  color: #fff; }
 
 .mt-top-avatar {
   max-width: 35px;
   border-radius: 27px;
   display: inline-block;
-  overflow: hidden;
-  width: 33px;
-  height: 33px; }
+  overflow: hidden; }
 
 header.mdl-layout__header--waterfall:not(.is-compact) {
   overflow: visible; }
@@ -7430,7 +7441,7 @@ a.mt-sidebar-link {
   margin: 0 auto; }
 
 .mt-top-menu {
-  padding: 5px 5px;
+  padding: 11px 8px;
   position: absolute;
   top: 0;
   height: 45px;
@@ -7439,38 +7450,13 @@ a.mt-sidebar-link {
 .profile--wrapper {
   margin-top: 16px; }
 
-.explore-item {
-  min-height: 500px;
-  position: relative;
-  padding: 5px; }
-  .explore-item > figure {
-    height: 100%;
-    width: 100%;
-    background-size: cover;
-    background: transparent;
-    border-radius: 3px; }
-    .explore-item > figure figcaption {
-      display: -ms-flexbox;
-      display: flex;
-      -ms-flex-pack: end;
-      justify-content: flex-end;
-      -ms-flex-align: start;
-      align-items: flex-start;
-      height: 100%;
-      -ms-flex-direction: column;
-      flex-direction: column;
-      padding: 2em; }
-      .explore-item > figure figcaption h3 {
-        font-size: 20px;
-        color: rgba(255, 255, 255, 0.81);
-        margin: 0;
-        line-height: 24px; }
-      .explore-item > figure figcaption p {
-        color: rgba(255, 255, 255, 0.81);
-        margin: 8px 0;
-        text-transform: capitalize;
-        font-size: 14px;
-        line-height: 22px; }
+.top-shots-item {
+  margin: 0 8px; }
+
+.tops-shots-slider {
+  margin-right: 16px; }
+  .tops-shots-slider .slick-track {
+    padding-bottom: 16px; }
 
 /*Call to action section*/
 .mt-call-actions {
@@ -7732,7 +7718,11 @@ figure.shot-cover.--profile__feed {
   box-shadow: 0 10px 20px 0 rgba(86, 95, 99, 0.19); }
 
 .md-whiteframe-4dp {
-  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12); }
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
+
+.top-shots-item:hover {
+  box-shadow: 0 8px 14px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); }
 
 /* ==========================================================================
     MDL grid compponents

@@ -24,13 +24,8 @@ class RedirectIfAuthenticated
             if($user->hasRole(['owner', 'administrator'])) {
                 return redirect(route('admin.dashboard'));
             }else{
-                return redirect('/shots');
+                return redirect('/');
             }
-
-            //return redirect(route('member.login_form'));
-            //If user is admin they need to go to admin.dashboard
-            //if user is
-            dd($user);
 
         }
 

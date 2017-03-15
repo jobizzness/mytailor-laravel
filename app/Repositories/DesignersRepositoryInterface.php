@@ -12,32 +12,9 @@ namespace MyTailor\Repositories;
 interface DesignersRepositoryInterface
 {
     /**
-     * @param $cat
+     * @param $limit
      * @return mixed
      */
-    public function favorites($cat);
+    public function newest($limit);
 
-    /**
-     *
-     * @return mixed
-     */
-    public function latest();
-
-    /**
-     * @param $cat
-     * @return mixed
-     */
-    public function showcase($cat);
-
-    /**
-     * @param $cat
-     * @return mixed
-     */
-    public function local();
-
-    /**
-     * @param $cat
-     * @return mixed
-     */
-    public function popular($cat);
 }

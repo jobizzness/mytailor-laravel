@@ -23,83 +23,27 @@ class DbShotsRepository implements ShotsRepositoryInterface{
     /**
      * DbShotsRepository constructor.
      * @param Shot $shots
-     * @param Request $request
      */
-    public function __construct(Shot $shots, Request $request){
+    public function __construct(Shot $shots){
 
         $this->shots = $shots;
 
-        $this->request = $request;
-    }
-
-    /**
-     * latest shots from our storage
-     * @param $cat
-     * @return mixed
-     */
-    public function latest($cat) {
-         return $this->shots
-            ->with('image','comments', 'publishable.profile')
-            ->category($cat)
-            ->orderBy('created_at', 'desc')
-            ->orderBy('views', 'desc')
-            ->orderBy('id', 'desc')
-            ->where('published', '=', 1)
-            ->paginate(8);
     }
 
     /**
      * Shots users view the most/trending.
      * Reddit's Algorithm
      *
-     * @param $cat
+     * @param $limit
      * @return mixed
      */
-    public function trending($cat){
+    public function newest($limit){
         return $this->shots
-            ->with('image','comments', 'publishable.profile')
-            ->select(\DB::raw( '((views - 1) / (TIMESTAMPDIFF(MINUTE, created_at, NOW()) + 2)^1.5) as Popularity, shots.*'))
-            ->category($cat)
-            ->orderBy('Popularity', 'desc')
             ->where('published', '=', 1)
-            ->groupBy('id')
-            ->paginate(8);
+            ->orderBy('created_at', 'desc')
+            ->limit($limit);
     }
 
-    /**
-     * Gets the latest trending shot with a particular tag
-     *
-     *
-     * @param $tag
-     * @return mixed
-     * @internal param $cat
-     */
-    public function trendingShotsIn($tag){
-        return $this->shots
-            ->with('image')
-            ->select(\DB::raw( '((views - 1) / (TIMESTAMPDIFF(DAY, updated_at, NOW()) + 2)^1.5) as Popularity, shots.*'))
-            ->tag($tag)
-            ->orderBy('updated_at', 'desc')
-            ->orderBy('Popularity', 'desc')
-            ->where('published', '=', 1);
-    }
-
-    /**
-     * Gets shots that are featured orderd by popularity.
-     *
-     * @param $cat
-     * @return mixed
-     */
-    public function featured($cat){
-        return $this->shots
-            ->with('image','comments', 'publishable.profile')
-            ->category($cat)
-            ->select(\DB::raw( '((views - 1) / (TIMESTAMPDIFF(MINUTE, created_at, NOW()) + 2)^1.5) as Popularity, shots.*'))
-            ->orderBy('Popularity', 'desc')
-            ->where('published', '=', 1)
-            ->where('featured', '=', 1)
-            ->paginate(8);
-    }
 
     /**
      * Gets shots by a publisher
@@ -128,25 +72,6 @@ class DbShotsRepository implements ShotsRepositoryInterface{
        return Shot::with('image','publishable.profile', 'comments')->where('file_name',
            '=', $name)
             ->first();
-    }
-
-
-    /**
-     * Get Related shots and order by popularity.
-     *
-     * @param $shot
-     * @return mixed
-     */
-    public function related($shot)
-    {
-        $tag_ids = $shot->tags()->lists('id');
-
-        return Shot::whereHas('tags', function($q) use ($tag_ids) {
-            $q->whereIn('id', $tag_ids);
-        })
-            ->orderBy('updated_at', 'desc')
-            ->whereNotIn('id', [$shot->id])
-            ->paginate(8);
     }
 
     /**

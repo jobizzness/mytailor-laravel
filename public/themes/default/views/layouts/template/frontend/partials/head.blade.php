@@ -11,13 +11,13 @@
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="MyTailor">
+    <meta name="application-name" content="Afrodapp">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
 
     <!-- Add to homescreen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Web Starter Kit">
+    <meta name="apple-mobile-web-app-title" content="Afrodapp">
 
     <!-- Tile icon for Win8 (144x144 + tile color) -->
     <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
@@ -44,9 +44,6 @@
     {!! OpenGraph::generate() !!}
     {!! Twitter::generate() !!}
 
-    <!-- Favicon For Browsers -->
-
-    <link rel="shortcut icon" href="{{ theme('images/favicon.png')}}">
 
     <!-- CSRF Token is stored here for refrence -->
 

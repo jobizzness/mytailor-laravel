@@ -20,4 +20,11 @@ class DbCollectionRepository implements CollectionRepositoryInterface
 
     }
 
+    public function trending($paginate)
+    {
+        $collection = Collection::paginate($paginate);
+
+        return $collection;
+    }
+
 }

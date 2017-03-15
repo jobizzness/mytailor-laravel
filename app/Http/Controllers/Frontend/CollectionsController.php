@@ -3,6 +3,7 @@
 
 use Illuminate\Http\Request;
 use MyTailor\Repositories\CollectionRepositoryInterface;
+use MyTailor\Transformers\CollectionTransformer;
 use MyTailor\Transformers\ShotTransformer;
 
 class CollectionsController extends ApiController
@@ -12,33 +13,42 @@ class CollectionsController extends ApiController
      */
     private $collections;
     /**
+     * @var CollectionTransformer
+     */
+    private $collectionTransformer;
+    /**
      * @var ShotTransformer
      */
-    private $Transformer;
+    private $shotTransformer;
 
     /**
      * CollectionsController constructor.
      *
      * @param CollectionRepositoryInterface $collections
-     * @param ShotTransformer $Transformer
+     * @param ShotTransformer $shotTransformer
+     * @param CollectionTransformer $collectionTransformer
      */
-    public function __construct(CollectionRepositoryInterface $collections,  ShotTransformer $Transformer)
+    public function __construct(CollectionRepositoryInterface $collections,  ShotTransformer $shotTransformer,
+                                CollectionTransformer $collectionTransformer)
     {
 
         $this->collections = $collections;
-        $this->Transformer = $Transformer;
+        $this->collectionTransformer = $collectionTransformer;
+        $this->shotTransformer = $shotTransformer;
+
+        parent::__construct();
+
+
     }
 
     /**
      * Gets info about a shot and response in Json
      *
-     * @param Request $request
+     * @param $slug
      * @return mixed
-     * @internal param $slug
      */
-    public function index(Request $request)
+    public function show($slug)
     {
-        $slug = $request->get('sort');
 
         $collection = $this->collections->find($slug);
 
@@ -50,15 +60,9 @@ class CollectionsController extends ApiController
         //means we have shots so lets send them through.
         return $this->respond([
             'response' => [
-                'collection' => [
-                  'title' => $collection->title,
-                  'description' => $collection->description,
-                  'slug' => $collection->slug,
-                    'time' =>$collection->published_at,
-                    'image'=> $collection->image
-                ],
+                'collection' => $this->collectionTransformer->transform($collection),
                 'shots' => [
-                    'data' => $this->Transformer->transformCollection($collection->shots),
+                    'data' => $this->ShotTransformer->transformCollection($collection->shots),
                     'nextPage' => $collection->shots->nextPageUrl()
                 ]
             ]

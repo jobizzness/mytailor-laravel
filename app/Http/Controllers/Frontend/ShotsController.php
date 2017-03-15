@@ -3,18 +3,18 @@
 namespace MyTailor\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
-use Laracasts\Commander\CommandBus;
 use Laracasts\Commander\Events\DispatchableTrait;
+use MyTailor\Modules\Shots\ShowGlobalFeedCommand;
 use MyTailor\Modules\Shots\ViewShotCommand;
+use MyTailor\Modules\Traits\CommandBus;
 use MyTailor\Profile;
 use MyTailor\Repositories\ShotsRepositoryInterface;
 use MyTailor\Http\Requests;
 use MyTailor\Transformers\ShotTransformer;
-use MyTailor\User;
 
 class ShotsController extends ApiController
 {
-    use DispatchableTrait;
+    use DispatchableTrait, CommandBus;
 
     /**
      * @var CommandBus
@@ -29,28 +29,27 @@ class ShotsController extends ApiController
      * shotsController constructor.
      *
      * @param ShotsRepositoryInterface $shots
-     * @param CommandBus $commandBus
      * @param ShotTransformer $Transformer
      */
-    public function __construct(ShotsRepositoryInterface $shots, CommandBus $commandBus, ShotTransformer $Transformer)
+    public function __construct(ShotsRepositoryInterface $shots, ShotTransformer $Transformer)
     {
 
         $this->shots = $shots;
-        $this->commandBus = $commandBus;
         $this->Transformer = $Transformer;
-    }
 
+        parent::__construct();
+    }
     /**
-     * @param Request $request
+
      * @return mixed
      */
 
-    public function index(Request $request)
+    public function index()
     {
 
-        $shots = $this->getShots($request);
-
-        return $this->responder($shots);
+        $shots = $this->shots->newest(200)->with('image','comments', 'publishable.profile')->get();
+        $command = new ShowGlobalFeedCommand($shots);
+        return $this->responder($this->execute($command));
 
     }
 
@@ -65,7 +64,7 @@ class ShotsController extends ApiController
     {
 
         $command = new ViewShotCommand($id);
-        $shot = $this->commandBus->execute($command);
+        $shot = $this->execute($command);
 
         if( $shot) {
             $this->dispatchEventsFor($shot);
@@ -147,29 +146,6 @@ class ShotsController extends ApiController
         $shots = $user ? $this->shots->by($user): null;
 
         return $this->responder($shots);
-    }
-    /**
-     * @param Request $request
-     * @return mixed
-     */
-    protected function getShots(Request $request)
-    {
-
-        $cat = $request->get('cat') ?: null;
-        $sort = $request->get('sort') ?: null;
-
-        switch ($sort) {
-            case 'featured':
-                $shots = $this->shots->featured($cat);
-                break;
-            case 'latest':
-                $shots = $this->shots->latest($cat);
-                break;
-            Default:
-                $shots = $this->shots->trending($cat);
-                return $shots;
-        }
-        return $shots;
     }
 
     /**

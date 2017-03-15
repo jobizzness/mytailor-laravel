@@ -3,79 +3,62 @@
 namespace MyTailor\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
-
 use MyTailor\Http\Requests;
-use MyTailor\Repositories\DbShotsRepository;
-use MyTailor\Http\Controllers\Controller;
-use MyTailor\Transformers\ShotTransformer;
+use MyTailor\Modules\Exploration\ExploreThingsCommand;
+use MyTailor\Modules\Traits\CommandBus;
+use MyTailor\Transformers\ExploreTransformer;
 
 class ExploreController extends ApiController
 {
+    use CommandBus;
 
     /**
-     * @var DbShotsRepository
-     */
-    private $shots;
-    /**
-     * @var Request
+     * @var
      */
     private $request;
     /**
-     * @var ShotTransformer
+     * @var ExploreTransformer
      */
-    private $Transformer;
+    private $transformer;
 
     /**
      * ExploreController constructor.
-     *
-     * @param DbShotsRepository $shots
      * @param Request $request
-     * @param ShotTransformer $Transformer
+     * @param ExploreTransformer $transformer
      */
-    public function __construct(DbShotsRepository $shots, Request $request, ShotTransformer $Transformer)
+    public function __construct(Request $request, ExploreTransformer $transformer)
     {
 
-        $this->shots = $shots;
+        parent::__construct();
         $this->request = $request;
-        $this->Transformer = $Transformer;
+        $this->transformer = $transformer;
     }
 
-    public function blaa(Request $request)
+    public function index()
     {
-        $tags = ['men', 'traditional', 'sexy', 'runway'];
 
-        $shots = [];
-        foreach($tags as $tag){
-            $data = $this->shots->trendingShotsIn($tag)->paginate(6);
-            //means we have shots so lets send them through.
-            $item = [
-                'response' => [
-                    'name' =>$tag,
-                    'shots' => [
-                        'data' => $this->Transformer->transformCollection($data)
-                    ]
-                ]
-            ];
+        $command = new ExploreThingsCommand();
+        $things = $this->execute($command);
 
-            array_push($shots, $item);
-        }
 
-        return $shots;
+        //means we have shots so lets send them through.
+        return $this->respond([
+            'response' => [
+                'data' => $this->transformer->transform($things)
+            ]
+        ]);
     }
 
     /**
-     * Lets Explore Shots
+     * Lets Explore A TAG
      *
      * @param $slug
      * @return mixed
      */
-    public function index()
+    public function show($slug)
     {
-        $cat = $this->request->get('cat') ?: null;
-        $cat = $this->append($cat);
-        $slug = $this->request->get('sort');
 
-        $shots = $this->shots->explore($slug, $cat);
+        $shots = $this->shots->explore($slug);
 
 
         if(! $shots) {
@@ -83,67 +66,7 @@ class ExploreController extends ApiController
             return $this->NotFound('No results Found');
         }
 
-        //means we have shots so lets send them through.
-        return $this->respond([
-            'response' => [
-                'shots' => [
-                    'data' => $this->Transformer->transformCollection($shots),
-                    'nextPage' => $shots->nextPageUrl()
-                ]
-            ]
-        ]);
 
     }
 
-    public function create()
-    {
-        // GET => /shots/create
-    }
-
-    /**
-     * @param $id
-     */
-    public function edit($id)
-    {
-        // GET => /shots/{id}/edit
-    }
-
-    /**
-     * @param $id
-     */
-    public function update($id)
-    {
-        // PUT/PATCH => /shots/{id}
-    }
-
-    /**
-     * @param $id
-     */
-    public function destroy($id)
-    {
-        // DELETE => /questions/{id}
-    }
-
-
-    private function append($cat)
-    {
-        switch($cat){
-
-            case 'ma':
-                return 'men';
-
-            case 'fm':
-                return 'women';
-
-            case 'cu':
-                return 'couples';
-
-            case 'ki':
-                return 'kids';
-
-            Default:
-                return null;
-
-        }
-    }
 }

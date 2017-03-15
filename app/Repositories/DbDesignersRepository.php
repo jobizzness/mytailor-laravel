@@ -23,23 +23,23 @@ class DbDesignersRepository implements DesignersRepositoryInterface
     }
 
     /**
-     * @param $cat
+     * @param $limit
      * @return mixed
      */
-    public function favorites($cat)
+    public function newest($limit)
     {
-
+        return $this->designers
+            ->orderBy('created_at', 'desc')
+            ->limit($limit);
 
     }
 
-    public function popular($cat)
-    {
-        
-    }
 
-    public function latest()
+    public function random($limit)
     {
-
+        return $this->designers->with('user.profile', 'user.shots.image')
+            ->orderBy("id")
+            ->paginate($limit);
     }
 
     public function local()
@@ -49,9 +49,5 @@ class DbDesignersRepository implements DesignersRepositoryInterface
             ->paginate(8);
     }
 
-    public function showcase($cat)
-    {
-
-    }
 
 }

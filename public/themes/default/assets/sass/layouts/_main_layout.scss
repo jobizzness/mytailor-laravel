@@ -49,8 +49,8 @@
 }
 
 .just-main{
-    min-height: 48px;
-    max-height: 48px;
+    min-height: 56px;
+    max-height: 56px;
     .mt-sub-header{
         visibility: collapse;
     }
@@ -62,8 +62,8 @@
 
 
 .mt-global-header{
-    min-height: 48px;
-    max-height: 48px;
+    min-height: 56px;
+    max-height: 56px;
 }
 
 .flex-center{
@@ -82,7 +82,7 @@
 }
 
 .mdl-layout__header.is-compact {
-    max-height: 45px;
+    max-height: 54px;
 }
 
 .pull-left>a{
@@ -108,16 +108,13 @@
 ul.user-actions>li>a{
     transition: color linear 2ms;
     margin-bottom: 9px;
-    &:hover{color: #d3d1d1;}         
+    color: #fff;     
   }
-
 .mt-top-avatar{
     max-width: 35px;
     border-radius: 27px;
     display: inline-block;
     overflow: hidden;
-    width: 33px;
-    height: 33px;
 }
 
 header.mdl-layout__header--waterfall:not(.is-compact){
@@ -424,7 +421,7 @@ a.mt-sidebar-link{
 }
 
 .mt-top-menu{
-    padding: 5px 5px;
+    padding: 11px 8px;
     position: absolute;
     top: 0;
     height: 45px;
@@ -434,44 +431,14 @@ a.mt-sidebar-link{
 .profile--wrapper{
   margin-top: 16px; 
 }
+.top-shots-item{
+    margin:0 8px;
+}
 
-.explore-item{
-    min-height: 500px;
-    position: relative;
-    padding: 5px;
+.tops-shots-slider{
+    margin-right: 16px;
 
-    >figure{
-        height: 100%;
-        width: 100%;
-        background-size: cover;
-        background: transparent; 
-        border-radius: 3px;
-
-        figcaption{
-            display: -ms-flexbox;
-            display: flex;
-            -ms-flex-pack: end;
-            justify-content: flex-end;
-            -ms-flex-align: start;
-            align-items: flex-start;
-            height: 100%;
-            -ms-flex-direction: column;
-            flex-direction: column;
-            padding: 2em;
-
-            h3{
-                font-size: 20px;
-                color: rgba(255, 255, 255, 0.81);
-                margin: 0;
-                line-height: 24px;
-            }
-            p {
-                color: rgba(255, 255, 255, 0.81);
-                margin: 8px 0;
-                text-transform: capitalize;
-                font-size: 14px;
-                line-height: 22px;
-            }
-        }
+    .slick-track{
+        padding-bottom: 16px;
     }
 }

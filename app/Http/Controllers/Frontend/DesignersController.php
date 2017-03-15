@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Laracasts\Commander\CommandBus;
 use Laracasts\Commander\Events\DispatchableTrait;
 use MyTailor\Repositories\DesignersRepositoryInterface;
+use MyTailor\Transformers\DesignerShotTransformer;
 use MyTailor\Transformers\DesignerTransformer;
 
 class DesignersController extends ApiController
@@ -28,26 +29,26 @@ class DesignersController extends ApiController
      *
      * @param DesignersRepositoryInterface $designers
      * @param CommandBus $commandBus
-     * @param DesignerTransformer $Transformer
+     * @param DesignerShotTransformer $Transformer
      */
-    public function __construct(DesignersRepositoryInterface $designers, CommandBus $commandBus, DesignerTransformer $Transformer)
+    public function __construct(DesignersRepositoryInterface $designers, CommandBus $commandBus, DesignerShotTransformer $Transformer)
     {
 
         $this->designers = $designers;
         $this->commandBus = $commandBus;
         $this->Transformer = $Transformer;
+
+        parent::__construct();
     }
 
     /**
-     * @param $sort
-     * @param Request $request
      * @return mixed
      */
 
-    public function index(Request $request)
+    public function index()
     {
 
-        $designers = $this->getDesigners($request);
+        $designers = $this->designers->newest(100)->with('user.profile', 'user.shots.image')->paginate(8);
 
         if(! $designers) {
             //we have no designers sorry.
@@ -95,39 +96,6 @@ class DesignersController extends ApiController
     public function destroy($id)
     {
         // DELETE => /questions/{id}
-    }
-
-
-
-
-    /**
-     * @param $sort
-     * @param Request $request
-     * @return mixed
-     */
-    protected function getDesigners(Request $request)
-    {
-
-        $cat = $request->get('cat') ?: null;
-        $sort = $request->get('sort') ?: null;
-        switch ($sort) {
-            case 'latest':
-                $shots = $this->designers->featured($cat);
-                break;
-            case 'popular':
-                $shots = $this->designers->latest($cat);
-                break;
-            case 'favorites':
-                $shots = $this->designers->latest($cat);
-                break;
-            case 'showcase':
-                $shots = $this->designers->latest($cat);
-                break;
-            Default:
-                $shots = $this->designers->local($cat);
-                return $shots;
-        }
-        return $shots;
     }
 
 }

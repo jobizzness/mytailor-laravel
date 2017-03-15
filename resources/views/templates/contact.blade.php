@@ -39,49 +39,21 @@
 				  </center>
 				</form>		
 			</div>
-			<div class="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--2dp pad-1">
+			<div class="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--2dp pad-1 contact-info">
 					<h5 class="title">Contact Detail</h5>
-					<p>We are excited to hear from you. Please contact Afrodapp by sending us an email or filling the contact form. We will get back to you as soon as possible.</p>
-					<ul class="contact-link-icons">
-						<li>
-							<a href="#" class="darken-3">
-								<i class="mdi mdi-map-marker"></i> Kololi, Senegambia
-							</a>
+					<ul class="contact-links">
+						<li class="contact-link">
+								<i class="mdi mdi-map-marker"></i> Jalan 3/149e, Taman Sri Endah, 57000 Kuala Lumpur
 						</li>
-						<li>
-							<a href="#" class="grey-text darken-3">
+						<li class="contact-link">
+							<a href="#" class="">
 								<i class="mdi mdi-email-outline"></i> afrodapp@gmail.com
 							</a>
 						</li>
-						<li>
-							<a href="#" class="grey-text darken-3">
-								<i class="mdi mdi-phone"></i> +220 3011567
-							</a>
+						<li class="contact-link">
+							<i class="mdi mdi-phone"></i> +60 1153 371 748
 						</li>
 					</ul><br>
-					{{-- <h5>Social</h5><br>
-
-					<a href="#!" class="btn waves-effect btn-flat btn-floating btn-social btn-facebook colored">
-						<img src="/material_concept/images/social/ic_face.png" alt="">
-					</a>
-					<a href="#!" class="btn waves-effect btn-flat btn-floating btn-social btn-instagram colored">
-						<img src="/material_concept/images/social/ic_insta.png" alt="">
-					</a>
-					<a href="#!" class="btn waves-effect btn-flat btn-floating btn-social btn-twitter colored">
-						<img src="/material_concept/images/social/ic_twitter.png" alt="">
-					</a>
-					<a href="#!" class="btn waves-effect btn-flat btn-floating btn-social btn-google colored">
-						<img src="/material_concept/images/social/ic_google.png" alt="">
-					</a>
-					<a href="#!" class="btn waves-effect btn-flat btn-floating btn-social btn-youtube colored">
-						<img src="/material_concept/images/social/ic_youtube.png" alt="">
-					</a>
-					<a href="#!" class="btn waves-effect btn-flat btn-floating btn-social btn-blogger colored">
-						<img src="/material_concept/images/social/ic_blogger.png" alt="">
-					</a>
-					<a href="#!" class="btn waves-effect btn-flat btn-floating btn-social btn-dribbble colored">
-						<img src="/material_concept/images/social/ic_dribbble.png" alt="">
-					</a> --}}
 			</div>
 		</div>
 	</main>

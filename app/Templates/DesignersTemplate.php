@@ -44,24 +44,30 @@ class DesignersTemplate extends AbstractTemplate{
     {
         $this->seoMake();
 
-        $designers = $this->designers->favorites('fav');
-
-        $view->with('designers', $designers);
     }
 
     protected function seoMake()
     {
-        SEOMeta::setTitle('Designers | MyTailor African Fashion Designers');
-        SEOMeta::setDescription('This is my page description');
-        SEOMeta::setCanonical('https://codecasts.com.br/lesson');
+        //Meta for google
+        SEOMeta::setTitle('Afrodapp – Designers')
+            ->setDescription('Get Inspired By Top African Fashion Designers And Their Amazing Styles, Dresses, Ankara, Prints, Kitenge & More . Comment, Like & Get Engaged.')
+            ->setCanonical('https://www.afrodapp.com');
 
-        OpenGraph::setDescription('This is my page description');
-        OpenGraph::setTitle('Designers');
-        OpenGraph::setUrl('http://mytailorafrica.com/designers');
-        OpenGraph::addProperty('type', 'business.fashion');
+        //OpenGraph for facebook
+        OpenGraph::setDescription('Get Inspired By Top African Fashion Designers And Their Amazing Styles, Dresses, Ankara, Prints, Kitenge & More . Comment, Like & Get Engaged.')
+            ->setType('article')
+            ->setTitle('Afrodapp – Discover African Fashion Styles & Dresses')
+            ->addImage('https://static1.squarespace.com/static/5346bdbae4b0b4931a2ab884/t/57fa865ae58c6208093d3e29/1476036188467/tash+and+cody.jpeg')
+            ->setUrl('https://www.afrodapp.com');
 
-        Twitter::setTitle('Designers');
-        Twitter::setSite('@LuizVinicius73');
+        //Meta tags for twitter
+        Twitter::addValue('card', 'summary_large_image')
+            ->setType('article')
+            ->addImage('https://static1.squarespace.com/static/5346bdbae4b0b4931a2ab884/t/57fa865ae58c6208093d3e29/1476036188467/tash+and+cody.jpeg')
+            ->setTitle('Afrodapp – Discover African Fashion Styles & Dresses')
+            ->setDescription('Get Inspired By Top African Fashion Designers And Their Amazing Styles, Dresses, Ankara, Prints, Kitenge & More . Comment, Like & Get Engaged.')
+            ->setUrl('https://www.afrodapp.com');
+        Twitter::setSite('@afrodapp');
     }
 
 }

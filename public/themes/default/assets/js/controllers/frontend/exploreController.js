@@ -34,6 +34,9 @@
              */
             $scope.after = '/?page=1';
 
+//Slider configuration
+            $scope.slickConfig2 = {autoplay: false,infinite: false,autoplaySpeed: 5000,slidesToShow: 4,slidesToScroll: 4,method: {}};
+
             /**
              * shots per page
              * @type {number}

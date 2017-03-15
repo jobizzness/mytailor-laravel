@@ -98,23 +98,18 @@ Route::group(['prefix' => 'admin/api'], function () {
 */
 Route::group(['prefix' => 'api/v1'], function () {
 
-	header('Access-Control-Allow-Origin: *');  //I have also tried the * wildcard and get the same response
-	header("Access-Control-Allow-Credentials: true");
-	header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
-	header('Access-Control-Max-Age: 1000');
-	header('Access-Control-Allow-Headers: Content-Type, Content-Range, Content-Disposition, Content-Description');
-
 	/**
 	 * Frontend Api Routes
 	 */
 	Route::resource('shots', 'Frontend\ShotsController');
 	Route::resource('explore','Frontend\ExploreController');
 	Route::resource('designers', 'Frontend\DesignersController');
+	Route::resource('designers.shots', 'Frontend\DesignerShotsController');
 	Route::resource('collections', 'Frontend\CollectionsController');
 	Route::resource('blog', 'Frontend\BlogController');
 
 	Route::post('/authenticate', [
-			'uses'=>'Frontend\AuthController@apiLogin']
+			'uses'=>'Auth\AuthController@getLogin']
 	);
 
 	Route::post('/shots/{id}/like',  [
@@ -130,6 +125,8 @@ Route::group(['prefix' => 'api/v1'], function () {
 					'uses' => 'Frontend\ShotsController@by']
 	);
 
-
+	Route::get('/csrf_token', function(){
+		return csrf_token();
+	});
 
 });

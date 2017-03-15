@@ -6,6 +6,6 @@ class ShotsPresenter extends Presenter
 {
     public function title()
     {
-        return strlen($this->description) > 60 ? substr($this->description,0,60)."..." : $this->description;
+        return strlen($this->description) > 150 ? substr($this->description,0,150)."..." : $this->description;
     }
 }

@@ -9,7 +9,6 @@ use MyTailor\Http\Requests;
 use MyTailor\Modules\Traits\AuthResponder;
 use MyTailor\Modules\Traits\CommandBus;
 use MyTailor\Modules\Users\Registration\RegisterUserCommand;
-use Tymon\JWTAuth\Facades\JWTAuth;
 use Validator;
 
 class RegistrationController extends ApiController

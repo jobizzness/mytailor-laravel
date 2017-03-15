@@ -6,7 +6,6 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use MyTailor\Http\Controllers\Frontend\ApiController;
 use MyTailor\Modules\Traits\AuthResponder;
-use Tymon\JWTAuth\Facades\JWTAuth;
 use Validator;
 
 

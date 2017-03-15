@@ -16,7 +16,6 @@ class ApiController extends Controller
     {
         $this->middleware('cors');
 
-        Parent::construct();
     }
     /**
      * @param string $message

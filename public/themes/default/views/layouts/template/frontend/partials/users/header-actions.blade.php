@@ -47,7 +47,7 @@
                     <!-- Avatar Dropdown -->
                    <li>
                       <a href="#" class="dropdown-toggle mt-top-avatar" id="avatar">
-                        <img alt="" class="img-circle" src="{{$user->profile->avatar}}" width="40px" height="40px">
+                        <img alt="" class="img-circle" src="{{$user->profile->avatar}}" width="32px" height="32px">
                       </a>
                           {{-- avatar menu --}}
                           <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"

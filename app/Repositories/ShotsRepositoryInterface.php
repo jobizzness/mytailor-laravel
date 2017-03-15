@@ -3,29 +3,13 @@ namespace MyTailor\Repositories;
 
 interface ShotsRepositoryInterface
 {
-    /**
-     * @param $cat
-     * @return mixed
-     */
-    public function latest($cat);
 
     /**
-     * @param $cat
+     * Gets shots and orders by the date desc.
+     * Accepts a number for limiting amount of records
+     *
+     * @param $limit
      * @return mixed
      */
-    public function trending($cat);
-
-    /**
-     * @param $cat
-     * @return mixed
-     */
-    public function featured($cat);
-
-    /**
-     * @param $slug
-     * @return mixed
-     */
-    public function explore($slug, $cat);
-
-
+    public function newest($limit);
 }

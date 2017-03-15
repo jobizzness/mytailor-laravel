@@ -51,4 +51,9 @@ class DbUsersRepository implements UsersRepositoryInterface
     {
         return Profile::where('username', $id)->first();
     }
+
+    public function random($limit)
+    {
+        return User::orderByRaw("RAND()")->paginate($limit);
+    }
 }

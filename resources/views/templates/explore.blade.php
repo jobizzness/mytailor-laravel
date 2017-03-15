@@ -17,6 +17,8 @@
   <link rel="stylesheet" type="text/css" href="{{theme('vendor/revolution/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css')}}">
   <link rel="stylesheet" type="text/css" href="{{theme('vendor/revolution/fonts/font-awesome/css/font-awesome.min.css')}}">
 
+  <link rel="stylesheet" href="{{theme('css/vendor/slick-carousel/slick/slick.css')}}">
+  <link rel="stylesheet" href="{{theme('css/vendor/slick-carousel/slick/slick-theme.css')}}">
 @endsection
 <section class="hero md-whiteframe-4dp" style="margin-top:0px;">
     <div class="cover-container">
@@ -26,70 +28,165 @@
     </div>
 </section>
 <section>
-  <div class="mdl-grid mdl-grid--no-spacing">
-        {{-- Explore Items Here --}}
-        <div class="mdl-cell mdl-cell--3-col explore-item">
-          <figure style="background-image:url('https://s-media-cache-ak0.pinimg.com/564x/e9/45/b5/e945b5affb8a8de41df35c6957329d3d.jpg');">
-              <a href="/categories/men">
-                  <figcaption>
-                    <h3>Men</h3>
-                    <p>Explore latest dresses for  that will make you go crazy, i mean you def omg.</p>
-                  </figcaption>
-            </a>
-            </figure>
-        </div>
-        <div class="mdl-cell mdl-cell--3-col explore-item">
-          <figure style="background-image:url('https://s-media-cache-ak0.pinimg.com/564x/87/d4/e9/87d4e99fcac3500713c47e7fb542bbf8.jpg');">
-              <a href="/explore/ankara">
-                  <figcaption>
-                    <h3>Ankara</h3>
-                    <p>Explore latest dresses you go crazy, i mean you def need to wear this one omg.</p>
-                  </figcaption>
-            </a>
-            </figure>
-        </div>
-        <div class="mdl-cell mdl-cell--6-col explore-item">
-          <figure style="background-image:url('https://static1.squarespace.com/static/5346bdbae4b0b4931a2ab884/t/57fa865ae58c6208093d3e29/1476036188467/tash+and+cody.jpeg?format=1500w');">
-              <a href="/categories/women">
-                  <figcaption>
-                    <h3>Women</h3>
-                    <p>Explore latest dresses for women ankara prints that will make you go crazy, i mean you def need to wear this one omg.</p>
-                  </figcaption>
-            </a>
-            </figure>
-        </div>
-        <div class="mdl-cell mdl-cell--6-col explore-item">
-          <figure style="background-image:url('https://static1.squarespace.com/static/5346bdbae4b0b4931a2ab884/t/57fa865ae58c6208093d3e29/1476036188467/tash+and+cody.jpeg?format=1500w');">
-              <a href="#">
-                  <figcaption>
-                    <h3>Women</h3>
-                    <p>Explore latest dresses for women ankara prints that will make you go crazy, i mean you def need to wear this one omg.</p>
-                  </figcaption>
-            </a>
-            </figure>
-        </div>
-        <div class="mdl-cell mdl-cell--3-col explore-item">
-          <figure style="background-image:url('https://s-media-cache-ak0.pinimg.com/564x/2f/fd/90/2ffd904eba627e28222af614b1c184ef.jpg');">
-              <a href="/categories/accessories">
-                  <figcaption>
-                    <h3>Accessories</h3>
-                    <p>Explore latest dresses for  that will make you go crazy, i mean you def omg.</p>
-                  </figcaption>
-            </a>
-            </figure>
-        </div>
-        <div class="mdl-cell mdl-cell--3-col explore-item">
-          <figure style="background-image:url('https://s3.amazonaws.com/mytailor-v1/uploads/shots/original/b8/c6/c8/mt_b8c6c84e06c348a5b30780e24371ef87.jpg');">
-              <a href="/categories/couples">
-                  <figcaption>
-                    <h3>Couples</h3>
-                    <p>Explore latest dresses you go crazy, i mean you def need to wear this one omg.</p>
-                  </figcaption>
-            </a>
-            </figure>
-        </div>
 
-</div>
+  <div style="margin:5em;">
+      <h1 class="section_title">Top Shots</h1>
+      {{-- Explore Items Here --}}
+      <slick settings="slickConfig2" 
+            lazy-load="ondemand" 
+            prev-arrow=".slick-prev" 
+            next-arrow=".slick-next"
+            class="tops-shots-slider"
+            ng-repeat="n in [1,3]">
+        <!-- Shot Template -->
+          <div class="mdl-card md-whiteframe-4dp top-shots-item" itemprop="mainEntity" ng-repeat="shot in [1,2,3,4,5,6,7,8,9,10,11,12]">
+              <!-- Figure -->
+              <figure style="height: 346px;">
+                  <a class="mt-grid___link" ng-click="open(shot.name)">
+                      <div class="mt-image-holder" itemscope itemtype="http://schema.org/thumbnail">
+                          <img itemprop="image" ng-src="@{{shot.image.original}}" alt="@{{shot.alt}}">
+                      </div>
+                  </a>
+              </figure>
+            </div>
+        </slick>
+
+        {{-- Categories --}}
+        <section>
+          <h1 class="section_title" style="margin-left: 0;">Categories</h1>
+          <slick settings="slickConfig2" 
+            lazy-load="ondemand" 
+            prev-arrow=".slick-prev" 
+            next-arrow=".slick-next"
+            class="tops-shots-slider"
+            >
+          <!-- Shot Template -->
+          <div class="mdl-card md-whiteframe-4dp" itemprop="mainEntity" ng-repeat="shot in [1,2,3,4,5,6,7,8,9,10,11,12]">
+              <!-- Figure -->
+              <figure style="height: 200px;">
+                  <a class="mt-grid___link" ng-click="open(shot.name)">
+                      <div class="mt-image-holder" itemscope itemtype="http://schema.org/thumbnail">
+                          <img itemprop="image" ng-src="@{{shot.image.original}}" alt="@{{shot.alt}}">
+                      </div>
+                  </a>
+              </figure>
+            </div>
+          </slick>
+        </section>
+
+        {{-- Spepcif Category --}}
+          <section>
+            <h1 class="section_title">Dress</h1>
+            <slick settings="slickConfig2" 
+              lazy-load="ondemand" 
+              prev-arrow=".slick-prev" 
+              next-arrow=".slick-next"
+              class="tops-shots-slider"
+              >
+            <!-- Shot Template -->
+            <div class="mdl-card md-whiteframe-4dp top-shots-item" itemprop="mainEntity" ng-repeat="shot in [1,2,3,4,5,6,7,8,9,10,11,12]">
+                <!-- Figure -->
+                <figure style="height: 346px;">
+                    <a class="mt-grid___link" ng-click="open(shot.name)">
+                        <div class="mt-image-holder" itemscope itemtype="http://schema.org/thumbnail">
+                            <img itemprop="image" ng-src="@{{shot.image.original}}" alt="@{{shot.alt}}">
+                        </div>
+                    </a>
+                </figure>
+              </div>
+            </slick>
+          </section>
+
+          <section>
+            <h1 class="section_title">Shirts</h1>
+            <slick settings="slickConfig2" 
+              lazy-load="ondemand" 
+              prev-arrow=".slick-prev" 
+              next-arrow=".slick-next"
+              class="tops-shots-slider"
+              >
+            <!-- Shot Template -->
+            <div class="mdl-card md-whiteframe-4dp top-shots-item" itemprop="mainEntity" ng-repeat="shot in [1,2,3,4,5,6,7,8,9,10,11,12]">
+                <!-- Figure -->
+                <figure style="height: 346px;">
+                    <a class="mt-grid___link" ng-click="open(shot.name)">
+                        <div class="mt-image-holder" itemscope itemtype="http://schema.org/thumbnail">
+                            <img itemprop="image" ng-src="@{{shot.image.original}}" alt="@{{shot.alt}}">
+                        </div>
+                    </a>
+                </figure>
+              </div>
+            </slick>
+          </section>
+
+          {{-- Collections --}}
+            <section>
+              <h1 class="section_title" style="margin-left: 0;">Top Collections</h1>
+              <slick settings="slickConfig2" 
+                lazy-load="ondemand" 
+                prev-arrow=".slick-prev" 
+                next-arrow=".slick-next"
+                class="tops-shots-slider"
+                >
+              <!-- Shot Template -->
+              <div class="mdl-card md-whiteframe-4dp" itemprop="mainEntity" ng-repeat="shot in [1,2,3,4,5,6,7,8,9,10,11,12]">
+                  <!-- Figure -->
+                  <figure style="height: 200px;">
+                      <a class="mt-grid___link" ng-click="open(shot.name)">
+                          <div class="mt-image-holder" itemscope itemtype="http://schema.org/thumbnail">
+                              <img itemprop="image" ng-src="@{{shot.image.original}}" alt="@{{shot.alt}}">
+                          </div>
+                      </a>
+                  </figure>
+                </div>
+              </slick>
+            </section>
+
+          <section>
+            <h1 class="section_title">Ankara</h1>
+            <slick settings="slickConfig2" 
+              lazy-load="ondemand" 
+              prev-arrow=".slick-prev" 
+              next-arrow=".slick-next"
+              class="tops-shots-slider"
+              >
+            <!-- Shot Template -->
+            <div class="mdl-card md-whiteframe-4dp top-shots-item" itemprop="mainEntity" ng-repeat="shot in [1,2,3,4,5,6,7,8,9,10,11,12]">
+                <!-- Figure -->
+                <figure style="height: 346px;">
+                    <a class="mt-grid___link" ng-click="open(shot.name)">
+                        <div class="mt-image-holder" itemscope itemtype="http://schema.org/thumbnail">
+                            <img itemprop="image" ng-src="@{{shot.image.original}}" alt="@{{shot.alt}}">
+                        </div>
+                    </a>
+                </figure>
+              </div>
+            </slick>
+          </section>
+
+          {{-- Designers --}}
+          <section>
+            <h1 class="section_title">Top Designers</h1>
+            <slick settings="slickConfig2" 
+              lazy-load="ondemand" 
+              prev-arrow=".slick-prev" 
+              next-arrow=".slick-next"
+              class="tops-shots-slider"
+              >
+            <!-- Shot Template -->
+            <div class="mdl-card md-whiteframe-4dp top-shots-item" itemprop="mainEntity" ng-repeat="shot in [1,2,3,4,5,6,7,8,9,10,11,12]">
+                <!-- Figure -->
+                <figure style="height: 346px;">
+                    <a class="mt-grid___link" ng-click="open(shot.name)">
+                        <div class="mt-image-holder" itemscope itemtype="http://schema.org/thumbnail">
+                            <img itemprop="image" ng-src="@{{shot.image.original}}" alt="@{{shot.alt}}">
+                        </div>
+                    </a>
+                </figure>
+              </div>
+            </slick>
+          </section>
+  </div>
 </section>
 
 
